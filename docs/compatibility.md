@@ -32,6 +32,16 @@ Codex 受限执行环境看不到 `/dev/nvidia*`，但宿主普通终端可以�
 
 `nvidia-smi` 显示的 CUDA 13.0 是当前驱动可支持的最高 CUDA runtime 版本，不表示系统已安装 CUDA 13 Toolkit。预编译 PyTorch wheel 自带所需 CUDA runtime；当前阶段不安装 `nvcc`。
 
+## 固定上游版本
+
+| Repository | Commit |
+|---|---|
+| LeRobot | `8b256a6c0d4769c3cc3e7e98f04940126398a391` |
+| LIBERO | `8f1084e3132a39270c3a13ebe37270a43ece2a01` |
+| OpenVLA | `c8f03f48af692657d3060c19588038c7220e9af9` |
+
+详细依赖与代码入口见 `docs/dependency_analysis.md`。
+
 ## Environment A：evla-core
 
 用途：LeRobot、PushT、ACT、Diffusion Policy、LIBERO、MuJoCo、ego-view、小型 world model。
@@ -39,14 +49,16 @@ Codex 受限执行环境看不到 `/dev/nvidia*`，但宿主普通终端可以�
 | 组件 | 候选 | 决策状态 |
 |---|---|---|
 | Python | 3.12 | 待创建 |
-| PyTorch | 2.10 或 2.11 | 克隆并检查 LeRobot commit 后锁定 |
+| PyTorch | 2.11 + cu128 candidate | resolver 与 CUDA smoke test 后锁定 |
 | CUDA wheel | cu128 | 已选方向 |
-| LeRobot | fixed Git commit | 待添加 submodule |
+| LeRobot | commit `8b256a6c...`，version 0.6.2 | 已固定 |
 | LIBERO runtime | LeRobot `hf-libero` compatibility package | 待验证 |
 | MuJoCo rendering | EGL offscreen | 待验证 |
 | FFmpeg | conda environment package | 待安装 |
 
-选择 cu128 的原因：支持 Blackwell，同时降低采用 CUDA 13 wheel 对上游机器人学习依赖造成的兼容风险。驱动 580.173.02 满足该方向。
+固定 LeRobot 要求 Python `>=3.12`、PyTorch `>=2.7,<2.12`，并将 Linux torch 源指向 cu128。选择 PyTorch 2.11 candidate 是为了使用该范围内最新受支持组合；最终以 resolver 和实机 smoke test 为准。
+
+原始 LIBERO 的 Python 3.8/PyTorch 1.11/CUDA 11.3 requirements 不进入此环境。实际 runtime 使用 LeRobot `libero` extra 的 `hf-libero`。
 
 ## Environment B：evla-openvla
 
@@ -61,7 +73,7 @@ Codex 受限执行环境看不到 `/dev/nvidia*`，但宿主普通终端可以�
 | Attention | eager/SDPA first | 计划 |
 | FlashAttention | 第一轮不安装 | 已决定 |
 
-OpenVLA 上游历史依赖基于较旧 PyTorch。不能在 Blackwell 上原样照搬，必须将“模型代码兼容性”和“GPU 架构兼容性”分别验证。
+固定 OpenVLA 将 PyTorch 固定为 2.2.0、Transformers 固定为 4.40.1，并建议 FlashAttention 2.5.5。不能在 Blackwell 上原样照搬，也不能与 LeRobot Transformers 5.4–5.5 共存。Phase 3 使用 curated minimal environment，不直接执行普通 editable install。
 
 ## Disk budget
 
@@ -84,7 +96,8 @@ OpenVLA 上游历史依赖基于较旧 PyTorch。不能在 Blackwell 上原样�
 - [ ] LeRobot import 和最小 dataset sample。
 - [ ] LIBERO reset/step/离屏图像。
 - [ ] W&B 本地与在线 logging。
-- [ ] LeRobot 当前版本的 TensorBoard 支持方式。
+- [x] 检查 LeRobot 当前版本的 TensorBoard 支持方式：未发现原生 SummaryWriter。
+- [ ] 决定 TensorBoard callback 或离线转换方案。
 
 ## 上游参考
 

@@ -1,0 +1,12 @@
+[submodule "lerobot"]
+	path = lerobot
+	url = https://github.com/huggingface/lerobot.git
+	shallow = true
+[submodule "libero"]
+	path = libero
+	url = https://github.com/Lifelong-Robot-Learning/LIBERO.git
+	shallow = true
+[submodule "openvla"]
+	path = openvla
+	url = https://github.com/openvla/openvla.git
+	shallow = true

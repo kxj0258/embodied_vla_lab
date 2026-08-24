@@ -17,7 +17,8 @@
 
 尚未执行：
 
-- [ ] 添加三个上游 submodule。
+- [x] 添加三个上游 submodule，并记录精确 commit。
+- [x] 分析三个上游仓库的依赖与关键代码入口。
 - [ ] 创建 `evla-core` conda environment。
 - [ ] 安装 PyTorch 或任何项目依赖。
 - [ ] 下载数据集或 checkpoint。
@@ -79,15 +80,23 @@ no FlashAttention in first smoke test
 
 ## 执行顺序
 
-1. 添加并固定 LeRobot/LIBERO/OpenVLA submodule。
-2. 只读分析各仓库依赖与关键模块。
-3. 锁定 `evla-core` 精确版本。
+1. ~~添加并固定 LeRobot/LIBERO/OpenVLA submodule。~~
+2. ~~只读分析各仓库依赖与关键模块。~~
+3. 以 Python 3.12、PyTorch 2.11 + cu128 为 candidate，完成 resolver/安装验证。
 4. 创建环境并安装最小依赖。
 5. PyTorch CUDA/BF16 smoke test。
-6. MuJoCo EGL renderer smoke test。
+6. 安装 LeRobot `training,pusht`。
 7. LeRobot import 与 PushT sample smoke test。
-8. LIBERO reset/step/render smoke test。
+8. Phase 2 前再添加 `libero` 并做 EGL reset/step/render。
 9. 输出环境锁定文件和结果记录。
+
+## 固定上游 commit
+
+- LeRobot：`8b256a6c0d4769c3cc3e7e98f04940126398a391`
+- LIBERO：`8f1084e3132a39270c3a13ebe37270a43ece2a01`
+- OpenVLA：`c8f03f48af692657d3060c19588038c7220e9af9`
+
+依赖分析见 `docs/dependency_analysis.md`。
 
 ## 验收标准
 

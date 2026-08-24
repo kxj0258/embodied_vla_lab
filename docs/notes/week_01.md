@@ -17,11 +17,11 @@
 
 ## 待完成
 
-- [ ] 添加三个上游 Git submodule 并记录 commit。
-- [ ] 阅读 LeRobot `pyproject.toml` 与安装文档。
-- [ ] 阅读 LIBERO environment/evaluation 入口。
-- [ ] 阅读 OpenVLA inference/action tokenizer 入口。
-- [ ] 决定 `evla-core` 精确 Python/PyTorch/依赖版本。
+- [x] 添加三个上游 Git submodule 并记录 commit。
+- [x] 阅读 LeRobot `pyproject.toml`、安装文档与 policy/env 入口。
+- [x] 阅读 LIBERO environment/evaluation 入口。
+- [x] 阅读 OpenVLA inference/action tokenizer/finetune 入口。
+- [x] 确定 `evla-core` 候选：Python 3.12、PyTorch 2.11 + cu128；待实测锁定。
 - [ ] 创建环境并完成 PyTorch smoke test。
 - [ ] 完成 MuJoCo EGL smoke test。
 - [ ] 更新 Phase 0 结果与问题记录。
@@ -55,4 +55,5 @@
 
 - 完成系统信息采集与架构规划。
 - 完成本地 Git 仓库和文档基线。
-- 尚未安装依赖或下载上游代码。
+- 以 shallow submodule 固定三个上游仓库并完成依赖分析。
+- 尚未安装依赖、数据集或模型。

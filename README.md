@@ -2,7 +2,7 @@
 
 Embodied VLA Lab 是一个面向具身智能算法工程师岗位的长期学习与复现项目。项目以仿真为先，围绕 LeRobot、LIBERO 和 OpenVLA，系统研究机器人模仿学习、视觉语言动作模型、ego-view 操作学习和小型世界模型，并最终迁移到 Feagine A03 连续体机械臂。
 
-> 当前状态：Phase 0——环境兼容性分析与项目初始化。尚未安装依赖、下载数据或运行训练。
+> 当前状态：Phase 0——三个上游仓库已固定为 Git submodule，正在锁定 `evla-core` 环境。尚未安装依赖、下载数据或运行训练。
 
 ## 项目目标
 
@@ -37,7 +37,7 @@ small latent world model
 Feagine high-level action → PCC IK/controller → MuJoCo
 ```
 
-更详细的阶段安排见 [docs/roadmap.md](docs/roadmap.md)，系统边界见 [docs/architecture.md](docs/architecture.md)。
+更详细的阶段安排见 [docs/roadmap.md](docs/roadmap.md)，系统边界见 [docs/architecture.md](docs/architecture.md)，当前上游依赖分析见 [docs/dependency_analysis.md](docs/dependency_analysis.md)。
 
 ## 三个核心项目的职责
 
@@ -47,7 +47,7 @@ Feagine high-level action → PCC IK/controller → MuJoCo
 | LIBERO | MuJoCo 操作环境、语言任务、专家示范、成功判定和标准 benchmark |
 | OpenVLA | VLM backbone、视觉语言条件、动作 tokenization、量化推理和参数高效微调 |
 
-三个上游仓库计划作为固定 commit 的 Git submodule 引入。实验性代码放在 `experiments/`、`configs/` 和 `scripts/`，避免直接大规模修改上游源码。
+三个上游仓库已作为浅克隆 Git submodule 固定到具体 commit。实验性代码放在 `experiments/`、`configs/` 和 `scripts/`，避免直接大规模修改上游源码。
 
 ## 硬件约束
 
