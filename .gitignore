@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local environments and secrets
+.venv/
+venv/
+/env/
+.env
+.env.*
+*.local
+
+# IDE and OS
+.vscode/
+.idea/
+*~
+.DS_Store
+
+# Experiment trackers and generated outputs
+wandb/
+runs/
+tensorboard/
+outputs/
+artifacts/
+**/events.out.tfevents.*
+
+# Local datasets and caches
+data/
+datasets/
+cache/
+.cache/
+hf_cache/
+
+# Model weights and large numerical artifacts
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.h5
+*.hdf5
+*.npy
+*.npz
+
+# Videos are stored locally or published as release/demo artifacts
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Preserve the checkpoint directory itself, not checkpoint binaries
+checkpoints/*
+!checkpoints/.gitkeep
+
+# Temporary result artifacts; keep Markdown/JSON/CSV summaries trackable
+results/raw/
+results/tmp/
