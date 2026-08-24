@@ -1,0 +1,18 @@
+# Embodied VLA Lab core environment base layer.
+#
+# This file intentionally describes only the conda-managed foundation. PyTorch
+# cu128, the editable LeRobot checkout, and the PushT OpenCV workaround must be
+# installed in the staged order documented in docs/phases/phase_00_environment.md.
+# Treating those pip operations as one opaque `conda env create` step would lose
+# the custom PyTorch index and `gym-pusht --no-deps` decision.
+
+name: evla-core
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12.14
+  - pip=26.2.1
+  - ffmpeg=7.1.1
+

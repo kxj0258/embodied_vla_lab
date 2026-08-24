@@ -2,7 +2,7 @@
 
 Embodied VLA Lab 是一个面向具身智能算法工程师岗位的长期学习与复现项目。项目以仿真为先，围绕 LeRobot、LIBERO 和 OpenVLA，系统研究机器人模仿学习、视觉语言动作模型、ego-view 操作学习和小型世界模型，并最终迁移到 Feagine A03 连续体机械臂。
 
-> 当前状态：Phase 0——三个上游仓库已固定为 Git submodule，正在锁定 `evla-core` 环境。尚未安装依赖、下载数据或运行训练。
+> 当前状态：Phase 0——`evla-core` 的 CUDA、BF16、LeRobot、PushT 和随机初始化 ACT 接口已通过宿主复核；MuJoCo EGL 与 LIBERO runtime 尚待验证。尚未下载数据集、checkpoint 或运行训练。
 
 ## 项目目标
 
@@ -59,6 +59,28 @@ Feagine high-level action → PCC IK/controller → MuJoCo
 
 优先使用 inference、BF16、LoRA/QLoRA、小 batch、梯度累积和小规模仿真实验。禁止从零训练 7B 模型或开展大规模视频模型训练。
 
+## 当前验证环境
+
+| Component | Version / result |
+|---|---|
+| Python | 3.12.14 |
+| PyTorch | 2.11.0+cu128 |
+| torchvision | 0.26.0+cu128 |
+| LeRobot | 0.6.2, editable pinned submodule |
+| PushT | 0.1.6, headless reset/step/render PASS |
+| GPU architecture | compute capability 12.0 / `sm_120` |
+| ACT interface | image/state → `[1,100,2]` action chunk PASS |
+
+环境决策、安装顺序和已知例外见 [Phase 0 记录](docs/phases/phase_00_environment.md) 与 [兼容性矩阵](docs/compatibility.md)。宿主侧复核命令：
+
+```bash
+cd /home/kxj/embodied_ws/embodied_vla_lab
+conda activate evla-core
+python scripts/check_phase0_core.py
+```
+
+该检查默认离线、无 GUI、不训练；PushT 96×96 contract 固定在 [configs/env/pusht_96.yaml](configs/env/pusht_96.yaml)。
+
 ## 项目结构
 
 ```text
@@ -72,9 +94,9 @@ embodied_vla_lab/
 │   ├── resume.md
 │   ├── phases/
 │   └── notes/
-├── lerobot/                 # planned Git submodule
-├── libero/                  # planned Git submodule
-├── openvla/                 # planned Git submodule
+├── lerobot/                 # pinned Git submodule
+├── libero/                  # pinned Git submodule
+├── openvla/                 # pinned Git submodule
 ├── experiments/
 │   ├── act_baseline/
 │   ├── diffusion_policy/
@@ -106,7 +128,7 @@ W&B 用于在线跟踪，本地同时保存配置、JSON/CSV 指标以及 Tensor
 
 | Demo | 状态 | 产物 |
 |---|---|---|
-| PushT ACT | 未开始 | training curve / checkpoint / rollout video |
+| PushT ACT | 环境/接口已验证，训练未开始 | contract / training curve / checkpoint / rollout video |
 | ACT on LIBERO | 未开始 | success rate / FPS / failure cases |
 | OpenVLA inference | 未开始 | 4-bit latency / VRAM / rollout |
 | Ego-view | 未开始 | viewpoint ablation |

@@ -1,0 +1,18 @@
+# Project-level PushT runtime contract.
+# Load the mapping below as keyword arguments for lerobot.envs.configs.PushtEnv.
+#
+# The pinned LeRobot default declares a 384x384 observation but does not forward
+# observation_height/observation_width to gym-pusht 0.1.6. That package therefore
+# emits its 96x96 default. We explicitly declare 96x96 so the policy feature
+# contract matches the verified runtime and the future PushT dataset.
+
+task: PushT-v0
+fps: 10
+episode_length: 300
+obs_type: pixels_agent_pos
+render_mode: rgb_array
+observation_height: 96
+observation_width: 96
+visualization_height: 384
+visualization_width: 384
+
