@@ -1,0 +1,217 @@
+experiment: phase1b_act_pusht_deterministic_30k
+date: 2026-08-25
+execution_status: PASS
+success_gate_status: PASS
+project_commit: 9a589d6
+
+dataset:
+  repo_id: lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  train_episodes: 185
+  train_frames: 23043
+  validation_episodes: 21
+  validation_frames: 2607
+  video_backend: pyav
+
+config:
+  source: configs/train/act_pusht_phase1b_deterministic_30k.yaml
+  baseline: configs/train/act_pusht_phase1b_formal_100k.yaml
+  core_model_change: policy.use_vae=false
+  steps: 30000
+  batch_size: 8
+  gradient_accumulation_steps: 1
+  effective_batch_size: 8
+  samples_seen: 240000
+  effective_epochs: 10.41531054984594
+  mixed_precision: bf16
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  optimizer: adamw
+  learning_rate: 1.0e-5
+  weight_decay: 1.0e-4
+  grad_clip_norm: 10.0
+  scheduler: null
+  log_freq: 200
+  eval_steps: 5000
+  eval_samples: 2607
+  save_freq: 10000
+
+metrics:
+  train_windows: 150
+  first_window:
+    step: 200
+    loss: 0.605
+    l1_loss: 0.605
+    grad_norm_before_clip: 60.424
+  final_window:
+    step: 30000
+    loss: 0.171
+    l1_loss: 0.171
+    grad_norm_before_clip: 8.597
+  first_5_window_mean:
+    loss: 0.5238
+    l1_loss: 0.5238
+    grad_norm_before_clip: 38.4094
+  last_5_window_mean:
+    loss: 0.1710
+    l1_loss: 0.1710
+    grad_norm_before_clip: 8.3814
+  first_5_to_last_5_l1_reduction_fraction: 0.673539519
+  minimum_window:
+    loss: 0.169
+    l1_loss: 0.169
+  maximum_window:
+    loss: 0.605
+    l1_loss: 0.605
+  grad_norm_before_clip:
+    minimum: 8.083
+    maximum: 60.424
+    windows_above_10: 67
+    windows_at_or_below_10: 83
+    last_window_above_10_ordinal: 72
+  timing_all_train_windows:
+    mean_step_s: 0.055460
+    mean_samples_per_s: 144.366667
+  peak_pytorch_allocated_gib: 0.62
+  eval:
+    count: 6
+    values:
+      - {step: 5000, loss: 0.4084}
+      - {step: 10000, loss: 0.4083}
+      - {step: 15000, loss: 0.4114}
+      - {step: 20000, loss: 0.3971}
+      - {step: 25000, loss: 0.3914}
+      - {step: 30000, loss: 0.3982}
+    first_step: 5000
+    first_loss: 0.4084
+    minimum_step: 25000
+    minimum_loss: 0.3914
+    final_step: 30000
+    final_loss: 0.3982
+    first_to_final_reduction_fraction: 0.024975514
+  nan_or_inf_detected_in_metric_records: false
+
+comparison_to_formal_vae_at_30k:
+  formal_eval_values:
+    - {step: 5000, loss: 0.4093}
+    - {step: 10000, loss: 0.4094}
+    - {step: 15000, loss: 0.4070}
+    - {step: 20000, loss: 0.4007}
+    - {step: 25000, loss: 0.4053}
+    - {step: 30000, loss: 0.4131}
+  final_eval_loss_reduction_fraction: 0.036068748
+  minimum_eval_loss_reduction_fraction: 0.023186644
+  mean_samples_per_s_increase_fraction: 0.117389063
+  peak_pytorch_allocation_reduction_fraction: 0.340425532
+  boundary: >-
+    Training total loss is not directly comparable because the VAE baseline includes KL while
+    deterministic ACT loss equals L1. Offline evaluation favors the deterministic candidate at
+    25k and 30k, but only the pre-registered closed-loop evaluation can decide the success gate.
+
+process:
+  train_exit_status: 0
+  time_exit_status: 0
+  wall_time_s: 1754.13
+  wall_time_text: "29:14.13"
+  user_time_s: 3927.56
+  system_time_s: 738.66
+  cpu_percent: 266
+  max_resident_set_kib: 2655952
+  major_page_faults: 2252
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+
+artifacts:
+  raw_log: results/raw/phase1b_act_pusht_deterministic_30k.log
+  raw_log_bytes: 1191295
+  raw_log_lines: 564
+  raw_log_sha256: 8fb1b05a16c254687578f8256097a0569ee89060641f387e5386e8c3dcce9ad6
+  checkpoint_manifest: results/phase1b_act_pusht_deterministic_30k_checkpoint_manifest.yaml
+  checkpoint_steps: [10000, 20000, 30000]
+  last_symlink_target: "030000"
+  checkpoint_accuracy_log: results/raw/phase1b_act_pusht_deterministic_30k_checkpoint_accuracy.log
+  checkpoint_accuracy_log_bytes: 1139
+  checkpoint_accuracy_log_lines: 35
+  checkpoint_accuracy_log_sha256: 7fd515210b110e7344e4d391f583f12cf35adc18784409b473a5251aa0a49433
+  checkpoint_selection: results/phase1b_act_pusht_deterministic_checkpoint_selection_5ep.yaml
+  final_integrity_check:
+    status: PASS
+    git_diff_check: PASS
+    eval_info_sha256_matches: true
+    successful_video_sha256_matches: true
+    rollout_raw_log_sha256_matches: true
+    unexpected_worktree_paths_detected: false
+
+checkpoint_reload_and_fixed_data_accuracy:
+  status: PASS
+  checkpoint_step: 30000
+  model_sha256: 36dfc694a9612a90f1bd39b32d41a68e4c512fd74eda59993a1f7279e6525f5e
+  device: cuda:0
+  batch_size: 8
+  chunk_size: 50
+  n_action_steps: 10
+  train_episode:
+    episode: 51
+    frames: 73
+    full_chunk_valid_values: 4850
+    full_chunk_mae: 19.751369
+    first_10_valid_values: 1370
+    first_10_mae: 17.909904
+    first_action_values: 146
+    first_action_mae: 14.736633
+    prediction_min: -1.102875
+    prediction_max: 353.801392
+    outside_0_512_values: 2
+    predicted_values: 7300
+  validation_episode:
+    episode: 41
+    frames: 73
+    full_chunk_valid_values: 4850
+    full_chunk_mae: 29.048956
+    first_10_valid_values: 1370
+    first_10_mae: 21.910841
+    first_action_values: 146
+    first_action_mae: 13.042945
+    prediction_min: 143.823990
+    prediction_max: 453.377777
+    outside_0_512_values: 0
+    predicted_values: 7300
+  train_to_validation_full_chunk_mae_ratio: 0.679934
+  peak_pytorch_allocated_mib: 155.98
+  comparison_to_formal_vae_100k_checkpoint:
+    train_full_chunk_mae_change_fraction: 0.744885939
+    train_first_10_mae_change_fraction: 0.548895280
+    train_first_action_mae_change_fraction: 0.362154222
+    validation_full_chunk_mae_change_fraction: -0.057129306
+    validation_first_10_mae_change_fraction: 0.054892252
+    validation_first_action_mae_change_fraction: 0.141106862
+    peak_pytorch_allocation_change_fraction: -0.298871758
+  boundary: >-
+    This proves local reload, finite CUDA deployment-path inference, and target accuracy on one
+    training and one held-out episode. The two out-of-range train predictions include padded
+    positions and are not necessarily executed actions. This is not a full-validation audit and
+    does not establish environment reward, closed-loop control, success, or generalization.
+
+safety:
+  network_disabled: true
+  wandb_disabled: true
+  policy_hub_push_disabled: true
+  checkpoint_hub_push_disabled: true
+  pretrained_download_disabled: true
+  environment_evaluation_disabled: true
+  gui_used: false
+
+expected_exceptions:
+  - TorchCodec ABI loader failed during import and fell back to the explicitly configured PyAV backend.
+  - The raw log contains carriage-return progress frames, so byte size is much larger than newline count.
+
+interpretation:
+  - The fixed full split completed all 30000 BF16 optimizer steps and all planned offline evaluations and checkpoints.
+  - Train L1 and pre-clip gradient norm decreased while remaining finite; no execution or numerical stop criterion fired.
+  - Offline validation reached its minimum at 25000 and rose slightly by 30000, so checkpoint quality is not assumed monotonic.
+  - Closed-loop reward and success remain unknown; training PASS is not a successful-policy claim.
+  - The 30k checkpoint reload and two-episode fixed-data accuracy audit passed, but its comparison to the 100k VAE checkpoint is mixed rather than uniformly better.
+  - The 10k and 20k closed-loop evaluations achieved zero successes, while the 30k checkpoint achieved one strict success in five fixed seeds and passed the pre-registered initial-success gate.
+  - The 1/5 result establishes an initial successful demo, not a statistically stable benchmark success rate; expanded evaluation requires a separate decision.

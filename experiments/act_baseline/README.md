@@ -1,7 +1,7 @@
 # ACT Baseline
 
-状态：Phase 1A 完成；Phase 1B 的 config/dataset preflight、smoke、资源 gate、正式100k训练、最终
-checkpoint reload、固定数据accuracy及四checkpoint闭环诊断均已完成；PushT成功gate未通过，实验冻结。
+状态：Phase 1A 完成；Phase 1B 原始ACT的正式100k训练与闭环诊断已完成且success gate未通过；路线B
+deterministic ACT 30k训练、checkpoint验证和三checkpoint闭环选择均完成，初步success gate以1/5 PASS。
 
 ## 目的
 
@@ -789,6 +789,185 @@ offline-to-online model selection共同导致失败，但不能凭5个复用seed
 将20条相关轨迹当作20个独立benchmark样本。完整资产见
 `results/phase1b_act_pusht_checkpoint_selection_5ep.yaml`；至此冻结PushT，不继续checkpoint sweep或
 训练调参，主线转入LIBERO语言条件VLA。
+
+### Route B deterministic ACT 30k ablation pre-registration
+
+路线B只检验ACT VAE训练—部署latent差异这一项核心假设：相对正式100k基线，唯一核心模型变化固定为
+`policy.use_vae=false`。候选 `configs/train/act_pusht_phase1b_deterministic_30k.yaml` 保持同一固定
+dataset revision、185/21 episode split、batch 8、BF16、chunk/action steps 50/10、无pretrained
+backbone、AdamW `lr=1e-5` / weight decay `1e-4` / grad clip `10`、无scheduler和seed `20260825`。
+
+预算固定30,000 steps（240,000 samples / 10.4153 effective epochs），每5,000步完整offline eval，
+checkpoint固定为10k/20k/30k。规划训练时间30–40分钟，包含三个checkpoint的固定5-seed exec-10闭环
+选择后，总gate约1–1.5小时。这些是规划值，不是本轮实测结果。
+
+`scripts/check_phase1b_act_deterministic_30k_config.py` 对formal 100k YAML做递归叶字段比较，只接受
+预注册的 `policy.use_vae`、steps、save cadence、output/job差异；eval cadence虽然属于允许设计维度，
+本轮仍保持5k不变。checker还解析两份runtime config，确认baseline/candidate的`use_vae=true/false`，
+实例化本地dataset split并断言185/21与23,043/2,607，同时验证payload、输出目录和CUDA均无副作用。
+结构化预注册见 `results/phase1b_act_pusht_deterministic_30k_preflight.yaml`。
+
+停止标准预注册如下：非零退出、NaN/Inf、OOM、合同漂移、计划eval或checkpoint缺失立即FAIL；后续对
+10k/20k/30k各跑相同5 seeds与exec-10，任一checkpoint至少1/5 success则仅形成初步成功demo并另行
+决定是否扩评；三者全部0/5则立即终止PushT，不延长训练、不改学习率/seed/预训练权重。reward改善但
+0/5 success只能记诊断改善。配置、preflight与命令均为惰性资产，训练继续需要单独明确授权。
+
+首次preflight在候选raw YAML差异检查之后、dataset factory之前出现预期harness例外：checker对已完成
+formal baseline调用`validate()`，其`resume=false`保护按设计拒绝已存在的历史输出目录。这不是候选
+合同漂移，且未触发model/CUDA/training/checkpoint/network副作用。修正为baseline只解析ACT默认值、
+仅validate新候选后，使用同一严格离线命令重试。
+
+修正后的严格离线retry以exit status 0结束，preflight判定PASS。递归对照精确得到5个预注册叶字段差异：
+`job_name`、`output_dir`、`policy.use_vae`、`save_freq`、`steps`；没有额外漂移。runtime解析确认formal
+默认`use_vae=true`而候选为false，dataset factory确认固定185/21 split与23,043/2,607 frames。候选
+output不存在、dataset payload不变、CUDA未初始化。TorchCodec ABI warning后fallback显式PyAV，以及
+无GPU审计环境把runtime device临时回退CPU，均为既有预期提示；YAML的CUDA/BF16意图由静态断言锁定。
+
+唯一候选宿主训练命令如下；它只供用户另行明确授权后执行，本次preflight没有执行：
+
+```bash
+cd /home/kxj/embodied_ws/embodied_vla_lab &&
+conda activate evla-core &&
+test ! -e outputs/train/phase1b_act_pusht_deterministic_30k_bf16 &&
+test ! -e results/raw/phase1b_act_pusht_deterministic_30k.log &&
+set -o pipefail
+
+/usr/bin/time -v \
+env -u ALL_PROXY -u all_proxy \
+  HF_HUB_OFFLINE=1 \
+  HF_DATASETS_OFFLINE=1 \
+  TRANSFORMERS_OFFLINE=1 \
+  HF_HUB_DISABLE_TELEMETRY=1 \
+  WANDB_MODE=disabled \
+  CUDA_VISIBLE_DEVICES=0 \
+  PYTHONUNBUFFERED=1 \
+  lerobot-train \
+  --config_path=configs/train/act_pusht_phase1b_deterministic_30k.yaml \
+  2>&1 | tee results/raw/phase1b_act_pusht_deterministic_30k.log
+
+train_status=${PIPESTATUS[0]}
+sha256sum results/raw/phase1b_act_pusht_deterministic_30k.log
+wc -l -c results/raw/phase1b_act_pusht_deterministic_30k.log
+printf 'TRAIN_EXIT_STATUS=%s\n' "$train_status"
+```
+
+### Route B deterministic ACT 30k training — execution PASS / success pending
+
+宿主严格离线完成30,000个batch-8 BF16 optimizer steps，trainer与`time -v`退出状态均为0。150个
+200-step训练窗口、6次完整validation eval和10k/20k/30k三个checkpoint均齐全，`last`指向030000；
+未发现NaN/Inf、OOM、Traceback或socket消息。训练执行与数值稳定性判PASS，但尚未运行预注册闭环选择，
+所以success gate仍为PENDING，不能声称策略成功。
+
+首/末5个窗口的L1均值从0.5238降至0.1710，下降67.35%；pre-clip grad norm均值从38.4094降至
+8.3814。150个窗口中67个高于clip threshold 10，83个不高于10，最后一次超阈值是第72个窗口；之后
+78个窗口连续不高于10。所有值finite。由于deterministic ACT没有KL项，其total loss等于L1，不能把
+该total loss直接与含KL的VAE baseline total loss比较。
+
+offline validation loss依次为`0.4084/0.4083/0.4114/0.3971/0.3914/0.3982`，最低点在25k而非30k；
+相同30k预算下，formal VAE baseline的25k最低/30k最终eval为0.4007/0.4131，deterministic候选对应
+0.3914/0.3982，分别低2.32%/3.61%。这只支持offline目标小幅改善且checkpoint质量非单调，不能推出
+closed-loop reward或success。
+
+训练窗口平均step time为0.05546秒、吞吐144.37 samples/s、peak PyTorch allocation 0.62 GiB；相较
+formal VAE baseline前30k的129.20 samples/s与0.94 GiB，吞吐提高约11.74%，allocation降低约34.04%。
+全进程wall time为29:14.13，比预估30–40分钟略快；maximum RSS 2,655,952 KiB是主机内存而非GPU显存。
+
+raw log为564行/1,191,295 bytes，SHA-256为
+`8fb1b05a16c254687578f8256097a0569ee89060641f387e5386e8c3dcce9ad6`。完整结构化结果与checkpoint哈希见
+`results/phase1b_act_pusht_deterministic_30k.yaml`和
+`results/phase1b_act_pusht_deterministic_30k_checkpoint_manifest.yaml`。下一gate是严格离线reload与
+固定数据accuracy；它只验证三个checkpoint可加载及固定输入输出，不执行环境rollout，后续闭环选择仍
+需要单独命令和结果判定。
+
+### Route B deterministic ACT 30k checkpoint reload/fixed-data accuracy PASS
+
+Step-30k模型SHA-256与manifest精确一致，并从本地成功加载policy及processors。CUDA部署推理遍历train
+episode 51与validation episode 41各73个起点，所有预测finite，audit exit status为0，peak PyTorch
+allocation为155.98 MiB。Raw log为35行/1,139 bytes，SHA-256为
+`7fd515210b110e7344e4d391f583f12cf35adc18784409b473a5251aa0a49433`。
+
+| Metric | Train ep.51 | Validation ep.41 |
+|---|---:|---:|
+| full chunk MAE | 19.7514 px | 29.0490 px |
+| first 10 MAE | 17.9099 px | 21.9108 px |
+| first action MAE | 14.7366 px | 13.0429 px |
+
+相对formal VAE 100k checkpoint，deterministic 30k的validation full-chunk MAE低5.71%，但validation
+first-10与first-action MAE分别高5.49%和14.11%；train三项分别高74.49%、54.89%和36.22%。因此固定
+数据对照是mixed result，不能说deterministic模型全面更准确。Train的7,300个预测标量中2个落在
+`[0,512]`外，最低-1.102875；该统计包含padding位置，不能直接解释成2个将执行的非法动作。
+
+该PASS只证明30k checkpoint reload、finite deployment inference和两条固定episode target accuracy；
+10k/20k尚未单独reload，也未覆盖完整validation、环境reward或success。按预注册协议，下一步先对
+10k checkpoint执行相同5 seeds、同步单环境、exec-10闭环评测；收到结果并判定后再推进20k和30k，
+避免一次命令跨越多个独立结果gate。
+
+### Route B deterministic ACT 10k closed-loop — execution PASS / success FAIL
+
+10k checkpoint按预注册协议完成固定seeds `20260825..20260829`、同步单环境、每集300 steps、exec-10
+的五条轨迹。Eval与`time -v` exit status均为0，五个本地MP4和`eval_info.json`完整生成，socket收发为0；
+因此rollout执行PASS。但success为0/5，checkpoint-level任务gate严格FAIL。
+
+平均sum/max reward为85.7531/0.51645。逐seed max reward为
+`0.65937/0.93315/0.24989/0.35519/0.38463`；最佳seed 20260826的0.93315对应约88.65% peak
+coverage，仍低于严格`coverage > 0.95`门槛，不属于near-success。相较原VAE 25k的平均sum/max reward，
+分别低39.17%/32.17%，但25k训练步数是10k的2.5倍，这不是严格的单变量因果对照。
+
+纯eval时间12.21秒、2.442秒/episode，即0.4095 episodes/s；全进程wall time 17.21秒。Maximum RSS
+2,268,432 KiB是主机内存；本输出没有报告peak GPU allocation，不能从RSS推断显存。训练loss、offline
+eval和grad norm不会因本次rollout改变，仍沿用30k训练审计结论，不能从环境reward反推新的loss/grad值。
+
+结构化增量结果见`results/phase1b_act_pusht_deterministic_checkpoint_selection_5ep.yaml`。当前只能判定
+10k失败，尚不能触发“三个checkpoint全部0/5则停止”的最终标准；20k与30k仍须用完全相同协议评测。
+
+### Route B deterministic ACT 20k closed-loop — execution PASS / success FAIL
+
+20k checkpoint完成相同五seed同步exec-10协议，eval与wrapper exit status均为0，五个视频与eval_info
+齐全、socket为0，因此执行PASS；success仍为0/5，checkpoint-level任务gate FAIL。
+
+平均sum/max reward为81.5999/0.33700，相较10k分别下降4.84%/34.75%，说明增加到20k没有改善闭环，
+反而显著降低峰值重合能力。最佳seed仍为20260826，但max reward仅0.57383，对应约54.51% coverage。
+Seed 20260829的sum reward仅1.2549、max reward 0.11007，是当前最明显退化轨迹。相较VAE 25k的
+平均sum/max reward低42.12%/55.74%；VAE多5k steps，因此该比较仍是描述性参照，不是严格单变量因果证据。
+
+纯eval时间12.80秒、2.560秒/episode，即0.3906 episodes/s；全进程wall time 18.41秒。Maximum RSS
+2,260,188 KiB是主机内存，本输出仍没有peak GPU allocation。训练loss/eval/grad/吞吐/显存不受本次
+rollout改变，继续以30k训练结构化结果为准。
+
+10k和20k累计0/10 success，但预注册停止标准要求10k/20k/30k全部完成后决定，因此现在不能提前停止；
+下一步只评测30k checkpoint。若仍为0/5，将严格触发PushT终止，不追加训练长度、学习率、seed、预训练
+权重或推理变体。
+
+### Route B deterministic ACT 30k closed-loop — execution PASS / initial success PASS
+
+30k checkpoint完成相同五seed同步exec-10协议，eval与wrapper exit status均为0，五个视频、eval_info和
+raw log完整，socket为0。Seed 20260825明确返回`success=true`且max reward为1.0，因此checkpoint执行
+PASS、success为1/5，并严格满足预注册的“任一checkpoint至少1/5 success”初步成功条件。这是本项目
+PushT阶段首个真实成功rollout，不是near-miss。
+
+30k平均sum/max reward为127.4630/0.74039，相较10k提高48.64%/43.36%，相较20k提高56.20%/119.70%。
+逐seed max reward为`1.0/0.43297/0.97816/0.49127/0.79955`，除成功轨迹外seed 20260827也是接近阈值
+但未成功的轨迹。相较原VAE 25k，平均sum/max reward低9.59%/2.76%，但VAE为0/5而deterministic为1/5；
+相较VAE 100k，sum低3.92%、max高18.39%，同样由0/5提升到1/5。不同训练步数限制了纯`use_vae`
+因果强度，但在共享五seed协议下，deterministic 30k确实首次越过严格success门槛。
+
+纯eval时间12.87秒、2.575秒/episode，即0.3884 episodes/s；全进程wall time 18.32秒。Maximum RSS
+2,262,752 KiB是主机内存，本输出没有peak GPU allocation。训练loss/eval/grad/吞吐/显存保持此前记录：
+末5窗口L1 0.1710、pre-clip grad 8.3814、144.37 samples/s、0.62 GiB allocation、29:14 wall time。
+
+三checkpoint共15条配对轨迹只有1次成功：10k与20k均0/5，30k为1/5；闭环质量随训练明显非单调。
+Offline validation最低在25k，而成功checkpoint 30k的eval loss略回升到0.3982，再次说明offline loss不能
+独立选择closed-loop策略。1/5只建立初步成功demo，不能作为稳定20% benchmark success rate或泛化结论。
+
+按预注册规则，达到初步成功后不自动扩评、不追加训练或推理变体。是否扩大seed数用于置信区间、是否
+将成功视频作为展示资产、以及是否结束PushT转入LIBERO，都需要下一步单独决定。
+
+### Route B final integrity verification PASS
+
+宿主最终只读复核中`git diff --check`无输出，判定PASS；30k `eval_info.json`、seed-20260825成功视频和
+rollout raw log的SHA-256分别为`261fa202...510f`、`d99581...4123`和`838881...2fa`，与结构化结果
+逐字节一致。工作树只包含预期的Route B配置、checker、结构化结果、manifest、handoff与README修改，
+没有发现意外路径。该核验不产生新的loss/eval/grad/吞吐/显存/时间数据，也没有执行commit或push。
 
 ## 计划步骤
 

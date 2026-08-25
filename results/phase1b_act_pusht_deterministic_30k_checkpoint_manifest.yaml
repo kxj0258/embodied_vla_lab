@@ -1,0 +1,69 @@
+experiment: phase1b_act_pusht_deterministic_30k
+date: 2026-08-25
+status: COMPLETE
+root: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints
+checkpoint_count: 3
+files_per_checkpoint: 11
+last_symlink_target: "030000"
+reload_and_fixed_data_accuracy:
+  audited_checkpoint_step: 30000
+  status: PASS
+  model_sha256_matches_manifest: true
+  audit_log: results/raw/phase1b_act_pusht_deterministic_30k_checkpoint_accuracy.log
+  audit_log_sha256: 7fd515210b110e7344e4d391f583f12cf35adc18784409b473a5251aa0a49433
+  unaudited_checkpoint_steps: [10000, 20000]
+closed_loop_evaluation:
+  protocol: five seeds 20260825 through 20260829, synchronous single environment, 300-step horizon, exec-10
+  completed_checkpoint_steps: [10000, 20000, 30000]
+  pending_checkpoint_steps: []
+  checkpoint_10000:
+    execution_status: PASS
+    success_status: FAIL
+    successes: 0
+    episodes: 5
+    average_sum_reward: 85.75306945138911
+    average_max_reward: 0.5164471369411878
+    eval_info_sha256: e94fb06462a77b85a34d7679b1fe5e5cbc232ada3fbc134b008b4ce11b231576
+  checkpoint_20000:
+    execution_status: PASS
+    success_status: FAIL
+    successes: 0
+    episodes: 5
+    average_sum_reward: 81.59985683821397
+    average_max_reward: 0.33699886641375126
+    eval_info_sha256: 7d9fb033320a7713342ab07541f3e93f94c8f24e7afaa2566fc6cee82b738377
+  checkpoint_30000:
+    execution_status: PASS
+    success_status: PASS
+    successes: 1
+    episodes: 5
+    successful_seed: 20260825
+    average_sum_reward: 127.4629993589371
+    average_max_reward: 0.7403888115767228
+    eval_info_sha256: 261fa202bc3f332e05de22fed6868f5273f44a5cdd017adcba5494ab95fe510f
+  selection_status: COMPLETE
+  selected_checkpoint_step: 30000
+  initial_success_gate_status: PASS
+checkpoints:
+  - step: 10000
+    directory: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/010000
+    tree_bytes: 410505191
+    model_sha256: aab81a384c685528068730adaa7c2a3cf40e28f068bb7789a4f9a7ee6f30e237
+    optimizer_state_sha256: 8c5105d6cc0f730a3563bf0e7d6622daa4037663adb9646e187998a84746f2d3
+    training_step_sha256: a899f2a617c9f7a0de7454e4165b8e456ff86d444a4e5f485429892f4e313b2c
+  - step: 20000
+    directory: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/020000
+    tree_bytes: 410505191
+    model_sha256: 232adeeef2f8d1adf2a37ee75915123a12faf608667621d68b5ec02c71f2057d
+    optimizer_state_sha256: 6e3e9a39007b23b88da06262deb0df9eb016dd1b11ddf74edac2bcdbcc47e67b
+    training_step_sha256: 6822421a59e2b0e907ffb81b67eb8f83590b797ece8ecaabfc30735139d2a8ce
+  - step: 30000
+    directory: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/030000
+    tree_bytes: 410505191
+    model_sha256: 36dfc694a9612a90f1bd39b32d41a68e4c512fd74eda59993a1f7279e6525f5e
+    optimizer_state_sha256: 2b7b893a1a30943c9100b68b6e8920fda8e78a316f28a45fdf68d6beca6bdc5f
+    training_step_sha256: 4213b037ec0a1b3eded65822461d90e82ab62246c803e1b2eaa19cd2e87453d0
+boundary: >-
+  This manifest establishes checkpoint presence, recorded step metadata, byte size, selected file
+  identity, and reload/fixed-data accuracy for step 30000 only. Steps 10000 and 20000 have not yet
+  been reloaded. It does not establish environment reward, closed-loop control, success, or generalization.

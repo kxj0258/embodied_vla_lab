@@ -1,0 +1,110 @@
+experiment: phase1b_act_pusht_deterministic_30k_preflight
+date: 2026-08-25
+execution_status: PASS
+training_authorized: true
+training_execution_status: PASS
+training_result: results/phase1b_act_pusht_deterministic_30k.yaml
+checkpoint_manifest: results/phase1b_act_pusht_deterministic_30k_checkpoint_manifest.yaml
+closed_loop_selection: results/phase1b_act_pusht_deterministic_checkpoint_selection_5ep.yaml
+initial_success_gate_status: PASS
+successful_checkpoint_step: 30000
+successful_seed: 20260825
+automatic_expansion_authorized: false
+final_integrity_check:
+  status: PASS
+  git_diff_check: PASS
+  verified_eval_info_sha256: 261fa202bc3f332e05de22fed6868f5273f44a5cdd017adcba5494ab95fe510f
+  verified_success_video_sha256: d99581fe4b77c3f373dd86299c036fad153cc86614c752824d3a2b08bab14123
+  verified_rollout_log_sha256: 838881e24ba8ce96c8503244fa26c477120bd12254f47259dca7940669a1a2fa
+  commit_created: false
+  pushed: false
+
+attempts:
+  - ordinal: 1
+    status: EXPECTED_HARNESS_EXCEPTION
+    cause: >-
+      The checker called validate() on the completed formal baseline; its resume=false guard
+      correctly rejected the already-existing historical output directory.
+    side_effect_boundary: >-
+      The exception occurred before dataset factory use and before any model, CUDA, training,
+      checkpoint, network, W&B, GUI, or upload action.
+    fix: Parse the baseline only to resolve ACT defaults; validate only the new inert candidate.
+  - ordinal: 2
+    status: PASS
+    exit_status: 0
+    verified_differences: [job_name, output_dir, policy.use_vae, save_freq, steps]
+    train_episodes: 185
+    train_frames: 23043
+    validation_episodes: 21
+    validation_frames: 2607
+    output_directory_created: false
+    cuda_initialized: false
+    dataset_payload_changed: false
+
+expected_exceptions:
+  - TorchCodec ABI loading failed and fell back to the explicitly configured PyAV backend.
+  - The audit host exposed no accelerated backend, so parsed runtime policy devices temporarily fell back to CPU; static YAML assertions preserved the CUDA/BF16 training intent.
+
+baseline_config: configs/train/act_pusht_phase1b_formal_100k.yaml
+candidate_config: configs/train/act_pusht_phase1b_deterministic_30k.yaml
+checker: scripts/check_phase1b_act_deterministic_30k_config.py
+
+pre_registered_differences:
+  policy.use_vae: {baseline: true, candidate: false}
+  steps: {baseline: 100000, candidate: 30000}
+  save_freq: {baseline: 25000, candidate: 10000}
+  output_dir:
+    baseline: outputs/train/phase1b_act_pusht_formal_100k_bf16
+    candidate: outputs/train/phase1b_act_pusht_deterministic_30k_bf16
+  job_name:
+    baseline: phase1b_act_pusht_formal_100k_bf16
+    candidate: phase1b_act_pusht_deterministic_30k_bf16
+
+fixed_contract:
+  dataset: lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  train_episodes: 185
+  train_frames: 23043
+  validation_episodes: 21
+  validation_frames: 2607
+  batch_size: 8
+  mixed_precision: bf16
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  optimizer: AdamW
+  learning_rate: 1.0e-5
+  weight_decay: 1.0e-4
+  grad_clip_norm: 10.0
+  scheduler: null
+  seed: 20260825
+  cudnn_deterministic: true
+  eval_steps: 5000
+  checkpoint_steps: [10000, 20000, 30000]
+  wandb: disabled
+  hub_upload: disabled
+  environment_evaluation: disabled
+  recording: disabled
+
+budget:
+  training_steps: 30000
+  samples_seen: 240000
+  effective_epochs: 10.41531054984594
+  estimated_training_wall_time: 30-40 minutes
+  estimated_total_gate_time: 1-1.5 hours
+
+stop_criteria:
+  immediate_fail:
+    - nonzero training exit status
+    - NaN or Inf in loss, eval loss, or gradient norm
+    - CUDA OOM
+    - dataset or config contract drift
+    - missing planned checkpoint or incomplete planned offline evaluation
+  after_closed_loop_selection:
+    - If any checkpoint achieves at least 1/5 successes, record an initial successful demo and request a separate decision before expanding evaluation.
+    - If 10k, 20k, and 30k all achieve 0/5 successes, stop PushT without extending steps or changing learning rate, seed, or pretrained weights.
+    - Reward improvement with 0/5 successes is diagnostic only and is not a successful policy.
+
+boundary: >-
+  This asset pre-registers and audits an inert training candidate. It does not authorize or execute
+  training, checkpoint creation, CUDA model initialization, environment rollout, upload, or commit.
