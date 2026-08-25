@@ -1,0 +1,85 @@
+experiment: phase1b_act_pusht_smoke_2step
+date: 2026-08-25
+status: PASS
+project_commit: 3701124
+
+dataset:
+  repo_id: lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  train_episodes: 185
+  validation_episodes: 21
+  video_backend: pyav
+
+config:
+  source: configs/train/act_pusht_phase1b_smoke.yaml
+  steps: 2
+  batch_size: 1
+  gradient_accumulation_steps: 1
+  effective_batch_size: 1
+  mixed_precision: bf16
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  learnable_parameters: 51563394
+  optimizer: adamw
+  learning_rate: 1.0e-5
+  grad_clip_norm: 10.0
+  scheduler: null
+
+steps:
+  - step: 1
+    loss: 77.405
+    l1_loss: 0.767
+    kld_loss: 7.664
+    grad_norm_before_clip: 1792.646
+    data_s: 0.018
+    preprocessing_s: 0.023
+    update_s: 1.025
+    step_s: 1.067
+    samples_per_s: 1
+    peak_pytorch_allocated_gib: 0.86
+  - step: 2
+    loss: 70.916
+    l1_loss: 0.621
+    kld_loss: 7.029
+    grad_norm_before_clip: 1696.500
+    data_s: 0.010
+    preprocessing_s: 0.000
+    update_s: 0.031
+    step_s: 0.044
+    samples_per_s: 23
+    peak_pytorch_allocated_gib: 0.94
+
+process:
+  exit_status: 0
+  wall_time_s: 7.24
+  user_time_s: 13.80
+  system_time_s: 3.43
+  max_resident_set_kib: 2614364
+  socket_messages_sent: 0
+  socket_messages_received: 0
+
+artifacts:
+  raw_log: results/raw/phase1b_act_pusht_smoke_2step.log
+  raw_log_bytes: 22761
+  raw_log_lines: 511
+  raw_log_sha256: e31ffd3e9c7de62fc336827069969e2e2043bcd55a0b99564c3e7f6d5c4251bc
+  output_directory_created: false
+  checkpoint_created: false
+
+safety:
+  network_disabled: true
+  wandb_disabled: true
+  policy_hub_push_disabled: true
+  checkpoint_hub_push_disabled: true
+  pretrained_download_disabled: true
+  environment_evaluation_disabled: true
+  gui_used: false
+
+expected_exceptions:
+  - TorchCodec ABI loader failed during import and fell back to the explicitly configured PyAV backend.
+
+interpretation:
+  - This proves the pinned dataset-to-ACT BF16 forward/backward/optimizer path executes for two steps.
+  - Gradient norms are the pre-clipping norms returned by Accelerator; configured clipping norm is 10.0.
+  - Two samples are insufficient for convergence, generalization, checkpoint, rollout, or success claims.

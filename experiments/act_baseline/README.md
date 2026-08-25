@@ -1,7 +1,7 @@
 # ACT Baseline
 
 状态：Phase 1A 完成；固定 PushT 数据闭环与可复现脚本已验证，Phase 1B config/dataset preflight
-已通过，训练尚未开始。
+和2-step BF16 training smoke 均已通过；overfit、checkpoint 与 rollout 尚未开始。
 
 ## 目的
 
@@ -532,6 +532,37 @@ dataset factory 均显式使用 PyAV，因此归为预期例外，不安装或�
 
 TorchCodec loader warning 后 fallback PyAV 仍为已知预期例外，不影响本次 PASS。
 
+### Phase 1B two-step BF16 training smoke PASS
+
+经单独训练授权后，宿主严格离线运行已验收 config，退出码为0。完整控制台输出保存在 Git ignore 的
+`results/raw/phase1b_act_pusht_smoke_2step.log`，小型结构化摘要保存在
+`results/phase1b_act_pusht_smoke_2step.yaml`。
+
+| Item | Result |
+|---|---:|
+| train steps / effective batch | 2 / 1 |
+| precision | BF16 |
+| parameters | 51,563,394 |
+| step 1 loss / L1 / KL | 77.405 / 0.767 / 7.664 |
+| step 2 loss / L1 / KL | 70.916 / 0.621 / 7.029 |
+| step 1 / step 2 wall | 1.067 s / 0.044 s |
+| peak PyTorch allocation | 0.94 GiB |
+| whole-process wall time | 7.24 s |
+| maximum resident set | 2,614,364 KiB |
+| checkpoint | none |
+
+logged grad norms `1792.646` 和 `1696.500` 是 `accelerator.clip_grad_norm_` 返回的 clipping 前 norm；
+配置的 clipping threshold 是10.0。它们有限且 optimizer step 成功，但绝对值较大，应在 overfit gate
+继续观察，而不能仅凭2步判定异常或稳定。
+
+训练结束没有创建 output directory（checkpoint writing 已关闭），Git 仍 clean；`time -v` 报告 socket
+messages sent/received 均为0，且 W&B、Hub push、pretrained download、env eval、GUI 均关闭。导入期
+TorchCodec ABI warning 后 fallback PyAV 是既有预期例外。
+
+本 smoke 只证明固定 dataset → processor → ACT BF16 forward/backward → gradient clipping → AdamW
+step 的最小链路可执行。两个独立 sample 的 loss 下降不构成 convergence、generalization 或 success
+证据，也没有产生可供 rollout 的 checkpoint。
+
 ## 计划步骤
 
 - [x] 经授权下载并固定 PushT 当前实验 snapshot。
@@ -540,7 +571,8 @@ TorchCodec loader warning 后 fallback PyAV 仍为已知预期例外，不影响
 - [x] 核对 ACT action delta indices、padding mask 和 chunk sampling。
 - [x] 固定 deterministic episode-level train/validation split。
 - [x] 宿主验收已保存的2-step、batch-1、BF16 smoke 配置及其严格离线审计脚本；未训练。
-- [ ] smoke gate 后建立独立 overfit 配置。
+- [x] 经单独授权完成2-step、batch-1、BF16 training smoke。
+- [ ] 根据 smoke 结果建立独立 overfit 配置。
 - [ ] 通过 gate 后再运行正式单 GPU 训练。
 - [ ] 保存曲线、checkpoint manifest、rollout video 和失败案例。
 - [ ] 在相同评测协议下迁移到一个 LIBERO task。
@@ -552,8 +584,8 @@ TorchCodec loader warning 后 fallback PyAV 仍为已知预期例外，不影响
 - [x] 首轮候选 `chunk_size=50`，根据训练 smoke 保留 go/no-go。
 - [x] 首轮候选 `n_action_steps=10`，根据 rollout 保留 go/no-go。
 - [x] 首轮候选不使用 pretrained ResNet18；未来权重下载仍需单独授权。
-- [ ] 首轮候选已设 batch 1、BF16、gradient accumulation 1，config audit PASS；等待未来训练峰值显存 gate。
-- [ ] 2-step smoke 候选已保存且不写 checkpoint；正式 overfit steps 与 checkpoint cadence 尚未决定。
+- [x] batch 1、BF16、gradient accumulation 1 的 smoke 峰值 PyTorch allocation 为0.94 GiB。
+- [ ] 2-step smoke 已 PASS 且不写 checkpoint；正式 overfit steps 与 checkpoint cadence 尚未决定。
 - [ ] W&B run name；本地 TensorBoard/JSON metric sink 的 trainer 接入方式。
 
 ## 必须输出

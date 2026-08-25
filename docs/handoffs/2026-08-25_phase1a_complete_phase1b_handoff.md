@@ -24,7 +24,8 @@ normalization、split 和综合复现脚本均已验证。
 Phase 1B 已进入只读规划与配置 preflight：候选训练配置
 `configs/train/act_pusht_phase1b_smoke.yaml` 和离线审计脚本
 `scripts/check_phase1b_act_config.py` 已保存，并由宿主完成严格离线验收，最终结果 PASS。
-仍未训练，也没有 checkpoint、rollout、loss 或 success result。
+随后经单独授权完成2-step BF16 training smoke，结果 PASS；没有 checkpoint、rollout 或 success
+result，两个 sample 的 loss 不能作为收敛结论。
 
 ## 2. 固定数据与 split
 
@@ -163,9 +164,9 @@ No network, model load, CUDA, training, GUI, or upload was used.
 
 当前仍需：
 
-- 候选仅2 steps、batch 1、BF16、无 checkpoint；config/dataset preflight 已 PASS，未来最小训练
-  smoke 仍需用户单独明确授权；
-- smoke 通过后再形成 overfit config；
+- 2-step、batch 1、BF16、无 checkpoint 的最小 training smoke 已 PASS；
+- 根据 smoke 结果形成 overfit config，并决定 steps、batch/accumulation、validation cadence 与
+  checkpoint cadence；任何后续训练仍需用户单独明确授权；
 - 决定 batch size、BF16、gradient accumulation、optimizer、LR、steps、checkpoint cadence；
 - 选择/实现本地 TensorBoard + JSONL metric sink；
 - 只读/静态形成训练命令和输出目录 contract；
