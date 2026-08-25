@@ -1,6 +1,7 @@
 # ACT Baseline
 
-状态：Phase 1A 完成；固定 PushT 数据闭环与可复现脚本已验证，Phase 1B 训练尚未开始。
+状态：Phase 1A 完成；固定 PushT 数据闭环与可复现脚本已验证，Phase 1B config/dataset preflight
+已通过，训练尚未开始。
 
 ## 目的
 
@@ -427,6 +428,110 @@ image stats sampling 19,619 和 action roundtrip error `7.62939453125e-06` 全�
 Phase 1A 至此关闭。完成结论是 dataset、source contract、split 和 processor 验证，不是训练 loss、
 rollout success 或性能 benchmark。
 
+### Phase 1B training-entry static preflight
+
+2026-08-25 只读核对 pinned LeRobot 的 `TrainPipelineConfig` 与 `lerobot_train.py`，结果 PASS：
+
+- trainer 默认 `batch_size=8`、`steps=100_000`、`num_workers=4`，DataLoader multiprocessing
+  context 为 `spawn`；这些只是上游默认值，不自动成为本项目 smoke 配置；
+- 默认 `env_eval_freq=20_000`、`log_freq=200`、`save_checkpoint=True`、`save_freq=20_000`；
+- W&B 默认 `enable=False`；默认 project 字符串 `lerobot` 不会在 enable 为 false 时创建 logger；
+- Accelerator 默认 `mixed_precision="no"`、gradient accumulation steps 为 `1`；accumulation plugin
+  固定 `sync_with_dataloader=False`，不会在有限 DataLoader 的 epoch 末强制提前同步；
+- ACT 上游默认 `chunk_size=100`、`n_action_steps=100`、
+  `pretrained_backbone_weights="ResNet18_Weights.IMAGENET1K_V1"`；optimizer preset 为 AdamW，主干与
+  backbone learning rate 均为 `1e-5`、weight decay 为 `1e-4`、`betas=(0.9,0.999)`、`eps=1e-8`、
+  `grad_clip_norm=10.0`，scheduler preset 为 `None`；
+- 项目首轮候选仍显式固定 `chunk_size=50`、`n_action_steps=10`、
+  `pretrained_backbone_weights=null`，不能依赖上述上游默认值；
+- effective batch size 为 `batch_size * dp_world_size * gradient_accumulation.steps`；
+- W&B logger 只有在 `cfg.wandb.enable` 且 project 非空时创建；checkpoint Hub 上传另由
+  `save_checkpoint_to_hub` 控制。Phase 1B 配置必须显式关闭两者；
+- LeRobot 配置是由 draccus 解析的 dataclass；官方 ACT 训练入口最少指定 `dataset.repo_id` 和
+  `policy.type=act`，其他字段可用分层 CLI 路径覆盖。官方示例显式打开 W&B 并设置 policy Hub
+  repo，这些不是训练必需项，也不进入本项目的离线 smoke 命令；
+- Dataset config 可直接固定本地 `root`、完整 `revision`、episode include/exclude 列表和
+  `video_backend`；`eval_split` 按 task 取 episode 列表末尾的 `ceil(n * fraction)` 个。PushT 只有
+  一个 task，所以直接设置约10%只会选择末尾21个 episode，不等于 Phase 1A 固定的 length-stratified
+  validation IDs；reader 会原样保留显式 episode list，因此候选配置可排列为185个 train IDs 后接
+  21个固定 validation IDs，并设置 `eval_split=21/206`。正式采用前仍需通过离线 dataset factory
+  断言实际 train/eval IDs；
+- `dataset.use_imagenet_stats` 默认 `True`，factory 会覆盖 camera statistics。由于 Phase 1A 已固定
+  snapshot image `MEAN_STD`，本项目配置必须显式设置 `dataset.use_imagenet_stats=false`；
+- `PreTrainedConfig.push_to_hub` 上游默认竟为 `True`。Phase 1B 所有配置必须显式设置
+  `policy.push_to_hub=false`，同时保持 `save_checkpoint_to_hub=false`，不能依赖默认值；trainer
+  结束处确实以该 flag 决定是否发布 model 和 processors；
+- policy 默认 `use_amp=False`，Accelerator 默认 `mixed_precision="no"`；正式选择 BF16 前需确认
+  两条精度开关在当前 trainer 中的职责与交互；当前源码确认 training forward、offline eval 和 env
+  eval 使用 `accelerator.autocast()`，而 `policy.use_amp` 在本次搜索范围只用于 control/inference；
+  训练 BF16 应配置 Accelerator；
+- 本次只读取源码，没有构造 policy、加载模型、使用 CUDA、创建输出目录、训练、联网或触发 W&B。
+
+宿主环境没有 `rg`，首次检索因此中止；使用已有 `grep` 完成同一只读核对，不安装额外工具。
+
+### Reproducibility asset map
+
+此前的宿主命令并非每一段都原样保存为独立 Bash 文件；项目采用“稳定入口合并临时 gate”的方式：
+
+| 宿主工作 | 已保存的稳定入口/记录 | 状态 |
+|---|---|---|
+| PushT 远端 metadata preflight 与固定 SHA 下载 | `scripts/fetch_phase1a_pusht_dataset.py` + `configs/dataset/pusht_v3.yaml` | 已提交，下载需显式 `--download` |
+| payload、metadata、Parquet、image stats sampling | `scripts/check_phase1a_pusht_dataset.py` | 已提交，综合 audit PASS |
+| DatasetReader、PyAV、action window/padding | 同一 Phase 1A 综合 audit | 已提交，综合 audit PASS |
+| ACT real-stat normalization roundtrip | 同一 Phase 1A 综合 audit | 已提交，综合 audit PASS |
+| chunk padding 与 deterministic stratified split | 同一 Phase 1A 综合 audit + dataset config | 已提交，综合 audit PASS |
+| 早期随机 split 候选、失败 harness、TorchCodec 例外 | 本 README 与 Phase 1B handoff | 已提交结论；不保留为推荐执行入口 |
+| Phase 1B trainer/default/source `sed`/`grep` 核对 | 本 README 与最新 handoff | 结论已落盘；无需依赖易变的一次性检索命令 |
+| Phase 1B 2-step BF16 smoke 候选 | `configs/train/act_pusht_phase1b_smoke.yaml` | 已保存、未提交、未训练 |
+| Phase 1B config 与精确 split 离线审计 | `scripts/check_phase1b_act_config.py` | 宿主严格离线 retry PASS |
+
+Phase 1A 的推荐复现方式是运行综合脚本，而不是重新拼接对话中的多个 heredoc。原始终端逐行输出目前
+只存在于对话/附件中，没有作为 log 文件提交；项目仓库保存的是可执行入口、固定配置、断言、关键
+数值、预期例外与 PASS/FAIL 解释。训练开始后应另外保存小型结构化 metrics、checkpoint manifest
+与命令摘要，而不是把大段原始控制台日志直接纳入 Git。
+
+当前 Phase 1B config/dataset preflight 的宿主入口：
+
+```bash
+HF_HUB_OFFLINE=1 \
+HF_DATASETS_OFFLINE=1 \
+HF_HUB_DISABLE_TELEMETRY=1 \
+WANDB_MODE=disabled \
+python scripts/check_phase1b_act_config.py \
+  --config configs/train/act_pusht_phase1b_smoke.yaml \
+  --dataset-contract configs/dataset/pusht_v3.yaml
+```
+
+### Phase 1B config preflight first attempt — harness dtype FAIL
+
+首次宿主运行已成功越过 YAML/draccus parse、`TrainPipelineConfig.validate()`、dataset factory、固定
+train/eval episode IDs 和 revision/root 断言，随后在 image-stat comparison 失败：checker 假定 factory
+返回 Torch Tensor 并调用 `.cpu()`，实际值是 `numpy.ndarray`。这是审计 harness 的类型假设错误，
+不是 config、split、statistics 数值或 dataset 失败。
+
+失败后的边界复核：训练输出目录不存在、`/tmp/evla-phase1b-config-audit-*` 无残留、PushT payload
+仍为固定8文件 manifest，Git 只有预期项目文件。checker 已用 `torch.as_tensor(...)` 统一 NumPy/Tensor
+表示，等待同一严格离线命令 retry。
+
+导入 LeRobot 时 TorchCodec ABI loader 再次报告已知 warning 并 fallback PyAV；候选 config 与实际
+dataset factory 均显式使用 PyAV，因此归为预期例外，不安装或调整 TorchCodec/FFmpeg。
+
+### Phase 1B config/dataset preflight retry PASS
+
+修复 statistics 表示兼容后，宿主以 Hugging Face/Datasets offline 和 `WANDB_MODE=disabled` 重试，
+最终输出 `PHASE 1B ACT CONFIG/DATASET PREFLIGHT: PASS`：
+
+- config：2 steps / batch 1 / gradient accumulation 1 / BF16；
+- ACT：chunk 50 / execute 10，AdamW preset，无 scheduler；
+- split：185 train episodes，validation IDs 与 Phase 1A 固定集合精确一致；
+- dataset：固定完整 SHA、PyAV、snapshot image statistics 保持不变；
+- safety：W&B、policy Hub push、checkpoint Hub push、env eval、eval recording、checkpoint writing 和
+  pretrained download 全部禁用；
+- 边界：payload 不变，临时 datasets cache 已删除，输出目录未创建；没有 model、CUDA context、
+  training、checkpoint、network、W&B、GUI 或 upload。
+
+TorchCodec loader warning 后 fallback PyAV 仍为已知预期例外，不影响本次 PASS。
+
 ## 计划步骤
 
 - [x] 经授权下载并固定 PushT 当前实验 snapshot。
@@ -434,7 +539,8 @@ rollout success 或性能 benchmark。
 - [x] 读取 dataset statistics，解释 state/action normalization 与反归一化。
 - [x] 核对 ACT action delta indices、padding mask 和 chunk sampling。
 - [x] 固定 deterministic episode-level train/validation split。
-- [ ] 建立极小 step 的 overfit/smoke 配置，但不自动训练。
+- [x] 宿主验收已保存的2-step、batch-1、BF16 smoke 配置及其严格离线审计脚本；未训练。
+- [ ] smoke gate 后建立独立 overfit 配置。
 - [ ] 通过 gate 后再运行正式单 GPU 训练。
 - [ ] 保存曲线、checkpoint manifest、rollout video 和失败案例。
 - [ ] 在相同评测协议下迁移到一个 LIBERO task。
@@ -446,8 +552,8 @@ rollout success 或性能 benchmark。
 - [x] 首轮候选 `chunk_size=50`，根据训练 smoke 保留 go/no-go。
 - [x] 首轮候选 `n_action_steps=10`，根据 rollout 保留 go/no-go。
 - [x] 首轮候选不使用 pretrained ResNet18；未来权重下载仍需单独授权。
-- [ ] batch size、BF16、gradient accumulation 和峰值显存 gate。
-- [ ] 极小 overfit/smoke steps、optimizer 和 checkpoint cadence。
+- [ ] 首轮候选已设 batch 1、BF16、gradient accumulation 1，config audit PASS；等待未来训练峰值显存 gate。
+- [ ] 2-step smoke 候选已保存且不写 checkpoint；正式 overfit steps 与 checkpoint cadence 尚未决定。
 - [ ] W&B run name；本地 TensorBoard/JSON metric sink 的 trainer 接入方式。
 
 ## 必须输出
