@@ -1,0 +1,104 @@
+experiment: phase1b_act_pusht_deterministic_vs_vae_100seed
+date: 2026-08-26
+status: COMPLETE
+authorization:
+  environment_evaluation: true
+  new_training: false
+  download: false
+  commit: false
+  push: false
+
+purpose: >-
+  Estimate held-out closed-loop performance and compare deterministic ACT 30k against the
+  previously selected VAE ACT 25k checkpoint on exactly the same 100 unseen environment seeds.
+
+test_set:
+  start_seed: 20260830
+  end_seed_inclusive: 20260929
+  count: 100
+  overlap_with_development_seeds_20260825_through_20260829: false
+  frozen_before_execution: true
+
+controlled_protocol:
+  environment: PushT-v0
+  episode_length: 300
+  fps: 10
+  observation_size: [96, 96]
+  chunk_size: 50
+  n_action_steps: 10
+  batch_size: 1
+  use_async_envs: false
+  recording_dataset: false
+  strict_offline: true
+  rendered_video_limit_per_model: 10
+
+models:
+  - name: deterministic_act_30k
+    checkpoint: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/030000/pretrained_model
+    model_sha256: 36dfc694a9612a90f1bd39b32d41a68e4c512fd74eda59993a1f7279e6525f5e
+    development_result: 1/5 success
+  - name: vae_act_25k
+    checkpoint: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/025000/pretrained_model
+    model_sha256: c87f7b2dddfd9433b7892a41ad283d12229868c7b74cf36286a515c057e5bb9d
+    development_result: 0/5 success and best VAE aggregate checkpoint
+
+execution_order: [deterministic_act_30k, vae_act_25k]
+
+execution_progress:
+  deterministic_act_30k:
+    status: PASS
+    success_count: 6
+    success_rate_percent: 6.0
+    result: results/phase1b_act_pusht_deterministic_030000_100seed.yaml
+  vae_act_25k:
+    status: PASS
+    success_count: 2
+    success_rate_percent: 2.0
+
+final_result: results/phase1b_act_pusht_deterministic_vs_vae_100seed.yaml
+
+final_integrity_check:
+  status: PASS
+  verified_deterministic_eval_info_sha256: bee0af3a1dfff9c21e884d751c64b7b08ae7f593048078ac9e2ce2cfee55e8f7
+  verified_vae_eval_info_sha256: 64baef8d881dbbec3c22dd44ac419c5fdaf20ea614377979f53f11f6982e644c
+  verified_deterministic_log_sha256: 66a7c4fb0eda0f3239ad34a140ae20119d36f51e74ffa035d33a27e7c0b01cd1
+  verified_vae_log_sha256: ff2add94caef911b82b5300f849b07e47c423142b0859037253209fbba0fc406
+
+preregistration_correction:
+  classification: EXPECTED_DOCUMENTATION_CORRECTION
+  detail: The original inclusive end seed was miscomputed as 20260928; 100 consecutive integers starting at 20260830 end at 20260929. The executed deterministic set and frozen paired VAE set are both 20260830 through 20260929.
+
+primary_analysis:
+  - success_count and success_rate for each model
+  - 95_percent_binomial_confidence_interval for each success rate
+  - paired per-seed success contingency table
+  - paired success-rate difference
+  - exact McNemar test on discordant seed outcomes
+
+secondary_analysis:
+  - average and median sum reward
+  - average and median max reward
+  - paired per-seed reward differences with a paired bootstrap confidence interval
+  - failure and near-miss seed inventory
+  - evaluation wall time and episodes per second
+
+interpretation_rules:
+  - The independent 100-seed result supersedes the five development seeds for performance estimation.
+  - A higher point estimate alone is not called a stable improvement without paired uncertainty reporting.
+  - The comparison is paired and independent in environment seeds, but checkpoint training budgets differ by 5000 steps, so it is not a perfectly matched use_vae-only causal estimate.
+  - No checkpoint reselection, inference change, seed substitution, or early stopping is allowed after either run starts.
+  - No new training or additional model change follows automatically from these evaluations.
+
+expected_runtime:
+  pure_eval_per_model: approximately 4.0-4.5 minutes based on the five-seed measurements
+  total_for_two_models: approximately 9-12 minutes including initialization and local video writes
+
+artifacts:
+  deterministic_output: outputs/eval/phase1b_act_pusht_deterministic_030000_100seed_exec10
+  deterministic_log: results/raw/phase1b_act_pusht_deterministic_030000_100seed_exec10.log
+  vae_output: outputs/eval/phase1b_act_pusht_vae_025000_100seed_exec10
+  vae_log: results/raw/phase1b_act_pusht_vae_025000_100seed_exec10.log
+
+boundary: >-
+  This file freezes an authorized evaluation protocol. It does not execute evaluation, train a
+  model, access the network, upload artifacts, create a commit, or authorize follow-up changes.

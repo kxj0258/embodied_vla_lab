@@ -969,6 +969,80 @@ rollout raw log的SHA-256分别为`261fa202...510f`、`d99581...4123`和`838881.
 逐字节一致。工作树只包含预期的Route B配置、checker、结构化结果、manifest、handoff与README修改，
 没有发现意外路径。该核验不产生新的loss/eval/grad/吞吐/显存/时间数据，也没有执行commit或push。
 
+### Route B independent 100-seed paired evaluation pre-registration
+
+为区分“存在一次成功”与“可重复成功率”，后续独立测试冻结100个未参与开发的新seeds
+`20260830..20260928`。先评测deterministic ACT 30k，再用完全相同seeds评测原VAE 25k；两者均保持
+PushT 300-step horizon、chunk/execute 50/10、batch 1、同步单环境、严格离线。开发用5 seeds不进入
+该测试集，执行中不得重选checkpoint、改推理协议、替换seed或提前停止。
+
+主指标预注册为每模型success count/rate与95%二项区间，以及逐seed配对success列联表、success-rate
+difference和exact McNemar test。平均/中位sum reward、max reward与配对bootstrap差异为次要指标。
+100-seed独立结果将取代开发5-seed的20%点估计用于性能描述；但VAE 25k与deterministic 30k仍有5k
+训练预算差，不能称为完美等预算的`use_vae`单因素实验。
+
+当前评测器只保存每模型前10条视频，但在`eval_info.json`记录全部100条逐seed指标。按5-seed实测，
+每模型纯eval约4–4.5分钟，两模型连初始化与视频写入预计9–12分钟。完整协议固定在
+`results/phase1b_act_pusht_deterministic_vs_vae_100seed_preregister.yaml`；两组评测不授权新训练，
+也不自动触发后续模型修改。
+
+### Route B deterministic ACT 30k independent 100-seed result — execution PASS / 6% success
+
+Deterministic 30k在100个未参与开发的连续seeds上完成严格离线评测，eval与wrapper exit status均为0，
+全部100条逐seed指标和前10条视频齐全，socket为0。实际seed集合为`20260830..20260929`；预注册文件
+最初把末值误写成20260928，这是区间算术文档错误，因为从20260830递增99次应为20260929。运行确实
+使用100个全新连续seeds，后续VAE配对组已锁定复用同一实际集合，因此不影响配对有效性。
+
+结果为6/100 success，即6%。成功seeds为
+`20260832/20260844/20260854/20260860/20260883/20260888`。Clopper-Pearson exact 95%区间约为
+`[2.23%,12.60%]`，Wilson区间约为`[2.78%,12.48%]`。这证明原5-seed中的成功不是唯一偶然状态，
+但也把开发集上的1/5=20%明显校正为更低的独立测试可靠性，不能继续用20%描述模型性能。
+
+平均/中位sum reward为72.3539/64.5132，平均/中位max reward为0.51557/0.47643。24条轨迹达到
+max reward至少0.90，13条达到至少0.95，但只有6条注册success，说明策略经常接近目标，却仍有显著的
+终局精调、阈值跨越或成功状态保持缺口；另有7条sum reward为0，反映部分初始状态下完全失效。
+
+纯eval 116.81秒、1.168秒/episode，即0.8561 episodes/s；全进程wall time 2:03.22，明显快于保守
+预估。Maximum RSS 2,262,624 KiB是主机内存，本输出未报告GPU allocation。训练loss、offline eval、
+grad norm、训练吞吐和训练显存没有被本次rollout重测或改变，仍以既有30k训练结果为准。
+
+结构化结果见`results/phase1b_act_pusht_deterministic_030000_100seed.yaml`。在VAE 25k使用完全相同
+100 seeds完成前，只能报告deterministic的绝对可靠性，不能声称相对VAE的稳定提升。
+
+### Route B independent 100-seed paired comparison — execution PASS / mixed evidence
+
+原VAE 25k在完全相同`20260830..20260929`的100个seeds上执行PASS，得到2/100 success，exact 95%
+区间约`[0.24%,7.04%]`；deterministic 30k为6/100，区间约`[2.23%,12.60%]`。点估计上关闭VAE使
+success率从2%升至6%，绝对+4个百分点、相对3倍。
+
+逐seed列联表为：共同成功0、仅deterministic成功6、仅VAE成功2、共同失败92。Exact McNemar双侧
+`p=0.2891`，配对bootstrap的success差95%区间约`[-1pp,+10pp]`，因此success提升尚未达到统计稳定，
+不能表述为已显著优于VAE。两模型成功seed完全不重叠，说明它们覆盖不同初始状态模式。
+
+Deterministic平均max reward为0.51557，VAE为0.41226，绝对提高0.10331、相对提高25.06%；配对
+bootstrap 95%区间`[0.02834,0.17757]`不跨0。这是当前最稳定的改善证据，表示关闭VAE较一致地提高了
+峰值目标重合度。平均sum reward提高5.03（7.47%），但区间`[-7.62,17.36]`跨0，不构成稳定提升。
+
+Deterministic只有7条zero-sum轨迹，VAE有22条；达到max reward至少0.90的轨迹为24对12，至少0.95
+为13对7。这进一步说明deterministic较少完全失效，也更常进入近目标状态，但从近目标转成严格success
+仍然困难。
+
+VAE纯eval为139.38秒、1.394秒/episode；deterministic为116.81秒、1.168秒/episode，deterministic
+推理约快16.2%。VAE全进程wall time 2:25，maximum RSS 2,277,580 KiB；两组均未报告GPU allocation。
+训练loss、offline eval、grad norm、训练吞吐与训练显存没有在此次评测中重测。
+
+最终结论是mixed but supportive evidence：`use_vae=false`提高了成功率点估计、显著改善了配对max reward、
+减少灾难性失败且推理更快，但100 seeds仍不足以让稀疏success差异达到统计稳定；加之30k与25k预算差，
+不能宣称纯VAE因素已被最终证明。两模型绝对成功率都很低，下一步高收益方向仍是恢复状态与终局精调
+数据，而不是继续用同一checkpoint扩seed追逐显著性。
+
+### Route B 100-seed paired evaluation final integrity PASS
+
+宿主最终只读核验中`git diff --check`无输出；deterministic/VAE的eval_info SHA-256分别为
+`bee0af3a...e8f7`和`64baef8d...44c`，raw log SHA-256分别为`66a7c4fb...1cd1`和
+`ff2add94...406`，全部与结构化结果一致。工作树仅包含预期的100-seed协议、结果、README和manifest
+更新，无意外路径；没有执行commit或push，也没有产生新的评测指标。
+
 ## 计划步骤
 
 - [x] 经授权下载并固定 PushT 当前实验 snapshot。

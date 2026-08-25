@@ -143,6 +143,8 @@ artifacts:
     successful_video_sha256_matches: true
     rollout_raw_log_sha256_matches: true
     unexpected_worktree_paths_detected: false
+  independent_100seed_result: results/phase1b_act_pusht_deterministic_030000_100seed.yaml
+  paired_100seed_comparison: results/phase1b_act_pusht_deterministic_vs_vae_100seed.yaml
 
 checkpoint_reload_and_fixed_data_accuracy:
   status: PASS
@@ -215,3 +217,5 @@ interpretation:
   - The 30k checkpoint reload and two-episode fixed-data accuracy audit passed, but its comparison to the 100k VAE checkpoint is mixed rather than uniformly better.
   - The 10k and 20k closed-loop evaluations achieved zero successes, while the 30k checkpoint achieved one strict success in five fixed seeds and passed the pre-registered initial-success gate.
   - The 1/5 result establishes an initial successful demo, not a statistically stable benchmark success rate; expanded evaluation requires a separate decision.
+  - The authorized independent 100-seed evaluation achieved 6/100 successes with an exact 95 percent binomial interval of approximately 2.23 to 12.60 percent.
+  - The paired VAE 25k comparison achieved 2/100 successes; deterministic ACT has a higher point estimate and consistently higher max reward, but the paired success-rate difference is not statistically stable.

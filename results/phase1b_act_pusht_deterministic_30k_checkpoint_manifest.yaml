@@ -44,6 +44,16 @@ closed_loop_evaluation:
   selection_status: COMPLETE
   selected_checkpoint_step: 30000
   initial_success_gate_status: PASS
+independent_100seed_evaluation:
+  checkpoint_step: 30000
+  seeds: 20260830 through 20260929
+  execution_status: PASS
+  successes: 6
+  episodes: 100
+  success_rate_percent: 6.0
+  eval_info_sha256: bee0af3a1dfff9c21e884d751c64b7b08ae7f593048078ac9e2ce2cfee55e8f7
+  paired_vae_25000_successes: 2
+  paired_comparison: results/phase1b_act_pusht_deterministic_vs_vae_100seed.yaml
 checkpoints:
   - step: 10000
     directory: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/010000

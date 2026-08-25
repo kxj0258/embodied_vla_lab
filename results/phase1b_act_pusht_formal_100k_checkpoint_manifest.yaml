@@ -12,6 +12,14 @@ checkpoints:
     model_sha256: c87f7b2dddfd9433b7892a41ad283d12229868c7b74cf36286a515c057e5bb9d
     optimizer_state_sha256: 3f67ca9baa97c6b4e750a250200c0f58a0c2227050ca139e4f7c0de0a9b73e0a
     training_step_sha256: a6dc292dbf0e24bc0e8c0a216dca68124c370816c3eacf502cd48319bb942eaf
+    independent_100seed_evaluation:
+      seeds: 20260830 through 20260929
+      execution_status: PASS
+      successes: 2
+      episodes: 100
+      success_rate_percent: 2.0
+      eval_info_sha256: 64baef8d881dbbec3c22dd44ac419c5fdaf20ea614377979f53f11f6982e644c
+      paired_comparison: results/phase1b_act_pusht_deterministic_vs_vae_100seed.yaml
   - step: 50000
     directory: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/050000
     tree_bytes: 619063275

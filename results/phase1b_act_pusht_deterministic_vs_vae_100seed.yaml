@@ -1,0 +1,138 @@
+experiment: phase1b_act_pusht_deterministic_vs_vae_100seed
+date: 2026-08-26
+execution_status: PASS
+comparison_status: COMPLETE
+project_commit: a1c5778
+
+protocol:
+  seeds_start: 20260830
+  seeds_end_inclusive: 20260929
+  seeds_count: 100
+  development_seed_overlap: false
+  episode_length: 300
+  chunk_size: 50
+  n_action_steps: 10
+  batch_size: 1
+  use_async_envs: false
+  strict_offline: true
+  rendered_videos_per_model: 10
+
+deterministic_act_30k:
+  checkpoint: outputs/train/phase1b_act_pusht_deterministic_30k_bf16/checkpoints/030000/pretrained_model
+  model_sha256: 36dfc694a9612a90f1bd39b32d41a68e4c512fd74eda59993a1f7279e6525f5e
+  use_vae: false
+  success_count: 6
+  success_rate_percent: 6.0
+  success_rate_exact_95_percent: [0.022334886071316368, 0.12602993458082296]
+  successful_seeds: [20260832, 20260844, 20260854, 20260860, 20260883, 20260888]
+  average_sum_reward: 72.35392456150014
+  median_sum_reward: 64.51316782386685
+  average_max_reward: 0.5155707163955818
+  median_max_reward: 0.4764326888651797
+  zero_sum_reward_episodes: 7
+  max_reward_at_least_0_90_episodes: 24
+  max_reward_at_least_0_95_episodes: 13
+  eval_time_s: 116.80992460250854
+  eval_episode_time_s: 1.1680992460250854
+  eval_info: outputs/eval/phase1b_act_pusht_deterministic_030000_100seed_exec10/eval_info.json
+  eval_info_sha256: bee0af3a1dfff9c21e884d751c64b7b08ae7f593048078ac9e2ce2cfee55e8f7
+  raw_log: results/raw/phase1b_act_pusht_deterministic_030000_100seed_exec10.log
+  raw_log_sha256: 66a7c4fb0eda0f3239ad34a140ae20119d36f51e74ffa035d33a27e7c0b01cd1
+
+vae_act_25k:
+  checkpoint: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/025000/pretrained_model
+  model_sha256: c87f7b2dddfd9433b7892a41ad283d12229868c7b74cf36286a515c057e5bb9d
+  use_vae: true
+  success_count: 2
+  success_rate_percent: 2.0
+  success_rate_exact_95_percent: [0.0024313368239425423, 0.07038393247107011]
+  successful_seeds: [20260840, 20260900]
+  average_sum_reward: 67.32345615420876
+  median_sum_reward: 62.10132492402941
+  average_max_reward: 0.41226147401832547
+  median_max_reward: 0.40583738651599754
+  zero_sum_reward_episodes: 22
+  max_reward_at_least_0_90_episodes: 12
+  max_reward_at_least_0_95_episodes: 7
+  eval_time_s: 139.38430643081665
+  eval_episode_time_s: 1.3938430666923523
+  eval_info: outputs/eval/phase1b_act_pusht_vae_025000_100seed_exec10/eval_info.json
+  eval_info_bytes: 10852
+  eval_info_sha256: 64baef8d881dbbec3c22dd44ac419c5fdaf20ea614377979f53f11f6982e644c
+  raw_log: results/raw/phase1b_act_pusht_vae_025000_100seed_exec10.log
+  raw_log_bytes: 4199897
+  raw_log_lines: 31632
+  raw_log_sha256: ff2add94caef911b82b5300f849b07e47c423142b0859037253209fbba0fc406
+  process:
+    eval_exit_status: 0
+    time_exit_status: 0
+    wall_time_s: 145.0
+    wall_time_text: "2:25.00"
+    user_time_s: 158.81
+    system_time_s: 6.23
+    cpu_percent: 113
+    max_resident_set_kib: 2277580
+    major_page_faults: 15
+    swaps: 0
+    socket_messages_sent: 0
+    socket_messages_received: 0
+  rendered_video_sha256:
+    - ae7a77d0f545475f6a536fdc1052762ff4a7e677f06eaf48008208c86b400459
+    - 4440555c0aab963ea9ece6189ae778cabc3e8da34972d6aa328cf3210338fbb8
+    - b7b96fd5763caec733cdb65f2105fd9d98e2d0074eeecb55275ade45ec47b8d4
+    - d3c7511e8a1abad4becc0f71bdc9a9e99d48acb94dd3cd895ef435c2da4f8282
+    - 38ad2e840c1b6baf373f785da796354c4a57263bc1d7894c9d7588fb565c7d0b
+    - 98ff1994067f3f682d9e0b9b765226c44b58e2e3ca86be7395df7c112eaec8a3
+    - 0897e209e4d58babf94cfc5b32668bf6ddebc846aad20e9ec7ee717200caea0b
+    - 4373ac43ec4060c3f28de9d9b601759fa2d281ea675e54dc98f4c07bd3689194
+    - e65734b75be08026340c915371fcafbd7255457c8844554d3ca0bb147a76a8c7
+    - d2f61db49e44a23b84a23787250688b8d33843b581eb4c91c1d7d0ba97c013c6
+
+paired_comparison:
+  success_contingency:
+    both_success: 0
+    deterministic_only_success: 6
+    vae_only_success: 2
+    both_fail: 92
+  success_rate_absolute_difference: 0.04
+  success_rate_ratio: 3.0
+  exact_mcnemar_two_sided_p_value: 0.2890625
+  paired_success_difference_bootstrap_95_percent: [-0.01, 0.10]
+  average_sum_reward_difference: 5.0304684072913854
+  median_per_seed_sum_reward_difference: 6.871141311224518
+  average_sum_reward_relative_change_fraction: 0.07472088770619201
+  paired_mean_sum_reward_difference_bootstrap_95_percent: [-7.624534071061004, 17.36409961002352]
+  average_max_reward_difference: 0.10330924237725625
+  median_per_seed_max_reward_difference: 0.05656485101272292
+  average_max_reward_relative_change_fraction: 0.2505915514498551
+  paired_mean_max_reward_difference_bootstrap_95_percent: [0.02833560909586273, 0.17757107181460813]
+  bootstrap:
+    resamples: 200000
+    seed: 20260826
+    unit: paired environment seed
+
+conclusion:
+  - Deterministic ACT has a higher held-out success point estimate: 6 percent versus 2 percent, an absolute increase of 4 percentage points and a relative ratio of 3.
+  - The success improvement is not statistically stable at this sample size: exact paired McNemar p is 0.289 and the paired bootstrap interval for the difference includes zero.
+  - Deterministic ACT improves peak target proximity more consistently: the paired max-reward difference is positive and its pre-registered bootstrap interval excludes zero.
+  - Sum reward is 7.47 percent higher on average, but its paired interval crosses zero and does not establish a stable improvement.
+  - Deterministic ACT has fewer catastrophic zero-reward episodes, 7 versus 22, and twice as many episodes reaching max reward at least 0.90, 24 versus 12.
+  - The models have disjoint successful seed sets, indicating complementary state coverage rather than deterministic ACT strictly dominating every VAE success mode.
+  - Because training budgets differ by 5000 steps and success evidence remains sparse, the result supports but does not conclusively prove the use_vae=false causal hypothesis.
+  - Both absolute success rates remain too low for a robust policy claim; terminal refinement, recovery behavior, and data coverage remain the primary improvement targets.
+
+boundary: >-
+  These are independent held-out environment seeds and a paired model comparison. They are not
+  independent training replicates, do not measure cross-dataset generalization, and do not authorize
+  new training, additional evaluation, upload, commit, or push.
+
+final_integrity_check:
+  status: PASS
+  git_diff_check: PASS
+  deterministic_eval_info_sha256_matches: true
+  vae_eval_info_sha256_matches: true
+  deterministic_raw_log_sha256_matches: true
+  vae_raw_log_sha256_matches: true
+  unexpected_worktree_paths_detected: false
+  commit_created: false
+  pushed: false
