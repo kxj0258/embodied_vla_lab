@@ -1,0 +1,118 @@
+experiment: phase1b_act_pusht_demo_5ep
+date: 2026-08-25
+rollout_execution_status: PASS
+task_success_gate_status: FAIL
+demo_status: NEAR_MISS_AVAILABLE
+project_commit: 16232e3
+
+policy:
+  checkpoint: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/100000/pretrained_model
+  model_sha256: c9fd17bfe0e909f62b3bb67500e85c46b4c42a75d6edc043508cd5cf22244f01
+  type: act
+  chunk_size: 50
+  n_action_steps: 10
+
+environment:
+  type: pusht
+  task: PushT-v0
+  fps: 10
+  episode_length: 300
+  obs_type: pixels_agent_pos
+  observation_size: [96, 96]
+  visualization_size: [384, 384]
+  render_mode: rgb_array
+  success_coverage_threshold: 0.95
+  success_comparison: strictly_greater_than
+
+evaluation:
+  start_seed: 20260825
+  seeds: [20260825, 20260826, 20260827, 20260828, 20260829]
+  n_episodes: 5
+  batch_size: 1
+  use_async_envs: false
+  recording_dataset: false
+  local_video_rendering: true
+  episodes:
+    - episode: 0
+      seed: 20260825
+      sum_reward: 80.04658393917119
+      max_reward: 0.28588418334767635
+      success: false
+      video: outputs/eval/phase1b_act_pusht_demo_5ep/videos/pusht_0/eval_episode_0.mp4
+      video_bytes: 98692
+      video_sha256: d3b71ac4e3c7787ef622cb5bef3a0154856e30424aefedab92343311bf582560
+    - episode: 1
+      seed: 20260826
+      sum_reward: 93.37668164286538
+      max_reward: 0.45507279397555156
+      success: false
+      video: outputs/eval/phase1b_act_pusht_demo_5ep/videos/pusht_0/eval_episode_1.mp4
+      video_bytes: 113557
+      video_sha256: e5b42479ff1800bf6aec4c425289e2345969227e701526976470a370b0efaeb6
+    - episode: 2
+      seed: 20260827
+      sum_reward: 151.38167601642033
+      max_reward: 0.8027477680548132
+      success: false
+      video: outputs/eval/phase1b_act_pusht_demo_5ep/videos/pusht_0/eval_episode_2.mp4
+      video_bytes: 109872
+      video_sha256: df5ce5df29e890b351f36a3b23d8e2cd9257f4fbf638b085c8dc61d7256e0cbe
+    - episode: 3
+      seed: 20260828
+      sum_reward: 232.4366595254637
+      max_reward: 0.9987602596535131
+      peak_coverage: 0.9488222466708374
+      success: false
+      interpretation: best_near_miss
+      video: outputs/eval/phase1b_act_pusht_demo_5ep/videos/pusht_0/eval_episode_3.mp4
+      video_bytes: 117979
+      video_sha256: cbe0ac9b61048f83fc4f62aa534ace7a14e17e2f637c5c2c5543cf9210d83d1e
+    - episode: 4
+      seed: 20260829
+      sum_reward: 106.05900124062896
+      max_reward: 0.5843858019854183
+      success: false
+      video: outputs/eval/phase1b_act_pusht_demo_5ep/videos/pusht_0/eval_episode_4.mp4
+      video_bytes: 126714
+      video_sha256: 8b818588cb1ffd533bbc3b9d35b773e1cd3d749cc44d4653f58b373b98eb88a7
+  aggregate:
+    average_sum_reward: 132.6601204729099
+    average_max_reward: 0.6253701614033945
+    success_count: 0
+    success_rate_percent: 0.0
+    eval_time_s: 14.410972356796265
+    eval_episode_time_s: 2.8821945190429688
+
+process:
+  eval_exit_status: 0
+  time_exit_status: 0
+  wall_time_s: 19.81
+  user_time_s: 29.42
+  system_time_s: 4.66
+  cpu_percent: 172
+  max_resident_set_kib: 2263084
+  socket_messages_sent: 0
+  socket_messages_received: 0
+
+artifacts:
+  eval_info: outputs/eval/phase1b_act_pusht_demo_5ep/eval_info.json
+  eval_info_bytes: 2464
+  eval_info_sha256: 2ac0e42ba47e19a0dba45ab1c88e322c2c35540e6b5631f3979f24052953d49b
+  raw_log: results/raw/phase1b_act_pusht_demo_5ep.log
+  raw_log_bytes: 220840
+  raw_log_lines: 1715
+  raw_log_sha256: 9835bbbc621252db49f52c8cf78295044e26bed4d53dfd4b6f95b80d481d902e
+
+safety:
+  strict_offline: true
+  wandb_disabled: true
+  hub_upload_disabled: true
+  gui_window_opened: false
+  training_used: false
+
+interpretation:
+  - The checkpoint, processors and PushT environment completed five deterministic closed-loop episodes and produced intact local videos.
+  - No episode crossed the strict greater-than-95-percent coverage success condition, so the task success gate fails.
+  - Episode 3 is an honest near-miss demo: its peak coverage was about 94.882 percent, but it later regressed and never terminated successfully.
+  - The policy learned meaningful pushing behavior, but its pose correction and late-episode stability are insufficient for reliable success.
+  - This five-episode diagnostic is not a statistically stable benchmark and should not be reported as a positive success-rate result.

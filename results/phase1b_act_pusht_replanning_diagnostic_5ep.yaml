@@ -1,0 +1,114 @@
+experiment: phase1b_act_pusht_replanning_diagnostic_5ep
+date: 2026-08-25
+execution_status: PASS
+success_gate_status: FAIL
+diagnostic_conclusion: SHORTER_REPLANNING_AND_TEMPORAL_ENSEMBLING_DID_NOT_IMPROVE_CONTROL
+project_commit: 16232e3
+
+controlled_variables:
+  checkpoint: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/100000/pretrained_model
+  model_sha256: c9fd17bfe0e909f62b3bb67500e85c46b4c42a75d6edc043508cd5cf22244f01
+  seeds: [20260825, 20260826, 20260827, 20260828, 20260829]
+  n_episodes: 5
+  episode_length: 300
+  fps: 10
+  batch_size: 1
+  use_async_envs: false
+  recording_dataset: false
+  strict_offline: true
+  changed_variable: policy.n_action_steps
+
+comparisons:
+  - n_action_steps: 10
+    replanning_interval_s: 1.0
+    average_sum_reward: 132.6601204729099
+    average_max_reward: 0.6253701614033945
+    max_rewards: [0.28588418334767635, 0.45507279397555156, 0.8027477680548132, 0.9987602596535131, 0.5843858019854183]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 14.410972356796265
+    result: BEST_AGGREGATE
+    eval_info: outputs/eval/phase1b_act_pusht_demo_5ep/eval_info.json
+    eval_info_sha256: 2ac0e42ba47e19a0dba45ab1c88e322c2c35540e6b5631f3979f24052953d49b
+  - n_action_steps: 5
+    replanning_interval_s: 0.5
+    average_sum_reward: 104.68246427336314
+    average_max_reward: 0.5227221586919919
+    max_rewards: [0.9640084442227755, 0.6211673339692234, 0.33873706917999263, 0.49538914511693366, 0.19430880097103434]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 14.401896238327026
+    versus_exec10:
+      average_sum_reward_change_fraction: -0.2108972621147287
+      average_max_reward_change_fraction: -0.16413959131188804
+    result: WORSE_AGGREGATE_WITH_SEED_SPECIFIC_GAINS
+    eval_info: outputs/eval/phase1b_act_pusht_demo_5ep_exec5/eval_info.json
+    eval_info_sha256: a7fee55db45bd070f6a8a968a18cf4f3470c9e2611b64cc535cb3c052e200c1e
+    raw_log: results/raw/phase1b_act_pusht_demo_5ep_exec5.log
+    raw_log_bytes: 221270
+    raw_log_lines: 1717
+    raw_log_sha256: 0db5e68a6e1db839be8ba8ed2a674f5b2d27889b54ec1509a6fdd00ed5bde120
+  - n_action_steps: 1
+    replanning_interval_s: 0.1
+    average_sum_reward: 64.50867404687752
+    average_max_reward: 0.21663504793184418
+    max_rewards: [0.28588418334767635, 0.0739885539544263, 0.27572700302400727, 0.33750167722818036, 0.11007382210493045]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 19.495786428451538
+    versus_exec10:
+      average_sum_reward_change_fraction: -0.5137297190978307
+      average_max_reward_change_fraction: -0.6535890880279721
+      eval_time_change_fraction: 0.3528432326259552
+    result: SUBSTANTIALLY_WORSE
+    eval_info: outputs/eval/phase1b_act_pusht_demo_5ep_exec1/eval_info.json
+    eval_info_sha256: a47e8b5423bf5a75d53fcbac957c75ac813969747e69b1413529d777041e5704
+    raw_log: results/raw/phase1b_act_pusht_demo_5ep_exec1.log
+    raw_log_bytes: 227294
+    raw_log_lines: 1764
+    raw_log_sha256: c59f596d998f179d91974ac06eec9ea81998424b0f2185ab9e37914c7ed27961
+  - n_action_steps: 1
+    temporal_ensemble_coeff: 0.01
+    replanning_interval_s: 0.1
+    average_sum_reward: 43.34723817046278
+    average_max_reward: 0.3080210525914159
+    max_rewards: [0.28588418334767635, 0.3178076243471763, 0.28808475642495984, 0.3412667733236118, 0.3070619255136549]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 19.27201509475708
+    versus_exec10:
+      average_sum_reward_change_fraction: -0.6732459007579856
+      average_max_reward_change_fraction: -0.507458027897933
+      eval_time_change_fraction: 0.33731538841432385
+    versus_unensembled_exec1:
+      average_sum_reward_change_fraction: -0.3280401618708986
+      average_max_reward_change_fraction: 0.4218431206400304
+      eval_time_change_fraction: -0.011477933168568821
+    result: SMOOTHER_PEAKS_BUT_WORSE_SUSTAINED_CONTROL
+    eval_info: outputs/eval/phase1b_act_pusht_demo_5ep_temporal_ensemble/eval_info.json
+    eval_info_sha256: ddb24968153f0f75eb36b7625e38a38f59baba60beed10a8f6737e52c562747c
+    raw_log: results/raw/phase1b_act_pusht_demo_5ep_temporal_ensemble.log
+    raw_log_bytes: 227263
+    raw_log_lines: 1761
+    raw_log_sha256: 276067af122d22bcffd6d386b410fbd58e9b03ae31d9122d2cbe314c44da7183
+
+per_seed_interpretation:
+  - Exec-5 improved max reward for seeds 20260825 and 20260826 but degraded seeds 20260827 through 20260829.
+  - Exec-1 was never the best setting for any seed and often produced little sustained pushing.
+  - Exec-10 produced the best aggregate metrics and the strongest single near-miss at seed 20260828.
+  - Temporal ensembling improved average peak reward over raw exec-1 but reduced cumulative reward and remained far below exec-10.
+  - Temporal ensembling degraded the prior seed-20260828 near-miss from 0.998760 to 0.341267 maximum reward.
+
+conclusion:
+  - The hypothesis that a one-second open-loop interval is the primary cause of failure is not supported by this controlled diagnostic.
+  - The learned action chunk appears to rely on later actions for coherent sustained contact; repeatedly resampling the first action can disrupt that trajectory.
+  - Original-ACT temporal ensembling at coefficient 0.01 does not recover successful or sustained control for this checkpoint.
+  - The remaining bottlenecks are more consistent with limited recovery and fine-pose-correction coverage, single-frame partial observability, and behavior-cloning distribution shift.
+  - All four settings achieved zero successes, so no tested execution or smoothing method establishes a successful PushT policy.
+  - Five seeds are sufficient for this bounded diagnosis but not for a stable benchmark estimate.
+
+decision:
+  freeze_pusht: true
+  additional_pusht_training: false
+  additional_seed_benchmark: false
+  next_project_focus: LIBERO language-conditioned VLA

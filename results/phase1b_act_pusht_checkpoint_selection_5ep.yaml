@@ -1,0 +1,119 @@
+experiment: phase1b_act_pusht_checkpoint_selection_5ep
+date: 2026-08-25
+execution_status: PASS
+success_gate_status: FAIL
+diagnostic_conclusion: EARLY_CHECKPOINT_IMPROVES_AGGREGATE_REWARD_BUT_NO_CHECKPOINT_SOLVES_PUSHT
+project_commit: 16232e3
+
+controlled_variables:
+  seeds: [20260825, 20260826, 20260827, 20260828, 20260829]
+  n_episodes_per_checkpoint: 5
+  episode_length: 300
+  fps: 10
+  n_action_steps: 10
+  batch_size: 1
+  use_async_envs: false
+  recording_dataset: false
+  strict_offline: true
+  changed_variable: checkpoint_step
+
+comparisons:
+  - checkpoint_step: 25000
+    model_sha256: c87f7b2dddfd9433b7892a41ad283d12229868c7b74cf36286a515c057e5bb9d
+    average_sum_reward: 140.97745716775424
+    average_max_reward: 0.7614259170316255
+    sum_rewards: [130.92484040621005, 141.36322473083348, 83.5679940984525, 225.39774517122535, 123.63348143204976]
+    max_rewards: [0.6323002998465991, 0.9899502621348174, 0.29445401792275705, 0.9409145965045173, 0.9495104087494372]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 11.753335952758789
+    result: BEST_AGGREGATE_NO_SUCCESS
+    eval_info: outputs/eval/phase1b_act_pusht_checkpoint_025000_5ep_exec10/eval_info.json
+    eval_info_sha256: b46b0e8c22b477b05d178ed1cffd83fcb3c69cfb7209fee78ccc8061b0368a88
+    raw_log: results/raw/phase1b_act_pusht_checkpoint_025000_5ep_exec10.log
+    raw_log_bytes: 218852
+    raw_log_lines: 1696
+    raw_log_sha256: 6b8494b4c3220e77cfb2cbe2bbc1adf06ef0150c069becca14b41873c0f5b07e
+  - checkpoint_step: 50000
+    model_sha256: 78d3e75fa04bc42635653dfbb829a96f231e90fe5c7ee9bcd9920e64d99d93b0
+    average_sum_reward: 76.36445328470425
+    average_max_reward: 0.2908835594613771
+    sum_rewards: [96.00906303492093, 56.68314201546528, 77.93704492874012, 106.62037962581208, 44.57263681858289]
+    max_rewards: [0.42529251449173333, 0.20733294942265532, 0.26630434803807707, 0.40038892295470896, 0.15509906239971083]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 12.097288370132446
+    versus_25000:
+      average_sum_reward_change_fraction: -0.4583215301306265
+      average_max_reward_change_fraction: -0.6179752317922541
+    result: WORST_AGGREGATE
+    eval_info: outputs/eval/phase1b_act_pusht_checkpoint_050000_5ep_exec10/eval_info.json
+    eval_info_sha256: b7e4849a833a08001ba2369366f7350b72cdccbda228c5fc2dd626a4ad87935e
+    raw_log: results/raw/phase1b_act_pusht_checkpoint_050000_5ep_exec10.log
+    raw_log_bytes: 219368
+    raw_log_lines: 1700
+    raw_log_sha256: d6a2b8adc0335e37f720fa8f347513245e429bd819c25c3ab2a15e296b032560
+  - checkpoint_step: 75000
+    model_sha256: 127466aaefc9880ea08026bca723a68c6d6ac4e03d94ed36db9b1d0e70502a66
+    average_sum_reward: 99.02757981970153
+    average_max_reward: 0.5187993757802422
+    sum_rewards: [199.09180723181134, 26.11540338893583, 100.39514250725014, 95.65411045518307, 73.88143551532733]
+    max_rewards: [0.9918421652230661, 0.42864313666750853, 0.41249048186176107, 0.35291619649848954, 0.4081048986503853]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    eval_time_s: 11.684261083602905
+    versus_25000:
+      average_sum_reward_change_fraction: -0.2975644347034506
+      average_max_reward_change_fraction: -0.31864760027771155
+    result: PARTIAL_RECOVERY_NO_SUCCESS
+    eval_info: outputs/eval/phase1b_act_pusht_checkpoint_075000_5ep_exec10/eval_info.json
+    eval_info_sha256: 837728d19dd4f86f03680680426df6256206bc309edabe8fb7ebcdbad628616d
+    raw_log: results/raw/phase1b_act_pusht_checkpoint_075000_5ep_exec10.log
+    raw_log_bytes: 218702
+    raw_log_lines: 1695
+    raw_log_sha256: e29974f4f69ca18501c5748a94336e07f2b2423341e82da141184d70a67d3939
+  - checkpoint_step: 100000
+    model_sha256: c9fd17bfe0e909f62b3bb67500e85c46b4c42a75d6edc043508cd5cf22244f01
+    average_sum_reward: 132.6601204729099
+    average_max_reward: 0.6253701614033945
+    sum_rewards: [80.04658393917119, 93.37668164286538, 151.38167601642033, 232.4366595254637, 106.05900124062896]
+    max_rewards: [0.28588418334767635, 0.45507279397555156, 0.8027477680548132, 0.9987602596535131, 0.5843858019854183]
+    successes: [false, false, false, false, false]
+    success_rate_percent: 0.0
+    versus_25000:
+      average_sum_reward_change_fraction: -0.058997635947903526
+      average_max_reward_change_fraction: -0.17868548020881192
+    result: SECOND_BEST_AGGREGATE_AND_CLOSEST_SINGLE_NEAR_MISS
+    eval_info: outputs/eval/phase1b_act_pusht_demo_5ep/eval_info.json
+    eval_info_sha256: 2ac0e42ba47e19a0dba45ab1c88e322c2c35540e6b5631f3979f24052953d49b
+
+cross_checkpoint_summary:
+  total_rollouts: 20
+  total_successes: 0
+  best_aggregate_checkpoint_step: 25000
+  closest_single_near_miss_checkpoint_step: 100000
+  closest_single_near_miss_seed: 20260828
+  closest_single_near_miss_max_reward: 0.9987602596535131
+  checkpoint_ranking_by_average_sum_reward: [25000, 100000, 75000, 50000]
+  checkpoint_ranking_by_average_max_reward: [25000, 100000, 75000, 50000]
+
+visual_diagnosis:
+  - The 25000-step seed-20260826 rollout reached a high-overlap pose and then pushed the block away again before episode end.
+  - The 25000-step seeds 20260828 and 20260829 reached near-target poses but stalled with residual translation or rotation error.
+  - The 75000-step seed-20260825 rollout also reached a near-target pose transiently and then degraded.
+
+conclusion:
+  - Closed-loop quality is non-monotonic across training checkpoints despite the 100000-step checkpoint having the lowest recorded offline validation loss.
+  - Step 25000 is the best checkpoint by both aggregate reward metrics, beating step 100000 by 6.27 percent in average sum reward and 21.75 percent in average max reward.
+  - The 50000-step collapse followed by recovery at 75000 and 100000 does not support a simple monotonic-overfitting explanation.
+  - Checkpoint selection and offline-to-online objective mismatch are material factors, but they are not sufficient explanations for failure because every checkpoint achieved zero successes.
+  - Across the four checkpoints and five shared seeds, the recurring failure mode is insufficient terminal pose correction or failure to retain a near-success state.
+  - The 20 rollouts reuse five seeds across checkpoints and therefore are controlled paired diagnostics, not 20 independent samples for a benchmark confidence interval.
+
+decision:
+  best_checkpoint_for_near_miss_demo: 25000
+  successful_demo_available: false
+  freeze_pusht: true
+  additional_pusht_training: false
+  additional_checkpoint_sweep: false
+  next_project_focus: LIBERO language-conditioned VLA

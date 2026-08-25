@@ -1,7 +1,7 @@
 # ACT Baseline
 
-状态：Phase 1A 完成；固定 PushT 数据闭环与可复现脚本已验证，Phase 1B config/dataset preflight
-和2-step BF16 training smoke 均已通过；overfit、checkpoint 与 rollout 尚未开始。
+状态：Phase 1A 完成；Phase 1B 的 config/dataset preflight、smoke、资源 gate、正式100k训练、最终
+checkpoint reload、固定数据accuracy及四checkpoint闭环诊断均已完成；PushT成功gate未通过，实验冻结。
 
 ## 目的
 
@@ -563,6 +563,233 @@ TorchCodec ABI warning 后 fallback PyAV 是既有预期例外。
 step 的最小链路可执行。两个独立 sample 的 loss 下降不构成 convergence、generalization 或 success
 证据，也没有产生可供 rollout 的 checkpoint。
 
+### Phase 1B single-episode overfit candidate
+
+2-step smoke 之后的下一 gate 固定为一个轻量、有限的可学习性诊断，而不是正式 benchmark：使用既定
+train split 中的 episode 51（73 frames）训练，并使用等长的既定 validation episode 41（73 frames）
+观察 held-out loss。二者长度相同，chunk-50 padding 结构一致，可减少 episode length 对比较的干扰。
+
+候选配置为 `configs/train/act_pusht_phase1b_overfit_ep51.yaml`：保持已验证的 batch 1、BF16、chunk 50、
+execute 10、AdamW 1e-5、grad clip 10、PyAV 和无 pretrained backbone；训练上限2000步，日志窗口20步，
+每100步完整评估73个 held-out frames。只保存最终 checkpoint；W&B、Hub、环境评测、录制和 EMA 关闭。
+
+停止标准：loss/L1/KL/grad norm 出现 NaN/Inf、CUDA OOM、非零退出或数据合同漂移时立即 FAIL；达到
+2000步时停止且不自动延长。Overfit PASS 要求最后连续5个日志窗口的平均 train L1 不高于0.10，且
+相较最初5个窗口至少下降80%。Validation loss 只用于记录泛化边界，不是 overfit PASS 必要条件。
+训练后的 checkpoint reload、固定输入 finite action chunk 和 manifest SHA-256 是独立 gate。
+
+该配置和 `scripts/check_phase1b_act_overfit_config.py` 均为惰性资产；创建与离线审计不构成训练授权。
+
+### Phase 1B single-episode overfit result — execution PASS / gate NO-GO
+
+宿主严格离线完成2000步并以 status 0 退出；最终 checkpoint 与 `last` symlink 完整生成。训练执行、
+数值稳定性和 checkpoint writing 判为 PASS，但预先固定的 overfit 门槛未满足：首5个20-step窗口的
+train L1 均值为0.5182，末5窗口为0.1584，下降69.43%；最低单窗口 L1 为0.148。末5窗口没有达到
+`<=0.10`，下降比例也没有达到80%，因此本 gate 记为 NO-GO，不能自动延长训练或宣称充分记忆。
+
+20次 held-out eval 从 step 100 的1.0164降到 step 2000的0.6604，最低为 step 1300的0.6051；它只说明
+等长 validation episode 的 loss 较初期改善，不是 rollout 或 success 证据。Pre-clip grad norm 从首窗口
+817.961降至末窗口167.490，全程 finite；PyTorch peak allocation 保持0.94 GiB。完整结果与关键 artifact
+哈希见 `results/phase1b_act_pusht_overfit_ep51_2000step.yaml`。
+
+终端自动关闭不是训练故障：启动 wrapper 最后一行使用了 `exit "$train_status"`，成功结束后退出了整个
+交互 shell。后续宿主命令不再附带 `exit`，改为只打印 status，避免再次关闭终端。
+
+### Phase 1B overfit checkpoint reload/inference PASS
+
+Step-2000 checkpoint、保存的 preprocessor/postprocessor 和 episode 51 local index 0 均在严格离线下
+从本地成功加载。单次 CUDA inference 的 normalized 与反归一化 action chunk shape 都是 `[1,50,2]`，
+所有值 finite；反归一化 action range 为 `[11.840057,350.566895]`，首 action 为
+`[85.241943,277.314148]`。本次 PyTorch peak allocation 为222.39 MiB，与 Phase 0 单次 ACT inference
+量级一致。
+
+原始日志为12行/601 bytes，SHA-256
+`a0972d4907ecf06f64eb0c869927ea1d406ddd5a5e7c66ceaaff28b5dae26958`。该 PASS 只证明 checkpoint 与
+processor 可加载并能对一个固定 observation 产生有限 action chunk；没有比较 target accuracy、运行
+环境 rollout 或产生 success/generalization 结论。
+
+### Phase 1B checkpoint fixed-data accuracy PASS
+
+使用 checkpoint 的部署推理路径遍历 episode 51和等长 validation episode 41的全部73个起点，并仅对
+非 padding targets 计算误差。Train/validation full-chunk MAE 分别为17.1033/76.7296 pixels，比例
+0.2229；实际会执行的前10步 MAE 为20.7338/58.5615，首动作 MAE 为19.9984/51.9059。训练 episode
+显著优于 held-out episode，证明模型确实产生了单 episode 记忆，而不只是训练 loss 的表面变化。
+
+但17.10-pixel train MAE 仍然不可忽略，与预先设定的 overfit NO-GO 一致。Train预测的7300个 action
+标量中有15个落在 `[0,512]` 外，最低为-4.9169；validation 预测没有越界。越界统计包含 padding位置，
+而所有 MAE 都排除了 padding，因此不能把15个值直接解释为15个将被执行的非法动作。该检查不包含
+环境动力学、闭环 replanning 或 success。原始日志35行/1135 bytes，SHA-256
+`ee2ce7a45a57a08b7535fb899b35a95467f8bd9bc22129ec41c788bcd8644272`。
+
+### Phase 1B full-split batch-8 resource-gate preflight PASS
+
+单 episode 诊断之后，正式训练前的最后一个资源 gate 固定为完整185/21 split、batch 8、BF16、100步。
+配置 `configs/train/act_pusht_phase1b_fullsplit_batch8_100step.yaml` 与离线 checker
+`scripts/check_phase1b_act_fullsplit_batch8_config.py` 已通过严格离线审计：train/validation 为
+185/21 episodes、23,043/2,607 frames，chunk 50、execute 10、AdamW 1e-5、无 scheduler。
+
+该 gate 每10步记录一次指标，仅在 step 100评估固定 validation 前256 frames，且不保存 checkpoint；
+W&B、Hub、pretrained、环境评测、录制和 EMA 均关闭。100步共处理800个训练样本，只相当于完整训练集
+0.0347 epoch，目标仅为验证 batch-8 显存、吞吐和数值稳定性，不用于 convergence 判断。Preflight
+没有实例化模型、初始化 CUDA、训练、联网或创建 output directory；TorchCodec→PyAV 与无 GPU 审计
+环境下 config runtime device 临时回退 CPU 均为已知预期提示，YAML 的 CUDA/BF16 意图由静态断言锁定。
+
+### Phase 1B full-split batch-8 100-step resource gate PASS
+
+宿主从 `(unitree_rl)` 提示符执行命令，但命令内 `conda activate evla-core` 正确切换环境，训练结束提示符
+也为 `(evla-core)`。完整185/21 split 的100步 batch-8 BF16 训练和一次256-frame capped eval 均完成，
+exit status 0；无 NaN/Inf/OOM、socket、checkpoint 或 output directory。
+
+首/末10-step窗口的 total/L1/KL loss 分别为35.916/0.832/3.508和4.486/0.597/0.389；pre-clip
+grad norm 从668.624降至125.571，全部 finite。Step-100 eval loss 为0.4841。排除首个 warm-up窗口后，
+平均 step time 为0.0602秒、吞吐132.78 samples/s；PyTorch peak allocation 仅0.94 GiB，因此12 GiB
+GPU上的 batch 8资源 gate PASS，无需为了占满显存继续扩大 batch。
+
+全进程 wall time 13.43秒包含初始化和一次 capped eval。基于实测训练吞吐，100k steps 的纯训练约
+100分钟；加入20次完整 validation、4次 checkpoint 和启动开销后，正式训练暂估1小时45分到2小时。
+这是规划值而非正式 benchmark。结构化结果见
+`results/phase1b_act_pusht_fullsplit_batch8_100step.yaml`；raw log 为413行/21,410 bytes，SHA-256
+`874cbd7c5fcbf23f07c7e0c1a72ff58df986f353f3afcf93fe1426864e9fcf26`。
+
+### Phase 1B formal 100k config preflight PASS
+
+正式候选 `configs/train/act_pusht_phase1b_formal_100k.yaml` 固定100,000 steps、batch 8，即800,000
+samples / 34.7177 epochs；每200步记录、每5,000步完整评估2,607 validation frames，每25,000步保存，
+预期 checkpoint steps 为25k/50k/75k/100k。W&B、Hub、pretrained、环境评测、录制和 EMA 继续关闭。
+
+`scripts/check_phase1b_act_formal_config.py` 将其与已通过的100-step resource gate 逐字段比较，只允许
+output/job、steps、log/eval/save cadence 和 checkpoint enable发生变化。首次 preflight 因 checker 在
+`draccus.parse()` 前漏导入 `ACTConfig`，导致 `act` choice 尚未注册而 FAIL；这是 harness import-order
+错误，发生在 dataset factory 之前，无任何 output/cache/model/CUDA/training 副作用。补充显式导入后
+同一严格离线命令 retry PASS，确认185/21 split、23,043/2,607 frames、固定 revision 与全部安全边界。
+
+### Phase 1B formal 100k training execution PASS
+
+宿主在严格离线、W&B/Hub关闭的边界内完成100,000个 batch-8 BF16 optimizer steps，两个退出状态均为0。
+训练覆盖800,000 samples / 34.7177 effective epochs；500个200-step训练窗口和20次完整2,607-frame
+validation eval齐全，没有 NaN/Inf、OOM 或非预期异常。四个计划 checkpoint 均完整生成，`last` 指向
+`100000`。
+
+首/末5个训练窗口均值的 total/L1/KL 为 `3.2306/0.5052/0.2724` 和
+`0.1682/0.0966/0.0070`，L1下降80.88%。Pre-clip grad norm 从首窗口166.212降到末窗口6.516；
+500个窗口中161个高于clip threshold 10、339个不高于10；最后一次超阈值发生在第169个窗口，
+其后的331个窗口连续保持不高于阈值。这里记录的是裁剪前范数，不能解释为optimizer实际使用了
+同样大小的更新。
+
+完整 validation loss 从step 5,000的0.4093降到step 100,000的0.3819，后者也是20次eval最低值；
+首/末5次eval均值为0.40634/0.38922。改善幅度有限且中间有波动，因此只能支持offline held-out loss
+有所改善，不能推出环境success、闭环控制质量或跨分布generalization。
+
+500个训练窗口报告的平均step time为0.064736秒、平均吞吐124.16 samples/s；整体wall time为
+1:52:38，包含20次完整eval、四次checkpoint、初始化与结束开销。trainer报告的peak PyTorch GPU
+allocation为0.94 GiB；`time -v`的maximum RSS为2,883,092 KiB，是主机进程内存口径，不是GPU显存。
+socket messages sent/received均为0。
+
+结构化结果见 `results/phase1b_act_pusht_formal_100k.yaml`，独立checkpoint manifest见
+`results/phase1b_act_pusht_formal_100k_checkpoint_manifest.yaml`。raw log为930行/4,093,821 bytes，
+SHA-256为`3a06879d01e7dd9e3f0bbcad283ec9662ed561f58019b34a8be5ca72436394cd`；较大的字节数来自
+carriage-return进度条帧，不是额外训练记录。
+
+### Phase 1B formal checkpoint reload/fixed-data accuracy PASS
+
+最终step-100,000 checkpoint的model SHA-256与manifest精确一致，并在严格离线下成功加载policy与保存的
+processors。CUDA deployment-path inference遍历train episode 51和held-out validation episode 41的
+全部73个起点，预测均finite；两个episode各7,300个预测标量均在`[0,512]`内。Peak PyTorch allocation
+为222.47 MiB，audit exit status为0。
+
+| Metric | Train ep.51 | Validation ep.41 |
+|---|---:|---:|
+| full chunk MAE | 11.3196 px | 30.8091 px |
+| first 10 MAE | 11.5630 px | 20.7707 px |
+| first action MAE | 10.8186 px | 11.4301 px |
+
+相对先前step-2,000单episode overfit checkpoint，同一检查中的train full-chunk MAE下降33.82%，
+validation full-chunk MAE下降59.85%；validation首10步与首动作MAE分别下降64.53%和77.98%。这说明
+full-split正式训练带来了更好的两集固定数据预测，而不仅是训练loss降低。Train/validation full-chunk
+ratio为0.3674，但不能把该比例解释为generalization score。
+
+该PASS只覆盖一条train与一条held-out episode，不是全部21条validation episodes的accuracy统计，也未
+执行环境动力学、闭环replanning或success判断。原始日志为35行/1,132 bytes，SHA-256为
+`e10d01b95bd04147e80396f0153fd15cb99c9d448da7003174187d822e4a2d51`；完整数值已并入
+`results/phase1b_act_pusht_formal_100k.yaml`。
+
+### Phase 1B five-episode closed-loop demo — execution PASS / success FAIL
+
+最终100k checkpoint在严格离线、单同步环境、固定seeds `20260825..20260829` 下完成5个PushT闭环
+episodes，每集最多300 steps；评测进程、checkpoint接入、processor、环境step、指标聚合和5个本地MP4
+均PASS，exit status为0。5集平均sum reward为132.6601，平均max reward为0.62537，但success为0/5，
+因此任务success gate严格记FAIL，不能展示成成功策略。
+
+最佳episode 3（seed `20260828`）的sum/max reward为232.4367/0.998760。`gym-pusht==0.1.6`以
+`coverage > 0.95`作为success，并将reward定义为clip后的`coverage/0.95`；该峰值对应约94.8822%覆盖，
+只差约0.1178个百分点但仍未越过严格阈值。视频显示T块一度几乎贴合目标，随后发生回退/偏移，所以它
+适合作为诚实的near-miss demo，而不是success案例。Episode 2达到max reward 0.80275；其余轨迹能接触
+和推动T块，但方向、姿态修正或后期稳定性不足。
+
+完整逐seed指标和视频SHA-256见`results/phase1b_act_pusht_demo_5ep.yaml`。该5集诊断证明模型学到了
+有意义的闭环推动行为，也暴露offline loss/MAE改善并不自动转化为稳定环境success。由于项目主线将
+转入LIBERO/VLA，不继续为PushT做大规模调参或50-seed benchmark。
+
+### Phase 1B replanning/temporal-ensemble diagnostic — inference changes do not fix control
+
+为检验“10-step/1秒open-loop过长”假设，使用同一最终checkpoint、相同5个seeds和相同300-step horizon，
+仅将推理`n_action_steps`从10改为5和1。三组执行均PASS，但全部success 0/5：
+
+| Execute steps | Replan interval | Avg sum reward | Avg max reward | Success |
+|---:|---:|---:|---:|---:|
+| 10 | 1.0 s | 132.6601 | 0.62537 | 0/5 |
+| 5 | 0.5 s | 104.6825 | 0.52272 | 0/5 |
+| 1 | 0.1 s | 64.5087 | 0.21664 | 0/5 |
+
+相较exec-10，exec-5的平均sum/max reward下降21.09%/16.41%；exec-1下降51.37%/65.36%，评测时间
+增加35.28%。Exec-5仅改善seeds 20260825和20260826，却使原先较强的另外3个seeds退化；exec-1没有
+在任何seed成为最佳设置，视频中常见接近或轻微接触后缺少持续推动。
+
+因此原主假设不成立：当前失败不能通过单纯提高replanning频率修复。结果反而说明ACT chunk后续动作
+承载了持续、连贯的接触轨迹，频繁丢弃后续动作并重新采样第一动作会破坏连续性。剩余瓶颈更符合
+精细姿态修正与恢复状态的数据覆盖不足、单帧部分可观测性和behavior-cloning distribution shift。
+完整对照见`results/phase1b_act_pusht_replanning_diagnostic_5ep.yaml`。PushT至此冻结，不追加训练或
+大规模seed benchmark，项目转入LIBERO语言条件VLA。
+
+最后补测ACT原始`temporal_ensemble_coeff=0.01`：每步预测重叠50-step chunk并融合，而不是裸exec-1
+直接丢弃旧chunk。该组执行PASS但仍success 0/5，平均sum/max reward为43.3472/0.30802。相较裸exec-1，
+平均max reward提高42.18%，表明ensemble确实缓解了部分瞬时不连贯；但sum reward下降32.80%，未形成
+持续有效推动。相较exec-10，sum/max reward分别下降67.32%/50.75%，原seed-20260828 near-miss也从
+0.998760退化到0.341267。
+
+因此可以排除“缩短执行chunk”以及“补回原始ACT temporal ensembling”作为主要修复。推理平滑不是
+核心瓶颈；失败原因进一步集中到训练数据缺少恢复/精细姿态修正状态、单帧部分可观测性、多模态动作
+表示与普通behavior cloning的闭环分布偏移。该结果关闭PushT推理调参分支。
+
+### Phase 1B checkpoint selection diagnostic — execution PASS / all checkpoints success FAIL
+
+为检验最终checkpoint是否掩盖了训练中途更好的闭环策略，对25k/50k/75k checkpoint复用100k的
+exec-10协议、相同5个seeds和300-step horizon。加上已有100k结果，四组执行均PASS，但20条受控轨迹
+仍全部未成功：
+
+| Checkpoint | Avg sum reward | Avg max reward | Success | 结论 |
+|---:|---:|---:|---:|---|
+| 25k | 140.9775 | 0.76143 | 0/5 | 最佳aggregate |
+| 50k | 76.3645 | 0.29088 | 0/5 | 最差，明显退化 |
+| 75k | 99.0276 | 0.51880 | 0/5 | 部分恢复 |
+| 100k | 132.6601 | 0.62537 | 0/5 | 第二，包含最接近成功的单条轨迹 |
+
+25k相对100k的平均sum/max reward分别高6.27%/21.75%，说明只按最低offline validation loss选择
+100k并不可靠，闭环checkpoint selection确实是一个实质因素。但50k先大幅退化、75k和100k再恢复，
+不符合简单的单调overfitting叙事；更准确的结论是闭环质量沿训练轨迹明显非单调，offline objective与
+环境success存在错位。
+
+视频抽查进一步显示：25k的seed 20260826一度达到高重合姿态，随后又把T块推离；seeds 20260828和
+20260829则停在有少量平移或旋转误差的近目标姿态。75k的seed 20260825也出现“短暂接近、随后退化”。
+因此早期checkpoint改善了到达目标附近的能力，却仍缺少越过严格95% coverage阈值所需的终局精调与
+状态保持。100k seed 20260828的0.998760 max reward仍是四组最接近成功的单条near-miss。
+
+该对照排除了“成功策略藏在已保存的早期checkpoint里”。它支持训练数据覆盖、BC闭环分布偏移和
+offline-to-online model selection共同导致失败，但不能凭5个复用seeds区分各因素的因果占比，也不能
+将20条相关轨迹当作20个独立benchmark样本。完整资产见
+`results/phase1b_act_pusht_checkpoint_selection_5ep.yaml`；至此冻结PushT，不继续checkpoint sweep或
+训练调参，主线转入LIBERO语言条件VLA。
+
 ## 计划步骤
 
 - [x] 经授权下载并固定 PushT 当前实验 snapshot。
@@ -572,9 +799,10 @@ step 的最小链路可执行。两个独立 sample 的 loss 下降不构成 con
 - [x] 固定 deterministic episode-level train/validation split。
 - [x] 宿主验收已保存的2-step、batch-1、BF16 smoke 配置及其严格离线审计脚本；未训练。
 - [x] 经单独授权完成2-step、batch-1、BF16 training smoke。
-- [ ] 根据 smoke 结果建立独立 overfit 配置。
-- [ ] 通过 gate 后再运行正式单 GPU 训练。
-- [ ] 保存曲线、checkpoint manifest、rollout video 和失败案例。
+- [x] 根据 smoke 结果建立并执行独立 overfit 诊断。
+- [x] 完成正式单 GPU 100k训练并保存四个checkpoint。
+- [x] 验证正式100k checkpoint reload与两集固定数据accuracy。
+- [x] 保存checkpoint manifest、rollout video和跨checkpoint失败案例；loss曲线仍待生成。
 - [ ] 在相同评测协议下迁移到一个 LIBERO task。
 
 ## 第一轮训练前必须决定
@@ -585,7 +813,7 @@ step 的最小链路可执行。两个独立 sample 的 loss 下降不构成 con
 - [x] 首轮候选 `n_action_steps=10`，根据 rollout 保留 go/no-go。
 - [x] 首轮候选不使用 pretrained ResNet18；未来权重下载仍需单独授权。
 - [x] batch 1、BF16、gradient accumulation 1 的 smoke 峰值 PyTorch allocation 为0.94 GiB。
-- [ ] 2-step smoke 已 PASS 且不写 checkpoint；正式 overfit steps 与 checkpoint cadence 尚未决定。
+- [x] 正式训练固定100k steps，并以25k cadence保存四个checkpoint。
 - [ ] W&B run name；本地 TensorBoard/JSON metric sink 的 trainer 接入方式。
 
 ## 必须输出
