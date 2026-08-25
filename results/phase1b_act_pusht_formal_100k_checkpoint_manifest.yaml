@@ -1,0 +1,35 @@
+experiment: phase1b_act_pusht_formal_100k
+date: 2026-08-25
+status: COMPLETE
+root: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints
+checkpoint_count: 4
+files_per_checkpoint: 11
+last_symlink_target: "100000"
+checkpoints:
+  - step: 25000
+    directory: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/025000
+    tree_bytes: 619063275
+    model_sha256: c87f7b2dddfd9433b7892a41ad283d12229868c7b74cf36286a515c057e5bb9d
+    optimizer_state_sha256: 3f67ca9baa97c6b4e750a250200c0f58a0c2227050ca139e4f7c0de0a9b73e0a
+    training_step_sha256: a6dc292dbf0e24bc0e8c0a216dca68124c370816c3eacf502cd48319bb942eaf
+  - step: 50000
+    directory: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/050000
+    tree_bytes: 619063275
+    model_sha256: 78d3e75fa04bc42635653dfbb829a96f231e90fe5c7ee9bcd9920e64d99d93b0
+    optimizer_state_sha256: a988a3ffe4fa97c7632b650f5d4dae10eae0cafb2dc6cf516c898bf680660e9d
+    training_step_sha256: ca53a8060f5d468aa766d1ef728361bfa9030b1f5e7b16b2a82a97ba2e57bba4
+  - step: 75000
+    directory: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/075000
+    tree_bytes: 619063275
+    model_sha256: 127466aaefc9880ea08026bca723a68c6d6ac4e03d94ed36db9b1d0e70502a66
+    optimizer_state_sha256: b2e5bd9b5e5b259a0d3a385b3585c11f646c8b9beb66ccf7301b29b67133fa71
+    training_step_sha256: 6767741ada9a9eb31d7f71ba1dddc867d8d02932499f425b5ea20b6fff84b8a6
+  - step: 100000
+    directory: outputs/train/phase1b_act_pusht_formal_100k_bf16/checkpoints/100000
+    tree_bytes: 619063276
+    model_sha256: c9fd17bfe0e909f62b3bb67500e85c46b4c42a75d6edc043508cd5cf22244f01
+    optimizer_state_sha256: f9e9dd0d735d686489208e327bb3e8877bdcc23cab6ea6f08610d37f65525ec1
+    training_step_sha256: 35041d139f63fe9edfc69ed35db0d18f14dce6f58f1d6efef516f1241179b56e
+boundary: >-
+  This manifest establishes checkpoint presence, step metadata and byte-level identity.
+  It does not establish reloadability, inference correctness, fixed-data accuracy or rollout success.

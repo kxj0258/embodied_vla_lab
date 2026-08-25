@@ -1,0 +1,63 @@
+# Phase 1B single-episode ACT overfit candidate.
+# This file is inert until explicitly passed to lerobot-train. Training requires separate authorization.
+
+dataset:
+  repo_id: lerobot/pusht
+  root: /home/kxj/.cache/huggingface/lerobot/lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  video_backend: pyav
+  use_imagenet_stats: false
+  image_transforms:
+    enable: false
+  # The factory holds out the tail: episode 51 trains, equal-length episode 41 validates.
+  episodes: [51, 41]
+  eval_split: 0.5
+
+policy:
+  type: act
+  device: cuda
+  use_amp: false
+  push_to_hub: false
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+
+output_dir: outputs/train/phase1b_act_pusht_overfit_ep51_bf16
+job_name: phase1b_act_pusht_overfit_ep51_bf16
+resume: false
+seed: 20260825
+cudnn_deterministic: true
+
+num_workers: 0
+batch_size: 1
+prefetch_factor: 4
+persistent_workers: false
+dataloader_multiprocessing_context: null
+
+steps: 2000
+env_eval_freq: 0
+log_freq: 20
+eval_steps: 100
+max_eval_samples: 0
+
+# Save only the final checkpoint. A non-positive save_freq disables periodic saves.
+save_checkpoint: true
+save_freq: 0
+save_checkpoint_to_hub: false
+use_policy_training_preset: true
+
+accelerator:
+  mixed_precision: bf16
+  gradient_accumulation:
+    steps: 1
+
+wandb:
+  enable: false
+  mode: disabled
+
+eval:
+  recording: false
+  recording_repo_id: null
+
+ema:
+  enable: false

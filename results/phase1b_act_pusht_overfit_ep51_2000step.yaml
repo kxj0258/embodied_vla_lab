@@ -1,0 +1,163 @@
+experiment: phase1b_act_pusht_overfit_ep51_2000step
+date: 2026-08-25
+execution_status: PASS
+overfit_gate_status: NO_GO
+project_commit: 16232e3
+
+dataset:
+  repo_id: lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  train_episode: 51
+  train_frames: 73
+  validation_episode: 41
+  validation_frames: 73
+  video_backend: pyav
+
+config:
+  source: configs/train/act_pusht_phase1b_overfit_ep51.yaml
+  steps: 2000
+  batch_size: 1
+  gradient_accumulation_steps: 1
+  effective_batch_size: 1
+  mixed_precision: bf16
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  optimizer: adamw
+  learning_rate: 1.0e-5
+  grad_clip_norm: 10.0
+  scheduler: null
+  log_freq: 20
+  eval_steps: 100
+  save_policy: final_checkpoint_only
+
+metrics:
+  train_windows: 100
+  first_5_window_l1_mean: 0.5182
+  last_5_window_l1_mean: 0.1584
+  l1_reduction_fraction: 0.6943265148591278
+  minimum_window_l1: 0.148
+  last_5_window_total_loss_mean: 2.0428
+  last_5_window_kld_loss_mean: 0.1884
+  grad_norm_before_clip:
+    first_window: 817.961
+    final_window: 167.490
+    minimum: 154.817
+    maximum: 817.961
+  peak_pytorch_allocated_gib: 0.94
+  eval:
+    count: 20
+    first_step: 100
+    first_loss: 1.0164
+    minimum_step: 1300
+    minimum_loss: 0.6051
+    final_step: 2000
+    final_loss: 0.6604
+  nan_or_inf_detected: false
+
+stop_criteria:
+  last_5_window_l1_at_most_0_10: false
+  l1_reduction_at_least_0_80: false
+  bounded_2000_steps_completed: true
+  interpretation: >-
+    Training was numerically stable and learned substantially, but it did not meet the
+    predeclared single-episode memorization threshold. Do not automatically extend training.
+
+process:
+  exit_status: 0
+  wall_time_s: 97.33
+  user_time_s: 105.75
+  system_time_s: 14.73
+  max_resident_set_kib: 2864952
+  socket_messages_sent: 0
+  socket_messages_received: 0
+
+artifacts:
+  raw_log: results/raw/phase1b_act_pusht_overfit_ep51_2000step.log
+  raw_log_bytes: 88267
+  raw_log_lines: 426
+  raw_log_sha256: 202d61be490fe96ccac2983bf44e875e37e7a994da873fac14943530fc904645
+  checkpoint: outputs/train/phase1b_act_pusht_overfit_ep51_bf16/checkpoints/002000
+  checkpoint_tree_bytes: 619068090
+  checkpoint_files: 11
+  last_symlink_target: "002000"
+  model_sha256: 648d8a6f36db4c8762048686d93f9899261fa69c7096ab486c85608d6471a2f9
+  optimizer_state_sha256: eaa52fc3d68d1bab819a40b1d0126fbbdb0cbd97a70424a9eaa7456ba5ec330a
+  training_step_sha256: dced1575e857f36c7eca5bf3f22922b620259bcbae7852d6f1b784c116660c23
+  reload_inference_log: results/raw/phase1b_act_pusht_overfit_ep51_reload_inference.log
+  reload_inference_log_bytes: 601
+  reload_inference_log_lines: 12
+  reload_inference_log_sha256: a0972d4907ecf06f64eb0c869927ea1d406ddd5a5e7c66ceaaff28b5dae26958
+  checkpoint_accuracy_log: results/raw/phase1b_act_pusht_overfit_ep51_checkpoint_accuracy.log
+  checkpoint_accuracy_log_bytes: 1135
+  checkpoint_accuracy_log_lines: 35
+  checkpoint_accuracy_log_sha256: ee2ce7a45a57a08b7535fb899b35a95467f8bd9bc22129ec41c788bcd8644272
+
+checkpoint_reload_inference:
+  status: PASS
+  checkpoint_step: 2000
+  dataset_episode: 51
+  dataset_local_index: 0
+  device: cuda:0
+  normalized_chunk_shape: [1, 50, 2]
+  normalized_chunk_min: -2.937850
+  normalized_chunk_max: 1.204013
+  action_chunk_shape: [1, 50, 2]
+  action_chunk_min: 11.840057
+  action_chunk_max: 350.566895
+  first_unnormalized_action: [85.241943359375, 277.31414794921875]
+  peak_pytorch_allocated_mib: 222.39
+  finite: true
+  boundary: >-
+    This proves local checkpoint and processor reload plus one fixed-sample action-chunk
+    inference. It does not prove action accuracy, rollout control, success, or generalization.
+
+checkpoint_fixed_data_accuracy:
+  status: PASS
+  batch_size: 8
+  train_episode:
+    episode: 51
+    frames: 73
+    full_chunk_valid_values: 4850
+    full_chunk_mae: 17.103336
+    first_10_valid_values: 1370
+    first_10_mae: 20.733772
+    first_action_values: 146
+    first_action_mae: 19.998398
+    prediction_min: -4.916931
+    prediction_max: 367.070312
+    outside_0_512_values: 15
+    predicted_values: 7300
+  validation_episode:
+    episode: 41
+    frames: 73
+    full_chunk_valid_values: 4850
+    full_chunk_mae: 76.729599
+    first_10_valid_values: 1370
+    first_10_mae: 58.561540
+    first_action_values: 146
+    first_action_mae: 51.905930
+    prediction_min: 105.201935
+    prediction_max: 313.376190
+    outside_0_512_values: 0
+    predicted_values: 7300
+  train_to_validation_full_chunk_mae_ratio: 0.222904
+  peak_pytorch_allocated_mib: 222.47
+  interpretation: >-
+    Deployment-path predictions are substantially more accurate on the single training
+    episode than on the equal-length held-out episode, demonstrating memorization. Absolute
+    train error remains material and the predeclared overfit threshold remains unmet.
+    Range statistics include padded prediction positions, while all MAE metrics exclude padding.
+
+safety:
+  network_disabled: true
+  wandb_disabled: true
+  policy_hub_push_disabled: true
+  checkpoint_hub_push_disabled: true
+  pretrained_download_disabled: true
+  environment_evaluation_disabled: true
+  gui_used: false
+
+expected_exceptions:
+  - TorchCodec ABI loader failed during import and fell back to the explicitly configured PyAV backend.
+  - The wrapper command ended with exit, so a dedicated terminal closed after the successful training process returned status 0.
