@@ -1,0 +1,58 @@
+# Phase 1A fixed PushT Dataset v3 contract.
+# This file pins data and analysis decisions only; it is not a training config.
+
+repo_id: lerobot/pusht
+revision: 7628202a2180972f291ba1bc6723834921e72c19
+root: /home/kxj/.cache/huggingface/lerobot/lerobot/pusht
+codebase_version: v3.0
+fps: 10
+video_backend: pyav
+
+expected:
+  payload_files: 8
+  payload_bytes: 7686801
+  total_episodes: 206
+  total_frames: 25650
+  total_tasks: 1
+  image_shape_hwc: [96, 96, 3]
+  state_shape: [2]
+  action_shape: [2]
+
+split:
+  method: length_stratified_random_one_per_stratum
+  seed: 20260825
+  validation_count: 21
+  validation_episodes:
+    - 4
+    - 8
+    - 16
+    - 20
+    - 22
+    - 39
+    - 40
+    - 41
+    - 42
+    - 43
+    - 61
+    - 65
+    - 67
+    - 96
+    - 115
+    - 119
+    - 138
+    - 150
+    - 156
+    - 182
+    - 199
+
+analysis:
+  action_window_size: 100
+  chunk_candidates: [25, 50, 75, 100]
+  sample_indices: [0, 100, 160, 25649]
+  normalization_sample_index: 100
+
+first_training_candidate:
+  chunk_size: 50
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  normalization: MEAN_STD
