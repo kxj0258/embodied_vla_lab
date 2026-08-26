@@ -1,0 +1,73 @@
+audit: pusht_run_asset_audit
+date: 2026-08-26
+status: PASS
+baseline_commit_before_audit: 30394f2
+
+before_audit:
+  tracked_training_configs: 7
+  tracked_phase_checkers: 9
+  local_raw_logs: 29
+  local_raw_logs_with_time_captured_command: 25
+  local_raw_logs_without_time_captured_command: 4
+  raw_logs_git_tracked: false
+  outputs_git_tracked: false
+  standalone_critical_host_run_coverage: INCOMPLETE
+  conclusion: >-
+    Configurations and structured result provenance were strong, but many exact host commands existed only in
+    ignored raw logs, conversation history, or scattered README/handoff blocks.
+
+after_audit:
+  controlled_entrypoint: scripts/runs/pusht.sh
+  profiles: 28
+  profile_dry_run_status: PASS
+  shell_syntax_status: PASS
+  overwrite_protection: true
+  strict_offline_environment: true
+  timed_process_metrics: true
+  log_sha256_and_size: true
+  training_authorization_implicit: false
+  documentation: docs/pusht_reproducibility.md
+
+coverage:
+  offline_preflight: [deterministic_act, diffusion]
+  checkpoint_accuracy: [vae_act_100k, deterministic_act_30k]
+  training:
+    - act_smoke_2step
+    - act_overfit_2000step
+    - act_batch8_resource_gate_100step
+    - vae_act_100k
+    - deterministic_act_30k
+    - diffusion_resource_gate_2step
+    - diffusion_ema_30k
+  closed_loop:
+    - vae_act_checkpoint_selection_and_replanning_diagnostics
+    - deterministic_act_checkpoint_selection
+    - deterministic_act_vs_vae_100seed
+    - diffusion_ema_checkpoint_selection
+    - diffusion_ema_100seed
+    - diffusion_success_video_sequence
+
+generated_artifact_boundary:
+  tracked:
+    - configs
+    - checkers_and_run_profiles
+    - structured_results
+    - checkpoint_and_video_hashes
+    - narrative_readmes_and_handoffs
+  ignored_but_preserved_on_current_host:
+    - dataset_cache
+    - checkpoints
+    - eval_info_json
+    - raw_logs
+    - videos
+  reason: Generated artifacts are large; the Diffusion checkpoint tree alone is approximately 15 GB.
+
+reproduction_limits:
+  - A fresh clone still requires the staged evla-core installation and pinned local dataset snapshot.
+  - diffusers 0.39.0 is a separately authorized pip-layer dependency.
+  - Recomputed model weights may differ across CUDA/software stacks even with the same nominal seed.
+  - Diffusion closed-loop trajectories were not bitwise stable across separate processes.
+
+boundary: >-
+  This audit created inert scripts and documentation only. It did not run training, evaluation, download,
+  upload, GUI, commit, or push.

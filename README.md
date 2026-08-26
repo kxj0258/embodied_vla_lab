@@ -2,7 +2,7 @@
 
 Embodied VLA Lab 是一个面向具身智能算法工程师岗位的长期学习与复现项目。项目以仿真为先，围绕 LeRobot、LIBERO 和 OpenVLA，系统研究机器人模仿学习、视觉语言动作模型、ego-view 操作学习和小型世界模型，并最终迁移到 Feagine A03 连续体机械臂。
 
-> 当前状态：Phase 0——`evla-core` 的 CUDA、BF16、LeRobot、PushT 和随机初始化 ACT 接口已通过宿主复核；MuJoCo EGL 与 LIBERO runtime 尚待验证。尚未下载数据集、checkpoint 或运行训练。
+> 当前状态（2026-08-26）：Phase 0、Phase 1A、Phase 1B ACT和Phase 1C Diffusion Policy PushT baseline均已完成并本地提交。固定206-episode PushT snapshot已完成185/21 split；ACT与Diffusion均完成训练、checkpoint、固定seed闭环、独立100-seed评测和成功视频。MuJoCo EGL与LIBERO offline reset/step/双相机渲染已验证；下一阶段是固定一个LIBERO任务与demonstration合同并建立训练评测闭环。
 
 ## 项目目标
 
@@ -70,6 +70,11 @@ Feagine high-level action → PCC IK/controller → MuJoCo
 | PushT | 0.1.6, headless reset/step/render PASS |
 | GPU architecture | compute capability 12.0 / `sm_120` |
 | ACT interface | image/state → `[1,100,2]` action chunk PASS |
+| PushT dataset | revision `7628202a...`, 206 episodes, 185/21 split |
+| Deterministic ACT 30k | 6/100 success，1.17 s/episode |
+| VAE ACT 25k | 2/100 success |
+| Diffusion EMA 30k | 4/100 success，45.55 s/episode |
+| MuJoCo / LIBERO | EGL physics、offline reset/step、双相机RGB PASS |
 
 环境决策、安装顺序和已知例外见 [Phase 0 记录](docs/phases/phase_00_environment.md) 与 [兼容性矩阵](docs/compatibility.md)。宿主侧复核命令：
 
@@ -128,13 +133,31 @@ W&B 用于在线跟踪，本地同时保存配置、JSON/CSV 指标以及 Tensor
 
 | Demo | 状态 | 产物 |
 |---|---|---|
-| PushT ACT | 环境/接口已验证，训练未开始 | contract / training curve / checkpoint / rollout video |
+| PushT deterministic ACT | 完成；独立100-seed为6% success | 配置、checkpoint manifest、结构化结果、成功视频 |
+| PushT Diffusion Policy | 完成；独立100-seed为4% success，dense reward优于ACT但推理约慢39倍 | EMA checkpoint、配对统计、两个成功视频 |
 | ACT on LIBERO | 未开始 | success rate / FPS / failure cases |
 | OpenVLA inference | 未开始 | 4-bit latency / VRAM / rollout |
 | Ego-view | 未开始 | viewpoint ablation |
 | Feagine transfer | 未开始 | instruction-to-controller simulation demo |
 
 所有数值结果将在实验完成后填写，不使用预计结果代替实测结果。
+
+## PushT复现入口
+
+关键训练与评测不再只依赖对话或被忽略的raw log。受控profile入口为：
+
+```bash
+cd /home/kxj/embodied_ws/embodied_vla_lab
+conda activate evla-core
+scripts/runs/pusht.sh --list
+EVLA_DRY_RUN=1 scripts/runs/pusht.sh diffusion-30k-train
+```
+
+脚本默认严格离线，并拒绝覆盖已有log或output；选择训练profile仍不等于获得训练授权。完整的命令资产审计、
+profile到结构化结果的映射、生成文件边界和随机Diffusion轨迹的复现限制见
+[PushT reproducibility audit](docs/pusht_reproducibility.md)。ACT细节见
+[ACT baseline](experiments/act_baseline/README.md)，Diffusion细节见
+[Diffusion Policy baseline](experiments/diffusion_policy/README.md)。
 
 ## 开发规则
 

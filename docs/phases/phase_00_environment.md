@@ -594,6 +594,14 @@ manifest；可追踪的结论继续写入实验 Markdown 记录。`.gitignore` �
 - `configs/env/pusht_96.yaml`：PushT 96×96 observation/action runtime contract。
 - `scripts/check_phase0_core.py`：宿主侧可重复执行的 core smoke test。
 
+## Phase 1C environment addendum（2026-08-26）
+
+经单独授权在`evla-core`安装`diffusers==0.39.0`，与pinned LeRobot的约束
+`diffusers>=0.38.0,<0.40.0`及其lockfile版本一致。严格离线Diffusion配置preflight、2-step GPU资源
+gate和30k正式训练均PASS。该后续增量没有合并进conda base YAML；原因与PyTorch自定义index、editable
+LeRobot和`gym-pusht --no-deps`相同：它属于按阶段授权的pip层。完整运行入口见
+`scripts/runs/pusht.sh`，结果见`results/phase1c_diffusion_pusht_*.yaml`。
+
 ## 下一步
 
 1. 单独授权后提交 Phase 0 文档记录。

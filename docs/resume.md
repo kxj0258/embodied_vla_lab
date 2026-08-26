@@ -1,6 +1,6 @@
 # Resume Material
 
-本文件用于积累秋招项目表述。当前所有定量结果均为待填，不得将路线目标写成已经完成的结果。
+本文件用于积累秋招项目表述。PushT阶段已有实测结果；LIBERO、OpenVLA、ego-view和Feagine相关占位不得写成已经完成。
 
 ## 项目名称候选
 
@@ -23,7 +23,7 @@
 以下表述必须在结果完成后替换 `[待填]`：
 
 - 设计 LeRobotDataset/LIBERO/OpenVLA 间的数据与动作适配层，统一图像、语言、机器人状态、动作 chunk、坐标系和 normalization 元数据。
-- 在单张 RTX 5070 Ti Laptop GPU 上复现 ACT 与 Diffusion Policy，在 `[待填任务]` 上取得 `[待填成功率]`，推理速度 `[待填 FPS]`。
+- 在单张 RTX 5070 Ti Laptop GPU 上完成PushT ACT与Diffusion Policy闭环：固定同一dataset revision和100个held-out seeds，deterministic ACT、VAE ACT、Diffusion EMA分别取得6%、2%、4% success；Diffusion平均max reward从deterministic ACT的0.516提高到0.651，但100-step DDPM推理延迟约增加39倍。
 - 搭建 LIBERO 语言条件 MuJoCo 评测流程，完成 `[待填数量]` 个任务、`[待填 episodes]` 次 rollout，并建立 perception/action/temporal failure taxonomy。
 - 实现 OpenVLA 4-bit 推理与 `[待填：QLoRA 是否完成]`，将峰值显存控制在 `[待填]`，分析动作 tokenization 与反归一化流程。
 - 构建 ego-view 视角对照实验，通过 `[待填方法]` 将 `[待填指标]` 改善 `[待填]`。
@@ -39,9 +39,9 @@
 
 - [ ] 可公开仓库。
 - [ ] 系统架构图。
-- [ ] ACT training curve 与 rollout video。
+- [x] ACT与Diffusion训练指标、checkpoint manifest、100-seed结果和成功rollout video。
 - [ ] LIBERO success rate 与失败案例。
 - [ ] OpenVLA latency/VRAM 表。
 - [ ] ego-view ablation。
 - [ ] Feagine simulation demo。
-- [ ] 精确复现环境与命令。
+- [x] PushT固定数据/配置、受控run profiles、结构化结果与checkpoint/video SHA-256；Diffusion跨进程轨迹非bitwise确定性的边界已记录。

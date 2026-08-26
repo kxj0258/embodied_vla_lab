@@ -25,6 +25,8 @@ venv/
 # Experiment trackers and generated outputs
 wandb/
 runs/
+!scripts/runs/
+!scripts/runs/pusht.sh
 tensorboard/
 outputs/
 artifacts/

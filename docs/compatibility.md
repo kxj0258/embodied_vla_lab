@@ -49,6 +49,7 @@ Codex 沙箱不可访问宿主 GPU，CUDA 命令由用户在宿主终端执行�
 | CUDA architecture | `(12,0)`, `sm_120` | 已验证 |
 | LeRobot | 0.6.2 editable pinned source | 已验证 |
 | gym-pusht | 0.1.6 | headless reset/step/render 已验证 |
+| diffusers | 0.39.0 | Phase 1C Diffusion Policy训练与评测已验证；符合LeRobot `<0.40.0,>=0.38.0` |
 | OpenCV | headless 4.13.0.92 only | 已验证 |
 | W&B | 0.27.2 | import 已验证；login/run 延后 Phase 1 并单独授权 |
 | TensorBoard | 2.21.0，由 robomimic 传递安装 | event write/read + JSONL roundtrip 已验证 |

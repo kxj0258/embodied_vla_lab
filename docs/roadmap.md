@@ -1,5 +1,19 @@
 # Embodied VLA Lab Roadmap
 
+## 当前进展（2026-08-26）
+
+- [x] Phase 0：`evla-core`、CUDA/BF16、LeRobot、PushT、MuJoCo EGL与LIBERO offline runtime接口。
+- [x] Phase 1A：固定PushT dataset revision、206 episodes数据审计与185/21 split。
+- [x] Phase 1B：VAE ACT 100k与deterministic ACT 30k训练、checkpoint、闭环及100-seed对照。
+- [x] Phase 1C：Diffusion Policy 30k EMA baseline、checkpoint选择、100-seed对照与成功视频。
+- [x] PushT受控复现profile、结构化结果和checkpoint/video哈希清单。
+- [x] Phase 2A runtime gate：LIBERO offline reset/step与双相机EGL RGB。
+- [ ] Phase 2A task gate：固定一个LIBERO任务、demonstration revision、observation/action合同与评测协议。
+
+当前PushT结论：deterministic ACT、VAE ACT、Diffusion EMA的独立100-seed success分别为6%、2%、4%。
+Diffusion的配对dense reward与峰值接近度稳定优于ACT，但没有建立更高的稀疏success，且100-step DDPM
+推理约为deterministic ACT的39倍。下一阶段不再追加同数据PushT训练，除非预注册新的数据或推理消融。
+
 ## 总体原则
 
 项目采用 simulation first、interface first、measurement first 的路线。每个阶段都有明确 gate；上一阶段的数据契约、动作语义或评测闭环未通过时，不增加模型规模。
