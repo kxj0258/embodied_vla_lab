@@ -17,6 +17,9 @@ Set EVLA_DRY_RUN=1 to print the resolved command without running it.
 Audit / preflight:
   act-deterministic-preflight    diffusion-preflight
   act-formal-accuracy            act-deterministic-accuracy
+  phase1d-reference-strict-gpu-load
+  phase1d-reference-migrate-v2     phase1d-reference-verify-v2
+  phase1d-reference-single-step
 
 Training (requires separate authorization):
   act-smoke-train                act-overfit-train
@@ -25,6 +28,8 @@ Training (requires separate authorization):
   diffusion-30k-train
 
 Closed-loop evaluation:
+  phase1d-reference-dev-5ep
+  phase1d-reference-final-100seed
   act-vae-25k-5ep                act-vae-50k-5ep
   act-vae-75k-5ep                act-vae-100k-5ep
   act-vae-100k-exec1-5ep         act-vae-100k-exec5-5ep
@@ -117,6 +122,33 @@ case "$PROFILE" in
     LOG_PATH="results/raw/phase1c_diffusion_pusht_baseline_30k_preflight_rerun.log"
     COMMAND=(python scripts/check_phase1c_diffusion_baseline_config.py)
     ;;
+  phase1d-reference-strict-gpu-load)
+    LOG_PATH="results/raw/phase1d_pusht_reference_checkpoint_strict_gpu_load_repro.log"
+    COMMAND=(python scripts/check_phase1d_pusht_reference_strict_gpu_load.py
+      --checkpoint-dir outputs/reference/phase1d_pusht_diffusion_official_84a7c231/source
+      --device cuda:0)
+    ;;
+  phase1d-reference-migrate-v2)
+    LOG_PATH="results/raw/phase1d_pusht_reference_checkpoint_processor_migration_v2_repro.log"
+    OUTPUT_PATH="outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2_repro"
+    COMMAND=(python scripts/migrate_phase1d_pusht_reference_checkpoint.py
+      --source-dir outputs/reference/phase1d_pusht_diffusion_official_84a7c231/source
+      --output-dir "$OUTPUT_PATH")
+    ;;
+  phase1d-reference-verify-v2)
+    LOG_PATH="results/raw/phase1d_pusht_reference_checkpoint_migrated_bundle_verify_repro.log"
+    COMMAND=(python scripts/check_phase1d_pusht_migrated_bundle.py
+      --source-dir outputs/reference/phase1d_pusht_diffusion_official_84a7c231/source
+      --bundle-dir outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2)
+    ;;
+  phase1d-reference-single-step)
+    LOG_PATH="results/raw/phase1d_pusht_reference_checkpoint_single_step_seed20261001.log"
+    COMMAND=(python scripts/check_phase1d_pusht_reference_single_step.py
+      --checkpoint-dir outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2
+      --env-config configs/env/pusht_96.yaml
+      --seed 20261001
+      --device cuda:0)
+    ;;
   act-formal-accuracy)
     LOG_PATH="results/raw/phase1b_act_pusht_formal_100k_checkpoint_accuracy_rerun.log"
     COMMAND=(python scripts/check_phase1b_act_checkpoint_accuracy.py
@@ -202,6 +234,12 @@ case "$PROFILE" in
     set_eval outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/030000/pretrained_model_ema phase1c_diffusion_pusht_ema_030000_replay_through_seed20260860 31 20260830
     COMMAND[0]=python
     COMMAND=(python scripts/eval_render_all_episodes.py "${COMMAND[@]:1}")
+    ;;
+  phase1d-reference-dev-5ep)
+    set_eval outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2 phase1d_pusht_reference_dev_seed20261010_5ep 5 20261010
+    ;;
+  phase1d-reference-final-100seed)
+    set_eval outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2 phase1d_pusht_reference_final_seed20261101_100ep 100 20261101
     ;;
   *)
     echo "Unknown profile: $PROFILE" >&2

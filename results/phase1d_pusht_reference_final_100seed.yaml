@@ -1,0 +1,76 @@
+experiment: phase1d_pusht_reference_final_seed20261101_100ep
+date: 2026-08-26
+work_package: WP1.4
+classification: PASS
+exit_status: 0
+checkpoint:
+  root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2
+  source_revision: 84a7c23178445c6bbf7e1a884ff497017910f653
+  model_sha256: 42bddc7d0fe1ef928d708c207a2c9bb8ab7166c2d2b28d3c6abb955e18fb7594
+protocol:
+  kind: preregistered_final
+  seed_range: 20261101..20261200
+  episodes: 100
+  policy_horizon: 16
+  policy_action_steps: 8
+  diffusion_denoising_steps: 100
+  batch_size: 1
+  async_envs: false
+  environment: PushT-v0
+  episode_length: 300
+  image_shape: [3, 96, 96]
+  device: cuda
+  amp: false
+  network_used: false
+  training_executed: false
+metrics:
+  success_count: 63
+  success_total: 100
+  success_percent: 63.0
+  success_wilson_95_percent: [53.22052958094291, 71.81763946567547]
+  average_sum_reward: 106.62654465239943
+  sum_reward_range: [0.0, 233.66083296140351]
+  average_max_reward: 0.9470129047201568
+  max_reward_range: [0.0, 1.0]
+  failed_episodes_with_max_reward_ge_0_99: 10
+  successful_episodes_with_max_reward_eq_1: 63
+  evaluation_s: 3020.1453382968903
+  evaluation_s_per_episode: 30.201453382968904
+  process_wall_time_s: 3026.68
+  maximum_resident_set_kib: 3387556
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  peak_vram: NOT_RECORDED_BY_EVALUATOR
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+frozen_baseline_comparisons:
+  deterministic_act_30k: {success: 6/100, difference_percentage_points: 57.0, fisher_exact_greater_p: 7.775596447657449e-19}
+  vae_act_25k: {success: 2/100, difference_percentage_points: 61.0, fisher_exact_greater_p: 4.819210429896497e-23}
+  local_diffusion_ema_30k: {success: 4/100, difference_percentage_points: 59.0, fisher_exact_greater_p: 9.447294255755568e-21, evaluation_s_per_episode: 45.55, reference_speedup_percent: 33.69604087163797}
+statistical_boundary: >-
+  This preregistered result establishes that the official recipe checkpoint is decisively
+  above all frozen single-digit local baselines in this evaluator. Fisher tests assume
+  independent Bernoulli episodes and compare different fixed seed sets. The experiment
+  cannot isolate one causal factor because checkpoint provenance, training budget, batch,
+  horizon/action window, crop, GroupNorm, and normalization differ together.
+artifacts:
+  output_root: outputs/eval/phase1d_pusht_reference_final_seed20261101_100ep
+  output_du: 1.3M
+  eval_info: {bytes: 10621, sha256: 3b4fb1e93f815aee8fa39abf80265cf5caf3b8fdd52e939f84a12ebb5c2162d9}
+  rendered_videos: 10
+  video_sha256:
+    0: 1b408305ec31f6d8a05b4c9ff110f0da4812031d6638be51ffd5d991a0f5244f
+    1: 4b639f76c3598f0a18d144b155508ad1f3d81d63622bf8626d9876fa458e9d5e
+    2: 60d66c7a84b519750a2e146e02f96eab30d63e0367a9530fc9c574b3594259e4
+    3: e164ce72ecc637766d1f146b3177350eb8a60ad9718a4ee1ef267665b315abc2
+    4: b66eec19941554b8038c7b90279a75c9595b9ff7d0d7e19e526db66cea869786
+    5: 97bfd3a364918a1d05510d9f521616ed33025a408a065dfd0f0095cc6c8072d1
+    6: 6380aeef489a042acc9b1a148fa8f762076715921417cc255504827114184234
+    7: ceb8ecdca69a61e595d45ca13f9eaa388af5585a620c2fc47a1810ee48036f91
+    8: 43f291c63741f5303a7d6e627ec1612e00372ebc138a70e5510661c88c076cd2
+    9: e982b5b13b493dbb6c92dd1b85b7b26f0cced2ecf393100cf4dc5f0fbe728caf
+  raw_log: {path: results/raw/phase1d_pusht_reference_final_seed20261101_100ep.log, lines: 25473, bytes: 3312905, sha256: 66872f08b3154cb54cb239e868b76c87a3a8231d9977a6320104e2c5a1ce7fd1}
+phase_status: COMPLETE
+commit_created: false
+pushed: false

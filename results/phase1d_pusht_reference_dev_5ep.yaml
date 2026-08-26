@@ -1,0 +1,89 @@
+experiment: phase1d_pusht_reference_dev_seed20261010_5ep
+date: 2026-08-26
+work_package: WP1.3
+classification: PASS
+exit_status: 0
+
+checkpoint:
+  root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2
+  source_revision: 84a7c23178445c6bbf7e1a884ff497017910f653
+  model_sha256: 42bddc7d0fe1ef928d708c207a2c9bb8ab7166c2d2b28d3c6abb955e18fb7594
+
+protocol:
+  kind: development_only
+  evaluator_seed: 20261010
+  episodes: 5
+  historical_final_seeds_used: false
+  policy_horizon: 16
+  policy_action_steps: 8
+  diffusion_denoising_steps: 100
+  batch_size: 1
+  async_envs: false
+  environment: PushT-v0
+  episode_length: 300
+  image_shape: [3, 96, 96]
+  device: cuda
+  amp: false
+  network_used: false
+  training_executed: false
+
+metrics:
+  successes: [false, true, true, true, true]
+  success_count: 4
+  success_total: 5
+  success_percent: 80.0
+  success_wilson_95_percent: [37.55346297625253, 96.37758913675698]
+  sum_rewards: [106.03331298461104, 127.5909288950679, 106.02442269165907, 45.586991088019985, 114.57740315895016]
+  average_sum_reward: 99.96261176366164
+  max_rewards: [0.9974056661258167, 1.0, 1.0, 1.0, 1.0]
+  average_max_reward: 0.9994811332251633
+  evaluation_s: 176.66306519508362
+  evaluation_s_per_episode: 35.33261303901672
+  process_wall_time_s: 184.07
+  maximum_resident_set_kib: 3385900
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  peak_vram: NOT_RECORDED_BY_EVALUATOR
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+
+comparison_boundary:
+  frozen_phase1c_diffusion_success: 4/100
+  frozen_phase1c_diffusion_average_sum_reward: 86.8430
+  frozen_phase1c_diffusion_average_max_reward: 0.65133
+  frozen_phase1c_diffusion_s_per_episode: 45.55
+  observed_s_per_episode_reduction_percent: 22.431145907756918
+  interpretation: >-
+    Four successes in five development episodes are strong evidence that the official
+    recipe checkpoint and migrated evaluator path can achieve sparse PushT success.
+    The sample is too small and uses different seeds/checkpoint recipe, so it is not a
+    final success-rate estimate or a valid significance test against frozen 100-seed baselines.
+    Episode 0 reached max reward 0.9974 but was not successful, confirming that near-one
+    dense reward must not be substituted for the evaluator's strict success field.
+
+artifacts:
+  output_root: outputs/eval/phase1d_pusht_reference_dev_seed20261010_5ep
+  output_du: 576K
+  eval_info:
+    bytes: 2671
+    sha256: 78acb270b56dec74b43c8b94888761cd786ef23d3c7111397d168e84dfc4546e
+  videos:
+    - {episode: 0, bytes: 153836, sha256: c1643b2aaa6d3430cc9c9441b44366f55fe4e9381fea1f2a50515218437241a3}
+    - {episode: 1, bytes: 118130, sha256: fc37be31cfa7824669dd4258103d5e68b817fb6d0fc47d0cda6646b1c26c2748}
+    - {episode: 2, bytes: 88416, sha256: 1d8a8a6e5ee64439390047dcfba2c2f9870087a3fd95d3ce171320a9b4380a86}
+    - {episode: 3, bytes: 51514, sha256: 5ea98f6b79ded9da3b97030a85faec469bdf17cb937d8ff98aa04d2457f46bc2}
+    - {episode: 4, bytes: 155478, sha256: 308641d1dabe356764362388c107b763d01bccb0609e96ffa2d5a1ba9b9764aa}
+  raw_log:
+    path: results/raw/phase1d_pusht_reference_dev_seed20261010_5ep.log
+    lines: 1405
+    bytes: 175449
+    sha256: 0106d2bb961fb5800a8daca6a279c5525e3adba21ac1c1f9fb787c051a0627bf
+
+next_gate:
+  id: WP1.4_final_100seed
+  preregistered_seed_range: 20261101..20261200
+  authorization_required: true
+
+commit_created: false
+pushed: false

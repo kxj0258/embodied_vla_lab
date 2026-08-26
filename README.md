@@ -2,7 +2,7 @@
 
 Embodied VLA Lab 是一个面向具身智能算法工程师岗位的长期学习与复现项目。项目以仿真为先，围绕 LeRobot、LIBERO 和 OpenVLA，系统研究机器人模仿学习、视觉语言动作模型、ego-view 操作学习和小型世界模型，并最终迁移到 Feagine A03 连续体机械臂。
 
-> 当前状态（2026-08-26）：Phase 0、Phase 1A、Phase 1B ACT和Phase 1C Diffusion Policy PushT baseline均已完成并本地提交。固定206-episode PushT snapshot已完成185/21 split；ACT与Diffusion均完成训练、checkpoint、固定seed闭环、独立100-seed评测和成功视频。MuJoCo EGL与LIBERO offline reset/step/双相机渲染已验证；下一阶段是固定一个LIBERO任务与demonstration合同并建立训练评测闭环。
+> 当前状态（2026-08-26）：Phase 0、Phase 1A、Phase 1B ACT、Phase 1C本地Diffusion及Phase 1D官方PushT复现均已完成。官方`lerobot/diffusion_pusht@84a7c231...f653`经兼容迁移后，在预注册、未使用的`20261101..20261200` 100-seed final上成功63/100（Wilson 95%约53.2%–71.8%），平均sum/max reward为106.6265/0.947013，30.20秒/集；显著高于冻结det-ACT 6/100、VAE-ACT 2/100和本地Diffusion 4/100。结果证明评测栈可复现强策略，但不能从联合recipe差异中归因单一因素。Phase 1D复现审计已通过；冻结后再另行授权进入LIBERO单任务数据/动作合同。
 
 ## 项目目标
 

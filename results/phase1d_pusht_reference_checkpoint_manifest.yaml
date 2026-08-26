@@ -1,0 +1,209 @@
+manifest: phase1d_pusht_reference_checkpoint
+date: 2026-08-26
+status: PHASE1D_COMPLETE_REFERENCE_FINAL_63_OF_100
+
+remote:
+  repo_id: lerobot/diffusion_pusht
+  revision: 84a7c23178445c6bbf7e1a884ff497017910f653
+  files_count: 8
+  total_logical_bytes: 1051090483
+  model:
+    path: model.safetensors
+    logical_bytes: 1050862408
+    sha256: 995d14d35db57d95c35ad9704c3d79c8612b7bc45f3877e5c46c2cdc516856a8
+
+required_contract_files:
+  config_json:
+    remote_present: true
+    local_present: true
+    bytes: 1509
+    sha256: d391a7bf488accd1c26b2043482f0060b0855b1ec236f3d7358486918472c0a5
+  train_config_json:
+    remote_present: true
+    local_present: true
+    bytes: 5939
+    sha256: 500ea79ba1bef13810219697ce60eca580a0f259f5c9bf4f847f8f843b06b14a
+  readme:
+    remote_present: true
+    local_present: true
+    bytes: 2939
+    sha256: 122b7d5067abfaf7e2ac44e6ab184bee8fb5c58d777e82d5c92bd3849dd308c3
+  policy_preprocessor_json: {remote_present: false, local_present: false}
+  policy_postprocessor_json: {remote_present: false, local_present: false}
+
+local_checkpoint:
+  downloaded: true
+  root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231
+  metadata_root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231/metadata
+  metadata_files: 3
+  metadata_bytes: 10387
+  source_root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231/source
+  source_du: 1003M
+  files: 4
+  bytes: 1050872795
+  model_bytes: 1050862408
+  model_sha256: 995d14d35db57d95c35ad9704c3d79c8612b7bc45f3877e5c46c2cdc516856a8
+  load_status: STRICT_CORE_WEIGHT_LOAD_PASS
+  processor_status: PASS_MIGRATED_BUNDLE_VERIFIED
+  safetensors_metadata_status: PASS
+  strict_weight_load_status: PASS
+
+static_checker:
+  classification: EXPECTED_EXCEPTION
+  status: BLOCKED_COMPATIBILITY_REVIEW_REQUIRED
+  exit_status: 3
+  contract_matches_published_reference: true
+  raw_log_sha256: e79aab51857bd4d2e70ad4c141dac5f29118b633edf1a4db3b3a5e6a8f224be2
+  blocker: Official revision contains no policy_preprocessor.json or policy_postprocessor.json.
+
+weight_metadata_checker:
+  classification: EXPECTED_EXCEPTION
+  exit_status: 3
+  tensor_count: 221
+  archived_pos_grid_shape: [9, 2]
+  pinned_expected_pos_grid_shape: [9, 2]
+  pos_grid_shape_match: true
+  spatial_softmax_shape_risk_status: NOT_REPRODUCED
+  raw_log_sha256: d53ce96326a5270c9214c488ef365c64018eb806ca342a2839d9c87798ec45cf
+  remaining_blocker: legacy_processor_bundle_missing
+
+normalization_tensor_audit:
+  classification: EXPECTED_EXCEPTION
+  exit_status: 3
+  normalization_tensor_count: 8
+  image_stats: {mode: MEAN_STD, tensors: [mean, std], shape: [3, 1, 1]}
+  state_stats: {mode: MIN_MAX, tensors: [min, max], shape: [2]}
+  action_target_stats: {mode: MIN_MAX, tensors: [min, max], shape: [2]}
+  action_output_stats: {mode: MIN_MAX, tensors: [min, max], shape: [2]}
+  values_inspected: false
+  raw_log_sha256: 60c80e6967a7ed11670211a8ad4858dbe6bf90f21606c1a5c928f8d61eff4cf1
+
+normalization_value_audit:
+  classification: EXPECTED_EXCEPTION
+  values_finite: true
+  image_stats: IMAGENET_RGB_MEAN_STD
+  state_min: [13.45642375946045, 32.93829345703125]
+  state_max: [496.14617919921875, 510.9578857421875]
+  action_min: [12.0, 25.0]
+  action_max: [511.0, 511.0]
+  action_target_output_stats_match: true
+  raw_log_sha256: ac97751de86f78113f8ab4b6368cc4cb0b62d6ce7a9ee893e81b7974a657e739
+  processor_migration_information_complete: true
+
+cpu_model_schema_compatibility:
+  status: PASS
+  archived_core_tensors: 213
+  current_model_tensors: 213
+  missing_keys: 0
+  unexpected_keys: 0
+  shape_mismatches: 0
+  exact_key_shape_match: true
+  weights_loaded: false
+  cuda_initialized: false
+  maximum_resident_set_kib: 1948656
+  raw_log_sha256: 9f90742691c19d9d1135ad4c84b91e0d9b1c03dcb1740055a7486f87dc8a7a56
+
+strict_gpu_weight_load:
+  status: PASS
+  device: cuda:0
+  device_name: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+  archived_tensors: 221
+  removed_legacy_normalization_tensors: 8
+  strictly_loaded_core_tensors: 213
+  missing_keys: 0
+  unexpected_keys: 0
+  parameter_count: 262709026
+  fully_on_requested_cuda: true
+  cpu_to_cuda_s: 0.2738628429997334
+  process_wall_time_s: 6.14
+  cuda_max_memory_allocated_bytes: 1057328640
+  cuda_max_memory_reserved_bytes: 1059061760
+  maximum_resident_set_kib: 3099392
+  forward_executed: false
+  raw_log: results/raw/phase1d_pusht_reference_checkpoint_strict_gpu_load.log
+  raw_log_sha256: eda20d5da6d84f851374399cc699d0f327a3a1e536e38ad6bb8d0e36022e0e3b
+
+migrated_bundle:
+  status: PASS_VERIFIED
+  root: outputs/reference/phase1d_pusht_diffusion_official_84a7c231/migrated_lerobot_0_6_2_v2
+  files: 9
+  bytes: 1050880100
+  du: 1003M
+  core_tensors: 213
+  exact_source_core_tensor_values: true
+  policy_load: PASS
+  preprocessor_load: PASS
+  postprocessor_load: PASS
+  config_sha256: 5dfcd2789815cfebcdaaf02b16fd92ee2d8252ee7ffb8ffe478953338e6a3a27
+  model_sha256: 42bddc7d0fe1ef928d708c207a2c9bb8ab7166c2d2b28d3c6abb955e18fb7594
+  preprocessor_sha256: ee56ab83a3eefeaf4a03ee63ddd8173ccb7d3608f0a04aadd8181069f3479cb8
+  postprocessor_sha256: ad8e4dddbce1ab75a1d52b3fc8b65c7daeef49587516ba84406159e5789795d5
+  stats_sha256: 392af8778e650720aa230904998d2c11184583d956f0b7eada100afd09bf2378
+  generation_log_sha256: bec6550cc901a33b59aca70385136cca47baf84e908646ee38ba570bced38d00
+  verification_log_sha256: 52666863a31d47099e11c00964b71078dd1091eee75457d972f375c9a95787d8
+  initial_failed_upstream_attempt_preserved: true
+  initial_failed_log_sha256: ce667e62da6fcc4b0c9d0af7e159f1d1f9eefdbd5f109b49548d41da1813d8f1
+
+single_step_smoke:
+  status: PASS
+  seed: 20261001
+  observation_shapes: {image: [1, 3, 96, 96], state: [1, 2]}
+  action_shape: [1, 2]
+  action: [94.37686157226562, 318.30377197265625]
+  action_finite_and_in_bounds: true
+  environment_steps: 1
+  reward: 0.0
+  terminated: false
+  truncated: false
+  select_action_s: 1.6132007090018305
+  cuda_max_memory_allocated_bytes: 1157771264
+  cuda_max_memory_reserved_bytes: 1249902592
+  episode_rollout_executed: false
+  raw_log_sha256: 516a518659f5b7e9d7a1e6e1e765744576c18e36bd49d1d50a55d12884dd63b8
+
+development_evaluation:
+  status: PASS
+  result: results/phase1d_pusht_reference_dev_5ep.yaml
+  evaluator_seed: 20261010
+  episodes: 5
+  successes: 4
+  success_percent: 80.0
+  success_wilson_95_percent: [37.55346297625253, 96.37758913675698]
+  average_sum_reward: 99.96261176366164
+  average_max_reward: 0.9994811332251633
+  evaluation_s_per_episode: 35.33261303901672
+  peak_vram: NOT_RECORDED_BY_EVALUATOR
+  eval_info_sha256: 78acb270b56dec74b43c8b94888761cd786ef23d3c7111397d168e84dfc4546e
+  raw_log_sha256: 0106d2bb961fb5800a8daca6a279c5525e3adba21ac1c1f9fb787c051a0627bf
+  final_seed_range_preregistered: 20261101..20261200
+
+final_evaluation:
+  status: PASS
+  result: results/phase1d_pusht_reference_final_100seed.yaml
+  seed_range: 20261101..20261200
+  episodes: 100
+  successes: 63
+  success_percent: 63.0
+  success_wilson_95_percent: [53.22052958094291, 71.81763946567547]
+  average_sum_reward: 106.62654465239943
+  average_max_reward: 0.9470129047201568
+  evaluation_s_per_episode: 30.201453382968904
+  peak_vram: NOT_RECORDED_BY_EVALUATOR
+  eval_info_sha256: 3b4fb1e93f815aee8fa39abf80265cf5caf3b8fdd52e939f84a12ebb5c2162d9
+  raw_log_sha256: 66872f08b3154cb54cb239e868b76c87a3a8231d9977a6320104e2c5a1ce7fd1
+
+weight_download_resource_gate:
+  status: PASS
+  home_available_gib_displayed: 90
+  home_used_percent: 43
+  current_reference_directory_du: 64K
+  dedicated_hub_cache_present: false
+  model_logical_bytes: 1050862408
+  download_authorized: true
+  download_status: PASS
+
+boundary: >-
+  This manifest records source identity, exact schema/value compatibility, strict GPU loading,
+  a verified current-format bundle, and one finite in-bounds CUDA action/environment step.
+  Episode reward/success, steady-state throughput, loss, gradients, and statistical performance
+  remain pending.
