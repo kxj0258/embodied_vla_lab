@@ -1,0 +1,91 @@
+experiment: phase1c_diffusion_pusht_resource_gate_2step
+date: 2026-08-26
+execution_status: PASS
+formal_training_authorized: false
+formal_training_execution_status: NOT_STARTED
+
+config: configs/train/diffusion_pusht_phase1c_resource_gate_2step.yaml
+formal_candidate: configs/train/diffusion_pusht_phase1c_baseline_30k.yaml
+dependency: {diffusers_version: 0.39.0}
+
+contract:
+  strict_offline: true
+  dataset_revision: 7628202a2180972f291ba1bc6723834921e72c19
+  train_episodes: 185
+  train_frames: 23043
+  validation_episodes: 21
+  validation_frames: 2607
+  steps: 2
+  batch_size: 8
+  mixed_precision: bf16
+  gradient_accumulation_steps: 1
+  ema_enabled: true
+  checkpoints_written: false
+  offline_eval_executed: false
+
+model:
+  type: diffusion
+  parameters: 262709026
+  n_obs_steps: 2
+  horizon: 48
+  n_action_steps: 10
+  denoising_train_steps: 100
+  denoising_inference_steps: 100
+  pretrained_backbone_weights: null
+
+metrics:
+  windows:
+    - {step: 1, loss: 1.047, grad_norm_before_clip: 20.137, learning_rate: 2.0e-7, step_s: 1.079, samples_per_s: 7, peak_pytorch_allocated_gib: 5.93}
+    - {step: 2, loss: 1.257, grad_norm_before_clip: 23.006, learning_rate: 4.0e-7, step_s: 0.227, samples_per_s: 35, peak_pytorch_allocated_gib: 5.94}
+  nan_or_inf_detected: false
+  cuda_oom: false
+  interpretation: >-
+    Two warmup steps establish construction, forward/backward, optimizer, scheduler, and EMA viability only.
+    They are too few to infer a loss trend. Both pre-clip gradient norms exceed the configured clip threshold
+    of 10, which is expected at initialization and remained finite.
+
+resources:
+  gpu: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+  gpu_total_mib: 12227
+  gpu_free_before_run_mib: 6596
+  peak_pytorch_allocated_gib: 5.94
+  peak_fraction_of_total_gpu_memory: 0.4975
+  process_wall_time_s: 9.84
+  maximum_resident_set_kib: 2556300
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  projected_30k_train_time_from_second_step_hours: 1.8917
+  conservative_total_estimate_including_eval_and_io: 2-3 hours
+  boundary: >-
+    The projection is based on one post-initialization step and is approximate. Formal periodic full-validation
+    passes, checkpoint serialization, thermal behavior, and competing GPU use can increase wall time.
+
+artifacts:
+  raw_log: results/raw/phase1c_diffusion_pusht_resource_gate_2step.log
+  raw_log_sha256: 2af0f59532d8125fd7460bd385cb69a43888251d1d6ef9e38c7e4acf433ae56f
+  raw_log_lines: 527
+  raw_log_bytes: 23755
+  output_directory_created: false
+
+gate:
+  status: PASS
+  checks:
+    exit_status_zero: true
+    finite_loss_and_gradient: true
+    no_cuda_oom: true
+    peak_memory_below_90_percent_device_capacity: true
+    projected_30k_below_4_hours: true
+  next_step: Obtain separate authorization before formal 30k training.
+
+expected_exceptions:
+  - TorchCodec ABI loading failed and fell back to the explicitly configured PyAV backend.
+
+safety:
+  network_disabled: true
+  wandb_disabled: true
+  hub_upload_disabled: true
+  gui_used: false
+  formal_training_started: false
+  commit_created: false
+  pushed: false

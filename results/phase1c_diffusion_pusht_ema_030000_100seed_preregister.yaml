@@ -1,0 +1,41 @@
+experiment: phase1c_diffusion_pusht_ema_030000_100seed_preregister
+date: 2026-08-26
+status: COMPLETE
+result: results/phase1c_diffusion_pusht_ema_030000_100seed.yaml
+
+frozen_candidate:
+  checkpoint: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/030000/pretrained_model_ema
+  model_sha256: d8c47d4c53ff38bc2a8573c5acd4c66d69b3c1d9071e29f15b6ca6a615943808
+  selection_source: results/phase1c_diffusion_pusht_checkpoint_selection_5ep.yaml
+  selection_basis: success tie at zero, then highest development average max reward
+
+protocol:
+  seeds_start: 20260830
+  seeds_end_inclusive: 20260929
+  seeds_count: 100
+  development_seed_overlap: false
+  episode_length: 300
+  n_action_steps: 10
+  diffusion_inference_steps: 100
+  batch_size: 1
+  use_async_envs: false
+  strict_offline: true
+  recording: false
+
+comparators:
+  deterministic_act_30k: results/phase1b_act_pusht_deterministic_030000_100seed.yaml
+  vae_act_25k: results/phase1b_act_pusht_deterministic_vs_vae_100seed.yaml
+
+metrics:
+  primary: [success_count, success_rate, exact_95_percent_binomial_interval]
+  secondary: [average_sum_reward, median_sum_reward, average_max_reward, median_max_reward, zero_sum_reward_episodes]
+  paired: [success_contingency, exact_mcnemar_test, paired_mean_max_reward_difference, paired_mean_sum_reward_difference]
+  efficiency: [eval_episode_time_s, latency_multiple_vs_deterministic_act]
+
+decision_boundary:
+  - The prior 0/5 development success gate remains FAIL regardless of this result.
+  - Any held-out successes establish demo existence and estimate reliability, not a retrospectively passed development gate.
+  - The checkpoint, denoising steps, action window, and seeds may not be changed after observing held-out results.
+  - No new training or tuning is automatically authorized by this evaluation.
+
+estimated_wall_time: 75-90 minutes based on the 30k five-episode measurement.

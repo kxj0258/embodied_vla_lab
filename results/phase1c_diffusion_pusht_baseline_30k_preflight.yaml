@@ -1,0 +1,92 @@
+experiment: phase1c_diffusion_pusht_baseline_30k_preflight
+date: 2026-08-26
+execution_status: PASS
+training_authorized: true
+training_execution_status: PASS
+training_result: results/phase1c_diffusion_pusht_baseline_30k.yaml
+checkpoint_manifest: results/phase1c_diffusion_pusht_baseline_30k_checkpoint_manifest.yaml
+
+baseline: configs/train/act_pusht_phase1b_deterministic_30k.yaml
+candidate: configs/train/diffusion_pusht_phase1c_baseline_30k.yaml
+checker: scripts/check_phase1c_diffusion_baseline_config.py
+
+fixed_controls:
+  dataset: lerobot/pusht
+  revision: 7628202a2180972f291ba1bc6723834921e72c19
+  split: {train_episodes: 185, validation_episodes: 21}
+  batch_size: 8
+  mixed_precision: bf16
+  n_action_steps: 10
+  pretrained_backbone_weights: null
+  seed: 20260825
+  cudnn_deterministic: true
+  eval_steps: 5000
+  checkpoint_steps: [10000, 20000, 30000]
+  network: disabled
+  wandb: disabled
+  hub_upload: disabled
+
+registered_model_differences:
+  policy_type: {baseline: act, candidate: diffusion}
+  temporal_context: {baseline_observation_steps: 1, candidate_observation_steps: 2}
+  prediction_horizon: {baseline_chunk_size: 50, candidate_horizon: 48}
+  reason_for_horizon: 48 is the nearest value below 50 divisible by the three-stage U-Net downsampling factor 8.
+  diffusion_scheduler: {type: DDPM, train_timesteps: 100, inference_steps: 100, prediction_type: epsilon}
+  optimizer_preset:
+    baseline: {type: AdamW, learning_rate: 1.0e-5, weight_decay: 1.0e-4, scheduler: null}
+    candidate: {type: Adam, learning_rate: 1.0e-4, betas: [0.95, 0.999], weight_decay: 1.0e-6, scheduler: cosine, warmup_steps: 500}
+  ema: {baseline: false, candidate: true, use_for_eval: true}
+  normalization:
+    baseline: {visual: MEAN_STD, state: MEAN_STD, action: MEAN_STD}
+    candidate: {visual: MEAN_STD, state: MIN_MAX, action: MIN_MAX}
+  boundary: >-
+    This is a model-family baseline, not a single-field architecture ablation. Native Diffusion Policy
+    optimizer, normalization, two-frame context, scheduler, and EMA are retained because the immediate
+    objective is a strong reproducible demo baseline rather than isolating one internal mechanism.
+
+budget:
+  training_steps: 30000
+  samples_seen: 240000
+  effective_epochs: 10.4153
+  estimated_training_wall_time: 1.5-4 hours pending an authorized GPU smoke/resource gate
+  estimated_100seed_eval_time: 10-40 minutes because 100 denoising iterations replace one ACT forward pass
+
+stop_criteria:
+  resource_gate:
+    - CUDA OOM or peak allocated memory above 90 percent of device capacity
+    - non-finite loss or gradient norm
+    - throughput projecting more than 4 hours for 30k steps
+  formal_training:
+    - nonzero exit status, NaN/Inf, CUDA OOM, config/dataset drift, or missing planned eval/checkpoint
+  closed_loop:
+    - evaluate 10k, 20k, and 30k first on fixed development seeds without changing inference settings
+    - select one checkpoint by the preregistered success then max-reward rule
+    - compare the frozen selection on the existing 100 held-out seeds
+
+blocking_dependencies:
+  diffusers:
+    status: INSTALLED
+    version: 0.39.0
+    installation_authorized: true
+    constraint: ">=0.38.0,<0.40.0"
+    lockfile_version: 0.39.0
+
+preflight:
+  exit_status: 0
+  static_config_contract: PASS
+  dataset_contract: PASS
+  train_episodes: 185
+  train_frames: 23043
+  validation_episodes: 21
+  validation_frames: 2607
+  output_directory_created: false
+  cuda_initialized: false
+  dataset_payload_changed: false
+  dependency_gate: PASS
+  expected_exceptions:
+    - TorchCodec ABI loading failed and fell back to the explicitly configured PyAV backend.
+    - The audit process exposed no accelerated backend, so parsed device temporarily fell back to CPU; static YAML preserves CUDA/BF16 intent.
+
+boundary: >-
+  This asset is inert. It does not authorize installation, download, CUDA model construction,
+  training, rollout, upload, commit, or push.

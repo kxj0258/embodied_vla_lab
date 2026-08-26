@@ -1,0 +1,65 @@
+experiment: phase1c_diffusion_pusht_baseline_30k_checkpoint_manifest
+date: 2026-08-26
+status: PASS
+root: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints
+last_symlink_target: "030000"
+tree_file_count: 60
+tree_disk_usage: 15G
+
+checkpoints:
+  - step: 10000
+    live:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/010000/pretrained_model
+      model_bytes: 1050907216
+      model_sha256: 873286f830596bf2a2c1224b17d3e0b44fb852accca00a13167098b71e795bd4
+    ema:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/010000/pretrained_model_ema
+      model_bytes: 1050907216
+      model_sha256: fe50e1527321a7a363d8b2b5bf5deb468100541103c9b0d52f2ac9c2ba2ff8bd
+    offline_live_eval_loss: 0.0481
+  - step: 20000
+    live:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/020000/pretrained_model
+      model_bytes: 1050907216
+      model_sha256: b74255117b71dc988dac2b95c5281f1960f32c65c36904009e57c4ba117d0dcb
+    ema:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/020000/pretrained_model_ema
+      model_bytes: 1050907216
+      model_sha256: c4fc57479062b7d02e538bad2146049853600746111151d0e13a6498306a97d3
+    offline_live_eval_loss: 0.0557
+  - step: 30000
+    live:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/030000/pretrained_model
+      model_bytes: 1050907216
+      model_sha256: 9fec39f96de70898d03f8881bee5fc2cc311b5e8f411b30ecd4635ed23c68fc8
+    ema:
+      path: outputs/train/phase1c_diffusion_pusht_baseline_30k_bf16/checkpoints/030000/pretrained_model_ema
+      model_bytes: 1050907216
+      model_sha256: d8c47d4c53ff38bc2a8573c5acd4c66d69b3c1d9071e29f15b6ca6a615943808
+    offline_live_eval_loss: 0.0761
+
+selection_status: COMPLETE
+selection_result: results/phase1c_diffusion_pusht_checkpoint_selection_5ep.yaml
+evaluated_ema_checkpoints: [10000, 20000, 30000]
+pending_ema_checkpoints: []
+selected_checkpoint_step: 30000
+selected_variant: ema
+selected_model_sha256: d8c47d4c53ff38bc2a8573c5acd4c66d69b3c1d9071e29f15b6ca6a615943808
+development_success_gate_status: FAIL
+heldout_100seed_status: PASS
+heldout_100seed_result: results/phase1c_diffusion_pusht_ema_030000_100seed.yaml
+demo_asset_status: PASS
+demo_assets:
+  - outputs/eval/phase1c_diffusion_pusht_ema_030000_replay_through_seed20260860/videos/pusht_0/eval_episode_3.mp4
+  - outputs/eval/phase1c_diffusion_pusht_ema_030000_replay_through_seed20260860/videos/pusht_0/eval_episode_8.mp4
+exact_trajectory_replay_status: FAIL
+selection_protocol:
+  primary_variant: ema
+  checkpoint_order: [10000, 20000, 30000]
+  reason: Native Diffusion Policy uses EMA for deployment; live offline loss alone is not a closed-loop selector.
+  development_seeds: [20260825, 20260826, 20260827, 20260828, 20260829]
+  heldout_final_seeds: "20260830..20260929"
+
+boundary: >-
+  Hashes prove artifact identity only. Reload, inference, reward, success, latency, and model quality remain unverified.
+  No rollout, upload, commit, or push was performed.
