@@ -48,7 +48,11 @@ def main() -> int:
         elif environment is not None:
             environment.close()
     errors = validate_result(result)
-    output.mkdir(parents=True)
+    # OpenVLAPolicy creates ``output/ipc`` before the first prediction so that
+    # every request is written below a fresh experiment directory.  The parent
+    # therefore already exists here; keep the overwrite refusal at the start
+    # of main() and only make finalization idempotent.
+    output.mkdir(parents=True, exist_ok=True)
     (output / "resolved_config.yaml").write_text(yaml.safe_dump(config, sort_keys=False))
     (output / "result.json").write_text(json.dumps(result.to_dict(), indent=2) + "\n")
     print(json.dumps({"success_rate": result.success_rate, "failures": result.failures, "validation_errors": errors}))
