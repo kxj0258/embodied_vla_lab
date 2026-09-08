@@ -34,6 +34,7 @@ class ACTLiberoPolicy:
         )
         payload = torch.load(checkpoint, map_location="cpu", weights_only=False)
         self.stats = {key: np.asarray(value, dtype=np.float32) for key, value in stats.items()}
+        self.clipped_action_count = 0
         self.policy = ACTPolicy(config).to(self.device).eval()
         self.policy.load_state_dict(payload["model"], strict=True)
 
@@ -53,4 +54,10 @@ class ACTLiberoPolicy:
         images["observation.state"] = self.torch.from_numpy((observation.state - self.stats["sm"]) / self.stats["ss"]).unsqueeze(0).to(self.device)
         normalized = self.policy.select_action(images)
         self.torch.cuda.synchronize() if self.device.type == "cuda" else None
-        return (normalized[0].float().detach().cpu().numpy() * self.stats["as"] + self.stats["am"]).astype(np.float32)
+        action = (normalized[0].float().detach().cpu().numpy() * self.stats["as"] + self.stats["am"]).astype(np.float32)
+        # Match the frozen Phase 2B execution contract: ACT's denormalized
+        # prediction is bounded before it reaches LIBERO.  Keep the count so
+        # the adapter can expose saturation diagnostics later.
+        clipped = np.clip(action, -1.0, 1.0).astype(np.float32)
+        self.clipped_action_count += int(np.any(clipped != action))
+        return clipped
