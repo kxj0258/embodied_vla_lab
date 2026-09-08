@@ -38,7 +38,12 @@ class LiberoGoalEnvironment:
         return CanonicalObservation(images={key: np.asarray(pixels[key]) for key in ("agentview", "eye_in_hand")}, state=state, instruction=None)
 
     def reset(self, init_state_index: int, seed: int) -> CanonicalObservation:
-        self.env.unwrapped.episode_index = int(init_state_index) if hasattr(self.env, "unwrapped") else int(init_state_index)
+        # LiberoEnv selects the actual reset state from ``init_state_id``;
+        # changing only episode_index does not affect the next reset.  Set the
+        # state cursor explicitly so the unified evaluator honors its contract
+        # instead of silently replaying state 0 for every episode.
+        target = self.env.unwrapped if hasattr(self.env, "unwrapped") else self.env
+        target.init_state_id = int(init_state_index)
         observation, _ = self.env.reset(seed=seed)
         return self._canonical(observation)
 
