@@ -1,0 +1,18 @@
+experiment_id: benchmark_openvla_libero_breadth50_v1
+policy: openvla_base
+suite: libero_goal
+states: [0, 1, 2, 3, 4]
+episode_horizon: 600
+seed: 20260910
+tasks:
+  - {task_id: 0, name: open_the_middle_drawer_of_the_cabinet, instruction: open the middle drawer of the cabinet}
+  - {task_id: 1, name: put_the_bowl_on_the_stove, instruction: put the bowl on the stove}
+  - {task_id: 2, name: put_the_wine_bottle_on_top_of_the_cabinet, instruction: put the wine bottle on top of the cabinet}
+  - {task_id: 3, name: open_the_top_drawer_and_put_the_bowl_inside, instruction: open the top drawer and put the bowl inside}
+  - {task_id: 4, name: put_the_bowl_on_top_of_the_cabinet, instruction: put the bowl on top of the cabinet}
+  - {task_id: 5, name: push_the_plate_to_the_front_of_the_stove, instruction: push the plate to the front of the stove}
+  - {task_id: 6, name: put_the_cream_cheese_in_the_bowl, instruction: put the cream cheese in the bowl}
+  - {task_id: 7, name: turn_on_the_stove, instruction: turn on the stove}
+  - {task_id: 8, name: put_the_bowl_on_the_plate, instruction: put the bowl on the plate}
+  - {task_id: 9, name: put_the_wine_bottle_on_the_rack, instruction: put the wine bottle on the rack}
+output_dir: results/benchmark/benchmark_openvla_libero_breadth50_v1

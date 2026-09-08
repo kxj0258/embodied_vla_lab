@@ -1,0 +1,14 @@
+experiment_id: benchmark_act_libero_heldout45_v1
+policy: act
+task:
+  suite: libero_goal
+  task_id: 7
+  task_order_index: 0
+  name: turn_on_the_stove
+  instruction: turn on the stove
+  split: heldout
+  init_state_indices: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  episode_horizon: 600
+checkpoint: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+protocol: {seed: 20260909, action_low: -1.0, action_high: 1.0, strict_bounds: true, offline: true}
+output_dir: results/benchmark/benchmark_act_libero_heldout45_v1
