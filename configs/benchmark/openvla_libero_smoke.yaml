@@ -1,0 +1,23 @@
+experiment_id: benchmark_openvla_libero_smoke_v1
+policy: openvla_base
+task:
+  suite: libero_goal
+  task_id: 7
+  task_order_index: 0
+  name: turn_on_the_stove
+  instruction: turn on the stove
+  split: development
+  init_state_indices: [0]
+  episode_horizon: 1
+model:
+  python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3a_openvla_persistent_worker.py
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  timeout_s: 30
+protocol:
+  seed: 20260908
+  action_low: -1.0
+  action_high: 1.0
+  strict_bounds: true
+output_dir: results/benchmark/benchmark_openvla_libero_smoke_v1
