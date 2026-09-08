@@ -1,0 +1,3 @@
+policy,experiment_id,source,success_count,success_total,success_rate,total_environment_steps,mean_steps_per_episode,mean_episode_inference_s,mean_episode_wall_s,failures
+act,benchmark_act_libero_dev5_v1,results/benchmark/benchmark_act_libero_dev5_v1/result.json,5,5,1.0,394,78.8,0.18173580260045127,1.8307320341977174,"{""success"": 5}"
+openvla_base,benchmark_openvla_libero_dev5_v1,results/benchmark/benchmark_openvla_libero_dev5_v1/result.json,5,5,1.0,400,80.0,25.24798552938737,26.883553173400287,"{""success"": 5}"

@@ -1,0 +1,32 @@
+{
+  "schema_version": "evla.benchmark.report.v1",
+  "generated_at_utc": "2026-09-08T16:06:37.459168+00:00",
+  "results": [
+    {
+      "policy": "act",
+      "experiment_id": "benchmark_act_libero_dev5_v1",
+      "source": "results/benchmark/benchmark_act_libero_dev5_v1/result.json",
+      "success_count": 5,
+      "success_total": 5,
+      "success_rate": 1.0,
+      "total_environment_steps": 394,
+      "mean_steps_per_episode": 78.8,
+      "mean_episode_inference_s": 0.18173580260045127,
+      "mean_episode_wall_s": 1.8307320341977174,
+      "failures": "{\"success\": 5}"
+    },
+    {
+      "policy": "openvla_base",
+      "experiment_id": "benchmark_openvla_libero_dev5_v1",
+      "source": "results/benchmark/benchmark_openvla_libero_dev5_v1/result.json",
+      "success_count": 5,
+      "success_total": 5,
+      "success_rate": 1.0,
+      "total_environment_steps": 400,
+      "mean_steps_per_episode": 80.0,
+      "mean_episode_inference_s": 25.24798552938737,
+      "mean_episode_wall_s": 26.883553173400287,
+      "failures": "{\"success\": 5}"
+    }
+  ]
+}
