@@ -2,7 +2,7 @@ experiment_id: benchmark_act_libero_dev5_v1
 policy: act
 task:
   suite: libero_goal
-  task_id: 0
+  task_id: 7
   task_order_index: 0
   name: turn_on_the_stove
   instruction: turn on the stove
