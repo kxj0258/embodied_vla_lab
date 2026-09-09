@@ -55,7 +55,9 @@ def main() -> int:
     total = len(all_episodes)
     failures: dict[str, int] = {}
     for episode in all_episodes:
-        category = "success" if episode["success"] else episode.get("failure_category", "unknown")
+        category = "success" if episode["success"] else (
+            "timeout" if episode.get("truncated", False) else episode.get("failure_category", "unknown")
+        )
         failures[category] = failures.get(category, 0) + 1
     result = {
         "schema_version": "evla.benchmark.v1", "experiment_id": config["experiment_id"], "policy_name": "openvla_base",
