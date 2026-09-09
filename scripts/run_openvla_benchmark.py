@@ -47,6 +47,9 @@ def main() -> int:
             policy.close()
         elif environment is not None:
             environment.close()
+    for episode in result.episodes:
+        episode["task_id"] = task.task_id
+        episode["task_name"] = task.name
     errors = validate_result(result)
     # OpenVLAPolicy creates ``output/ipc`` before the first prediction so that
     # every request is written below a fresh experiment directory.  The parent

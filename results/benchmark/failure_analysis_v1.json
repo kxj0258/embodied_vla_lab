@@ -1,0 +1,331 @@
+{
+  "schema_version": "evla.benchmark.failure_analysis.v1",
+  "reports": [
+    {
+      "source": "results/benchmark/benchmark_openvla_libero_heldout45_v1/result.json",
+      "experiment_id": "benchmark_openvla_libero_heldout45_v1",
+      "policy": "openvla_base",
+      "overall": {
+        "success": 44,
+        "total": 45,
+        "success_rate": 0.9777777777777777,
+        "failures": {
+          "success": 44,
+          "timeout": 1
+        }
+      },
+      "by_task": [
+        {
+          "task_id": 7,
+          "task_name": "turn_on_the_stove",
+          "success": 44,
+          "total": 45,
+          "success_rate": 0.9777777777777777,
+          "timeouts": 1,
+          "mean_steps": 91.33333333333333,
+          "timeout_states": [
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "source": "results/benchmark/benchmark_openvla_libero_breadth50_v1/result.json",
+      "experiment_id": "benchmark_openvla_libero_breadth50_v1",
+      "policy": "openvla_base",
+      "overall": {
+        "success": 33,
+        "total": 50,
+        "success_rate": 0.66,
+        "failures": {
+          "success": 33,
+          "unknown": 17
+        }
+      },
+      "by_task": [
+        {
+          "task_id": 0,
+          "task_name": "open_the_middle_drawer_of_the_cabinet",
+          "success": 3,
+          "total": 5,
+          "success_rate": 0.6,
+          "timeouts": 2,
+          "mean_steps": 313.8,
+          "timeout_states": [
+            3,
+            4
+          ]
+        },
+        {
+          "task_id": 1,
+          "task_name": "put_the_bowl_on_the_stove",
+          "success": 5,
+          "total": 5,
+          "success_rate": 1.0,
+          "timeouts": 0,
+          "mean_steps": 82.8,
+          "timeout_states": []
+        },
+        {
+          "task_id": 2,
+          "task_name": "put_the_wine_bottle_on_top_of_the_cabinet",
+          "success": 4,
+          "total": 5,
+          "success_rate": 0.8,
+          "timeouts": 1,
+          "mean_steps": 276.4,
+          "timeout_states": [
+            2
+          ]
+        },
+        {
+          "task_id": 3,
+          "task_name": "open_the_top_drawer_and_put_the_bowl_inside",
+          "success": 1,
+          "total": 5,
+          "success_rate": 0.2,
+          "timeouts": 4,
+          "mean_steps": 523.2,
+          "timeout_states": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "task_id": 4,
+          "task_name": "put_the_bowl_on_top_of_the_cabinet",
+          "success": 5,
+          "total": 5,
+          "success_rate": 1.0,
+          "timeouts": 0,
+          "mean_steps": 120.6,
+          "timeout_states": []
+        },
+        {
+          "task_id": 5,
+          "task_name": "push_the_plate_to_the_front_of_the_stove",
+          "success": 3,
+          "total": 5,
+          "success_rate": 0.6,
+          "timeouts": 2,
+          "mean_steps": 319.4,
+          "timeout_states": [
+            1,
+            2
+          ]
+        },
+        {
+          "task_id": 6,
+          "task_name": "put_the_cream_cheese_in_the_bowl",
+          "success": 3,
+          "total": 5,
+          "success_rate": 0.6,
+          "timeouts": 2,
+          "mean_steps": 302.4,
+          "timeout_states": [
+            1,
+            2
+          ]
+        },
+        {
+          "task_id": 7,
+          "task_name": "turn_on_the_stove",
+          "success": 5,
+          "total": 5,
+          "success_rate": 1.0,
+          "timeouts": 0,
+          "mean_steps": 78.8,
+          "timeout_states": []
+        },
+        {
+          "task_id": 8,
+          "task_name": "put_the_bowl_on_the_plate",
+          "success": 2,
+          "total": 5,
+          "success_rate": 0.4,
+          "timeouts": 3,
+          "mean_steps": 391.0,
+          "timeout_states": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "task_id": 9,
+          "task_name": "put_the_wine_bottle_on_the_rack",
+          "success": 2,
+          "total": 5,
+          "success_rate": 0.4,
+          "timeouts": 3,
+          "mean_steps": 497.0,
+          "timeout_states": [
+            0,
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "source": "results/benchmark/benchmark_openvla_libero_breadth100_v1/result.json",
+      "experiment_id": "benchmark_openvla_libero_breadth100_v1",
+      "policy": "openvla_base",
+      "overall": {
+        "success": 66,
+        "total": 100,
+        "success_rate": 0.66,
+        "failures": {
+          "success": 66,
+          "timeout": 34
+        }
+      },
+      "by_task": [
+        {
+          "task_id": 0,
+          "task_name": "open_the_middle_drawer_of_the_cabinet",
+          "success": 6,
+          "total": 10,
+          "success_rate": 0.6,
+          "timeouts": 4,
+          "mean_steps": 322.7,
+          "timeout_states": [
+            1,
+            3,
+            4,
+            6
+          ]
+        },
+        {
+          "task_id": 1,
+          "task_name": "put_the_bowl_on_the_stove",
+          "success": 8,
+          "total": 10,
+          "success_rate": 0.8,
+          "timeouts": 2,
+          "mean_steps": 229.2,
+          "timeout_states": [
+            1,
+            8
+          ]
+        },
+        {
+          "task_id": 2,
+          "task_name": "put_the_wine_bottle_on_top_of_the_cabinet",
+          "success": 6,
+          "total": 10,
+          "success_rate": 0.6,
+          "timeouts": 4,
+          "mean_steps": 303.1,
+          "timeout_states": [
+            0,
+            1,
+            2,
+            8
+          ]
+        },
+        {
+          "task_id": 3,
+          "task_name": "open_the_top_drawer_and_put_the_bowl_inside",
+          "success": 2,
+          "total": 10,
+          "success_rate": 0.2,
+          "timeouts": 8,
+          "mean_steps": 521.4,
+          "timeout_states": [
+            0,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "task_id": 4,
+          "task_name": "put_the_bowl_on_top_of_the_cabinet",
+          "success": 10,
+          "total": 10,
+          "success_rate": 1.0,
+          "timeouts": 0,
+          "mean_steps": 102.1,
+          "timeout_states": []
+        },
+        {
+          "task_id": 5,
+          "task_name": "push_the_plate_to_the_front_of_the_stove",
+          "success": 4,
+          "total": 10,
+          "success_rate": 0.4,
+          "timeouts": 6,
+          "mean_steps": 414.3,
+          "timeout_states": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            9
+          ]
+        },
+        {
+          "task_id": 6,
+          "task_name": "put_the_cream_cheese_in_the_bowl",
+          "success": 6,
+          "total": 10,
+          "success_rate": 0.6,
+          "timeouts": 4,
+          "mean_steps": 306.4,
+          "timeout_states": [
+            1,
+            2,
+            4,
+            5
+          ]
+        },
+        {
+          "task_id": 7,
+          "task_name": "turn_on_the_stove",
+          "success": 10,
+          "total": 10,
+          "success_rate": 1.0,
+          "timeouts": 0,
+          "mean_steps": 78.4,
+          "timeout_states": []
+        },
+        {
+          "task_id": 8,
+          "task_name": "put_the_bowl_on_the_plate",
+          "success": 8,
+          "total": 10,
+          "success_rate": 0.8,
+          "timeouts": 2,
+          "mean_steps": 184.4,
+          "timeout_states": [
+            3,
+            4
+          ]
+        },
+        {
+          "task_id": 9,
+          "task_name": "put_the_wine_bottle_on_the_rack",
+          "success": 6,
+          "total": 10,
+          "success_rate": 0.6,
+          "timeouts": 4,
+          "mean_steps": 349.6,
+          "timeout_states": [
+            2,
+            4,
+            6,
+            7
+          ]
+        }
+      ]
+    }
+  ]
+}
