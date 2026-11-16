@@ -1,0 +1,114 @@
+experiment: phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+protocol:
+  task: LIBERO_GOAL/turn_on_the_stove
+  seed: 20260826
+  train_episodes: 40
+  validation_episodes: 10
+  train_frames: 3571
+  validation_frames: 889
+  optimizer_steps: 100000
+  batch_size: 8
+  learning_rate: 1.0e-5
+  weight_decay: 1.0e-4
+  precision: BF16
+  grad_clip_norm: 10.0
+  steps_per_epoch: 446
+  approximate_dataset_passes: 224.2
+  strict_offline: true
+  wandb: false
+  hub_upload: false
+training_curve:
+  logged_points: 1001
+  first: {step: 1, loss: 0.9179883003234863, grad_norm_preclip: 89.89429473876953}
+  last: {step: 100000, loss: 0.0707835927605629, grad_norm_preclip: 4.6266984939575195}
+  loss_min: {step: 81000, value: 0.0487850159406662}
+  loss_mean_logged_points: 0.11041842044129238
+  loss_last_10_logged_points_mean: 0.06530019603669643
+  grad_norm_preclip_max: {step: 1, value: 89.89429473876953}
+  logged_grad_points_above_clip_boundary: 65
+  logged_grad_points_total: 1001
+  grad_norm_preclip_last_10_logged_points_mean: 3.3564907789230345
+  interpretation: >-
+    All logged loss and pre-clip gradient values were finite. Gradient clipping was active at norm 10;
+    65 of 1001 sparse logged points exceeded that boundary, concentrated earlier in training. This is
+    not the exact count of clipped optimizer steps because gradients were logged only at step 1 and every
+    100 steps.
+offline_validation_curve:
+  metric: sample_weighted_full_split_action_loss
+  samples_each_evaluation: 889
+  steps: start_at_0_end_at_100000_increment_1000
+  points: 101
+  values:
+    [1.016287695101061, 0.42663377556945664, 0.4462951307087567, 0.44301555690400646,
+     0.45045738138417696, 0.4578759535493411, 0.45518703797268517, 0.4620812873202046,
+     0.4747174037588997, 0.455079747667731, 0.47055786901705715, 0.45181508695851297,
+     0.4559637572955763, 0.45771191774524905, 0.4611436288187823, 0.4590985652298171,
+     0.46752716190233007, 0.4614988557399325, 0.472258953999883, 0.45549718547859663,
+     0.4658530380648086, 0.4610549831685387, 0.4513393940888052, 0.4671196743125186,
+     0.45820762912655844, 0.45814767945872115, 0.4497620538463743, 0.4545994049652623,
+     0.46116256579773496, 0.451158429693988, 0.4568794651964786, 0.4485498084126227,
+     0.4474946954051877, 0.4478459602265846, 0.4493414437811072, 0.4539933000158003,
+     0.45019186666094946, 0.4468797851601119, 0.45170909699358475, 0.4410586702072714,
+     0.46182423508207493, 0.4498921460456333, 0.44883931199396687, 0.4525749273723907,
+     0.44942534921944344, 0.4535229432368305, 0.4465517712122142, 0.446039338481976,
+     0.44245506365468185, 0.4548929623329197, 0.4447368109856467, 0.4436674698667666,
+     0.45348292880841395, 0.4485686431451375, 0.4467335209267212, 0.44208994071985125,
+     0.44262571067992423, 0.44842585508949445, 0.44154833439900987, 0.43485471884498983,
+     0.43750492770840804, 0.45177005715793916, 0.44162363987269365, 0.4420358147074053,
+     0.4522852762209417, 0.45224846032928967, 0.4374533537000049, 0.4420674598123145,
+     0.43802411591108253, 0.4408435350193886, 0.4416241898579592, 0.44046348863028834,
+     0.4441405666156078, 0.439200538148762, 0.43647385374365294, 0.4345643135506337,
+     0.4430830683831557, 0.4376315274710596, 0.43975957621337325, 0.44081082373555786,
+     0.44201980841307326, 0.4357841508326836, 0.4382117556908804, 0.44438243495600027,
+     0.44171354989233114, 0.4434777401697783, 0.4453142873347811, 0.4420151662236526,
+     0.43906136264414836, 0.43509235719996175, 0.43252793735540623, 0.4395763450317898,
+     0.44172471178395945, 0.43909257516281675, 0.43151594146968814, 0.43583984195314457,
+     0.4302142557464917, 0.4381066790715916, 0.43473692069037556, 0.42954044890484205,
+     0.44002953584068133]
+  first: {step: 0, value: 1.016287695101061}
+  minimum: {step: 1000, value: 0.42663377556945664}
+  final: {step: 100000, value: 0.44002953584068133}
+  interpretation: >-
+    Validation improved sharply by step 1000, then remained on a roughly 0.43-0.47 plateau while
+    sparse logged train loss continued to fall. Offline action loss is neither environment success nor reward
+    and cannot by itself select the best rollout checkpoint.
+resources:
+  optimizer_steps_per_process_elapsed_s: 29.8615729069203
+  optimizer_steps_per_process_wall_s: 29.814074965116696
+  training_process_elapsed_s: 3348.785495753
+  process_wall_s: 3354.04
+  maximum_rss_kib: 2558808
+  peak_vram_allocated_bytes: 709839360
+  peak_vram_reserved_bytes: 834666496
+  output_directory_du: 8.8G
+  filesystem_available_bytes_after_run: 81009561600
+environment_rollout:
+  executed: false
+  success: NOT_MEASURED
+  reward: NOT_MEASURED
+  rollout_throughput: NOT_MEASURED
+checkpoint_integrity:
+  periodic_exact_resume_checkpoints: 22
+  archival_final_checkpoints: 1
+  incomplete_files: 0
+  bytes_each: 410470545
+  all_cpu_reload: PASS
+  all_required_state_fields_present: true
+  exact_boundaries: step_004460_through_098120_every_4460
+  archival_nonboundary: model_100000.pt
+  hashes: results/phase2b_act_libero_checkpoint_manifest.yaml
+artifacts:
+  output_dir: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826
+  raw_log: {path: results/raw/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826_host_20260826.log, lines: 1104, bytes: 175192, sha256: 11afddf5e48ed022ca19199e9a3bbfb9a53bf6ed72bea300f6e72c83c6879c5a}
+  metrics: {path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/metrics.jsonl, lines: 1102, bytes: 174976, sha256: 6a3c65faa7dae83434e18e615e98dd8962a3fb81ee8ce858cd9b79f10f576d6b}
+  resolved_config: {bytes: 797, sha256: 5674a5dfb1561d65147a1ff3783a706701e18a1de5175f97192395e1268b5a70}
+  source_config_sha256: ad1c78832af0cef38d90273c38e7048085d4c62878b1635b71676e44859cbbf6
+  entrypoint_sha256: 0e22810571b1ab77ea1478002deb79e1e0be16c160262ebd4285771b18661fb3
+statistical_boundary: >-
+  This is one training seed and one fixed 10-episode offline validation split. It establishes finite,
+  reproducible optimization and a complete offline validation trajectory, but no environment success rate,
+  reward distribution, checkpoint ranking by control quality, multi-seed variance, or comparative claim.
+next_gate: Independent new-ID LIBERO checkpoint rollout evaluation requires a separately reviewed controlled entrypoint and explicit authorization.

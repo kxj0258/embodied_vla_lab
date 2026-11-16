@@ -1,0 +1,14 @@
+manifest: project_closeout_v10_phase6g_v1_20260901
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7902, sha256: 8f899570d48cc339b41f736730376cef9d74f3049aa181d1292046be10f79cf9}
+  - {path: docs/repro_index.md, bytes: 7394, sha256: 68ab3471c46df17ba1073cc3ab438ecad93c21c1d652c291b415ded36a9d59e9}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5025, sha256: 269e454c1585eadf656ee793d04a11c605d910f2c7e58c2f4fba712fec019914}
+canonical_evidence:
+  - {path: results/phase6g_feagine_a03_mapping_diagnostic_v1_manifest.yaml, bytes: 1020, sha256: 28b2b2478dde5bf8fed01d5612a81b64e2f470592026214b1c1b9d93c41177b5}
+  - {path: scripts/verify_phase6g_assets.py, bytes: 1288, sha256: 6054defc7b1baa277178be2ea40409e28016f2decef7a186a5cf5ae52a897db7}
+historical_evidence: results/project_closeout_v9_phase6f_v1_manifest.yaml
+boundary: Diagnosis only; Phase 6F 0/4 remains immutable and signed-theta/multi-start repair is not yet executed.

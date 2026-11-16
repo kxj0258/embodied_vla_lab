@@ -1,0 +1,39 @@
+experiment: phase3a_openvla_libero_goal_download
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+model:
+  repo_id: openvla/openvla-7b-finetuned-libero-goal
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  snapshot: outputs/reference/phase3a_openvla_libero_goal_fa5ae1e/hf_cache/models--openvla--openvla-7b-finetuned-libero-goal/snapshots/fa5ae1e7509348889295bba8e08621d8b55e9baf
+payload:
+  file_count: 16
+  total_logical_bytes: 15085050797
+  weight_shards: 4
+  weight_logical_bytes: 15082600832
+  on_disk_human: 15G
+  config_model_type: openvla
+  architecture: OpenVLAForActionPrediction
+  config_dtype: bfloat16
+  action_dimensions: 7
+  action_bins: 256
+  image_size: [224, 224]
+  libero_goal_statistics_present: true
+  q01_q99_present: true
+  statistics_num_transitions: 52042
+  statistics_num_trajectories: 428
+resources:
+  download_elapsed_s: 4027.637653635
+  process_wall_s: 4027.80
+  maximum_rss_kib: 487816
+  filesystem_available_bytes_after_download: 56123138048
+execution: {model_loaded: false, gpu_initialized: false, inference_run: false, environment_constructed: false}
+artifacts:
+  downloader: {path: scripts/download_phase3a_openvla_libero_goal.py, sha256: a984f56be28ddaab98b86a2ea96c6102da7fc4fdd878bf6a1088722a6b0aa5fc}
+  download_manifest: {path: outputs/reference/phase3a_openvla_libero_goal_fa5ae1e/download_manifest.json, bytes: 3128, sha256: cb0e189abfdf0888008f19fbf48d3c3215968acfe43098a9d2667457adb728fc}
+  raw_log: {path: results/raw/phase3a_openvla_libero_goal_download_host_20260827.log, bytes: 5508, sha256: d4a95a3dc5d97bdd8a45f33f62e0d4bc83fc2e4aec8af753ab5b3b26ea0480f4}
+boundaries:
+  - PASS establishes only frozen snapshot identity, completeness, hashes, and metadata/statistics availability.
+  - It provides no model-load, VRAM, latency, numerical-action, environment-success, reward, or training evidence.
+  - Snapshot entries are symlinks into the dedicated cache; logical bytes are not separate physical copies.
+next_gate: Load NF4 4-bit BF16 and run one action prediction on one frozen local LIBERO agent-view image.

@@ -1,0 +1,54 @@
+experiment: phase2b_act_libero_ckpt049060_dev5_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+kind: development_checkpoint_rollout
+checkpoint:
+  step: 49060
+  path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_049060.pt
+  bytes: 410470545
+  sha256: 6850fd82a7c6adc8be507efec12983ff721d42700eb03b419172949c0322c695
+  exact_resume_boundary: true
+protocol:
+  paired_candidates: [4460, 49060, 100000]
+  task: LIBERO_GOAL/turn_on_the_stove
+  episodes: 5
+  evaluator_seed_range: 20260827..20260831
+  init_state_indices: [0, 1, 2, 3, 4]
+  episode_horizon: 600
+  strict_offline: true
+  video: false
+metrics:
+  success_count: 5
+  success_total: 5
+  success_percent: 100.0
+  success_wilson_95_percent: [56.55175352168252, 100.0]
+  steps_per_episode: [82, 82, 81, 83, 79]
+  total_environment_steps: 407
+  mean_steps_per_episode: 81.4
+  mean_sum_reward: 1.0
+  mean_max_reward: 1.0
+  rollout_elapsed_s: 11.360745172998577
+  rollout_s_per_episode: 2.2721490345997153
+  policy_forward_calls: 84
+  timed_select_action_total_s: 0.9925024309486616
+  timed_s_per_policy_forward_including_cold_start: 0.01181550513034121
+  warm_episodes_1_to_4_policy_forward_calls: 67
+  warm_episodes_1_to_4_timed_select_action_s: 0.5235911759373266
+  warm_timed_s_per_policy_forward: 0.007814793670706367
+resources:
+  peak_vram_allocated_bytes: 162552832
+  peak_vram_reserved_bytes: 216006656
+  process_wall_s: 17.58
+  maximum_rss_kib: 3997600
+training_metrics:
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation_loss: NOT_REMEASURED
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+artifacts:
+  config: {path: configs/eval/act_libero_phase2b_ckpt049060_dev5.yaml, sha256: 46b51fcc40039a487726cf6bc63798d07e8c44b1273e367de1869f2ea95def23}
+  raw_log: {path: results/raw/phase2b_act_libero_ckpt049060_dev5_seed20260827_host_20260827.log, lines: 16, bytes: 3111, sha256: 5b716bd12f2393f15154e2566b0f34cdfa43ba7c0e970c49a19851f18cbb2b0b}
+  eval_info: {path: outputs/eval/phase2b_act_libero_ckpt049060_dev5_seed20260827/eval_info.json, bytes: 1851, sha256: 2ebec983f0eac3fc249223f814464e8dccdeb0b03a9632e436ecc9872385a79f}
+  resolved_config: {bytes: 1146, sha256: c6e213c5a7031c7053d881be2a82a7be967f90ce83e9282649c706a655377b05}
+statistical_boundary: Five reused development states; strong signal only, not a final success estimate.

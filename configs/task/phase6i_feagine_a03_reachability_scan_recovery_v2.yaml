@@ -1,0 +1,8 @@
+experiment_id: phase6i_feagine_a03_reachability_scan_recovery_v2
+source_result: results/phase6i_feagine_a03_reachability_scan_v1.yaml
+source_config: configs/task/phase6i_feagine_a03_reachability_scan_v1.yaml
+expected_grid: {count: 21, start_m: 0.0, stop_m: 0.005, step_m: 0.00025, comparison_tolerance_m: 0.000000000001}
+expected_reachability: {directions: 4, minimum_retraction_m: 0.0015, maximum_spread_m: 0.0005}
+structured_result: results/phase6i_feagine_a03_reachability_scan_recovery_v2.yaml
+authorization: {reuse_v1_evidence_only: true, core_fk_ik_calls: 0, mujoco_import: false, environment_steps: 0, gpu: false, hardware: false}
+boundary: Packaging-only recovery from immutable v1 scan; no IK recomputation, grid/target/tolerance change, MJCF recovery, VLA, reward, final, or hardware.

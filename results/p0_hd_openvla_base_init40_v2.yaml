@@ -1,0 +1,66 @@
+classification: PASS
+experiment: p0_hd_openvla_base_init40_v2_seed20260936
+execution_pass: true
+policy_success: true
+steps: 221
+sum_reward: 1.0
+model_predictions: 221
+model_load_s: 5.5090142140034
+total_inference_s: 74.35914895699534
+median_inference_s: 0.33660244999919087
+p95_inference_s: 0.3433544039980916
+mean_inference_s: 0.33646673736196986
+inference_throughput_predictions_per_s: 2.972061986989826
+elapsed_s: 126.28588831100205
+host:
+  exit_status: 0
+  wall_s: 132.18
+  user_s: 173.26
+  system_s: 15.90
+  cpu_percent: 143
+  max_rss_kib: 5775076
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+render_resolution:
+- 640
+- 640
+model_ipc_resolution:
+- 128
+- 128
+peak_vram_allocated_bytes: 5061286912
+peak_vram_reserved_bytes: 5196742656
+worker_rss_kib: 1877684
+coordinator_rss_kib: 2172032
+checkpoint_integrity:
+  status: PASS
+  expected_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  worker_reported_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  shards_loaded: 4
+  worker_shutdown_clean: true
+  worker_predictions_at_shutdown: 221
+non_applicable_metrics: [training_loss, offline_validation, token_accuracy, continuous_l1, gradients, optimizer_state, checkpoint_creation]
+media_probe:
+  presentation_video: {codec: h264, width: 1920, height: 1080, pix_fmt: yuv420p, fps: 20, frames: 221, duration_s: 11.05}
+  clean_video: {codec: h264, width: 1080, height: 1080, pix_fmt: yuv420p, fps: 20, frames: 221, duration_s: 11.05}
+trajectory_rows: 221
+visual_qa: {status: PASS, inspected_frame_time_s: 5.5, genuine_640_source_detail: true, title_clipped: false, overlay_overlap: false, orientation_correct: true}
+runtime_cleanup: {gpu_memory_after_mib: 562, compute_processes_after: 0}
+supporting_artifacts:
+  config: {path: configs/eval/p0_hd_openvla_base_init40_v2.yaml, sha256: 8fe5c42927d8c0751d301a49a6ad72ee322de3d031536142839030edea0f3ca8}
+  resolved_config: {path: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/resolved_config.yaml, sha256: 44d5ca57734770278e8acf924c9ab80ba259d101e2993c171399543394421093}
+  raw_log: {path: results/raw/p0_hd_openvla_base_init40_v2_seed20260936_host_20260828.log, sha256: fb90f401eba866c5b1a3ed53d7fe3c82f5817d5bd16c92309962994ad3cd1036}
+artifacts:
+  presentation_video:
+    path: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/presentation_hd640.mp4
+    bytes: 706509
+    sha256: 56b11f15945d094e1881bbce0f1bc47c865365bf60748e70412312cae1bb6fab
+  clean_video:
+    path: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/clean_agentview_hd640.mp4
+    bytes: 629414
+    sha256: 3afe1c5b0b06e08983bddceacb9fcdc3f0a84ee55a273d626b9fa47bd4f1c8c8
+  trajectory:
+    path: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/trajectory.jsonl
+    sha256: b30674035269e7e2e8aee37e61badcec575f2e0e79f2cdcd236e4c3fc435fb70
+boundary: Presentation-only single-EGL 640px recapture of frozen base/init40; cannot
+  revise Phase 3A final evidence.

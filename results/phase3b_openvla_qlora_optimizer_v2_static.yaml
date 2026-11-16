@@ -1,0 +1,18 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, optimizer_steps: 0}
+regression:
+  v1_failure: results/phase3b_openvla_qlora_optimizer_v1.yaml
+  sentinel_selection: maximum finite nonzero pre-clip gradient across named trainable parameters
+  optimizer_contract_changed: false
+assets:
+  config: {path: configs/train/openvla_phase3b_qlora_optimizer_gate_v2.yaml, sha256: 822abb001948b65064e5c16e89edbca3821eba66e913718c28447ab038a3317f}
+  entrypoint: {path: scripts/check_phase3b_openvla_qlora_optimizer_gate_v2.py, sha256: 2e1c201e5abebf1c18ade154bde5fb404634c5003fe80416754d26d1593a643c}
+  checker: {path: scripts/check_phase3b_openvla_qlora_optimizer_v2_static.py, sha256: 6603bff017b0b21b943f2e71c27a331e65ac425aebfd4a58952b2f2f9f94b688}
+formal_gate:
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_optimizer_v2.yaml
+boundary: Static regression and formal single-update resource gate PASS; no checkpoint, training curve, validation or environment evidence.

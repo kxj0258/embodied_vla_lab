@@ -1,0 +1,22 @@
+classification: PASS
+experiment: phase6g_feagine_a03_mapping_diagnostic_v1_static
+checks:
+  source_fail_immutable: true
+  same_targets: true
+  same_budget: true
+  no_mapping_change: true
+  records_raw_applied: true
+  records_48_controls: true
+  records_vector_diagnostics: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  no_runtime_imports: true
+checks_passed: 10
+checks_total: 10
+source_hashes:
+  config: 7e7586a4b94e3195228f8f84fc16f19a900ab7fb9747c998fe225d65fcf68ff3
+  runner: d3d9eb3522ba249997a078c4f2a0e702b128864a9b026d157f7702672d81ece7
+  phase6f_result: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20
+environment_steps: 0
+boundary: Static diagnostic authorization only; Phase 6F FAIL immutable and no mapping
+  correction applied.

@@ -1,0 +1,46 @@
+experiment_id: phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120
+kind: step20_wrist_adapter_development_recovery_gate
+suite: {name: libero_goal, task_order_index: 0}
+task: {task_id: 7, name: turn_on_the_stove, instruction: turn on the stove}
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  init_state_indices: [0, 1, 2]
+  paired_seeds: [20261120, 20261121, 20261122]
+  total_episodes: 3
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  observation_key: eye_in_hand
+  model_ipc_resolution: [128, 128]
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  policy: OpenVLA-7B rank-8 wrist QLoRA step-20
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  adapter_dir: outputs/train/phase4c_openvla_wrist_qlora_rank8_train20_val10_v1_seed20260829/adapter
+  adapter_sha256: fad1e3201dacc5e1136f45b5df3b06943d83354a34c1079d620c4b1abcf1ae7a
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase4e_openvla_wrist_adapter_worker.py
+frozen_base_reference:
+  result: results/phase4b_openvla_viewpoint_dev30_v1.yaml
+  task_id: 7
+  view: eye_in_hand
+  init_state_indices: [0, 1, 2]
+  paired_seeds: [20261120, 20261121, 20261122]
+  successes: 0
+  total: 3
+  steps: [600, 600, 600]
+decision_rule:
+  adapter_successes_0: NO_GO_NO_CLOSED_LOOP_RECOVERY
+  adapter_successes_1_or_2: DEVELOPMENT_RECOVERY_SIGNAL_PARTIAL
+  adapter_successes_3: DEVELOPMENT_RECOVERY_SIGNAL_STRONG
+  automatic_final_authorization: false
+output_dir: outputs/eval/phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120
+structured_result: results/phase4e_openvla_wrist_adapter_task7_dev3_v1.yaml
+raw_log: results/raw/phase4e_openvla_wrist_adapter_task7_dev3_v1_host_20260828.log
+boundary: >-
+  Development-only task-7 closed-loop recovery gate paired to immutable Phase 4B base evidence on identical
+  init states and seeds. It cannot revise Phase 4B, select/tune another checkpoint, remove failures, claim
+  cross-task ego-view generalization, or authorize final tasks. Every episode is retained, including timeouts.

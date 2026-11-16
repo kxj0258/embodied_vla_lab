@@ -1,0 +1,602 @@
+classification: PASS
+experiment: p0_breadth_openvla_base_10task30_v2_seed20261001
+execution_pass: true
+policy_success_count: 20
+policy_success_total: 30
+policy_success_rate: 0.6666666666666666
+policy_success_wilson_95: [0.4878005164454384, 0.8076950191632386]
+task_success_count: 10
+task_total: 10
+task_coverage_rate_at_least_one_success: 1.0
+task_summaries:
+- task_id: 0
+  task_name: open_the_middle_drawer_of_the_cabinet
+  instruction: open the middle drawer of the cabinet
+  success_count: 2
+  success_total: 3
+  steps:
+  - 114
+  - 600
+  - 123
+  episodes:
+  - global_episode: 0
+    task_id: 0
+    task_name: open_the_middle_drawer_of_the_cabinet
+    instruction: open the middle drawer of the cabinet
+    init_state_index: 0
+    seed: 20261001
+    success: true
+    steps: 114
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 40.02601292100735
+    episode_wall_s: 42.06924701399839
+  - global_episode: 1
+    task_id: 0
+    task_name: open_the_middle_drawer_of_the_cabinet
+    instruction: open the middle drawer of the cabinet
+    init_state_index: 1
+    seed: 20261002
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 207.581453325045
+    episode_wall_s: 218.38162427400312
+  - global_episode: 2
+    task_id: 0
+    task_name: open_the_middle_drawer_of_the_cabinet
+    instruction: open the middle drawer of the cabinet
+    init_state_index: 2
+    seed: 20261003
+    success: true
+    steps: 123
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 40.819207156979246
+    episode_wall_s: 42.95713939399866
+- task_id: 1
+  task_name: put_the_bowl_on_the_stove
+  instruction: put the bowl on the stove
+  success_count: 2
+  success_total: 3
+  steps:
+  - 600
+  - 90
+  - 73
+  episodes:
+  - global_episode: 3
+    task_id: 1
+    task_name: put_the_bowl_on_the_stove
+    instruction: put the bowl on the stove
+    init_state_index: 0
+    seed: 20261004
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 199.04152415302815
+    episode_wall_s: 209.56775213500077
+  - global_episode: 4
+    task_id: 1
+    task_name: put_the_bowl_on_the_stove
+    instruction: put the bowl on the stove
+    init_state_index: 1
+    seed: 20261005
+    success: true
+    steps: 90
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 29.765424563011038
+    episode_wall_s: 31.44731673899878
+  - global_episode: 5
+    task_id: 1
+    task_name: put_the_bowl_on_the_stove
+    instruction: put the bowl on the stove
+    init_state_index: 2
+    seed: 20261006
+    success: true
+    steps: 73
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 24.17858518299181
+    episode_wall_s: 25.523345904999587
+- task_id: 2
+  task_name: put_the_wine_bottle_on_top_of_the_cabinet
+  instruction: put the wine bottle on top of the cabinet
+  success_count: 3
+  success_total: 3
+  steps:
+  - 77
+  - 99
+  - 333
+  episodes:
+  - global_episode: 6
+    task_id: 2
+    task_name: put_the_wine_bottle_on_top_of_the_cabinet
+    instruction: put the wine bottle on top of the cabinet
+    init_state_index: 0
+    seed: 20261007
+    success: true
+    steps: 77
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 25.482761302973813
+    episode_wall_s: 26.83635566099838
+  - global_episode: 7
+    task_id: 2
+    task_name: put_the_wine_bottle_on_top_of_the_cabinet
+    instruction: put the wine bottle on top of the cabinet
+    init_state_index: 1
+    seed: 20261008
+    success: true
+    steps: 99
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 32.7686845850003
+    episode_wall_s: 34.64475605500047
+  - global_episode: 8
+    task_id: 2
+    task_name: put_the_wine_bottle_on_top_of_the_cabinet
+    instruction: put the wine bottle on top of the cabinet
+    init_state_index: 2
+    seed: 20261009
+    success: true
+    steps: 333
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 110.65702009899178
+    episode_wall_s: 116.76074075200086
+- task_id: 3
+  task_name: open_the_top_drawer_and_put_the_bowl_inside
+  instruction: open the top drawer and put the bowl inside
+  success_count: 1
+  success_total: 3
+  steps:
+  - 600
+  - 600
+  - 246
+  episodes:
+  - global_episode: 9
+    task_id: 3
+    task_name: open_the_top_drawer_and_put_the_bowl_inside
+    instruction: open the top drawer and put the bowl inside
+    init_state_index: 0
+    seed: 20261010
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 200.20674361400597
+    episode_wall_s: 211.24685210999814
+  - global_episode: 10
+    task_id: 3
+    task_name: open_the_top_drawer_and_put_the_bowl_inside
+    instruction: open the top drawer and put the bowl inside
+    init_state_index: 1
+    seed: 20261011
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 200.19360316300663
+    episode_wall_s: 211.01805308700204
+  - global_episode: 11
+    task_id: 3
+    task_name: open_the_top_drawer_and_put_the_bowl_inside
+    instruction: open the top drawer and put the bowl inside
+    init_state_index: 2
+    seed: 20261012
+    success: true
+    steps: 246
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 81.82513317394114
+    episode_wall_s: 86.35363382799915
+- task_id: 4
+  task_name: put_the_bowl_on_top_of_the_cabinet
+  instruction: put the bowl on top of the cabinet
+  success_count: 3
+  success_total: 3
+  steps:
+  - 93
+  - 93
+  - 103
+  episodes:
+  - global_episode: 12
+    task_id: 4
+    task_name: put_the_bowl_on_top_of_the_cabinet
+    instruction: put the bowl on top of the cabinet
+    init_state_index: 0
+    seed: 20261013
+    success: true
+    steps: 93
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 30.817220176002593
+    episode_wall_s: 32.53659171599793
+  - global_episode: 13
+    task_id: 4
+    task_name: put_the_bowl_on_top_of_the_cabinet
+    instruction: put the bowl on top of the cabinet
+    init_state_index: 1
+    seed: 20261014
+    success: true
+    steps: 93
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 30.810333249988616
+    episode_wall_s: 32.52786667300097
+  - global_episode: 14
+    task_id: 4
+    task_name: put_the_bowl_on_top_of_the_cabinet
+    instruction: put the bowl on top of the cabinet
+    init_state_index: 2
+    seed: 20261015
+    success: true
+    steps: 103
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 34.17372537797564
+    episode_wall_s: 36.081438576002256
+- task_id: 5
+  task_name: push_the_plate_to_the_front_of_the_stove
+  instruction: push the plate to the front of the stove
+  success_count: 2
+  success_total: 3
+  steps:
+  - 133
+  - 600
+  - 135
+  episodes:
+  - global_episode: 15
+    task_id: 5
+    task_name: push_the_plate_to_the_front_of_the_stove
+    instruction: push the plate to the front of the stove
+    init_state_index: 0
+    seed: 20261016
+    success: true
+    steps: 133
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 44.210680624993984
+    episode_wall_s: 46.7245211920017
+  - global_episode: 16
+    task_id: 5
+    task_name: push_the_plate_to_the_front_of_the_stove
+    instruction: push the plate to the front of the stove
+    init_state_index: 1
+    seed: 20261017
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 200.27480060303424
+    episode_wall_s: 210.8354294109995
+  - global_episode: 17
+    task_id: 5
+    task_name: push_the_plate_to_the_front_of_the_stove
+    instruction: push the plate to the front of the stove
+    init_state_index: 2
+    seed: 20261018
+    success: true
+    steps: 135
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 45.34421675399062
+    episode_wall_s: 47.72360829999889
+- task_id: 6
+  task_name: put_the_cream_cheese_in_the_bowl
+  instruction: put the cream cheese in the bowl
+  success_count: 1
+  success_total: 3
+  steps:
+  - 600
+  - 108
+  - 600
+  episodes:
+  - global_episode: 18
+    task_id: 6
+    task_name: put_the_cream_cheese_in_the_bowl
+    instruction: put the cream cheese in the bowl
+    init_state_index: 0
+    seed: 20261019
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 203.40488907805775
+    episode_wall_s: 214.47112497600028
+  - global_episode: 19
+    task_id: 6
+    task_name: put_the_cream_cheese_in_the_bowl
+    instruction: put the cream cheese in the bowl
+    init_state_index: 1
+    seed: 20261020
+    success: true
+    steps: 108
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 35.93394661799175
+    episode_wall_s: 37.95667833599873
+  - global_episode: 20
+    task_id: 6
+    task_name: put_the_cream_cheese_in_the_bowl
+    instruction: put the cream cheese in the bowl
+    init_state_index: 2
+    seed: 20261021
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 199.8005964590011
+    episode_wall_s: 211.12137143800283
+- task_id: 7
+  task_name: turn_on_the_stove
+  instruction: turn on the stove
+  success_count: 3
+  success_total: 3
+  steps:
+  - 89
+  - 81
+  - 84
+  episodes:
+  - global_episode: 21
+    task_id: 7
+    task_name: turn_on_the_stove
+    instruction: turn on the stove
+    init_state_index: 0
+    seed: 20261022
+    success: true
+    steps: 89
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 29.642391033015883
+    episode_wall_s: 31.254640088998713
+  - global_episode: 22
+    task_id: 7
+    task_name: turn_on_the_stove
+    instruction: turn on the stove
+    init_state_index: 1
+    seed: 20261023
+    success: true
+    steps: 81
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 27.001613188014744
+    episode_wall_s: 28.48145488099908
+  - global_episode: 23
+    task_id: 7
+    task_name: turn_on_the_stove
+    instruction: turn on the stove
+    init_state_index: 2
+    seed: 20261024
+    success: true
+    steps: 84
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 28.006738787003997
+    episode_wall_s: 29.53641077499924
+- task_id: 8
+  task_name: put_the_bowl_on_the_plate
+  instruction: put the bowl on the plate
+  success_count: 1
+  success_total: 3
+  steps:
+  - 76
+  - 600
+  - 600
+  episodes:
+  - global_episode: 24
+    task_id: 8
+    task_name: put_the_bowl_on_the_plate
+    instruction: put the bowl on the plate
+    init_state_index: 0
+    seed: 20261025
+    success: true
+    steps: 76
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 25.362091493989283
+    episode_wall_s: 26.73864156700074
+  - global_episode: 25
+    task_id: 8
+    task_name: put_the_bowl_on_the_plate
+    instruction: put the bowl on the plate
+    init_state_index: 1
+    seed: 20261026
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 200.39846235701407
+    episode_wall_s: 210.99608424599865
+  - global_episode: 26
+    task_id: 8
+    task_name: put_the_bowl_on_the_plate
+    instruction: put the bowl on the plate
+    init_state_index: 2
+    seed: 20261027
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 200.22026339296644
+    episode_wall_s: 210.68021272999977
+- task_id: 9
+  task_name: put_the_wine_bottle_on_the_rack
+  instruction: put the wine bottle on the rack
+  success_count: 2
+  success_total: 3
+  steps:
+  - 270
+  - 134
+  - 600
+  episodes:
+  - global_episode: 27
+    task_id: 9
+    task_name: put_the_wine_bottle_on_the_rack
+    instruction: put the wine bottle on the rack
+    init_state_index: 0
+    seed: 20261028
+    success: true
+    steps: 270
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 89.72578247199635
+    episode_wall_s: 94.89720293999926
+  - global_episode: 28
+    task_id: 9
+    task_name: put_the_wine_bottle_on_the_rack
+    instruction: put the wine bottle on the rack
+    init_state_index: 1
+    seed: 20261029
+    success: true
+    steps: 134
+    sum_reward: 1.0
+    max_reward: 1.0
+    terminated: true
+    truncated: false
+    inference_s: 44.59678169296967
+    episode_wall_s: 47.04417373400065
+  - global_episode: 29
+    task_id: 9
+    task_name: put_the_wine_bottle_on_the_rack
+    instruction: put the wine bottle on the rack
+    init_state_index: 2
+    seed: 20261030
+    success: false
+    steps: 600
+    sum_reward: 0.0
+    max_reward: 0.0
+    terminated: false
+    truncated: false
+    inference_s: 199.9690709929746
+    episode_wall_s: 211.01868111400108
+total_environment_steps: 8554
+model_predictions: 8554
+reward:
+  total_sum_reward: 20.0
+  mean_sum_reward_per_episode: 0.6666666666666666
+  failure_timeout_count: 10
+steps:
+  capped_mean: 285.1333333333333
+  capped_median: 133.5
+  successful_episode_count: 20
+  successful_mean: 127.7
+  successful_median: 101.0
+  successful_min: 73
+  successful_max: 333
+failure_states:
+- {task_id: 0, init_state_index: 1}
+- {task_id: 1, init_state_index: 0}
+- {task_id: 3, init_state_index: 0}
+- {task_id: 3, init_state_index: 1}
+- {task_id: 5, init_state_index: 1}
+- {task_id: 6, init_state_index: 0}
+- {task_id: 6, init_state_index: 2}
+- {task_id: 8, init_state_index: 1}
+- {task_id: 8, init_state_index: 2}
+- {task_id: 9, init_state_index: 2}
+model_load_s: 4.221627774000808
+total_inference_s: 2862.2397575909636
+mean_inference_s: 0.334608342014375
+median_inference_s: 0.33312361299977056
+p95_inference_s: 0.3490949964512765
+inference_throughput_predictions_per_s: 2.988568647093202
+peak_vram_allocated_bytes: 5068574720
+peak_vram_reserved_bytes: 5196742656
+worker_rss_kib: 1886956
+coordinator_rss_kib: 2460964
+elapsed_s: 3062.7984440049986
+host:
+  exit_status: 0
+  wall_s: 3066.95
+  user_s: 3544.20
+  system_s: 214.25
+  cpu_percent: 122
+  max_rss_kib: 5773664
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  gpu_memory_after_mib: 694
+  compute_processes_after: 0
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+checkpoint_integrity:
+  status: PASS
+  expected_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  worker_reported_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  shards_loaded: 4
+  worker_shutdown_clean: true
+  worker_predictions_at_shutdown: 8554
+non_applicable_metrics: [training_loss, offline_validation, token_accuracy, continuous_l1, gradients, optimizer_state, checkpoint_creation]
+artifacts:
+  config: {path: configs/eval/p0_breadth_openvla_base_10task30_v2.yaml, sha256: 6dd8f411d91befcbb093233cc1cf4700a5307b7d81139578484bcb4991041cac}
+  resolved_config: {path: outputs/eval/p0_breadth_openvla_base_10task30_v2_seed20261001/resolved_config.yaml, sha256: f95eb1edce4dcec41e26cdd3607e600868a230ccde3bd1c2f669c8122a49e777}
+  raw_log: {path: results/raw/p0_breadth_openvla_base_10task30_v2_seed20261001_host_20260828.log, sha256: a2876ceeec2feeabd8cadc5e637f110c9ced2b6c98510653c14a556a1e9d7f3f}
+  output_size_mib_approx: 241
+  ipc_file_count: 25662
+trajectory:
+  path: outputs/eval/p0_breadth_openvla_base_10task30_v2_seed20261001/trajectory.jsonl
+  sha256: 1d6ea45fdb3d60801aaf450bfe0772328d2be4c553a961e3981003dd6afc308b
+boundary: Frozen full LIBERO-Goal task-catalog breadth gate with three fixed initial
+  states per task. It is still a small 30-episode portfolio protocol, not the official
+  full benchmark. It cannot revise Phase 3A single-task 45/45 or authorize tuning.
+  Every task/state remains in the aggregate after outcomes are observed; no post-outcome
+  removal, replacement or selective rerun is allowed.

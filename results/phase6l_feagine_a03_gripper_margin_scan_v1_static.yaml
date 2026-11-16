@@ -1,0 +1,25 @@
+classification: PASS
+experiment: phase6l_feagine_a03_gripper_margin_scan_v1_static
+checks:
+  source_2of4: true
+  step1_hard_stop_diagnosis: true
+  frozen_commands: true
+  reuse_zero: true
+  smallest_pass_rule: true
+  same_arm_targets: true
+  same_gates: true
+  bounded_budget: true
+  no_other_controller_change: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  no_runtime_imports: true
+checks_passed: 12
+checks_total: 12
+source_hashes:
+  config: a32217b6d126c15b8a741a44156044fe4d7a580fa93198596a67d2a727bdb9d6
+  runner: 552318c1d62f0f6c074eb68b7481f3c3e390c495ee3cda4d867060a9f2d44043
+  phase6j: 07c5097446bb80994ddc87173bb06a4c94ab62d96467b8521d75538ec70e588c
+  phase6k: 87209d6a80a79aa5f4995b3bf2a30eea4c0067725e126449f270758fecc81e32
+environment_steps: 0
+boundary: Static margin-scan authorization only; Phase 6J remains 2/4 and threshold
+  unchanged.

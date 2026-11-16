@@ -1,0 +1,44 @@
+classification: FAIL
+experiment: phase6a_feagine_bridge_static_v3_seed20260903
+checks:
+  hardware_parameters_explicitly_missing: true
+  no_hardware_fidelity_claim: true
+  roundtrip_count: true
+  roundtrip_tolerance: true
+  straight_case: true
+  nominal_adapter_finite: true
+  translation_rate_limit: true
+  gripper_limit: true
+  reject_nan: true
+  reject_rotation: true
+  reject_workspace: false
+  reject_unreachable_pcc: true
+  all_execution_forbidden: true
+  cpu_only: true
+checks_passed: 13
+checks_total: 14
+roundtrip:
+  samples: 256
+  max_position_error_m: 8.580619709031151e-16
+  mean_position_error_m: 2.9474284956116377e-17
+nominal_adapter:
+  target_tip_continuum_m:
+  - 0.021
+  - 0.008
+  - 0.2
+  pcc_state:
+    bend_angle_rad: 0.22378344499051128
+    bending_plane_rad: 0.36397895650964407
+    length_m: 0.20167910575443762
+  gripper: 0.5
+source_hashes:
+  config: 4a18b3b512a84a4b4894c0ad5e44e66a627c29187a60fa8157b6386320851d6a
+  implementation: 15166a5d30f629193e4a045433f17676267446e8bdf8018c2557ec46ff49d210
+cpu_wall_s: 0.010060815999622719
+cuda_initialized: false
+model_predictions: 0
+environment_steps: 0
+hardware_commands: 0
+boundary: CPU-only software and numerical contract for a provisional single-section
+  PCC reference. Passing does not prove Feagine A03 geometry, actuator mapping, collision
+  safety, MuJoCo control, VLA transfer or real-robot safety.

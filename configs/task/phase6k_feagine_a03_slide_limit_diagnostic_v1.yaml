@@ -1,0 +1,17 @@
+experiment_id: phase6k_feagine_a03_slide_limit_diagnostic_v1
+source_experiment: phase6j_feagine_a03_external_targets_recovery_dev4_v1
+preset_id: a03_type_2
+targets:
+  - {id: plus_x_35mm_retract_1p5mm, delta_m: [0.035, 0.000, -0.0015], seed_id: x_pos_uniform, seed_angles_rad: [0.05, 1.5707963267948966, 0.05, 1.5707963267948966, 0.05, 1.5707963267948966]}
+  - {id: minus_x_35mm_retract_1p5mm, delta_m: [-0.035, 0.000, -0.0015], seed_id: x_neg_uniform, seed_angles_rad: [0.05, -1.5707963267948966, 0.05, -1.5707963267948966, 0.05, -1.5707963267948966]}
+  - {id: plus_y_35mm_retract_1p5mm, delta_m: [0.000, 0.035, -0.0015], seed_id: y_pos_uniform, seed_angles_rad: [0.05, 0.0, 0.05, 0.0, 0.05, 0.0]}
+  - {id: minus_y_35mm_retract_1p5mm, delta_m: [0.000, -0.035, -0.0015], seed_id: y_neg_uniform, seed_angles_rad: [0.05, 3.141592653589793, 0.05, 3.141592653589793, 0.05, 3.141592653589793]}
+representation: {canonicalize_negative_theta: true, phi_shift_rad: 3.141592653589793, phi_wrap: [-3.141592653589793, 3.141592653589793]}
+ik: {max_iterations: 200, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+protocol: {steps_per_target: 400, timestep_s: 0.005, reset_per_target: true, gripper_command: 0.0, grasper_rotation_rad: 0.0}
+diagnostic: {nominal_violation_epsilon_m: 0.000000000001, material_slide_threshold_m: 0.0001, record_all_slide_joints: true, record_first_and_peak_steps: true}
+output_dir: outputs/eval/phase6k_feagine_a03_slide_limit_diagnostic_v1
+structured_result: results/phase6k_feagine_a03_slide_limit_diagnostic_v1.yaml
+raw_log: results/raw/phase6k_feagine_a03_slide_limit_diagnostic_v1_host_20260902.log
+authorization: {simulation_steps_total: 1600, diagnostic_only: true, controller_changes: false, gui: false, render: false, gpu: false, policy_inference: false, hardware: false}
+boundary: Identical-target diagnostic of immutable Phase 6J 2/4 FAIL; no controller/target/threshold change, success revision, VLA, reward, final, or hardware claim.

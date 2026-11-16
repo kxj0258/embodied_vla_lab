@@ -1,0 +1,26 @@
+experiment: phase3a_openvla_dev5_static_v1_20260827
+date: 2026-08-27
+classification: PASS
+execution: {environment_constructed: false, cuda_initialized: false, model_loaded: false, episodes_executed: 0}
+frozen_protocol:
+  experiment_id: phase3a_openvla_libero_dev5_v1_init0to4_seed20260827
+  task: libero_goal/turn_on_the_stove
+  init_state_indices: [0, 1, 2, 3, 4]
+  evaluator_seeds: [20260827, 20260828, 20260829, 20260830, 20260831]
+  episodes: 5
+  episode_horizon: 600
+  model_loads: 1
+  output_no_overwrite: true
+  execution_classification_separate_from_policy_success: true
+  cleanup: persistent_worker_reaped_and_environment_closed
+assets:
+  config: {path: configs/eval/openvla_libero_phase3a_dev5.yaml, sha256: 18208a62210938136aae96c59e4fb44faa46ede7de7fe225509335cda03add23}
+  entrypoint: {path: scripts/evaluate_phase3a_openvla_libero_dev5.py, sha256: d6cd917a341a7a9405a0ec9bdcb44cb1a40b3afe25e4efa7ce8f69712aaae924}
+  checker: {path: scripts/check_phase3a_openvla_dev5_static.py, sha256: 8c01e6b28dccf1b97e0448c604e954c3e96a77c207cb572c68301e0ab0319615}
+formal_host_gate:
+  status: PENDING
+  output_dir: outputs/eval/phase3a_openvla_libero_dev5_v1_init0to4_seed20260827
+  raw_log: results/raw/phase3a_openvla_libero_dev5_v1_init0to4_seed20260827_host_20260827.log
+boundary: >-
+  Five development states only. Static PASS provides no rollout, success, reward, latency, VRAM, RSS, loss,
+  gradient, checkpoint or training evidence and does not authorize held-out evaluation or QLoRA.

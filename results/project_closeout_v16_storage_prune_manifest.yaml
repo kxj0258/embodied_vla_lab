@@ -1,0 +1,15 @@
+manifest: project_closeout_v16_storage_prune_20260904
+classification: PASS
+generation_mode: cpu_only_post_prune_verification
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 8583, sha256: 9ead42af9c70c82d5cc91ab5cbb73310e64c8ae5772e017cf1c25385cff448cc}
+  - {path: docs/repro_index.md, bytes: 10719, sha256: cd77e0665244f17285033d98401a91effd0b152bbbbd52512580f6f527d12746}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5150, sha256: c72ce3ebe58ba4e38d5ddbf4e29d28a5b35c51edb83fcebf13fe6a33c0b21ae1}
+canonical_evidence:
+  - {path: results/storage_prune_recommended_20260904_manifest.yaml, bytes: 107031, sha256: 5a4f2959a4dde78a54553bd70b2492aafd478ab7f107433c9c78ab92306cfcf4}
+  - {path: scripts/verify_storage_prune_20260904.py, bytes: 2053, sha256: 391851aa52c986629ffcd64ab4261f0af86d9a1e0288d60787e5e64d913def95}
+  - {path: scripts/prune_recommended_storage_20260904.py, bytes: 8079, sha256: f3b48ffc201a71cb3accebc4a5163c65ec8d432c0a800221a1e1c6405e1fff07}
+historical_evidence: results/project_closeout_v15_phase6l_v1_manifest.yaml
+boundary: Local training-resume capability was intentionally reduced; experimental metrics, raw evidence, failures, presentation assets and canonical inference payloads were preserved.

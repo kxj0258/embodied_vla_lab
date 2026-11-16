@@ -1,0 +1,681 @@
+classification: FAIL
+experiment: phase6h_feagine_signed_theta_multistart_static_v1
+decision: SIGNED_THETA_AND_MULTISTART_STATIC_FAIL
+checks:
+  fk_position_equivalence: true
+  fk_direction_equivalence: true
+  all_targets_solved: false
+  no_mujoco_import: true
+  cpu_only: true
+checks_passed: 4
+checks_total: 5
+equivalence_samples: 260
+max_fk_position_difference_m: 9.215859364530843e-08
+max_fk_direction_difference: 4.275860464049739e-07
+target_solutions:
+- target_id: plus_x_35mm
+  valid_seed_count: 0
+  selected: null
+  attempts:
+  - seed_id: x_pos_s
+    solver_success: false
+    iterations: 8
+    raw_angles_rad:
+    - 0.10461585968732834
+    - 1.5707963705062866
+    - -0.00890260934829712
+    - -1.5707963705062866
+    - -0.11349034309387207
+    - 1.5707963705062866
+    canonical_angles_rad:
+    - 0.10461585968732834
+    - 1.5707963705062866
+    - 0.00890260934829712
+    - 1.5707962830835065
+    - 0.11349034309387207
+    - -1.5707962830835065
+    canonical_position_error_m: 0.0015933094546198845
+    canonical_direction_error: 2.8133394540614117e-05
+    valid: false
+  - seed_id: x_neg_s
+    solver_success: false
+    iterations: 9
+    raw_angles_rad:
+    - -0.1107083410024643
+    - -1.5707963705062866
+    - -0.003264885162934661
+    - 1.5707963705062866
+    - 0.1074121743440628
+    - -1.5707963705062866
+    canonical_angles_rad:
+    - 0.1107083410024643
+    - 1.5707962830835065
+    - 0.003264885162934661
+    - -1.5707962830835065
+    - 0.1074121743440628
+    - -1.5707963705062866
+    canonical_position_error_m: 0.0015919418074190617
+    canonical_direction_error: 3.129988933449615e-05
+    valid: false
+  - seed_id: y_pos_s
+    solver_success: false
+    iterations: 29
+    raw_angles_rad:
+    - 0.10945463925600052
+    - 1.4684457778930664
+    - 0.022302184253931046
+    - 3.124060869216919
+    - 0.1097993329167366
+    - -1.470142126083374
+    canonical_angles_rad:
+    - 0.10945463925600052
+    - 1.4684457778930664
+    - 0.022302184253931046
+    - 3.124060869216919
+    - 0.1097993329167366
+    - -1.470142126083374
+    canonical_position_error_m: 0.0016016801819205284
+    canonical_direction_error: 2.9761884966180623e-05
+    valid: false
+  - seed_id: y_neg_s
+    solver_success: false
+    iterations: 23
+    raw_angles_rad:
+    - 0.10904576629400253
+    - 1.5675444602966309
+    - -0.0007152578327804804
+    - -0.0987263172864914
+    - 0.10908889770507812
+    - -1.5675773620605469
+    canonical_angles_rad:
+    - 0.10904576629400253
+    - 1.5675444602966309
+    - 0.0007152578327804804
+    - 3.0428663363033017
+    - 0.10908889770507812
+    - -1.5675773620605469
+    canonical_position_error_m: 0.0015917186392471194
+    canonical_direction_error: 2.7543841845663333e-05
+    valid: false
+  - seed_id: x_pos_uniform
+    solver_success: false
+    iterations: 4
+    raw_angles_rad:
+    - 0.11096104979515076
+    - 1.5707963705062866
+    - -0.0037366810720413923
+    - 1.5707963705062866
+    - -0.10719811916351318
+    - 1.5707963705062866
+    canonical_angles_rad:
+    - 0.11096104979515076
+    - 1.5707963705062866
+    - 0.0037366810720413923
+    - -1.5707962830835065
+    - 0.10719811916351318
+    - -1.5707962830835065
+    canonical_position_error_m: 0.001592022250406444
+    canonical_direction_error: 2.6248392042978552e-05
+    valid: false
+  - seed_id: x_neg_uniform
+    solver_success: false
+    iterations: 12
+    raw_angles_rad:
+    - -0.11094453185796738
+    - -1.5707963705062866
+    - 0.0037266898434609175
+    - -1.5707963705062866
+    - 0.10718873888254166
+    - -1.5707963705062866
+    canonical_angles_rad:
+    - 0.11094453185796738
+    - 1.5707962830835065
+    - 0.0037266898434609175
+    - -1.5707963705062866
+    - 0.10718873888254166
+    - -1.5707963705062866
+    canonical_position_error_m: 0.0015919685829430819
+    canonical_direction_error: 2.911686555072599e-05
+    valid: false
+  - seed_id: y_pos_uniform
+    solver_success: false
+    iterations: 31
+    raw_angles_rad:
+    - 0.11044766753911972
+    - 1.462523341178894
+    - -0.02381998859345913
+    - 0.06033313646912575
+    - 0.10897203534841537
+    - -1.4627891778945923
+    canonical_angles_rad:
+    - 0.11044766753911972
+    - 1.462523341178894
+    - 0.02381998859345913
+    - -3.0812595171206674
+    - 0.10897203534841537
+    - -1.4627891778945923
+    canonical_position_error_m: 0.0016031077830120921
+    canonical_direction_error: 2.7538602762339515e-05
+    valid: false
+  - seed_id: y_neg_uniform
+    solver_success: false
+    iterations: 37
+    raw_angles_rad:
+    - 0.1092880368232727
+    - 1.5819625854492188
+    - -0.002476146910339594
+    - 2.9768247604370117
+    - 0.10885395854711533
+    - -1.5819382667541504
+    canonical_angles_rad:
+    - 0.1092880368232727
+    - 1.5819625854492188
+    - 0.002476146910339594
+    - -0.1647678931527814
+    - 0.10885395854711533
+    - -1.5819382667541504
+    canonical_position_error_m: 0.0015918356366455555
+    canonical_direction_error: 2.7895789103586686e-05
+    valid: false
+- target_id: minus_x_35mm
+  valid_seed_count: 0
+  selected: null
+  attempts:
+  - seed_id: x_pos_s
+    solver_success: false
+    iterations: 9
+    raw_angles_rad:
+    - -0.1107083410024643
+    - 1.5707963705062866
+    - -0.003264885162934661
+    - -1.5707963705062866
+    - 0.1074121743440628
+    - 1.5707963705062866
+    canonical_angles_rad:
+    - 0.1107083410024643
+    - -1.5707962830835065
+    - 0.003264885162934661
+    - 1.5707962830835065
+    - 0.1074121743440628
+    - 1.5707963705062866
+    canonical_position_error_m: 0.0015919418074190617
+    canonical_direction_error: 3.129988933449615e-05
+    valid: false
+  - seed_id: x_neg_s
+    solver_success: false
+    iterations: 8
+    raw_angles_rad:
+    - 0.10461585968732834
+    - -1.5707963705062866
+    - -0.00890260934829712
+    - 1.5707963705062866
+    - -0.11349034309387207
+    - -1.5707963705062866
+    canonical_angles_rad:
+    - 0.10461585968732834
+    - -1.5707963705062866
+    - 0.00890260934829712
+    - -1.5707962830835065
+    - 0.11349034309387207
+    - 1.5707962830835065
+    canonical_position_error_m: 0.0015933094546198845
+    canonical_direction_error: 2.8133394540614117e-05
+    valid: false
+  - seed_id: y_pos_s
+    solver_success: false
+    iterations: 35
+    raw_angles_rad:
+    - 0.10897308588027954
+    - -1.5459167957305908
+    - 0.005422357935458422
+    - -3.090391159057617
+    - 0.10922196507453918
+    - 1.5462101697921753
+    canonical_angles_rad:
+    - 0.10897308588027954
+    - -1.5459167957305908
+    - 0.005422357935458422
+    - -3.090391159057617
+    - 0.10922196507453918
+    - 1.5462101697921753
+    canonical_position_error_m: 0.0015922869788482785
+    canonical_direction_error: 2.8006271621952844e-05
+    valid: false
+  - seed_id: y_neg_s
+    solver_success: false
+    iterations: 26
+    raw_angles_rad:
+    - 0.10991371423006058
+    - -1.6237999200820923
+    - 0.011669555678963661
+    - 0.11767808347940445
+    - 0.10851209610700607
+    - 1.6235356330871582
+    canonical_angles_rad:
+    - 0.10991371423006058
+    - -1.6237999200820923
+    - 0.011669555678963661
+    - 0.11767808347940445
+    - 0.10851209610700607
+    - 1.6235356330871582
+    canonical_position_error_m: 0.0015944619663059711
+    canonical_direction_error: 2.803230272177469e-05
+    valid: false
+  - seed_id: x_pos_uniform
+    solver_success: false
+    iterations: 12
+    raw_angles_rad:
+    - -0.11094453185796738
+    - 1.5707963705062866
+    - 0.0037266898434609175
+    - 1.5707963705062866
+    - 0.10718873888254166
+    - 1.5707963705062866
+    canonical_angles_rad:
+    - 0.11094453185796738
+    - -1.5707962830835065
+    - 0.0037266898434609175
+    - 1.5707963705062866
+    - 0.10718873888254166
+    - 1.5707963705062866
+    canonical_position_error_m: 0.0015919685829430819
+    canonical_direction_error: 2.911686555072599e-05
+    valid: false
+  - seed_id: x_neg_uniform
+    solver_success: false
+    iterations: 4
+    raw_angles_rad:
+    - 0.11096104979515076
+    - -1.5707963705062866
+    - -0.0037366810720413923
+    - -1.5707963705062866
+    - -0.10719811916351318
+    - -1.5707963705062866
+    canonical_angles_rad:
+    - 0.11096104979515076
+    - -1.5707963705062866
+    - 0.0037366810720413923
+    - 1.5707962830835065
+    - 0.10719811916351318
+    - 1.5707962830835065
+    canonical_position_error_m: 0.001592022250406444
+    canonical_direction_error: 2.6248392042978552e-05
+    valid: false
+  - seed_id: y_pos_uniform
+    solver_success: false
+    iterations: 41
+    raw_angles_rad:
+    - 0.11093365401029587
+    - -1.5388643741607666
+    - -0.007899273186922073
+    - -0.4720836877822876
+    - 0.10731355845928192
+    - 1.5385020971298218
+    canonical_angles_rad:
+    - 0.11093365401029587
+    - -1.5388643741607666
+    - 0.007899273186922073
+    - 2.6695089658075055
+    - 0.10731355845928192
+    - 1.5385020971298218
+    canonical_position_error_m: 0.0015929738292470574
+    canonical_direction_error: 2.7373122595026755e-05
+    valid: false
+  - seed_id: y_neg_uniform
+    solver_success: false
+    iterations: 23
+    raw_angles_rad:
+    - 0.11073154956102371
+    - -1.6265618801116943
+    - -0.012649434618651867
+    - -2.903923511505127
+    - 0.10772071778774261
+    - 1.6272008419036865
+    canonical_angles_rad:
+    - 0.11073154956102371
+    - -1.6265618801116943
+    - 0.012649434618651867
+    - 0.23766914208466616
+    - 0.10772071778774261
+    - 1.6272008419036865
+    canonical_position_error_m: 0.0015949023654684424
+    canonical_direction_error: 3.184872667065805e-05
+    valid: false
+- target_id: plus_y_35mm
+  valid_seed_count: 0
+  selected: null
+  attempts:
+  - seed_id: x_pos_s
+    solver_success: false
+    iterations: 43
+    raw_angles_rad:
+    - 0.10958006978034973
+    - 0.024804051965475082
+    - 0.005466052796691656
+    - -1.7418614625930786
+    - 0.10862083733081818
+    - 3.1172518730163574
+    canonical_angles_rad:
+    - 0.10958006978034973
+    - 0.024804051965475082
+    - 0.005466052796691656
+    - -1.7418614625930786
+    - 0.10862083733081818
+    - 3.1172518730163574
+    canonical_position_error_m: 0.0015923453029245138
+    canonical_direction_error: 2.741701327519616e-05
+    valid: false
+  - seed_id: x_neg_s
+    solver_success: false
+    iterations: 31
+    raw_angles_rad:
+    - 0.11233456432819366
+    - -0.18686698377132416
+    - 0.04170272499322891
+    - 1.6330662965774536
+    - 0.10971137136220932
+    - -2.9527173042297363
+    canonical_angles_rad:
+    - 0.11233456432819366
+    - -0.18686698377132416
+    - 0.04170272499322891
+    - 1.6330662965774536
+    - 0.10971137136220932
+    - -2.9527173042297363
+    canonical_position_error_m: 0.0016265778103843331
+    canonical_direction_error: 2.6067919486730136e-05
+    valid: false
+  - seed_id: y_pos_s
+    solver_success: false
+    iterations: 8
+    raw_angles_rad:
+    - 0.10461585968732834
+    - -5.271681313701038e-09
+    - -0.00890260934829712
+    - -3.141592502593994
+    - -0.11349034309387207
+    - 7.211118813188477e-09
+    canonical_angles_rad:
+    - 0.10461585968732834
+    - -5.271681313701038e-09
+    - 0.00890260934829712
+    - 1.5099579897537296e-07
+    - 0.11349034309387207
+    - -3.1415926463786743
+    canonical_position_error_m: 0.0015933094546198845
+    canonical_direction_error: 2.8133396185251516e-05
+    valid: false
+  - seed_id: y_neg_s
+    solver_success: false
+    iterations: 9
+    raw_angles_rad:
+    - -0.1107083410024643
+    - 3.141592502593994
+    - -0.003264885162934661
+    - -5.7707300271658823e-08
+    - 0.1074121743440628
+    - -3.141592502593994
+    canonical_angles_rad:
+    - 0.1107083410024643
+    - -1.5099579897537296e-07
+    - 0.003264885162934661
+    - 3.141592595882493
+    - 0.1074121743440628
+    - -3.141592502593994
+    canonical_position_error_m: 0.0015919418074190617
+    canonical_direction_error: 3.129990584013224e-05
+    valid: false
+  - seed_id: x_pos_uniform
+    solver_success: false
+    iterations: 25
+    raw_angles_rad:
+    - 0.11085444688796997
+    - 0.06925426423549652
+    - -0.015638533979654312
+    - 1.3768614530563354
+    - 0.10781661421060562
+    - 3.0708212852478027
+    canonical_angles_rad:
+    - 0.11085444688796997
+    - 0.06925426423549652
+    - 0.015638533979654312
+    - -1.7647312005334577
+    - 0.10781661421060562
+    - 3.0708212852478027
+    canonical_position_error_m: 0.0015965967904776335
+    canonical_direction_error: 3.0006595856227935e-05
+    valid: false
+  - seed_id: x_neg_uniform
+    solver_success: false
+    iterations: 40
+    raw_angles_rad:
+    - 0.11089292168617249
+    - -0.04520219936966896
+    - -0.010549118742346764
+    - -1.2394899129867554
+    - 0.1074286624789238
+    - -3.0957438945770264
+    canonical_angles_rad:
+    - 0.11089292168617249
+    - -0.04520219936966896
+    - 0.010549118742346764
+    - 1.9021027406030377
+    - 0.1074286624789238
+    - -3.0957438945770264
+    canonical_position_error_m: 0.001593931345269084
+    canonical_direction_error: 3.2485401052955716e-05
+    valid: false
+  - seed_id: y_pos_uniform
+    solver_success: false
+    iterations: 4
+    raw_angles_rad:
+    - 0.11096104979515076
+    - 2.771108620347462e-10
+    - -0.0037366810720413923
+    - 9.94122861287805e-13
+    - -0.10719811916351318
+    - 3.634060830037811e-10
+    canonical_angles_rad:
+    - 0.11096104979515076
+    - 2.7711077876801937e-10
+    - 0.0037366810720413923
+    - -3.1415926535887984
+    - 0.10719811916351318
+    - -3.141592653226387
+    canonical_position_error_m: 0.001592022250406444
+    canonical_direction_error: 2.6248393602881882e-05
+    valid: false
+  - seed_id: y_neg_uniform
+    solver_success: false
+    iterations: 12
+    raw_angles_rad:
+    - -0.11094453185796738
+    - -3.141592502593994
+    - 0.0037266898434609175
+    - -3.141592502593994
+    - 0.10718873888254166
+    - -3.141592502593994
+    canonical_angles_rad:
+    - 0.11094453185796738
+    - 1.5099579897537296e-07
+    - 0.0037266898434609175
+    - -3.141592502593994
+    - 0.10718873888254166
+    - -3.141592502593994
+    canonical_position_error_m: 0.0015919685829430819
+    canonical_direction_error: 2.9116865337885474e-05
+    valid: false
+- target_id: minus_y_35mm
+  valid_seed_count: 0
+  selected: null
+  attempts:
+  - seed_id: x_pos_s
+    solver_success: false
+    iterations: 29
+    raw_angles_rad:
+    - 0.11181952059268951
+    - 2.989187240600586
+    - 0.034002769738435745
+    - -1.485721230506897
+    - 0.10890467464923859
+    - 0.15468965470790863
+    canonical_angles_rad:
+    - 0.11181952059268951
+    - 2.989187240600586
+    - 0.034002769738435745
+    - -1.485721230506897
+    - 0.10890467464923859
+    - 0.15468965470790863
+    canonical_position_error_m: 0.0016148959985002875
+    canonical_direction_error: 3.127935508577135e-05
+    valid: false
+  - seed_id: x_neg_s
+    solver_success: false
+    iterations: 26
+    raw_angles_rad:
+    - 0.11149858683347702
+    - -2.989346504211426
+    - 0.03384587913751602
+    - 1.5034852027893066
+    - 0.10919063538312912
+    - -0.15391308069229126
+    canonical_angles_rad:
+    - 0.11149858683347702
+    - -2.989346504211426
+    - 0.03384587913751602
+    - 1.5034852027893066
+    - 0.10919063538312912
+    - -0.15391308069229126
+    canonical_position_error_m: 0.0016146966954693198
+    canonical_direction_error: 3.5303281016959144e-05
+    valid: false
+  - seed_id: y_pos_s
+    solver_success: false
+    iterations: 9
+    raw_angles_rad:
+    - -0.1107083410024643
+    - 3.0270512763053148e-09
+    - -0.003264885162934661
+    - -3.141592502593994
+    - 0.1074121743440628
+    - -1.2867075183109478e-09
+    canonical_angles_rad:
+    - 0.1107083410024643
+    - -3.1415926505627416
+    - 0.003264885162934661
+    - 1.5099579897537296e-07
+    - 0.1074121743440628
+    - -1.2867076293332502e-09
+    canonical_position_error_m: 0.0015919418074190617
+    canonical_direction_error: 3.129989069241014e-05
+    valid: false
+  - seed_id: y_neg_s
+    solver_success: false
+    iterations: 8
+    raw_angles_rad:
+    - 0.10461585968732834
+    - -3.141592502593994
+    - -0.00890260934829712
+    - 5.367300381919904e-09
+    - -0.11349034309387207
+    - -3.141592502593994
+    canonical_angles_rad:
+    - 0.10461585968732834
+    - -3.141592502593994
+    - 0.00890260934829712
+    - -3.1415926482224927
+    - 0.11349034309387207
+    - 1.5099579897537296e-07
+    canonical_position_error_m: 0.0015933094546198845
+    canonical_direction_error: 2.8133394234558566e-05
+    valid: false
+  - seed_id: x_pos_uniform
+    solver_success: false
+    iterations: 27
+    raw_angles_rad:
+    - 0.11129732429981232
+    - 3.060009002685547
+    - -0.01840638928115368
+    - 1.7726846933364868
+    - 0.10757584869861603
+    - 0.08269035816192627
+    canonical_angles_rad:
+    - 0.11129732429981232
+    - 3.060009002685547
+    - 0.01840638928115368
+    - -1.3689079602533063
+    - 0.10757584869861603
+    - 0.08269035816192627
+    canonical_position_error_m: 0.0015985644422471523
+    canonical_direction_error: 2.8515741212543065e-05
+    valid: false
+  - seed_id: x_neg_uniform
+    solver_success: false
+    iterations: 33
+    raw_angles_rad:
+    - 0.1122594103217125
+    - -3.040114402770996
+    - -0.02324235439300537
+    - -1.7963553667068481
+    - 0.10704442858695984
+    - -0.10476694256067276
+    canonical_angles_rad:
+    - 0.1122594103217125
+    - -3.040114402770996
+    - 0.02324235439300537
+    - 1.345237286882945
+    - 0.10704442858695984
+    - -0.10476694256067276
+    canonical_position_error_m: 0.0016025665681809187
+    canonical_direction_error: 2.6304149870067034e-05
+    valid: false
+  - seed_id: y_pos_uniform
+    solver_success: false
+    iterations: 12
+    raw_angles_rad:
+    - -0.11094453185796738
+    - 4.1111325455034375e-10
+    - 0.0037266898434609175
+    - 2.3039526016177536e-12
+    - 0.10718873888254166
+    - 5.469704689176069e-10
+    canonical_angles_rad:
+    - 0.11094453185796738
+    - -3.14159265317868
+    - 0.0037266898434609175
+    - 2.303934820702125e-12
+    - 0.10718873888254166
+    - 5.469704689176069e-10
+    canonical_position_error_m: 0.0015919685829430819
+    canonical_direction_error: 2.9116866966208785e-05
+    valid: false
+  - seed_id: y_neg_uniform
+    solver_success: false
+    iterations: 4
+    raw_angles_rad:
+    - 0.11096104979515076
+    - -3.141592502593994
+    - -0.0037366810720413923
+    - -3.141592502593994
+    - -0.10719811916351318
+    - -3.141592502593994
+    canonical_angles_rad:
+    - 0.11096104979515076
+    - -3.141592502593994
+    - 0.0037366810720413923
+    - 1.5099579897537296e-07
+    - 0.10719811916351318
+    - 1.5099579897537296e-07
+    canonical_position_error_m: 0.001592022250406444
+    canonical_direction_error: 2.624839180724471e-05
+    valid: false
+elapsed_s: 0.478924492985243
+environment_steps: 0
+cuda_initialized: false
+model_predictions: 0
+hardware_commands: 0
+source_hashes:
+  config: 5a6d5f0422dc003445442a37453737d7565a989f01e53f07ed04f29d02ac5c69
+  phase6g_result: 5d2d9f73b6b6f47a78670f1cbeb6b706edae8d393adef08b7527956b98c62269
+boundary: CPU core-math gate only; no MJCF load, actuator command, target recovery
+  claim, VLA, reward, final, or hardware.

@@ -1,0 +1,12 @@
+# Curated Phase 3A inference-only dependencies. Install in a new Python 3.10 env.
+# Install torch/torchvision cu128 separately before this file.
+transformers==4.40.1
+tokenizers==0.19.1
+timm==0.9.10
+bitsandbytes==0.47.0
+accelerate==1.10.1
+einops==0.8.1
+huggingface-hub==0.36.0
+pillow==11.3.0
+safetensors==0.6.2
+sentencepiece==0.1.99

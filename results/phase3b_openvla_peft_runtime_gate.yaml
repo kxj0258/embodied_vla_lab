@@ -1,0 +1,25 @@
+experiment: phase3b_openvla_peft_runtime_gate_v1_20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+environment_mutation:
+  installed: peft==0.11.1
+  install_mode: pip_no_deps
+  torch: 2.11.0+cu128
+  transformers: 4.40.1
+  accelerate: 1.10.1
+  pip_check: NO_BROKEN_REQUIREMENTS
+execution:
+  cuda_initialized: false
+  model_loaded: false
+  training_executed: false
+resources:
+  process_wall_s: 3.65
+  maximum_rss_kib: 681044
+  user_cpu_s: 4.67
+  system_cpu_s: 0.27
+  swaps: 0
+artifacts:
+  result_json: {bytes: 316, sha256: 55ce4566d33bd431787836a4301c7559c32a3344657868aa1131b8541200a8b9}
+  raw_log: {path: results/raw/phase3b_openvla_peft_runtime_gate_v1_20260827_host_20260827.log, sha256: 6c5a49e646e5ddb178cc2a600b4e10e7eb9fd03957e8f05b1626c8d21dd2df74}
+boundary: Import-only environment gate; no CUDA, model, loss, gradients, optimizer, checkpoint or training evidence.

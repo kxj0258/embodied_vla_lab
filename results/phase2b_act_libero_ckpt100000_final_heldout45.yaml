@@ -1,0 +1,81 @@
+experiment: phase2b_act_libero_ckpt100000_final_heldout45_seed20260901
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+kind: preregistered_final_checkpoint_rollout
+checkpoint:
+  selection_frozen_before_final: true
+  selection_result: results/phase2b_act_libero_checkpoint_selection_dev5.yaml
+  step: 100000
+  path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+  bytes: 410470545
+  sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+protocol:
+  task: LIBERO_GOAL/turn_on_the_stove
+  goal: turn_on_flat_stove_1
+  heldout_init_state_indices: 5..49
+  development_excluded_init_state_indices: [0, 1, 2, 3, 4]
+  complete_heldout_finite_set_enumeration: true
+  episodes: 45
+  evaluator_seed_identifiers: 20260901..20260945
+  seed_identifiers_are_integers_not_calendar_dates: true
+  episode_horizon: 600
+  control_frequency_hz: 20
+  action_chunk: 20
+  action_steps_per_inference: 5
+  strict_offline: true
+  video: false
+metrics:
+  success_count: 45
+  success_total: 45
+  success_percent: 100.0
+  success_wilson_95_percent_if_generalized_as_bernoulli: [92.13484012671117, 100.0]
+  sum_reward_each_episode: 1.0
+  max_reward_each_episode: 1.0
+  mean_sum_reward: 1.0
+  mean_max_reward: 1.0
+  total_environment_steps: 3584
+  mean_steps_per_episode: 79.64444444444445
+  median_steps_per_episode: 79
+  min_steps: 74
+  max_steps: 106
+  p95_steps: 87
+  rollout_elapsed_s: 81.61159241299902
+  rollout_s_per_episode: 1.8135909425110892
+  environment_steps_per_s: 43.91532984509127
+  policy_forward_calls: 733
+  timed_select_action_total_s: 6.027862177055795
+  timed_s_per_policy_forward_including_cold_start: 0.008223550036911043
+  warm_policy_forward_calls: 716
+  warm_timed_select_action_s: 5.564643792997231
+  warm_timed_s_per_policy_forward: 0.007771848872901161
+resources:
+  peak_vram_allocated_bytes: 162552832
+  peak_vram_reserved_bytes: 216006656
+  process_wall_s: 87.83
+  maximum_rss_kib: 4178080
+training_metrics:
+  train_loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation_loss: NOT_REMEASURED
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+descriptive_full_50_state_coverage:
+  development_states_0_to_4_step100000: 5/5
+  heldout_states_5_to_49_final: 45/45
+  combined_observed: 50/50
+  boundary: The combined 50/50 is descriptive because states 0--4 participated in checkpoint development; 45/45 is the uncontaminated final result.
+warnings:
+  robosuite_private_macro: NON_SEMANTIC_DEFAULTS_USED
+  asset_message: CACHE_PRESENT_HF_OFFLINE_NO_NEW_DOWNLOAD_OBSERVED
+artifacts:
+  config: {path: configs/eval/act_libero_phase2b_ckpt100000_final_heldout45.yaml, sha256: 54770def55d8fff51a8b5d399cb132d33997ae8ffc8377ba7aa232eaaac6442a}
+  entrypoint: {path: scripts/evaluate_phase2b_act_libero.py, sha256: aa62dcdf90dc6279d39f537023f49d47f80e8b8732150d51cd26aa5798c448b1}
+  raw_log: {path: results/raw/phase2b_act_libero_ckpt100000_final_heldout45_seed20260901_host_20260827.log, lines: 56, bytes: 16173, sha256: 56e8791bc158dd8fcd5fc098b8684b97302c662e1e7d3a135aa1370f9db01adb}
+  eval_info: {path: outputs/eval/phase2b_act_libero_ckpt100000_final_heldout45_seed20260901/eval_info.json, bytes: 10764, sha256: 7308dd3d9ee4bed7a572a956ef8f86b314f88ed2caf2f8d1b07512e5fd130901}
+  resolved_config: {bytes: 1626, sha256: 2f45a27295cb4fe98991cb96b4ac702e15f1df86ce2a8a84ac8a5e6edccc3019}
+statistical_boundary: >-
+  This exactly enumerates all 45 pinned init states excluded from checkpoint development and establishes 45/45
+  performance on that finite held-out set. The Wilson interval applies only if episodes are treated as Bernoulli
+  samples from a broader population. The result covers one task, one trained policy seed, one simulator/runtime,
+  deterministic init-state files, no visual perturbations, and no language/task generalization.
+phase_status: PHASE2B_COMPLETE

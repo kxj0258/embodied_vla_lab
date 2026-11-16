@@ -1,0 +1,9 @@
+classification: PASS
+decision: RUNTIME_ZERO_STEP_PASS_SHORT_SIMULATION_ALLOWED
+canonical_result: {path: results/phase6c_feagine_a03_runtime_zero_step_v2.yaml, bytes: 1136, sha256: f41b7f48e6d398b311bde5a54b0c860199b50425faf92b0527df9033424d060d}
+raw_log: {path: results/raw/phase6c_feagine_a03_runtime_zero_step_v2_host_20260829.log, sha256: 148e9feaeb294d7aa9a7bd1d5e77781688735ddf35dc5ce2d7da3753f81080ea}
+internal_result: {path: outputs/eval/phase6c_feagine_a03_runtime_zero_step_v2/result.json, sha256: e90fe10660e45c94da44658aa8e530fdff4545b42e1f3e9a9947c5e2a742d918}
+runtime: {mujoco_version: 3.8.1, preset_id: a03_type_2, joints: 51, actuators: 51, timestep_s: 0.005, data_time_before_after: [0.0, 0.0]}
+core_ik: {success: true, iterations: 5, position_error_m: 0.000074668692832347, direction_error: 0.0001349876547465101}
+resources: {internal_elapsed_s: 0.11452697899949271, host_elapsed_s: 0.26, host_max_rss_kib: 247972, swaps: 0, socket_messages_sent: 0, socket_messages_received: 0}
+boundary: Zero-step runtime PASS only; no dynamic stability, target reaching, policy inference, reward, success or hardware claim.

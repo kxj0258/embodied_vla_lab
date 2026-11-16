@@ -1,0 +1,156 @@
+classification: FAIL
+experiment: phase6j_feagine_a03_external_targets_recovery_dev4_v1
+decision: REACHABILITY_CORRECTED_DEV4_FAIL
+successes: 2
+total_targets: 4
+total_steps: 1600
+simulated_time_total_s: 8.0
+episodes:
+- target_id: plus_x_35mm_retract_1p5mm
+  seed_id: x_pos_uniform
+  classification: FAIL
+  checks:
+    ik_success: true
+    canonical_theta_nonnegative: true
+    finite_state: true
+    exact_time: true
+    terminal_error: true
+    progress: true
+    no_material_limit_violation: false
+  raw_angles_rad:
+  - -0.23070178925991058
+  - 1.5707963705062866
+  - 0.6859639883041382
+  - 1.5707963705062866
+  - -0.4552641212940216
+  - 1.5707963705062866
+  applied_angles_rad:
+  - 0.23070178925991058
+  - -1.5707962830835065
+  - 0.6859639883041382
+  - 1.5707963705062866
+  - 0.4552641212940216
+  - -1.5707962830835065
+  initial_error_m: 0.03503212811120672
+  final_error_m: 0.009306649119361979
+  progress_fraction: 0.7343396013562534
+  ik_iterations: 13
+  ik_position_error_m: 8.131223694363143e-06
+  ik_direction_error: 1.9105505089100916e-06
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 0.0002630734731509012
+  max_contacts: 0
+- target_id: minus_x_35mm_retract_1p5mm
+  seed_id: x_neg_uniform
+  classification: FAIL
+  checks:
+    ik_success: true
+    canonical_theta_nonnegative: true
+    finite_state: true
+    exact_time: true
+    terminal_error: true
+    progress: true
+    no_material_limit_violation: false
+  raw_angles_rad:
+  - -0.2306274175643921
+  - -1.5707963705062866
+  - 0.6858143210411072
+  - -1.5707963705062866
+  - -0.4551917314529419
+  - -1.5707963705062866
+  applied_angles_rad:
+  - 0.2306274175643921
+  - 1.5707962830835065
+  - 0.6858143210411072
+  - -1.5707963705062866
+  - 0.4551917314529419
+  - 1.5707962830835065
+  initial_error_m: 0.03503212811120672
+  final_error_m: 0.009302636383197012
+  progress_fraction: 0.7344541458153347
+  ik_iterations: 13
+  ik_position_error_m: 1.2176415111753158e-05
+  ik_direction_error: 4.705565061158268e-06
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 0.00026306665726541154
+  max_contacts: 0
+- target_id: plus_y_35mm_retract_1p5mm
+  seed_id: y_pos_uniform
+  classification: PASS
+  checks:
+    ik_success: true
+    canonical_theta_nonnegative: true
+    finite_state: true
+    exact_time: true
+    terminal_error: true
+    progress: true
+    no_material_limit_violation: true
+  raw_angles_rad:
+  - -0.23062732815742493
+  - 1.312498483230229e-07
+  - 0.6858226656913757
+  - 8.445058341521872e-08
+  - -0.4551994204521179
+  - 5.284830706386856e-08
+  applied_angles_rad:
+  - 0.23062732815742493
+  - -3.141592522339945
+  - 0.6858226656913757
+  - 8.445058341521872e-08
+  - 0.4551994204521179
+  - -3.141592600741486
+  initial_error_m: 0.03503212811120672
+  final_error_m: 0.009303115228055705
+  progress_fraction: 0.7344404770808184
+  ik_iterations: 13
+  ik_position_error_m: 1.1824979992525186e-05
+  ik_direction_error: 4.112720489501953e-06
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 3.7359729893049476e-11
+  max_contacts: 0
+- target_id: minus_y_35mm_retract_1p5mm
+  seed_id: y_neg_uniform
+  classification: PASS
+  checks:
+    ik_success: true
+    canonical_theta_nonnegative: true
+    finite_state: true
+    exact_time: true
+    terminal_error: true
+    progress: true
+    no_material_limit_violation: true
+  raw_angles_rad:
+  - -0.23062732815742493
+  - 3.141592502593994
+  - 0.6858226656913757
+  - 3.141592502593994
+  - -0.4551994204521179
+  - 3.141592502593994
+  applied_angles_rad:
+  - 0.23062732815742493
+  - -1.5099579897537296e-07
+  - 0.6858226656913757
+  - 3.141592502593994
+  - 0.4551994204521179
+  - -1.5099579897537296e-07
+  initial_error_m: 0.03503212811120672
+  final_error_m: 0.0093031152280499
+  progress_fraction: 0.7344404770809841
+  ik_iterations: 13
+  ik_position_error_m: 1.182498181151459e-05
+  ik_direction_error: 4.112721853744006e-06
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 3.8967129870060013e-11
+  max_contacts: 0
+elapsed_s: 0.4591582840002957
+cuda_initialized: false
+model_predictions: 0
+reward: null
+hardware_commands: 0
+source_hashes:
+  config: 19d54d228182be1bdd7751a6b497c9bb70532010d7be25c5f798115ec0dc3cac
+  phase6f: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20
+  phase6i: 99137e48751353dc8d8b61c673b4cf2407bcaf0088a30f692b46782f14f7ed88
+boundary: Development recovery of four reachability-corrected local targets only;
+  Phase 6F 0/4 remains immutable, with no VLA, reward benchmark, broad workspace,
+  final, or hardware claim.

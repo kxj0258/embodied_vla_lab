@@ -1,0 +1,8 @@
+asset: phase4d_wrist_fullval_summary_v1
+classification: PASS
+source: results/phase4d_openvla_wrist_step20_vs_base_fullval889_paired.yaml
+artifacts:
+  png: {path: outputs/presentation/phase4d_wrist_fullval_summary_v1_20260828/phase4d_wrist_base_vs_qlora_fullval889.png, bytes: 110763, sha256: 73af5eef2abfc4ccd09bf1144da62373e277624b8fa9f3b2151df940ba433b8d}
+  svg: {path: outputs/presentation/phase4d_wrist_fullval_summary_v1_20260828/phase4d_wrist_base_vs_qlora_fullval889.svg, bytes: 87593, sha256: 4576ec177de64b20834350d50f2a7ebe79df3f32c51968a9c0f45137a2ba5c65}
+visual_qa: PASS
+boundary: CPU-only visualization of offline paired metrics; not environment success or reward.

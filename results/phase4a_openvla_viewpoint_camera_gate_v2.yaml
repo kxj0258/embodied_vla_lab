@@ -1,0 +1,97 @@
+classification: PASS
+experiment_id: phase4a_openvla_viewpoint_camera_gate_v2_seed20261101
+execution_pass: true
+checks:
+  both_observation_keys_present: true
+  native_images_nonconstant: true
+  direct_images_nonconstant: true
+  native_viewpoints_not_identical: true
+  direct_viewpoints_not_identical: true
+environment_resets: 1
+environment_steps: 0
+model_predictions: 0
+native_cross_view_mae: 76.46148681640625
+direct_cross_view_mae: 77.49861409505208
+elapsed_s: 7.949229913007002
+host:
+  exit_status: 0
+  elapsed_wall_s: 12.17
+  user_s: 19.45
+  system_s: 4.48
+  cpu_percent: 196
+  maximum_rss_kib: 2486184
+  major_page_faults: 13
+  minor_page_faults: 917655
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  raw_log:
+    path: results/raw/phase4a_openvla_viewpoint_camera_gate_v2_host_20260828.log
+    sha256: fbc109ec740ead804a18ce84dec8ae9d8886028eb32bb8ffda8da09cd13773bd
+visual_qa:
+  classification: PASS
+  agentview: clear third-person workspace view
+  eye_in_hand: clear wrist-mounted top-down workspace view
+  duplicate_or_constant_frame: false
+artifacts:
+  agentview_native128:
+    path: outputs/eval/phase4a_openvla_viewpoint_camera_gate_v2_seed20261101/agentview_native128.png
+    bytes: 17992
+    sha256: aaa45c3019f2cf0e30c2939e093bc8f1a4ad5ee23f67fa4324d978fdf0257cba
+    stats:
+      shape:
+      - 128
+      - 128
+      - 3
+      dtype: uint8
+      min: 0
+      max: 228
+      mean: 117.02815755208333
+      std: 52.731576899135575
+  eye_in_hand_native128:
+    path: outputs/eval/phase4a_openvla_viewpoint_camera_gate_v2_seed20261101/eye_in_hand_native128.png
+    bytes: 15445
+    sha256: e1aecb8e9cd54bd76bc65ea844718b0e00c27f7c4f4db2f32dd1abfc69924d19
+    stats:
+      shape:
+      - 128
+      - 128
+      - 3
+      dtype: uint8
+      min: 0
+      max: 221
+      mean: 114.98321533203125
+      std: 63.62811813700317
+  agentview_direct640:
+    path: outputs/eval/phase4a_openvla_viewpoint_camera_gate_v2_seed20261101/agentview_direct640.png
+    bytes: 315168
+    sha256: 4cfc2c1d897f3e4b90ed82868b23a64f2d7bc5b17a973aa9aef781c5167a01d4
+    stats:
+      shape:
+      - 640
+      - 640
+      - 3
+      dtype: uint8
+      min: 0
+      max: 238
+      mean: 117.37121012369792
+      std: 53.48875907222968
+  eye_in_hand_direct640:
+    path: outputs/eval/phase4a_openvla_viewpoint_camera_gate_v2_seed20261101/eye_in_hand_direct640.png
+    bytes: 275964
+    sha256: 53af0ab1b4d6c233cde189a4cde5bd1f7847f4e7844aefa418e776dbe45f480b
+    stats:
+      shape:
+      - 640
+      - 640
+      - 3
+      dtype: uint8
+      min: 0
+      max: 236
+      mean: 115.46015787760416
+      std: 64.85947459571224
+config_sha256: 95b7ce3780505a187d38cc70611081a0fc55d857212bf3799f983d95f5b8d8e4
+boundary: Corrected camera/runtime feasibility only. This gate performs one reset,
+  zero environment steps and zero model predictions; it cannot establish viewpoint
+  robustness, policy success, reward, or language generalization. The v1 failure remains
+  immutable, and Phase 3/P0 evidence is unchanged.

@@ -1,0 +1,20 @@
+experiment: phase2b_act_libero_checkpoint_selection_dev5_seed20260827
+date: 2026-08-27
+classification: PASS
+protocol:
+  paired_init_state_indices: [0, 1, 2, 3, 4]
+  candidates_prebounded: [4460, 49060, 100000]
+  selection_rule: lexicographic_success_then_mean_reward_then_fewer_total_environment_steps
+candidates:
+  step_004460: {success: 4/5, mean_reward: 0.8, total_steps: 1024, result: results/phase2b_act_libero_ckpt004460_dev5.yaml}
+  step_049060: {success: 5/5, mean_reward: 1.0, total_steps: 407, result: results/phase2b_act_libero_ckpt049060_dev5.yaml}
+  step_100000: {success: 5/5, mean_reward: 1.0, total_steps: 403, result: results/phase2b_act_libero_ckpt100000_dev5.yaml}
+selection:
+  checkpoint_step: 100000
+  checkpoint_path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+  checkpoint_sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+  reason: Tied step 49060 at 5/5 and reward 1.0, then won the frozen step tie-break 403 versus 407.
+  frozen: true
+boundary: >-
+  The four-step advantage over step 49060 is a development tie-break, not statistical superiority.
+  No more checkpoint candidates may be evaluated for selection. Held-out final results cannot revise selection.

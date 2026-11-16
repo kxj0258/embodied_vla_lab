@@ -1,0 +1,17 @@
+experiment: phase3b_openvla_step20_vs_base_fullval889_paired
+date: 2026-08-27
+classification: PASS
+pairing: {identical_fixture: true, frames: 889, episodes: 10, action_tokens: 6223}
+base: {mean_loss: 16.95965717828448, token_accuracy: 0.09641651936365098, correct_tokens: 600, mean_continuous_l1: 0.3077489263421904}
+step20: {mean_loss: 8.92710276234673, token_accuracy: 0.19974288928169692, correct_tokens: 1243, mean_continuous_l1: 0.20733584772491673}
+paired_change:
+  mean_loss: {absolute: -8.032554415937751, relative: -0.4736271689632271, improved_frames: 883, tied_frames: 0}
+  token_accuracy: {absolute: 0.10332636991804595, relative: 1.0716666666666663, additional_correct_tokens: 643}
+  mean_continuous_l1: {absolute: -0.1004130786172737, relative: -0.32628246606983435, improved_frames: 732}
+episode_consistency: {loss_improved: 10/10, token_accuracy_improved: 10/10, continuous_l1_improved: 10/10}
+decision:
+  offline_validation_improvement: PASS
+  checkpoint_eligible_for_development_environment_gate: true
+  checkpoint_selected_for_final: false
+  heldout_environment_authorized: false
+statistics_boundary: Deterministic paired evidence on one frozen 10-episode demonstration split. Frames within episodes are correlated. This supports an offline improvement claim and development-only environment gate, not environment reward/success, final checkpoint selection, or generalization.

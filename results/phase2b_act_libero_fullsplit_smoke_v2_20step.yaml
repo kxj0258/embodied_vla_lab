@@ -1,0 +1,31 @@
+experiment: phase2b_act_libero_fullsplit_smoke_v2_20step_seed20260826
+date: 2026-08-26
+classification: EXPECTED_EXCEPTION
+exit_status: 1
+execution_context: codex_managed_environment
+failure_stage: CUDA_PEAK_MEMORY_COUNTER_RESET_BEFORE_TRAINING
+reason: CUDA_RUNTIME_NOT_USABLE_FROM_CODEX_MANAGED_EXECUTION_CONTEXT
+metrics:
+  optimizer_steps_completed: 0
+  train_loss: NOT_AVAILABLE
+  gradient_norm: NOT_AVAILABLE
+  throughput: NOT_AVAILABLE
+  peak_vram: NOT_AVAILABLE
+  process_wall_s: 4.75
+  maximum_rss_kib: 1067456
+  offline_validation: NOT_RUN
+  success: NOT_RUN
+  reward: NOT_RUN
+artifacts:
+  output_dir: outputs/train/phase2b_act_libero_fullsplit_smoke_v2_20step_seed20260826
+  resolved_config_bytes: 755
+  checkpoint_created: false
+  preserved: true
+raw_log:
+  path: results/raw/phase2b_act_libero_fullsplit_smoke_v2_20step_host_20260826.log
+  bytes: 894
+  sha256: a619d846d494f268b030c2dda909e36aa1d728e264b6b456f9d7fb6d16a293e1
+interpretation: >-
+  No data batch, policy forward, backward, optimizer step, checkpoint serialization, or evaluation ran.
+  This is an execution-environment exception and provides no evidence for or against the v1 serialization fix.
+next_experiment_id: phase2b_act_libero_fullsplit_smoke_v3_20step_seed20260826

@@ -1,0 +1,55 @@
+experiment_id: phase4b_openvla_viewpoint_dev30_v1_seed20261111
+kind: frozen_base_paired_agentview_vs_eye_in_hand_development
+suite: {name: libero_goal, task_order_index: 0}
+tasks:
+  - {task_id: 0, name: open_the_middle_drawer_of_the_cabinet, instruction: open the middle drawer of the cabinet}
+  - {task_id: 3, name: open_the_top_drawer_and_put_the_bowl_inside, instruction: open the top drawer and put the bowl inside}
+  - {task_id: 6, name: put_the_cream_cheese_in_the_bowl, instruction: put the cream cheese in the bowl}
+  - {task_id: 7, name: turn_on_the_stove, instruction: turn on the stove}
+  - {task_id: 8, name: put_the_bowl_on_the_plate, instruction: put the bowl on the plate}
+view_conditions:
+  - {name: agentview, observation_key: agentview}
+  - {name: eye_in_hand, observation_key: eye_in_hand}
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  paired_seed_start: 20261111
+  init_state_indices: [0, 1, 2]
+  task_count: 5
+  states_per_task: 3
+  view_count: 2
+  paired_state_count: 15
+  total_episodes: 30
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  model_ipc_resolution: [128, 128]
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+  environment_construction: fresh_env_per_episode_with_explicit_init_state
+  paired_reset_contract: same_task_init_seed_for_both_views
+  episode_order: task_then_init_then_agentview_then_eye_in_hand
+model:
+  policy: OpenVLA-7B frozen base
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3a_openvla_persistent_worker.py
+selection_and_analysis:
+  primary_metrics: [strict_success_by_view, paired_success_outcomes, task_coverage_by_view]
+  secondary_metrics: [steps_on_both_success_pairs, inference_latency, timeout_failure_count]
+  paired_outcome_categories: [both_success, agentview_only, eye_in_hand_only, neither_success]
+  forbidden_actions:
+    - checkpoint_training_or_selection
+    - per_task_or_per_state_preprocessing_changes
+    - failure_removal_or_selective_rerun
+    - final_task_execution_before_development_freeze
+    - interpreting_offline_metrics_as_environment_success
+output_dir: outputs/eval/phase4b_openvla_viewpoint_dev30_v1_seed20261111
+structured_result: results/phase4b_openvla_viewpoint_dev30_v1.yaml
+raw_log: results/raw/phase4b_openvla_viewpoint_dev30_v1_host_20260828.log
+boundary: >-
+  Development-only paired viewpoint substitution for a frozen single-image OpenVLA base. Results may diagnose
+  camera/preprocessing compatibility but cannot select or train a checkpoint, revise Phase 3/P0 evidence, establish
+  general viewpoint invariance, or authorize removal/replacement of any task, state, view, timeout or failure. The
+  preregistered final task split remains untouched until this development protocol is closed.

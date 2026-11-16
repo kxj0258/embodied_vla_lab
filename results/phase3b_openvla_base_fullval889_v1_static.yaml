@@ -1,0 +1,19 @@
+experiment: phase3b_openvla_base_fullval889_v1_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, training_executed: false, environment_executed: false}
+contract:
+  model: frozen_base_without_adapter
+  frames: 889
+  fixture_identical_to_step20: true
+  metrics_identical_to_step20: true
+  purpose: paired_offline_comparison_before_checkpoint_eligibility_decision
+assets:
+  config: {path: configs/eval/openvla_phase3b_base_fullval889_v1.yaml, sha256: ef7e63811cea4a1c94bf78f5774e9fa8462b39916fa2f6982ae1d49bff046ad1}
+  evaluator: {path: scripts/evaluate_phase3b_openvla_base_fullval889.py, sha256: 93066396f13ccb33856c28536d3e08d216b1ec58e4cc39d1fd94becbdb097e15}
+  checker: {path: scripts/check_phase3b_openvla_base_fullval889_static.py, sha256: 7f3adaff8b559ddb27d1dfb10bde308a8c55c412f06cf297cb222853c419f10f}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_base_fullval889_v1_seed20260827
+  raw_log: results/raw/phase3b_openvla_base_fullval889_v1_seed20260827_host_20260827.log
+  status: PENDING
+boundary: Same-protocol offline base comparison only. It cannot establish environment reward/success or broad generalization.

@@ -1,0 +1,24 @@
+classification: PASS
+experiment: phase6j_feagine_a03_external_targets_recovery_dev4_v1_static
+checks:
+  phase6f_fail_immutable: true
+  phase6i_recovered: true
+  same_lateral_targets: true
+  uniform_retraction: true
+  frozen_seed_ids: true
+  signed_theta_canonicalization: true
+  same_environment_gate: true
+  bounded_budget: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  no_runtime_imports: true
+checks_passed: 11
+checks_total: 11
+source_hashes:
+  config: 19d54d228182be1bdd7751a6b497c9bb70532010d7be25c5f798115ec0dc3cac
+  runner: 136064bf7471206642f36e3a7537718fa7b9699d400894ce6a070c910d895eda
+  phase6f: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20
+  phase6i: 99137e48751353dc8d8b61c673b4cf2407bcaf0088a30f692b46782f14f7ed88
+environment_steps: 0
+boundary: Static recovery authorization only; Phase 6F FAIL immutable and no runtime
+  import/step.

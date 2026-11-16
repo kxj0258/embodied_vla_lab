@@ -1,0 +1,19 @@
+classification: PASS
+gate: static_contract
+experiment: p0_breadth_hd_10task_v1
+source_result: results/p0_breadth_openvla_base_10task30_v2.yaml
+source_success: 20/30
+selection_rule: first successful init state in frozen task/init order
+selected_init_states_by_task: [0, 1, 0, 2, 0, 0, 1, 0, 0, 0]
+expected_steps_by_task: [114, 90, 77, 246, 93, 133, 108, 89, 76, 270]
+captures: 10
+fresh_targets: 21
+render_resolution: [640, 640]
+model_ipc_resolution: [128, 128]
+cuda_calls: 0
+environment_steps: 0
+model_predictions: 0
+artifacts:
+  runner: {path: scripts/record_p0_breadth_hd_demos.py, sha256: 3940b4a9ef84f5367cddc936a6a75d58d8c7cbda7f5625f964d32573aa77ca97}
+  generic_recorder: {path: scripts/record_p0_hd_openvla_libero.py, sha256: de1286a8eb76a79c6b97174f40dde15a04d718ecb07536846cb3feef52ee5a1e}
+boundary: Presentation-only static contract. It does not rerun failures or alter the frozen 20/30 aggregate.

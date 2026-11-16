@@ -1,0 +1,42 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827
+date: 2026-08-27
+classification: PASS
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+fixture_manifest_sha256: 256cdb8d4382b7d9eccd4768e4fbb9ea915c330c0fca6dca2d95b6f811966e04
+lora: {rank: 8, alpha: 8, dropout: 0.0, target_modules: all-linear, initialization: gaussian}
+parameters: {trainable: 27707072, total_with_adapters: 3931114624, trainable_percent: 0.7048146556410358}
+sample_metrics: {input_token_count: 28, supervised_action_tokens: 7, loss: 17.842269897460938, action_token_accuracy: 0.0, continuous_action_l1: 0.480672268907563}
+gradient:
+  norm_before_clip: 539.2468872070312
+  clip_max_norm: 1.0
+  clip_returned_norm: 539.246826171875
+  all_finite: true
+optimizer:
+  name: AdamW
+  lr: 0.0001
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  weight_decay: 0.0
+  state_bytes: 218256208
+  steps: 1
+update_verification:
+  sentinel_parameter: base_model.model.language_model.model.layers.1.mlp.down_proj.lora_B.default.weight
+  sentinel_preclip_grad_max_abs: 15.1875
+  parameter_update_max_abs: 9.999996836995706e-05
+  parameter_update_l2: 0.018100453540682793
+timing_s: {model_load: 5.141632531000141, adapter_prepare: 0.5283624200001213, forward: 0.7313087769998674, backward: 0.540115455999512, optimizer_step: 0.1756350060004479, host_wall: 10.94}
+memory:
+  passive_vram_allocated_bytes: 5364716544
+  passive_vram_reserved_bytes: 6006243328
+  peak_vram_allocated_bytes: 6621465600
+  peak_vram_reserved_bytes: 6834618368
+  process_rss_kib_at_result: 2338852
+  host_max_rss_kib: 5774996
+  swaps: 0
+execution: {exit_status: 0, checkpoint_created: false}
+artifacts:
+  result_json: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827/result.json, sha256: 70021bcd55280b8eaa9ce8d490a7a2637ac5b9af28440cb293b28d77f05dd84d}
+  resolved_config: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827/resolved_config.yaml, sha256: 5dfa72e109ee67bf9fb3c5ffe35c588fdc053d3148737ae0664dd5e81f66d410}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_oneupdate_v2_seed20260827_host_20260827.log, sha256: 09fb5bb5a61069f9fcf1022c152f54b5bb46288dd712245c5f9d69d6a2b44d9e}
+statistics_boundary: Exactly one fixed sample and one update. Metrics prove execution/resource feasibility only; they are not a loss trend, throughput distribution, offline validation, reward, success or evidence of policy improvement.
+boundary: No checkpoint was created. Formal multi-step training and post-training environment evaluation have not begun.

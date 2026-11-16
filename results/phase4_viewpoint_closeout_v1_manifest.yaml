@@ -1,0 +1,12 @@
+asset: phase4_viewpoint_closeout_v1
+classification: PASS
+sources:
+  - results/phase4a_openvla_viewpoint_camera_gate_v2.yaml
+  - results/phase4b_openvla_viewpoint_dev30_v1.yaml
+  - results/phase4d_openvla_wrist_step20_vs_base_fullval889_paired.yaml
+  - results/phase4e_openvla_wrist_adapter_task7_dev3_v1.yaml
+artifacts:
+  png: {path: outputs/presentation/phase4_viewpoint_closeout_v1_20260828/phase4_viewpoint_evidence_chain.png, bytes: 154887, sha256: be030d114ece22f02fb5aa179c7a38f0a4695dbcaa520802435770f58fbc3347}
+  svg: {path: outputs/presentation/phase4_viewpoint_closeout_v1_20260828/phase4_viewpoint_evidence_chain.svg, bytes: 78719, sha256: 1b460ecb44c5f99dacb836bc5f538bcc57c57543c243f7a1e7853f7cdbdf1e6f}
+visual_qa: PASS
+boundary: CPU-only synthesis of frozen development evidence; not final-set or general viewpoint-robustness evidence.

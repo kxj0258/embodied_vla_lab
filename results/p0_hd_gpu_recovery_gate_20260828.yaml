@@ -1,0 +1,38 @@
+experiment: p0_hd_gpu_recovery_gate_20260828_002944
+date: 2026-08-28
+classification: PASS
+gate: nvidia_driver_recovery
+driver:
+  nvidia_smi_available: true
+  version: 580.173.02
+  cuda_version_reported: "13.0"
+gpu:
+  index: 0
+  name: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+  temperature_c: 52
+  performance_state: P0
+  power_w: 44
+  power_limit_w: 100
+  memory_used_mib: 3990
+  memory_total_mib: 12227
+  memory_free_derived_mib: 8237
+  utilization_percent: 64
+contention:
+  present: true
+  compute_process:
+    pid: 35905
+    executable: /home/kxj/miniforge3/envs/unitree_rl/bin/python
+    gpu_memory_mib: 3381
+  disposition: defer_openvla_hd_execution_until_contention_is_cleared
+metrics:
+  loss: NOT_APPLICABLE
+  offline_validation: NOT_APPLICABLE
+  success: NOT_MEASURED
+  reward: NOT_MEASURED
+  gradients: NOT_APPLICABLE
+  throughput: NOT_MEASURED
+  openvla_vram: NOT_MEASURED
+  rss: NOT_MEASURED
+  elapsed: NOT_MEASURED
+  checkpoint_integrity: NOT_CHECKED
+boundary: Driver recovery only. No OpenVLA model load, environment step, policy inference, training, evaluation, or artifact generation occurred.

@@ -1,0 +1,39 @@
+experiment: phase3a_openvla_environment_gate
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+environment:
+  name: evla-openvla
+  prefix: /home/kxj/miniforge3/envs/evla-openvla
+  disk_usage: 7.2G
+  python: 3.10.21
+  torch: 2.11.0+cu128
+  torchvision: 0.26.0+cu128
+  cuda_runtime: '12.8'
+  transformers: 4.40.1
+  tokenizers: 0.19.1
+  timm: 0.9.10
+  bitsandbytes: 0.47.0
+  accelerate: 1.10.1
+gpu_gate:
+  device: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+  compute_capability: '12.0'
+  quantization_kernel: NF4_Linear4bit
+  output_shape: [2, 8]
+  output_finite: true
+  elapsed_s: 0.30185825700027635
+  peak_vram_allocated_bytes: 8527360
+  peak_vram_reserved_bytes: 23068672
+resources:
+  process_wall_s: 1358.22
+  maximum_rss_kib: 1341168
+  filesystem_available_bytes_after_environment: 71787876352
+warnings:
+  bitsandbytes_torch_internal_api_futurewarning: NON_SEMANTIC_CURRENT_EXECUTION_PASS
+  pip_update_notice: IGNORED_PINNED_PIP_25_2
+artifacts:
+  setup_script: {path: scripts/setup_phase3a_openvla_env.sh, sha256: ade6b477d3f3ad68ce356a44fd973b34ba04d2935d9a5b8deb84c838beb6a7f2}
+  runtime_checker: {path: scripts/check_phase3a_openvla_runtime.py, sha256: e4b637a94c484928317c32692319d4a0a0de6e773b4be09afb5ee1a5a18a4738}
+  raw_log: {path: results/raw/phase3a_openvla_env_setup_host_20260827.log, lines: 644, bytes: 50835, sha256: 96b3e3ef7a37a51edf4b9cd5ac73d0812ed09c001a87f1985d2f5ef083e78a5a}
+boundaries: OpenVLA weights were not downloaded or loaded. No processor/model inference, environment construction, rollout, training, W&B, upload, commit, or push occurred.
+next_gate: Download and hash the frozen official OpenVLA LIBERO-Goal snapshot without loading the model.

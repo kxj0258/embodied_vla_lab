@@ -1,0 +1,36 @@
+experiment: p0_hd_gpu_resource_gate_20260828_004105
+date: 2026-08-28
+classification: PASS
+gate: openvla_hd_gpu_resource_preflight
+driver:
+  nvidia_smi_available: true
+  version: 580.173.02
+  cuda_version_reported: "13.0"
+gpu:
+  index: 0
+  name: NVIDIA GeForce RTX 5070 Ti Laptop GPU
+  temperature_c: 44
+  performance_state: P8
+  power_w: 19
+  power_limit_w: 115
+  memory_used_mib: 620
+  memory_total_mib: 12227
+  memory_free_derived_mib: 11607
+  utilization_percent: 12
+contention:
+  compute_process_present: false
+  graphics_processes_only: true
+  prior_unitree_rl_pid_35905_present: false
+  disposition: openvla_base_init05_v2_authorized_as_next_single_host_gate
+metrics:
+  loss: NOT_APPLICABLE
+  offline_validation: NOT_APPLICABLE
+  success: NOT_MEASURED
+  reward: NOT_MEASURED
+  gradients: NOT_APPLICABLE
+  throughput: NOT_MEASURED
+  openvla_vram: NOT_MEASURED
+  rss: NOT_MEASURED
+  elapsed: NOT_MEASURED
+  checkpoint_integrity: NOT_CHECKED
+boundary: Resource preflight only. It authorizes one presentation-only base-init5 v2 capture and does not revise any frozen Phase 3 result.

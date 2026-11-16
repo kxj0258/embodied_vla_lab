@@ -1,0 +1,15 @@
+experiment_id: phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+fixture: outputs/reference/phase3b_openvla_qlora_fixture_demo0_t000/fixture_manifest.json
+seed: 20260827
+quantization: {type: NF4, compute_dtype: bfloat16, double_quant: false}
+lora: {rank: 8, alpha: 8, dropout: 0.0, target_modules: all-linear, initialization: gaussian}
+batch_size: 1
+forward_steps: 1
+backward_steps: 1
+optimizer_steps: 1
+optimizer: {name: AdamW, lr: 0.0001, betas: [0.9, 0.999], eps: 1.0e-8, weight_decay: 0.0}
+max_grad_norm: 1.0
+predict_stop_token: false
+output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827
+boundary: One real sample, one clipped optimizer update and optimizer-state resource gate only; no checkpoint, training curve, offline validation or environment evaluation.

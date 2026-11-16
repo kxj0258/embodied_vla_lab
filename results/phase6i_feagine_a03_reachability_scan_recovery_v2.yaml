@@ -1,0 +1,31 @@
+classification: PASS
+experiment: phase6i_feagine_a03_reachability_scan_recovery_v2
+decision: REACHABILITY_SCAN_EVIDENCE_RECOVERED
+checks:
+  v1_preserved_fail: true
+  only_failed_check_was_exact_float_grid: true
+  grid_count: true
+  grid_values_tolerant: true
+  grid_endpoints: true
+  four_directions: true
+  minimum_retractions: true
+  spread: true
+  no_recomputation: true
+  cpu_only: true
+checks_passed: 10
+checks_total: 10
+minimum_retractions_m:
+  plus_x_35mm: 0.0015
+  minus_x_35mm: 0.0015
+  plus_y_35mm: 0.0015
+  minus_y_35mm: 0.0015
+minimum_retraction_spread_m: 0.0
+reused_ik_attempts: 672
+new_ik_attempts: 0
+environment_steps: 0
+source_hashes:
+  config: 45c0dd9b3988a41ce2b99c5dca9227bf517ab18c9670a219ec5ebdc3b8fddc89
+  source_result: daba9744c98b29df1abde4c6c980e85bc02136d42f35028b624c142b7e1b38b7
+  source_config: b98e26023f46b968fd660acb94bff949663826795918e000d5918c889c0925f8
+boundary: Packaging-only recovery from immutable v1 scan; no IK recomputation, grid/target/tolerance
+  change, MJCF recovery, VLA, reward, final, or hardware.

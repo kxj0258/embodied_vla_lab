@@ -1,0 +1,130 @@
+{
+  "experiment_id": "benchmark_act_libero_dev5_v1",
+  "policy_name": "act",
+  "task": {
+    "suite": "libero_goal",
+    "task_id": 0,
+    "name": "turn_on_the_stove",
+    "instruction": "turn on the stove",
+    "observation": {
+      "image_keys": [
+        "agentview",
+        "eye_in_hand"
+      ],
+      "image_shape": [
+        128,
+        128,
+        3
+      ],
+      "image_dtype": "uint8",
+      "state_dim": 9,
+      "language_required": false,
+      "camera_frame": "environment",
+      "state_frame": "robot"
+    },
+    "action": {
+      "dim": 7,
+      "representation": "delta_pose_gripper",
+      "coordinate_frame": "environment",
+      "rotation_representation": "axis_angle",
+      "gripper_semantics": "normalized_open_close",
+      "normalization": "policy_defined",
+      "control_frequency_hz": 20,
+      "chunk_size": 20,
+      "action_steps_per_inference": 5
+    },
+    "episode_horizon": 600,
+    "split": "development",
+    "init_state_indices": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "classification": "PASS",
+  "success_count": 0,
+  "success_total": 5,
+  "episodes": [
+    {
+      "episode": 0,
+      "init_state_index": 0,
+      "seed": 20260908,
+      "success": false,
+      "steps": 600,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 1.1945357430086005,
+      "episode_wall_s": 8.705545734002953
+    },
+    {
+      "episode": 1,
+      "init_state_index": 1,
+      "seed": 20260909,
+      "success": false,
+      "steps": 600,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 1.138373101988691,
+      "episode_wall_s": 7.340844628997729
+    },
+    {
+      "episode": 2,
+      "init_state_index": 2,
+      "seed": 20260910,
+      "success": false,
+      "steps": 600,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 0.9944467389796046,
+      "episode_wall_s": 7.185110382997664
+    },
+    {
+      "episode": 3,
+      "init_state_index": 3,
+      "seed": 20260911,
+      "success": false,
+      "steps": 600,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 1.0035760850150837,
+      "episode_wall_s": 7.11950176400569
+    },
+    {
+      "episode": 4,
+      "init_state_index": 4,
+      "seed": 20260912,
+      "success": false,
+      "steps": 600,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 0.9219240649254061,
+      "episode_wall_s": 6.826062867003202
+    }
+  ],
+  "metrics": {
+    "mean_inference_s": 1.050571146783477,
+    "mean_episode_wall_s": 7.435413075401447,
+    "total_environment_steps": 3000
+  },
+  "provenance": {
+    "evaluator": "evla_benchmark.evaluator",
+    "schema_version": "evla.benchmark.v1"
+  },
+  "failures": {
+    "timeout": 5
+  },
+  "schema_version": "evla.benchmark.v1",
+  "success_rate": 0.0
+}

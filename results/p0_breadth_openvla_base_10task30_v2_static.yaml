@@ -1,0 +1,17 @@
+classification: PASS
+experiment: p0_breadth_openvla_base_10task30_v2_seed20261001
+gate: static_contract
+tasks: {count: 10, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], catalog_coverage: 10/10}
+init_state_indices: [0, 1, 2]
+episodes_per_task: 3
+total_episodes: 30
+fresh_paths: true
+cuda_calls: 0
+environment_steps: 0
+model_predictions: 0
+supersedes_static_plan: p0_breadth_openvla_base_5task15_v1_seed20261001
+artifacts:
+  config: {path: configs/eval/p0_breadth_openvla_base_10task30_v2.yaml, sha256: 6dd8f411d91befcbb093233cc1cf4700a5307b7d81139578484bcb4991041cac}
+  evaluator: {path: scripts/evaluate_p0_breadth_openvla_base.py, sha256: b30596101f317bd3bdfe85b268e6609960623f68f59e796313bf8d123b9c5953}
+  static_checker: {path: scripts/check_p0_breadth_static.py, sha256: 471c661616aabfed01f79240b5be11199ea7a4dfbce77f6ab5cef0ace0b138d4}
+boundary: Static validation only; no 10-task policy success evidence exists yet.

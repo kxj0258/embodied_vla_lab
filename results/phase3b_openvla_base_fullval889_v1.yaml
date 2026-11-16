@@ -1,0 +1,12 @@
+experiment: phase3b_openvla_base_fullval889_v1_seed20260827
+date: 2026-08-27
+classification: FAIL
+failure_stage: first_frame_metric_alignment
+exception: "AttributeError: 'OpenVLAForActionPrediction' object has no attribute 'model'"
+cause: The base-only evaluator retained the PEFT wrapper access path model.base_model.model. A direct OpenVLAForActionPrediction must use model itself for vision patch metadata.
+observed: {checkpoint_shards_loaded: 4, validation_frames_completed: 0, training_executed: false, environment_executed: false, output_directory_created: false, exit_status: 1}
+host_resources: {wall_s: 12.21, user_s: 10.01, system_s: 4.59, max_rss_kib: 5764460, swaps: 0}
+artifacts:
+  raw_log: {path: results/raw/phase3b_openvla_base_fullval889_v1_seed20260827_host_20260827.log, sha256: 045369d16eea38f82aafdcef3fd910cf15da4a6ffe566c271db55f7c9ffbf5c1}
+  evaluator: {path: scripts/evaluate_phase3b_openvla_base_fullval889.py, sha256: 93066396f13ccb33856c28536d3e08d216b1ec58e4cc39d1fd94becbdb097e15}
+boundary: No loss, accuracy, L1, throughput distribution, reward, success or checkpoint-selection evidence was produced.

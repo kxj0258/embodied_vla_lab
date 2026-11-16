@@ -1,0 +1,20 @@
+experiment_id: p0_act_libero_ckpt100000_demo_init05_v1_seed20260901
+kind: presentation_capture_of_frozen_policy_and_heldout_state
+task: {suite: libero_goal, task_order_index: 0, task_id: 7, name: turn_on_the_stove}
+checkpoint: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+checkpoint_sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+protocol:
+  episodes: 1
+  evaluator_seed: 20260901
+  init_state_indices: [5]
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  action_steps_per_inference: 5
+  image_rotation_degrees: 180
+  capture_fps: 10
+  strict_offline: true
+output_dir: outputs/presentation/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901
+raw_log: results/raw/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901_host_20260827.log
+structured_result: results/p0_act_libero_ckpt100000_demo_init05_v1.yaml
+boundary: Presentation-only recapture of the frozen checkpoint on an already-finalized held-out state. It cannot revise selection, success estimates, or any Phase 2 conclusion.

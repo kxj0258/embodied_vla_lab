@@ -1,0 +1,27 @@
+classification: PASS
+checks:
+  fixture_889_wrist: true
+  fixture_hash_shared: true
+  validation_split_shared: true
+  canonical_base_shared: true
+  adapter_hash: true
+  fresh_base_targets: true
+  fresh_adapter_targets: true
+  base_implementation_frozen: true
+  adapter_implementation_frozen: true
+  wrappers_only_override_config: true
+  read_only_contract: true
+fixture_manifest_sha256: 5ef06ec42a8999a50cb9810a201f93d34d438dc511bd9a61e558d5b3ec7b13e0
+base_config_sha256: 894122e59206aee5db2e52722ebbe4f35cadc81359be7ffba63a21302c52fd0e
+adapter_config_sha256: d81358d62b3886f9850a23f0e8147488a3e8c20eb2d681e3e7590827263072cb
+base_entrypoint_sha256: b4c1bfa1212136d5465344fc3e2b7edacdeaf605144ab2250fa6f4e7465fe93d
+adapter_entrypoint_sha256: e7ac5dc9f2b43b5c4b7de1b7084f98051c9846809a3500446aa88beaa34463bb
+cuda_calls: 0
+validation_frames_processed: 0
+environment_steps: 0
+model_predictions: 0
+execution_order:
+- base
+- adapter_after_base_result_audit
+boundary: Static paired offline contract only. Fullval metrics are not environment
+  success or reward; adapter cannot run until base result is audited.

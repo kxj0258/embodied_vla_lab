@@ -1,0 +1,19 @@
+manifest: p0_breadth_summary_v1_20260828
+classification: PASS
+generation_mode: offline_from_frozen_structured_result
+environment_steps: 0
+model_predictions: 0
+source:
+  path: results/p0_breadth_openvla_base_10task30_v2.yaml
+  sha256: c3be6121e1ed5650b42e30a2f29cefeb952a815733bff1ba54e3c2d6f710be48
+artifacts:
+- path: outputs/presentation/p0_breadth_summary_v1_20260828/openvla_10task_success.png
+  bytes: 80186
+  sha256: c6635f609a2e41e3ece36c6abe2ab3c5a555ff2defbfc1ac4dd72fcea88f8640
+- path: outputs/presentation/p0_breadth_summary_v1_20260828/openvla_10task_success.svg
+  bytes: 67607
+  sha256: 091b164558a1e78ba2002ec73316e24e51e4671b862bfee77b94e7d9e33f34c4
+- path: outputs/presentation/p0_breadth_summary_v1_20260828/summary.json
+  bytes: 699
+  sha256: 3a541cd2f5a7763501bdc7c6697494712939762f631c4f078c423ff2ba42b66e
+boundary: Quantitative presentation only; does not change the frozen 20/30 result.

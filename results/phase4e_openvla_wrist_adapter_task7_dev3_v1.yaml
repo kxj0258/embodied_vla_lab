@@ -1,0 +1,136 @@
+classification: PASS
+experiment: phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120
+execution_pass: true
+decision: NO_GO_NO_CLOSED_LOOP_RECOVERY
+adapter_success_count: 0
+success_total: 3
+success_rate: 0.0
+base_reference_success_count: 0
+base_reference_total: 3
+paired_rows:
+- init_state_index: 0
+  paired_seed: 20261120
+  base:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  adapter:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  category: neither_success
+- init_state_index: 1
+  paired_seed: 20261121
+  base:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  adapter:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  category: neither_success
+- init_state_index: 2
+  paired_seed: 20261122
+  base:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  adapter:
+    success: false
+    steps: 600
+    sum_reward: 0.0
+  category: neither_success
+episodes:
+- episode_index: 0
+  task_id: 7
+  init_state_index: 0
+  paired_seed: 20261120
+  view: eye_in_hand
+  success: false
+  steps: 600
+  sum_reward: 0.0
+  max_reward: 0.0
+  terminated: false
+  truncated: false
+  inference_s: 289.40999190707225
+  episode_wall_s: 299.8802604560042
+- episode_index: 1
+  task_id: 7
+  init_state_index: 1
+  paired_seed: 20261121
+  view: eye_in_hand
+  success: false
+  steps: 600
+  sum_reward: 0.0
+  max_reward: 0.0
+  terminated: false
+  truncated: false
+  inference_s: 292.82235258504807
+  episode_wall_s: 303.4911574389989
+- episode_index: 2
+  task_id: 7
+  init_state_index: 2
+  paired_seed: 20261122
+  view: eye_in_hand
+  success: false
+  steps: 600
+  sum_reward: 0.0
+  max_reward: 0.0
+  terminated: false
+  truncated: false
+  inference_s: 295.45796286886616
+  episode_wall_s: 305.8442906019918
+total_environment_steps: 1800
+model_predictions: 1800
+model_load_s: 6.617844300999423
+total_inference_s: 877.6903073609865
+mean_inference_s: 0.48760572631165916
+median_inference_s: 0.48801004650158575
+p95_inference_s: 0.5032525977963814
+peak_vram_allocated_bytes: 5468073984
+peak_vram_reserved_bytes: 5584715776
+worker_rss_kib: 1805536
+coordinator_rss_kib: 2377056
+elapsed_s: 931.1767550079967
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+adapter_sha256: fad1e3201dacc5e1136f45b5df3b06943d83354a34c1079d620c4b1abcf1ae7a
+trajectory:
+  path: outputs/eval/phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120/trajectory.jsonl
+  sha256: 65d042c06c7724ad53cdd80a8205db6cf57d2fb38305b0f620fe254dcb3d4895
+offline_metrics_applicable: false
+automatic_final_authorization: false
+integrity:
+  trajectory_rows: 1800
+  finite_actions: true
+  action_range: [-1.0, 1.0]
+  worker_shutdown_pass: true
+  worker_shutdown_predictions: 1800
+  checkpoint_revision_match: true
+  adapter_hash_match: true
+  training_executed: false
+  checkpoint_selected: false
+host:
+  exit_status: 0
+  wall_s: 937.42
+  user_s: 1023.64
+  system_s: 77.30
+  cpu_percent: 117
+  max_rss_kib: 5774904
+  major_page_faults: 11926
+  minor_page_faults: 2428942
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+artifacts:
+  resolved_config: {path: outputs/eval/phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120/resolved_config.yaml, bytes: 2222, sha256: 999f6dd867a869deebbbc56f1499a38e373ad5bef03645e2688615d171d5ffb8}
+  trajectory: {path: outputs/eval/phase4e_openvla_wrist_adapter_task7_dev3_v1_seed20261120/trajectory.jsonl, bytes: 1008206, sha256: 65d042c06c7724ad53cdd80a8205db6cf57d2fb38305b0f620fe254dcb3d4895}
+  raw_log: {path: results/raw/phase4e_openvla_wrist_adapter_task7_dev3_v1_host_20260828.log, bytes: 536622, sha256: 0528a2bdf75ae59f2c08e80ffca921d1c902b628d770076789d0d2a107d04113}
+paired_runtime_observation:
+  phase4b_base_task7_eye_in_hand_mean_inference_s: 0.3409292398498736
+  adapter_mean_inference_s: 0.48760572631165916
+  relative_increase_percent: 43.02255990902211
+boundary: Development-only task-7 closed-loop recovery gate paired to immutable Phase
+  4B base evidence on identical init states and seeds. It cannot revise Phase 4B,
+  select/tune another checkpoint, remove failures, claim cross-task ego-view generalization,
+  or authorize final tasks. Every episode is retained, including timeouts.

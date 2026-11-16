@@ -1,0 +1,10 @@
+manifest: phase6d_feagine_a03_limit_diagnostic_v2_20260830
+classification: PASS
+decision: SOFT_LIMIT_PENETRATION_WITHIN_DIAGNOSTIC_THRESHOLD
+artifacts:
+  - {path: results/phase6d_feagine_a03_limit_diagnostic_v2.yaml, bytes: 988, sha256: 506fa8343c96c925bef20858b2e6d33573662e30a85afc34944350a5d65440ae}
+  - {path: results/raw/phase6d_feagine_a03_limit_diagnostic_v2_host_20260830.log, bytes: 2035, sha256: 9fae124ba7a7cc9f63fb0aa371ccdef16ce9f40b7ded0d1488838ebe371a9a0f}
+  - {path: configs/task/phase6d_feagine_a03_limit_diagnostic_v2.yaml, bytes: 885, sha256: 0b2c4138d24b16d9eac86e370f8099f44d2340480dac1a695be54ae8f3dd4afd}
+  - {path: scripts/run_phase6d_feagine_a03_limit_diagnostic_v2.py, bytes: 3201, sha256: b3f5a4cea7d123765dc7c113790d5381f35bf93f50baf1f57804f462ce20b339}
+  - {path: results/phase6d_feagine_a03_limit_diagnostic_v2_static.yaml, bytes: 607, sha256: de91b37d8fa9e43e75cb44d4c9fef589accde247ecdf48e7bc4edeb192d233e8}
+boundary: v1 FAIL is retained; v2 diagnoses soft-limit penetration only and does not authorize target reaching, policy transfer, or hardware.

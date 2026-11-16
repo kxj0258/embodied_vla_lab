@@ -1,0 +1,42 @@
+experiment_id: phase5b_small_world_model_static_v1_seed20260830
+seed: 20260830
+data_contract: results/phase5a_libero_world_model_data_contract_v1.yaml
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  image_source: obs/agentview_rgb
+  action_source: actions
+  train_episodes: [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 38, 39, 41, 44, 46, 47, 48, 49]
+  validation_episodes: [0, 5, 12, 21, 29, 34, 40, 42, 43, 45]
+model:
+  image_shape: [3, 128, 128]
+  latent_dim: 128
+  action_dim: 7
+  encoder_channels: [16, 32, 48, 64]
+  dynamics_hidden_dim: 256
+  decoder_output: sigmoid_rgb_0_1
+  rollout: open_loop_latent
+baselines:
+  - copy_current_frame
+  - action_free_latent_dynamics
+  - action_conditioned_latent_dynamics
+training_candidate:
+  horizons: [1, 2, 4, 8]
+  max_horizon: 8
+  reconstruction_loss: pixel_l1
+  prediction_loss: mean_pixel_l1_over_horizons
+  optimizer: adamw
+  learning_rate: 0.0003
+  batch_size: 16
+  checkpoint_selection: lowest_validation_h4_pixel_mae_with_all_baselines_reported
+  formal_training_authorized: false
+evaluation:
+  metrics: [pixel_mae, pixel_mse, psnr]
+  identical_validation_windows_required: true
+  action_conditioned_must_beat: [copy_current_frame, action_free_latent_dynamics]
+  candidate_action_ranking: forbidden_until_prediction_gate
+output_dir: outputs/train/phase5b_small_world_model_static_v1_seed20260830
+structured_result: results/phase5b_small_world_model_static_v1.yaml
+boundary: >-
+  CPU-only architecture/shape/gradient smoke. Random-weight losses and action sensitivity are implementation checks,
+  not trained performance, baseline superiority, reward prediction, planning utility or environment success.

@@ -1,0 +1,22 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, optimizer_steps: 0}
+regression:
+  v2_failure: results/phase3b_openvla_qlora_train_smoke_v2.yaml
+  per_validation_tensor_deletion: true
+  python_gc_at_phase_boundaries: true
+  cuda_empty_cache_at_validation_iterations_and_boundaries: true
+  explicit_main_invocation: true
+  allocator_mode_for_formal_command: expandable_segments
+  model_data_optimizer_contract_changed: false
+assets:
+  entrypoint: {path: scripts/train_phase3b_openvla_qlora_smoke_v3.py, sha256: e58f91aa0f4d687ee9e14ac57d8421a46a00c60c609558452f3887a40d15a178}
+  config: {path: configs/train/openvla_phase3b_qlora_train_smoke_v3.yaml, sha256: 3c5272cea96e89b601c21d59e4cc755573f70923de5ac000581dacd0c7ca993d}
+  checker: {path: scripts/check_phase3b_openvla_qlora_train_smoke_v3_static.py, sha256: d3115e535e3c21c154b531ac39d6658fcb61ea5a9f24ad16df335e850d00c535}
+formal_gate:
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_train_smoke_v3.yaml
+boundary: Static and formal train20/val10/checkpoint smoke PASS; full offline validation and environment behavior remain untested.

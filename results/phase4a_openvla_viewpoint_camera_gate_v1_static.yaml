@@ -1,0 +1,33 @@
+classification: PASS
+experiment_id: phase4a_openvla_viewpoint_camera_gate_v1_seed20261101
+checks:
+  experiment_is_new_phase4a: true
+  frozen_base_revision_exact: true
+  model_not_loaded_by_gate: true
+  zero_steps_and_predictions: true
+  single_reset: true
+  paired_observation_keys: true
+  paired_simulator_cameras: true
+  native_shape_frozen: true
+  display_shape_frozen: true
+  common_preprocess: true
+  task_split_disjoint: true
+  task_split_complete: true
+  paired_views_exact: true
+  episode_arithmetic: true
+  fresh_output_dir: true
+  fresh_structured_result: true
+  fresh_raw_log: true
+  probe_has_no_worker_or_cuda: true
+config_sha256: 53061179f19fdcbce7455e10ed43b7ed8cd0465a931c7ee2432d94b3f99bf4ab
+probe_sha256: bdd27d2837a18dbb3863b59cbe7ac2e57f31690344abdda9dd7c3362299a5d85
+cuda_calls: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+preregistered_development_episodes: 30
+preregistered_final_episodes: 30
+boundary: Camera/runtime feasibility only. This gate performs one reset, zero environment
+  steps and zero model predictions; it cannot establish viewpoint robustness, policy
+  success, reward, or language generalization. Phase 3 results and all frozen P0 assets
+  remain unchanged.

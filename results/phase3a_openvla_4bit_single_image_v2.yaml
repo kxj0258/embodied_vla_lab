@@ -1,0 +1,22 @@
+experiment: phase3a_openvla_4bit_single_image_v2_demo0_t000_seed20260827
+date: 2026-08-27
+classification: FAIL
+exit_status: 1
+stage_reached: quantized_shard_load_then_device_dispatch
+checkpoint_shards_read: 4
+failure:
+  exception: ValueError
+  cause: Accelerate 1.10.1 called model.to(device) for a single-device bitsandbytes 0.47 model, while frozen Transformers 4.40.1 forbids .to() on 4-bit models.
+  correction: Force Accelerate device hooks during dispatch, which preserves the already loaded CUDA placement and avoids model.to().
+resources: {process_wall_s: 13.91, maximum_rss_kib: 5833868}
+execution:
+  shard_loading_completed: true
+  usable_model_returned: false
+  inference_run: false
+  action_produced: false
+  environment_constructed: false
+  process_exited_and_gpu_allocations_released: true
+artifacts:
+  raw_log: {path: results/raw/phase3a_openvla_4bit_single_image_v2_demo0_t000_seed20260827_host_20260827.log, bytes: 1804, sha256: 5e2613d2c165d06a2880151727585498f3ec619255dd1398ac5d25efadd81394}
+boundary: Not an OOM and not usable-model or inference evidence; external maximum RSS includes loading but no VRAM statistic survived process failure.
+next_gate: New-ID v3 with a scoped force_hooks dispatch compatibility shim; no package-version mutation.

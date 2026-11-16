@@ -1,0 +1,10 @@
+manifest: phase6l_feagine_a03_gripper_margin_scan_v1_20260902
+classification: PASS
+decision: NO_SAFE_GRIPPER_MARGIN_SELECTED
+artifacts:
+  - {path: results/phase6l_feagine_a03_gripper_margin_scan_v1.yaml, bytes: 6426, sha256: 6b328f4eec1ae1a8631f88fde1484a1f2ba771c728cfb878dfb3160fc63b3dfe}
+  - {path: results/raw/phase6l_feagine_a03_gripper_margin_scan_v1_host_20260902.log, bytes: 9661, sha256: 22cc12c5826b1928976e5be8b3b5a8171efdd2d8e6360a256306f28e468ef71b}
+  - {path: configs/task/phase6l_feagine_a03_gripper_margin_scan_v1.yaml, bytes: 2209, sha256: a32217b6d126c15b8a741a44156044fe4d7a580fa93198596a67d2a727bdb9d6}
+  - {path: scripts/run_phase6l_feagine_a03_gripper_margin_scan.py, bytes: 5492, sha256: 552318c1d62f0f6c074eb68b7481f3c3e390c495ee3cda4d867060a9f2d44043}
+  - {path: results/phase6l_feagine_a03_gripper_margin_scan_v1_static.yaml, bytes: 867, sha256: 6f53d3d02f8290c1cfc8c7bd2d01087a0ea4814b56fcffad873e1a668471cca9}
+boundary: Execution passed but no preregistered command achieved strict 4/4; Phase 6J remains 2/4 and no post-outcome command is authorized.

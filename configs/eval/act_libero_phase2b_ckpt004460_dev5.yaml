@@ -1,0 +1,23 @@
+experiment_id: phase2b_act_libero_ckpt004460_dev5_seed20260827
+kind: development_checkpoint_rollout
+task: {suite: libero_goal, task_order_index: 0, task_id: 7, name: turn_on_the_stove}
+checkpoint: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_004460.pt
+checkpoint_sha256: b3ad83f1143a11de74080124fc2a1c3750ff88f82aa1bcf46cc076f0cba888e1
+protocol:
+  episodes: 5
+  evaluator_seed: 20260827
+  init_state_indices: [0, 1, 2, 3, 4]
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  action_steps_per_inference: 5
+  cameras: [agentview_image, robot0_eye_in_hand_image]
+  image_shape: [3, 128, 128]
+  image_rotation_degrees: 180
+  state: joint_pos_7_then_gripper_qpos_2
+  action: frozen_stats_denormalize_then_clip_minus1_plus1
+  video: false
+  strict_offline: true
+output_dir: outputs/eval/phase2b_act_libero_ckpt004460_dev5_seed20260827
+raw_log: results/raw/phase2b_act_libero_ckpt004460_dev5_seed20260827_host_20260827.log
+boundary: Paired development comparison against step 100000 on the same five fixed initial states; not final statistics.

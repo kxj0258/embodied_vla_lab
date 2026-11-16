@@ -1,0 +1,43 @@
+manifest: p0_hd_comparisons_v1_20260828
+classification: PASS
+generation_mode: offline_composition_from_completed_hd_captures
+environment_steps: 0
+model_predictions: 0
+outputs:
+- path: outputs/presentation/p0_hd_comparisons_v1_20260828/base_vs_qlora_init40_typical_speedup_hd.mp4
+  bytes: 1062522
+  sha256: 40a7c5a63cfb1b06347beabaa3ff91ced9d2afd8503c0b30441d34d4cc1edd97
+  probe:
+    codec_name: h264
+    width: 1920
+    height: 1080
+    pix_fmt: yuv420p
+    r_frame_rate: 20/1
+    duration: '11.050000'
+    nb_frames: '221'
+- path: outputs/presentation/p0_hd_comparisons_v1_20260828/base_vs_qlora_init44_tail_failure_hd.mp4
+  bytes: 3755419
+  sha256: 9ff284bb28f7f28d5fded3c30d7b4a130f76e5cbc4e0ffd7c5cc50389e00d986
+  probe:
+    codec_name: h264
+    width: 1920
+    height: 1080
+    pix_fmt: yuv420p
+    r_frame_rate: 20/1
+    duration: '30.000000'
+    nb_frames: '600'
+sources:
+- path: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/clean_agentview_hd640.mp4
+  sha256: 3afe1c5b0b06e08983bddceacb9fcdc3f0a84ee55a273d626b9fa47bd4f1c8c8
+- path: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/clean_agentview_hd640.mp4
+  sha256: 7609b7d75eba926f3445577f623b0bd3909f98a9f0d679235538524a44606d25
+- path: outputs/presentation/p0_hd_openvla_base_init44_v2_seed20260940/clean_agentview_hd640.mp4
+  sha256: 717163ae84f25e59bd6a49837e1ce3465cb2b35b8109b29104e179bb26dad2b6
+- path: outputs/presentation/p0_hd_openvla_qlora_init44_v2_seed20260940/clean_agentview_hd640.mp4
+  sha256: fc978cf71ed0de89dac65b3819836601fc26db242b1c140876d91315ec5e06e1
+interpretation:
+  init40: Both succeed; QLoRA uses 70 versus base 221 control steps, while per-step
+    model inference is slower.
+  init44: Base succeeds in 68 steps; frozen QLoRA times out at 600 steps.
+boundary: Presentation-only composition. It cannot revise Phase 3A/3B selection, success
+  estimates, or authorize tuning/final reruns.

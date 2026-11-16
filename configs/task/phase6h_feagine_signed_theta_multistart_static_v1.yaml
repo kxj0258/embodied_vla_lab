@@ -1,0 +1,23 @@
+experiment_id: phase6h_feagine_signed_theta_multistart_static_v1
+source_diagnostic: phase6g_feagine_a03_mapping_diagnostic_v1
+canonicalization: {negative_theta: absolute_value, phi_shift_rad: 3.141592653589793, phi_wrap: [-3.141592653589793, 3.141592653589793]}
+equivalence_test: {random_samples: 256, seed: 20260901, position_tolerance_m: 0.000001, direction_tolerance: 0.000001}
+targets:
+  - {id: plus_x_35mm, delta_m: [0.035, 0.000, 0.000]}
+  - {id: minus_x_35mm, delta_m: [-0.035, 0.000, 0.000]}
+  - {id: plus_y_35mm, delta_m: [0.000, 0.035, 0.000]}
+  - {id: minus_y_35mm, delta_m: [0.000, -0.035, 0.000]}
+multistart_seeds:
+  - {id: x_pos_s, angles_rad: [0.08, 1.5707963267948966, 0.08, -1.5707963267948966, 0.04, 1.5707963267948966]}
+  - {id: x_neg_s, angles_rad: [0.08, -1.5707963267948966, 0.08, 1.5707963267948966, 0.04, -1.5707963267948966]}
+  - {id: y_pos_s, angles_rad: [0.08, 0.0, 0.08, 3.141592653589793, 0.04, 0.0]}
+  - {id: y_neg_s, angles_rad: [0.08, 3.141592653589793, 0.08, 0.0, 0.04, 3.141592653589793]}
+  - {id: x_pos_uniform, angles_rad: [0.05, 1.5707963267948966, 0.05, 1.5707963267948966, 0.05, 1.5707963267948966]}
+  - {id: x_neg_uniform, angles_rad: [0.05, -1.5707963267948966, 0.05, -1.5707963267948966, 0.05, -1.5707963267948966]}
+  - {id: y_pos_uniform, angles_rad: [0.05, 0.0, 0.05, 0.0, 0.05, 0.0]}
+  - {id: y_neg_uniform, angles_rad: [0.05, 3.141592653589793, 0.05, 3.141592653589793, 0.05, 3.141592653589793]}
+ik: {max_iterations: 200, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+gate: {required_target_solutions: 4, total_targets: 4, canonicalized_theta_min_rad: 0.0, canonicalized_theta_max_rad: 2.356194}
+structured_result: results/phase6h_feagine_signed_theta_multistart_static_v1.yaml
+authorization: {cpu_core_fk_ik: true, mujoco_import: false, environment_steps: 0, gpu: false, policy_inference: false, hardware: false}
+boundary: CPU core-math gate only; no MJCF load, actuator command, target recovery claim, VLA, reward, final, or hardware.

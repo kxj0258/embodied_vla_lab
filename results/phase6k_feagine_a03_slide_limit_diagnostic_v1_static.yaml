@@ -1,0 +1,21 @@
+classification: PASS
+experiment: phase6k_feagine_a03_slide_limit_diagnostic_v1_static
+checks:
+  source_2of4_fail: true
+  same_targets_seeds: true
+  same_budget: true
+  same_threshold: true
+  no_controller_change: true
+  records_all_slide_joints: true
+  paired_xy: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  no_runtime_imports: true
+checks_passed: 10
+checks_total: 10
+source_hashes:
+  config: b9f8c66c4c3f56880c3f125340529de331dab4a5e8cb8d1f937f109e5ade34ce
+  runner: 883346e398d2d3f6977f7eb10fe49e44544b1059b4b8f853a7c38afdb26fd149
+  phase6j: 07c5097446bb80994ddc87173bb06a4c94ab62d96467b8521d75538ec70e588c
+environment_steps: 0
+boundary: Static same-target diagnostic authorization only; Phase 6J 2/4 FAIL immutable.

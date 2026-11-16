@@ -1,0 +1,4 @@
+# Minimal additions required only because the frozen checkpoint is loaded from a local snapshot
+# with classes registered from the pinned OpenVLA source tree.
+draccus==0.8.0
+rich==13.9.4

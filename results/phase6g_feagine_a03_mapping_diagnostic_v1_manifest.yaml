@@ -1,0 +1,10 @@
+manifest: phase6g_feagine_a03_mapping_diagnostic_v1_20260901
+classification: PASS
+decision: MAPPING_DIAGNOSTIC_COMPLETE
+artifacts:
+  - {path: results/phase6g_feagine_a03_mapping_diagnostic_v1.yaml, bytes: 8727, sha256: 5d2d9f73b6b6f47a78670f1cbeb6b706edae8d393adef08b7527956b98c62269}
+  - {path: results/raw/phase6g_feagine_a03_mapping_diagnostic_v1_host_20260901.log, bytes: 12187, sha256: d8f7e5500bcc33b8d33dd1760aaaa73b1b8a9ad835875a603143a0cb8a0abccd}
+  - {path: configs/task/phase6g_feagine_a03_mapping_diagnostic_v1.yaml, bytes: 1464, sha256: 7e7586a4b94e3195228f8f84fc16f19a900ab7fb9747c998fe225d65fcf68ff3}
+  - {path: scripts/run_phase6g_feagine_a03_mapping_diagnostic.py, bytes: 5617, sha256: d3d9eb3522ba249997a078c4f2a0e702b128864a9b026d157f7702672d81ece7}
+  - {path: results/phase6g_feagine_a03_mapping_diagnostic_v1_static.yaml, bytes: 771, sha256: 669e934961a371d0264d161437692aaa2043fa915f724bcff0d7062cc43808ee}
+boundary: Diagnostic PASS only; Phase 6F remains 0/4 FAIL and no repair has been executed.

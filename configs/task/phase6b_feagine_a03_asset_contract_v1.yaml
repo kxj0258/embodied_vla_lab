@@ -1,0 +1,44 @@
+experiment_id: phase6b_feagine_a03_asset_contract_v1
+distribution:
+  release: v1.0.1
+  core_version: 0.1.0
+  core_revision: 2c59c71
+  mujoco_version: 0.1.2
+  preset_id: a03_type_2
+  wheel: feagine-simulation/dist/feagine_mujoco-0.1.2-py3-none-any.whl
+  wheel_sha256: 0c4bfe832457a6fb4238e1f1f743a5a5334df3399a7b5c24d3493803259f0650
+assets:
+  preset: feagine_mujoco/assets/robot/presets/a03_type_2/preset.yaml
+  mjcf: feagine_mujoco/assets/robot/presets/a03_type_2/feagine.xml
+  scene: feagine_mujoco/assets/robot/presets/a03_type_2/feagine_scene.xml
+robot:
+  sections: 3
+  section_lengths_m: [0.16, 0.16, 0.16]
+  samples_per_section: 5
+  theta_range_rad: [0.0, 2.356194]
+  phi_range_rad: [-3.141593, 3.141593]
+  backbone_radius_m: 0.0235
+  tool_tip_offset_m: [0.0, 0.0, 0.153]
+  base_mount_offset_m: [0.0, 0.0, 0.163]
+  grasper_rotation_range_rad: [-1.570796, 1.570796]
+  finger_range_m: [-0.013, 0.005]
+  control_timestep_s: 0.005
+bridge:
+  input_schema: [dx_m, dy_m, dz_m, droll_rad, dpitch_rad, dyaw_rad, gripper]
+  translation_frame: robot_local_pcc_base
+  external_policy_to_robot_calibration_available: false
+  max_translation_step_m: 0.01
+  reject_rotation_norm_above_rad: 0.001
+  gripper_policy: {-1.0: open, 1.0: close}
+  gripper_wrapper: {0.0: open, 1.0: close}
+  ik_target: [position_m, unit_tip_direction]
+runtime:
+  mujoco_installed: true
+  feagine_mujoco_installed: false
+  pyfeagine_sim_core_installed: false
+  explicit_preset_required: a03_type_2
+  packaged_default_preset: a03
+authorization: {install: false, core_build: false, mujoco_load: false, simulation_step: false, gui: false, hardware: false}
+boundary: >-
+  Static binding to the immutable distribution archive only. No package installation, compiled core call, MJCF load,
+  simulation step, policy inference or hardware command. External policy-to-A03 frame calibration remains unresolved.

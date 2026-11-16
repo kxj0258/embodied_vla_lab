@@ -1,0 +1,15 @@
+experiment: phase3b_openvla_base_fullval889_v2_seed20260827
+date: 2026-08-27
+classification: PASS
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+fixture_manifest_sha256: 344f1d7b0dc2792bd211cec2946c56fc4d3ec6f1de60da0667d4092dd77e1378
+coverage: {validation_frames: 889, validation_episodes: 10, action_tokens: 6223, correct_action_tokens: 600}
+metrics: {mean_frame_loss: 16.95965717828448, action_token_accuracy: 0.09641651936365098, mean_frame_continuous_action_l1: 0.3077489263421904}
+timing: {model_load_s: 4.027034079000032, validation_s: 207.01309291999996, frames_per_s: 4.294414365102758, median_inference_s: 0.20346198699985507, p95_inference_s: 0.21027963819992693, host_wall_s: 213.55}
+memory: {peak_vram_allocated_bytes: 5103308288, peak_vram_reserved_bytes: 5270142976, rss_kib_at_result: 1943660, host_max_rss_kib: 5768380, swaps: 0}
+execution: {training_executed: false, environment_executed: false, checkpoint_selected: false, exit_status: 0}
+artifacts:
+  result_json: {path: outputs/eval/phase3b_openvla_base_fullval889_v2_seed20260827/result.json, sha256: 815d0079433a111e91f21bccf47c10fd3732c37f6158e55a4881f793e3e611be}
+  resolved_config: {path: outputs/eval/phase3b_openvla_base_fullval889_v2_seed20260827/resolved_config.yaml, sha256: e58eed754faf2670e85051a175ba74590067afee67c00de024acff003b8345b1}
+  raw_log: {path: results/raw/phase3b_openvla_base_fullval889_v2_seed20260827_host_20260827.log, sha256: fc33cc2163ae068e8d4ea5ab7157b97cda327e94ab68553a0f7b7389d76af238}
+boundary: Same-protocol frozen base offline validation only; no environment reward/success or training evidence.

@@ -1,0 +1,36 @@
+phase: 3A
+model_family: OpenVLA
+repo_id: openvla/openvla-7b-finetuned-libero-goal
+revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+revision_status: frozen_official_main_not_community_pr
+upstream_code:
+  path: openvla
+  commit: c8f03f48af692657d3060c19588038c7220e9af9
+model_card_contract:
+  base_parameters: approximately_8B
+  base_precision: BF16
+  logical_repository_size: approximately_15.1_GB
+  training: {method: LoRA, rank: 32, steps: 60000, batch_size: 128, hardware: 8xA100_80GB}
+  suite: libero_goal
+  image_augmentation: random_crop_and_color_jitter
+inference_contract:
+  quantization: NF4_4bit
+  compute_dtype: BF16
+  batch_size: 1
+  attention: eager_or_sdpa_no_flashattention
+  image: {views: [agentview], resolution: [224, 224], center_crop_area: 0.9}
+  prompt: "In: What action should the robot take to {instruction_lowercase}?\nOut:"
+  action: {dimensions: 7, tokenizer_bins: 256, unnorm_key: libero_goal, statistics: q01_q99}
+  gripper_adapter: normalize_0_1_to_minus1_plus1_binarize_then_invert
+  proprioception_used: false
+resource_contract:
+  gpu: NVIDIA_GeForce_RTX_5070_Ti_Laptop
+  compute_capability: sm_120
+  vram_gib: 12
+  expected_4bit_passive_gib_upstream_comment: 6
+  expected_4bit_active_gib_upstream_comment: 7
+  measured: false
+boundaries:
+  - This checkpoint is suite-finetuned, not a zero-shot base-model test.
+  - It uses one camera and no proprioception, unlike the dual-camera 9D-state ACT baseline.
+  - The first gate performs no model download, GPU initialization, inference, environment construction, or rollout.

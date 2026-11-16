@@ -1,0 +1,88 @@
+phase: 2B
+policy: ACT
+task: LIBERO_GOAL turn_on_the_stove
+frozen_results_immutable: true
+checkpoints:
+  - experiment_id: phase2b_act_libero_fullsplit_smoke_v3_20step_seed20260826
+    classification: PASS
+    training_step: 20
+    path: outputs/train/phase2b_act_libero_fullsplit_smoke_v3_20step_seed20260826/checkpoints/model_000020.pt
+    bytes: 410450149
+    sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+    cpu_reload: PASS
+    selection_status: smoke_only_not_eligible_for_policy_claims
+  - experiment_id: phase2b_act_libero_fullsplit_validation_smoke_v4_20step_seed20260826
+    classification: PASS
+    training_step: 20
+    path: outputs/train/phase2b_act_libero_fullsplit_validation_smoke_v4_20step_seed20260826/checkpoints/model_000020.pt
+    bytes: 410450149
+    sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+    validation_loss: 0.7429550438281254
+    validation_samples: 889
+    selection_status: validation_smoke_only_not_eligible_for_policy_claims
+  - experiment_id: phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826
+    classification: PASS
+    result: results/phase2b_act_libero_100k.yaml
+    root: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints
+    bytes_each: 410470545
+    cpu_reload: PASS_ALL_23
+    required_state_fields: PASS_ALL_23
+    incomplete_files: 0
+    periodic_exact_resume:
+      model_004460.pt: b3ad83f1143a11de74080124fc2a1c3750ff88f82aa1bcf46cc076f0cba888e1
+      model_008920.pt: b5959429e551b4528cff033da44d579d67bf4f53d613d18a68c7933020300189
+      model_013380.pt: 3d54521788382dd0a63e6e48195daa65cffd09489801f2e028175a1b049d38e6
+      model_017840.pt: 88e5429dcb2b4d0e72b9e061e52b587ea4e1cdc74d592b2cfec8071dc1c837f4
+      model_022300.pt: 1233b1163ff86597a5fc97aa901c0f88a957ace5afffc20c3cb5cced9bc46ee1
+      model_026760.pt: b18b5d00285e3cf78d68ae64bb8f58872f33376f96be3e1a110937f3b459b80a
+      model_031220.pt: 360b852d3a1c63ec2e7f87997fa9e6fbf818a161e35cde2cb42fc7a98cc32561
+      model_035680.pt: 8c7c848921b06116b1955446bbb40af181788525c0118bc38fbe0b1337ae0a44
+      model_040140.pt: 65fddd26d83831008d88e13a9e29b9ac97c7e75f3b6ad10668c3fc723f1f302d
+      model_044600.pt: e9072e57941eaf7d1d612059ba910efdb68929b8e891e460eff9ae059aacaa5f
+      model_049060.pt: 6850fd82a7c6adc8be507efec12983ff721d42700eb03b419172949c0322c695
+      model_053520.pt: 755408c7dbeab5ea2040a9f0b32c2a8f7fc4497d6ee96ad0a3cd0ec683c55d96
+      model_057980.pt: 175c65a84fe3218bd2134ab994d92d8e6ef86c994ffffe7b844a437cd5fab4df
+      model_062440.pt: cb144f5923674ad3faa493f0260c2d14f44755588089446a28de91724ae3f1fc
+      model_066900.pt: 580c0dcf0b380fc17490dedd2ca517ac4097092a0e722bd0520f38f5dfab7fc7
+      model_071360.pt: 903f2ae95ebac4cfc461f7666f607d078db2fdd2c75a639ac33c6345acefccf1
+      model_075820.pt: 00b40d57e5f9b5325c624bb6f3e4edd287ce00d2ba4b6da28737349759aec628
+      model_080280.pt: 5ceb3ebd908fac95cfbf680c79e6a4b6e2ba97d56b25a2382035f763268e9b2d
+      model_084740.pt: a39495127116e9b7db83a854c67debfc7391c60d55a24f5d16019082857eb812
+      model_089200.pt: 83f7a6ea4e961039c2a6d21bb0815b76b817aa16ba9e850e4a1fc2d2a78c2318
+      model_093660.pt: 154c3f8a8d45407cca79b6463dce7b41a7b1cf9991421bf564c1d38a3578da5c
+      model_098120.pt: 9ef95b006f87ddbdce51203dafecb8c2565c56ed6c57bc4a8abd955a10b2e3bf
+    archival_nonboundary:
+      model_100000.pt: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+    selection_status: rollout_not_run_no_environment_quality_ranking
+    development_rollouts:
+      - result: results/phase2b_act_libero_ckpt100000_dev5.yaml
+        protocol: fixed_init_states_0_to_4
+        success: 5/5
+        mean_sum_reward: 1.0
+        mean_max_reward: 1.0
+        selection_status: strong_development_signal_not_final_or_selected
+      - result: results/phase2b_act_libero_ckpt004460_dev5.yaml
+        protocol: fixed_init_states_0_to_4
+        success: 4/5
+        mean_sum_reward: 0.8
+        mean_max_reward: 0.8
+        selection_status: paired_early_candidate_below_step100000_not_final
+      - result: results/phase2b_act_libero_ckpt049060_dev5.yaml
+        protocol: fixed_init_states_0_to_4
+        success: 5/5
+        mean_sum_reward: 1.0
+        mean_max_reward: 1.0
+        selection_status: tied_success_reward_lost_steps_tiebreak_407_vs_403
+    frozen_selection:
+      result: results/phase2b_act_libero_checkpoint_selection_dev5.yaml
+      checkpoint: model_100000.pt
+      selection_frozen: true
+    heldout_final:
+      result: results/phase2b_act_libero_ckpt100000_final_heldout45.yaml
+      init_state_indices: 5..49
+      success: 45/45
+      mean_sum_reward: 1.0
+      mean_max_reward: 1.0
+      classification: PASS
+      selection_remains_frozen: true
+boundary: Step 100000 is frozen and achieved 45/45 on the complete held-out finite init-state set; Phase 2B is complete.

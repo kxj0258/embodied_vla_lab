@@ -1,0 +1,28 @@
+experiment: p0_hd_openvla_base_init05_v1_seed20260901
+date: 2026-08-28
+classification: FAIL
+failure_stage: dual_egl_environment_initialization_before_worker_start
+evidence:
+  raw_log: {path: results/raw/p0_hd_openvla_base_init05_v1_seed20260901_host_20260828.log, bytes: 569, sha256: e074003012a8c2792a3855176e1ab55530c4388170a89976f857ff0cc8f3d90b}
+  resolved_config: {path: outputs/presentation/p0_hd_openvla_base_init05_v1_seed20260901/resolved_config.yaml, bytes: 1112, sha256: 6f9c302f8cb69507d72ecc52cc883e9437162622d03d1a2aa92ddfb99d87894f}
+  worker_started: false
+  model_loaded: false
+  environment_steps: 0
+  video_created: false
+  structured_success_result_created: false
+  python_traceback_present: false
+  time_footer_present: false
+  nvidia_smi_after_failure: DRIVER_COMMUNICATION_FAILED
+metrics:
+  loss: NOT_APPLICABLE
+  offline_validation: NOT_APPLICABLE
+  success: NOT_MEASURED
+  reward: NOT_MEASURED
+  gradients: NOT_APPLICABLE
+  throughput: NOT_MEASURED
+  vram: NOT_RECORDED
+  rss: NOT_RECORDED
+  elapsed: NOT_RECORDED
+diagnosis: Two separate EGL LIBERO environments caused a driver/context-level interruption before the OpenVLA worker started. This is infrastructure failure, not policy evidence.
+fix: Use one native-128 policy environment and the same sim/context for an additional direct 640 camera render; new v2 ID required.
+boundary: Preserve v1 log/output. Do not retry this ID and do not interpret it as an OpenVLA policy failure.

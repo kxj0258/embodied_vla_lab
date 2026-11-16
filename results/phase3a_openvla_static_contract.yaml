@@ -1,0 +1,39 @@
+experiment: phase3a_openvla_static_contract
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+target:
+  repo_id: openvla/openvla-7b-finetuned-libero-goal
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  upstream_code_commit: c8f03f48af692657d3060c19588038c7220e9af9
+  logical_size_estimate: 15.1_GB
+contracts_verified:
+  suite: libero_goal
+  action_dim: 7
+  action_decode: 256_bins_then_q01_q99_unnormalization
+  center_crop: true
+  image: single_agentview_224x224
+  proprioception: false
+  gripper_adapter: normalize_binarize_invert
+  quantization_target: NF4_4bit_BF16_compute
+runtime_decision:
+  environment: evla-openvla
+  python: '3.10'
+  pytorch: Blackwell_compatible_cu128
+  bitsandbytes: 0.47.0
+  flash_attention: excluded_first_gate
+  tensorflow_rlds_wandb: excluded_inference_gate
+resources:
+  filesystem_available_before_download: approximately_76_GiB
+  ram_total: 30_GiB
+  ram_available_at_inventory: 15_GiB
+  swap_total: 61_GiB
+  model_cache_present: false
+  target_environment_present: false
+artifacts:
+  model_config: {path: configs/model/openvla_libero_goal_phase3a.yaml, sha256: fd742011a08cb9ddf43971844e98f73bf11183c78936e845921263855e6ec2b5}
+  requirements: {path: configs/env/evla_openvla_minimal_inference.txt, sha256: 588fffce988e5ddf5b0047cb21a2c1d1c6a09ba70c64c9eb44318921dc825093}
+  checker: {path: scripts/check_phase3a_openvla_static_contract.py, sha256: 3c76ce51c9f366a62843b6c699f9d1632027f0e5edda06598ab37bac6b4ed1bc}
+  raw_output_sha256: 2a064ee1342ee0eef20179da77423149ce0f4d7c4114dfa5f4db81f7dcc05122
+boundaries: No package installation, model metadata snapshot, weight download, GPU initialization, model load, inference, environment construction, rollout, or training occurred.
+next_gate: Create isolated minimal environment and execute CUDA BF16 plus bitsandbytes NF4 kernel smoke on the host.

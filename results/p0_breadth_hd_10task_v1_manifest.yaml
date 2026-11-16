@@ -1,0 +1,191 @@
+manifest: p0_breadth_hd_10task_v1
+classification: PASS
+selection_rule: first successful init state in frozen task order; fixed before recapture
+source_result: results/p0_breadth_openvla_base_10task30_v2.yaml
+source_success: 20/30
+task_coverage: 10/10
+policy_success: 10/10
+total_environment_steps: 1296
+total_model_predictions: 1296
+host:
+  exit_status: 0
+  elapsed_wall_s: 785.02
+  user_s: 1089.10
+  system_s: 110.11
+  cpu_percent: 152
+  maximum_rss_kib: 5860536
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+  post_run_gpu_compute_process_present: false
+checkpoint_integrity: all_10_captures_matched_frozen_revision_and_completed_clean_worker_shutdown
+captures:
+- task_id: 0
+  task_name: open_the_middle_drawer_of_the_cabinet
+  instruction: open the middle drawer of the cabinet
+  selected_init_state: 0
+  source_eval_seed: 20261001
+  expected_and_observed_steps: 114
+  result: results/p0_breadth_hd_base_task00_init00_v1_seed20261001.yaml
+  result_sha256: 20ca0710044f12dbdad9477cb13868aa9b57c6b302dbd5335fcfd869dc0dd2d4
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task00_init00_v1_seed20261001/presentation_hd640.mp4
+    bytes: 931424
+    sha256: f126f3cf691dc95f78ebc69c776ba041809c84493d0a3766378251b4b599f6eb
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task00_init00_v1_seed20261001/clean_agentview_hd640.mp4
+    bytes: 873092
+    sha256: 8c06f1b2ef2086b6fe9369f92d318e5763040a4a5032e07b40000ee3cc981616
+- task_id: 1
+  task_name: put_the_bowl_on_the_stove
+  instruction: put the bowl on the stove
+  selected_init_state: 1
+  source_eval_seed: 20261005
+  expected_and_observed_steps: 90
+  result: results/p0_breadth_hd_base_task01_init01_v1_seed20261005.yaml
+  result_sha256: 76ccc0369d643d0da6de18b0b961881ec9524ace57f061fa77f4e7c5bab4daa9
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task01_init01_v1_seed20261005/presentation_hd640.mp4
+    bytes: 791729
+    sha256: fd7e1aa9a6007e90cdc895ae45e090bd8238a418653c107ecdc6d082cf1d10ef
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task01_init01_v1_seed20261005/clean_agentview_hd640.mp4
+    bytes: 738397
+    sha256: c83bb8d1459f316df12a55257d80a2a48c2ddf3b3ac1be786f426ac03948f1e7
+- task_id: 2
+  task_name: put_the_wine_bottle_on_top_of_the_cabinet
+  instruction: put the wine bottle on top of the cabinet
+  selected_init_state: 0
+  source_eval_seed: 20261007
+  expected_and_observed_steps: 77
+  result: results/p0_breadth_hd_base_task02_init00_v1_seed20261007.yaml
+  result_sha256: 46918786abf06139f82330ed39f5faeacbebcd5b8f859be00dfff4cd315ec68d
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task02_init00_v1_seed20261007/presentation_hd640.mp4
+    bytes: 673486
+    sha256: bd015b9cc03a2a8b6004f4549ceed42986c89236d605db8781fa8c2fbddc7c0a
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task02_init00_v1_seed20261007/clean_agentview_hd640.mp4
+    bytes: 632731
+    sha256: aac8c89eebf8426f8f0977764d63ad53096168177ef3f6b2b43cc01652572b60
+- task_id: 3
+  task_name: open_the_top_drawer_and_put_the_bowl_inside
+  instruction: open the top drawer and put the bowl inside
+  selected_init_state: 2
+  source_eval_seed: 20261012
+  expected_and_observed_steps: 246
+  result: results/p0_breadth_hd_base_task03_init02_v1_seed20261012.yaml
+  result_sha256: ba10a5c0fbfd1b771fb74c97392b491391187177216e7a25149e40a78071ccb0
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task03_init02_v1_seed20261012/presentation_hd640.mp4
+    bytes: 1821405
+    sha256: 6b38dcaf574125f0cb73c4e36fe450b862bbd57b41602834ad2f391ea3b64152
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task03_init02_v1_seed20261012/clean_agentview_hd640.mp4
+    bytes: 1746615
+    sha256: 4278dabc7199f1f0c9e9b649cc5855448b4711f037c01ad16cea4f5219f25b1b
+- task_id: 4
+  task_name: put_the_bowl_on_top_of_the_cabinet
+  instruction: put the bowl on top of the cabinet
+  selected_init_state: 0
+  source_eval_seed: 20261013
+  expected_and_observed_steps: 93
+  result: results/p0_breadth_hd_base_task04_init00_v1_seed20261013.yaml
+  result_sha256: eeea626dc96127605d568fd8bb316ead26746a022d41f93bb0ce1f97b4224431
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task04_init00_v1_seed20261013/presentation_hd640.mp4
+    bytes: 857437
+    sha256: 099ac6879c2c792c56a3a125a80b713b264d7e4d97b3e7eab97b1c34dcbc7caf
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task04_init00_v1_seed20261013/clean_agentview_hd640.mp4
+    bytes: 807324
+    sha256: 71d3a16c968c37e598eb626a951029c7ff495655126b6362a7d780becbe7b877
+- task_id: 5
+  task_name: push_the_plate_to_the_front_of_the_stove
+  instruction: push the plate to the front of the stove
+  selected_init_state: 0
+  source_eval_seed: 20261016
+  expected_and_observed_steps: 133
+  result: results/p0_breadth_hd_base_task05_init00_v1_seed20261016.yaml
+  result_sha256: 151fc34a7343c41fa9b07d63594b4b6c8807325675ba858b43ce336821ad41d5
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task05_init00_v1_seed20261016/presentation_hd640.mp4
+    bytes: 1273139
+    sha256: 3031d5b84e4d1c46330de857bdba09cbc1860f21c23ca1f5f9414cc92966b687
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task05_init00_v1_seed20261016/clean_agentview_hd640.mp4
+    bytes: 1207347
+    sha256: 635af63211337c60014de92eba77524c9ae665759b1064e20fd67782c4197357
+- task_id: 6
+  task_name: put_the_cream_cheese_in_the_bowl
+  instruction: put the cream cheese in the bowl
+  selected_init_state: 1
+  source_eval_seed: 20261020
+  expected_and_observed_steps: 108
+  result: results/p0_breadth_hd_base_task06_init01_v1_seed20261020.yaml
+  result_sha256: 6ed943359d7c3e5226f35a69da681ccba409acedd45c30e901109ca0236e1d09
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task06_init01_v1_seed20261020/presentation_hd640.mp4
+    bytes: 931188
+    sha256: 7e72bc7342a70091dc7b038b295cf5eb43f63cbfedb842f6b34c17de5e373a36
+    status: PRESERVED_NONCANONICAL_VISUAL_CORRUPTION
+  canonical_presentation_video:
+    path: outputs/presentation/p0_breadth_10task_montage_v1_20260828/task06_presentation_recomposed_v2.mp4
+    bytes: 884822
+    sha256: 0774d07610bcdc3e6fc1deedc47fc9b70ec8247051f4293ec84dd7f971516fa6
+    status: CANONICAL_VISUAL_QA_PASS
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task06_init01_v1_seed20261020/clean_agentview_hd640.mp4
+    bytes: 876147
+    sha256: 96bc5b770822833fe623b89f70cbb46fede9df598653cf13c798affa716f735c
+- task_id: 7
+  task_name: turn_on_the_stove
+  instruction: turn on the stove
+  selected_init_state: 0
+  source_eval_seed: 20261022
+  expected_and_observed_steps: 89
+  result: results/p0_breadth_hd_base_task07_init00_v1_seed20261022.yaml
+  result_sha256: edc18fa621bab7cf60201e6d594bb03df3e665998cb5bb26756c647bdbc1c327
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task07_init00_v1_seed20261022/presentation_hd640.mp4
+    bytes: 574611
+    sha256: 21ed30a8d891c93ee57f2e3a9b526bb2e22196fce8da7514818308afd9a80a6b
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task07_init00_v1_seed20261022/clean_agentview_hd640.mp4
+    bytes: 527494
+    sha256: 1f43df5c186b1862481594b2d8f0bf70bef2ab726cfba75c01f2003e439f376c
+- task_id: 8
+  task_name: put_the_bowl_on_the_plate
+  instruction: put the bowl on the plate
+  selected_init_state: 0
+  source_eval_seed: 20261025
+  expected_and_observed_steps: 76
+  result: results/p0_breadth_hd_base_task08_init00_v1_seed20261025.yaml
+  result_sha256: b76b43292d0e73ecff7bc249adf4b24ba879bb525a74a2e3f7a4434ae7d8f2f7
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task08_init00_v1_seed20261025/presentation_hd640.mp4
+    bytes: 720011
+    sha256: 9abad7048338a6f516192670ced1ab2a96c5804f0e65abecaeb29297806f074f
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task08_init00_v1_seed20261025/clean_agentview_hd640.mp4
+    bytes: 676674
+    sha256: 2a03302205d4f9efd2aa69eb92fa2fdd61dad0ed797f354c6df0bc93ab5525f3
+- task_id: 9
+  task_name: put_the_wine_bottle_on_the_rack
+  instruction: put the wine bottle on the rack
+  selected_init_state: 0
+  source_eval_seed: 20261028
+  expected_and_observed_steps: 270
+  result: results/p0_breadth_hd_base_task09_init00_v1_seed20261028.yaml
+  result_sha256: df4e2f930c037ade9562f4e8cc673d4c41ce7bd3e7adbf3614c694b513233608
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task09_init00_v1_seed20261028/presentation_hd640.mp4
+    bytes: 1658897
+    sha256: 94257cf87a777cffe88d757e8a71ebb675ba616525a54dd8c7e656f1c0b439d4
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task09_init00_v1_seed20261028/clean_agentview_hd640.mp4
+    bytes: 1549545
+    sha256: 3df0c4f6c006b3faa9e3a2f9f20408d231b2f2f708bf074b6d52a0ba64885b62
+montage_manifest: results/p0_breadth_10task_montage_v1_manifest.yaml
+visual_qa: PASS
+boundary: Presentation-only; no failures rerun or aggregate metrics changed.

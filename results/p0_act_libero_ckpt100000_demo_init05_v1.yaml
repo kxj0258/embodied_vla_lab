@@ -1,0 +1,57 @@
+experiment: p0_act_libero_ckpt100000_demo_init05_v1_seed20260901
+classification: PASS
+execution_pass: true
+policy_success: true
+steps: 83
+sum_reward: 1.0
+inference_s: 0.5747869219958375
+elapsed_s: 14.656957701001375
+policy_forwards: 17
+mean_inference_s_per_forward: 0.03381099541151985
+peak_vram_allocated_bytes: 162552832
+peak_vram_reserved_bytes: 216006656
+host_resources:
+  process_wall_s: 21.44
+  maximum_resident_set_kib: 3826808
+  cpu_percent: 187
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+checkpoint_integrity:
+  path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+  expected_and_actual_sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+  status: PASS_RUNTIME_HASH_AND_STRICT_LOAD
+non_applicable_metrics:
+  training_loss: NOT_APPLICABLE_PRESENTATION_RECAPTURE
+  offline_validation: NOT_APPLICABLE_PRESENTATION_RECAPTURE
+  gradients: NOT_APPLICABLE_PRESENTATION_RECAPTURE
+  optimizer: NOT_APPLICABLE_PRESENTATION_RECAPTURE
+  checkpoint_created: false
+artifacts:
+  video:
+    path: outputs/presentation/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901/act_libero_ckpt100000_heldout_init05_success.mp4
+    bytes: 253260
+    sha256: 91babe6e93c6e52123b08273f04752ef9b04f38bff157b27945302b8c56bc17c
+  trajectory:
+    path: outputs/presentation/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901/trajectory.jsonl
+    sha256: c24d33e5bebef12cd16b36be795d7fba969e63baf035aa58e33f4b0c3d80c937
+  raw_log:
+    path: results/raw/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901_host_20260827.log
+    bytes: 2607
+    sha256: d66b735e01cef0a9682b2345c33a051f4166dc055c5f20993a8245f140cae9a5
+  resolved_config:
+    path: outputs/presentation/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901/resolved_config.yaml
+    bytes: 1108
+    sha256: 43492b7a2b79d829cb335fb7172753465b9a5c672a1add354111372682ac9556
+  canonical_presentation_video:
+    path: outputs/presentation/p0_act_libero_demo_presentation_v2_20260827/act_libero_ckpt100000_heldout_init05_success_presentation_v2.mp4
+    bytes: 250882
+    sha256: 7aea923245fc2f3b74f47fb3acd7f27d52a3b8445856b52d1470811f1936408a
+    video: {codec: h264, pixel_format: yuv420p, width: 1280, height: 720, fps: 10, frames: 83, duration_s: 8.3}
+visual_qa:
+  capture_v1: PASS_EXECUTION_NONCANONICAL_TITLE_CLIPPED
+  presentation_v2: PASS_OFFLINE_LAYOUT_FIX
+  presentation_v2_environment_steps: 0
+  presentation_v2_model_inferences: 0
+boundary: Presentation-only recapture of the frozen checkpoint on an already-finalized
+  held-out state. It cannot revise selection, success estimates, or any Phase 2 conclusion.

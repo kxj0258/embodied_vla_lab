@@ -1,0 +1,91 @@
+experiment: phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+task:
+  suite: libero_goal
+  task_order_index: 0
+  task_id: 7
+  name: turn_on_the_stove
+  instruction: Turn on the stove
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed: 20260827
+  init_state_index: 0
+  resets: 1
+  model_predictions: 1
+  environment_steps: 1
+  image_shape: [128, 128, 3]
+  image_dtype: uint8
+  image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  network_used: false
+model:
+  repo_id: openvla/openvla-7b-finetuned-libero-goal
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  quantization: NF4_4bit
+  compute_dtype: bfloat16
+  attention: eager
+  prompt_alignment_fix_applied: true
+  prompt_token_count: 20
+  attention_mask_count: 20
+action:
+  raw: [0.0009768793395921183, 0.23448528261745682, 0.014705882352941124, -0.011300422426532314, -0.00047268236384673257, -2.9559176634358364e-05, 0.996078431372549]
+  libero_adapted: [0.0009768793395921183, 0.23448528261745682, 0.014705882352941124, -0.011300422426532314, -0.00047268236384673257, -2.9559176634358364e-05, -1.0]
+  shape: [7]
+  finite_and_in_bounds: true
+  gripper_binary_after_adapter: true
+environment_result:
+  reset_success: false
+  reward: 0.0
+  success: false
+  terminated: false
+  truncated: false
+  cleanup: env_closed
+measurements:
+  model_load_s: 6.892616729004658
+  model_inference_s: 0.9592771690076916
+  observed_single_prediction_hz: 1.0424515794892038
+  worker_wall_s: 10.651596611001878
+  environment_step_s: 0.01038941100705415
+  internal_end_to_end_s: 19.451637737991405
+  process_wall_s: 26.56
+  user_cpu_s: 31.14
+  system_cpu_s: 8.01
+  cpu_percent: 147
+  passive_vram_allocated_bytes: 4720663552
+  passive_vram_reserved_bytes: 4836032512
+  peak_vram_allocated_bytes: 5060688896
+  peak_vram_reserved_bytes: 5196742656
+  worker_rss_kib_at_result: 1884712
+  coordinator_rss_kib_at_result: 2504512
+  maximum_rss_kib: 5829496
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+training_and_checkpoint_metrics:
+  loss: NOT_APPLICABLE_INFERENCE_ENVIRONMENT_GATE
+  offline_validation: NOT_APPLICABLE_INFERENCE_ENVIRONMENT_GATE
+  gradients: NOT_APPLICABLE_INFERENCE_ENVIRONMENT_GATE
+  optimizer_throughput: NOT_APPLICABLE_INFERENCE_ENVIRONMENT_GATE
+  training_executed: false
+  checkpoint_created: false
+  frozen_checkpoint_load: PASS_ALL_FOUR_SHARDS
+artifacts:
+  output_dir: outputs/eval/phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827
+  reset_model_image: {bytes: 18122, sha256: 528a581e0d5b95cfe1f56aa10774f50c01c9b9e96a1d8cefe31a2388757fb61c}
+  post_step_image: {bytes: 18129, sha256: 8db79d7e9540ff1dfb83de4758e1a2e333a956289a2440413befd2f4121f2c19}
+  request_json: {bytes: 783, sha256: b8a000a6524c69d4c5c2df9b1818f1ae1ba443ca5d75f42c9f05db8c99287d8c}
+  response_json: {bytes: 1298, sha256: f66f77bcc416c09f884918b0ed77febf0b04653567518449401fb02a525b2492}
+  result_json: {bytes: 2235, sha256: a7c17d0250d06b980b2cd048c5fc3cdb327b4fcc3b51f477ef01986832525379}
+  resolved_config: {bytes: 1259, sha256: 46cb20f7b63dec9104ef609ad5432ca14bc8266cac0d1b2288d04c5c656dc13d}
+  raw_log: {path: results/raw/phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827_host_20260827.log, sha256: cb95cbfac70a77bb2ddd5f9ff1bea28da958d7990e496adec80091e87d637e35}
+warnings:
+  robosuite_private_macro: NON_SEMANTIC
+  libero_asset_helper_download_message: EXISTING_LOCAL_CACHE_CONFIRMED_NO_NETWORK_TRAFFIC
+  bitsandbytes_futurewarning: NON_SEMANTIC_CURRENT_EXECUTION_PASS
+statistical_boundary: >-
+  This proves one dependency-isolated online observation-to-action-to-environment-step interface path. One step with
+  reward 0 and success false is neither an episode failure nor evidence of policy performance. There is no success
+  rate, reward distribution, steady-state latency distribution, closed-loop reliability, task completion, training,
+  loss, gradient or QLoRA conclusion.
+next_gate: Separately developed and statically validated persistent-worker single-episode rollout; no batch rollout or training.

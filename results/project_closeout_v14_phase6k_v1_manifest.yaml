@@ -1,0 +1,14 @@
+manifest: project_closeout_v14_phase6k_v1_20260902
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7937, sha256: ce2f1745ea62d1edb7275c3f57bd0d6e00af02c5ffc6e61933e52c98f074b063}
+  - {path: docs/repro_index.md, bytes: 9179, sha256: d411496eaa25566dc45e267e7e3334dd168fcfa47dea0a9d333cc153c5500c6e}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5000, sha256: 7860b766ecaa30495e45d102e293be455ccbced2d2007db2023cf6a04f4b3b93}
+canonical_evidence:
+  - {path: results/phase6k_feagine_a03_slide_limit_diagnostic_v1_manifest.yaml, bytes: 1083, sha256: d276acbd2a9fd4d01cc70d3311331f648ef6ae41b1b41b0f79358ed3e99fd65a}
+  - {path: scripts/verify_phase6k_assets.py, bytes: 1387, sha256: 65dcf9df8cadb710f75282f5e019674b10da26fe31e868dfea4d61e06f321e02}
+historical_evidence: results/project_closeout_v13_phase6j_v1_manifest.yaml
+boundary: Step-1 mirrored grasper hard-stop transient diagnosed; Phase 6J remains 2/4 and no margin recovery has run.

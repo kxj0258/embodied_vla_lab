@@ -1,0 +1,13 @@
+classification: PASS
+issue: phase6b_static_xml_joint_count_included_default_template
+previous_reported_xml_joint_elements: 52
+unnamed_default_joint_templates: 1
+named_runtime_joints_expected: 51
+actuators_expected: 51
+evidence:
+  phase6c_runtime_v1_njnt: 51
+  phase6c_runtime_v1_nu: 51
+  required_joint_names_present: true
+  required_actuator_names_present: true
+correction_scope: Metadata/test expectation only; wheel, preset, runtime and controller code are unchanged.
+boundary: This correction cannot revise the preserved Phase 6C v1 FAIL result; recovery uses a fresh v2 protocol.

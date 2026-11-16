@@ -1,0 +1,6 @@
+asset: phase4e_wrist_no_go_summary_v1
+classification: PASS
+source: results/phase4e_openvla_wrist_adapter_task7_dev3_v1.yaml
+artifact: {path: outputs/presentation/phase4e_wrist_no_go_summary_v1_20260828/phase4e_offline_gain_closed_loop_no_go.png, bytes: 100676, sha256: 5ca073087d8b8e6093f9d5e861874821066cd8cba33ac5b7db02f69b67261d1f}
+visual_qa: PASS
+boundary: CPU-only comparison; offline metrics are not environment success or reward.

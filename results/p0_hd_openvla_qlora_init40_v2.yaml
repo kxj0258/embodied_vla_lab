@@ -1,0 +1,67 @@
+classification: PASS
+experiment: p0_hd_openvla_qlora_init40_v2_seed20260936
+execution_pass: true
+policy_success: true
+steps: 70
+sum_reward: 1.0
+model_predictions: 70
+model_load_s: 5.323980372999358
+total_inference_s: 32.194684340989625
+median_inference_s: 0.45282480050263985
+p95_inference_s: 0.46267972765053855
+mean_inference_s: 0.4599240620141375
+inference_throughput_predictions_per_s: 2.1742719779015633
+elapsed_s: 59.475021853002545
+host: {exit_status: 0, wall_s: 63.53, user_s: 84.52, system_s: 9.79, cpu_percent: 148, max_rss_kib: 5848468, swaps: 0, socket_messages_sent: 0, socket_messages_received: 0}
+render_resolution:
+- 640
+- 640
+model_ipc_resolution:
+- 128
+- 128
+peak_vram_allocated_bytes: 5468073984
+peak_vram_reserved_bytes: 5584715776
+worker_rss_kib: 1976288
+coordinator_rss_kib: 2146440
+checkpoint_integrity:
+  status: PASS
+  expected_base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  worker_reported_base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  expected_adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+  worker_reported_adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+  shards_loaded: 4
+  worker_shutdown_clean: true
+  worker_predictions_at_shutdown: 70
+paired_environment_comparison:
+  base_steps: 221
+  adapter_steps: 70
+  absolute_step_reduction: 151
+  relative_step_reduction_percent: 68.32579185520362
+  base_to_adapter_step_ratio: 3.157142857142857
+  both_strict_success: true
+  interpretation: Typical-state control acceleration only; does not establish held-out reliability superiority.
+non_applicable_metrics: [training_loss, offline_validation, token_accuracy, continuous_l1, gradients, optimizer_state, checkpoint_creation]
+media_probe:
+  presentation_video: {codec: h264, width: 1920, height: 1080, pix_fmt: yuv420p, fps: 20, frames: 70, duration_s: 3.5}
+  clean_video: {codec: h264, width: 1080, height: 1080, pix_fmt: yuv420p, fps: 20, frames: 70, duration_s: 3.5}
+trajectory_rows: 70
+visual_qa: {status: PASS, inspected_frame_time_s: 1.75, genuine_640_source_detail: true, title_clipped: false, overlay_overlap: false, orientation_correct: true}
+runtime_cleanup: {gpu_memory_after_mib: 572, compute_processes_after: 0}
+supporting_artifacts:
+  config: {path: configs/eval/p0_hd_openvla_qlora_init40_v2.yaml, sha256: 245d22f091468139de2124af09b066c642cd96eec4cf9f69514017f614c99d99}
+  resolved_config: {path: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/resolved_config.yaml, sha256: 51eda24f0f2107e3ad832f58b9cda598119eee54645a2b7c73b1a5c2b80fc00b}
+  raw_log: {path: results/raw/p0_hd_openvla_qlora_init40_v2_seed20260936_host_20260828.log, sha256: b64b8f6d7226d4058cec64bee6ac02968931dd8d2981c2e25d8c3de8f6cccdbb}
+artifacts:
+  presentation_video:
+    path: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/presentation_hd640.mp4
+    bytes: 541789
+    sha256: d4849bdad09fa513f78824a8a24457c2a1adbcfb4587ac0b9c1926b3439994f2
+  clean_video:
+    path: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/clean_agentview_hd640.mp4
+    bytes: 497677
+    sha256: 7609b7d75eba926f3445577f623b0bd3909f98a9f0d679235538524a44606d25
+  trajectory:
+    path: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/trajectory.jsonl
+    sha256: 1c4deacde5b2f1500216a0d59f2041572ee4e016a0c0554fc7ad5d2cafa5c18e
+boundary: Presentation-only single-EGL 640px recapture of frozen adapter/init40; cannot
+  revise Phase 3B final evidence.

@@ -1,0 +1,30 @@
+experiment_id: phase4c_libero_goal_turn_on_stove_wrist_data_contract_v1
+hypothesis: A task-specific rank-8 QLoRA trained on native eye-in-hand demonstration frames can recover development closed-loop control lost under direct viewpoint substitution.
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  instruction: turn on the stove
+  image_source: obs/eye_in_hand_rgb
+  paired_reference_source: obs/agentview_rgb
+  action_source: actions
+split:
+  seed: 20260826
+  train_episodes: [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 38, 39, 41, 44, 46, 47, 48, 49]
+  validation_episodes: [0, 5, 12, 21, 29, 34, 40, 42, 43, 45]
+training_candidate:
+  base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  method: rank8_qlora_same_hyperparameters_as_phase3b_smoke
+  first_gate: 20_updates_plus_fixed_val10_smoke
+  trainable_scope: all-linear LoRA only; frozen NF4 base
+  checkpoint_selection: forbidden_at_smoke_gate
+development_environment_candidate:
+  task_id: 7
+  init_state_indices: [0, 1, 2]
+  view: eye_in_hand
+  baseline_result: results/phase4b_openvla_viewpoint_dev30_v1.yaml
+  baseline_success: 0/3
+final_tasks_untouched: [1, 2, 4, 5, 9]
+boundary: >-
+  Single-task development-only wrist adaptation hypothesis. Offline improvement is not environment success. The
+  first training smoke cannot select a checkpoint or authorize final evaluation. No Phase 3/P0 result changes, and
+  final tasks remain untouched.

@@ -1,0 +1,37 @@
+experiment_id: phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827
+phase: 3B
+classification: PENDING_HOST_EXECUTION
+task:
+  suite: libero_goal
+  task_order_index: 0
+  task_id: 7
+  name: turn_on_the_stove
+  instruction: Turn on the stove
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed: 20260827
+  init_state_index: 0
+  episodes: 1
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  camera: agentview
+  raw_image_shape: [128, 128, 3]
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  repo_id: openvla/openvla-7b-finetuned-libero-goal
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  quantization: NF4_4bit
+  compute_dtype: bfloat16
+  attention: eager
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3b_openvla_qlora_persistent_worker.py
+  adapter_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827/adapter
+  adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+output_dir: outputs/eval/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827
+boundary: >-
+  Exactly one episode on one development init state. Execution PASS and policy success are separate. This gate does
+  not authorize checkpoint selection, multi-episode rollout, held-out evaluation or further training.

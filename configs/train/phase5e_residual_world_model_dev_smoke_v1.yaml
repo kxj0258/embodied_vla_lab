@@ -1,0 +1,35 @@
+experiment_id: phase5e_residual_world_model_dev100_pair_v1_seed20260902
+seed: 20260902
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  image_source: obs/agentview_rgb
+  action_source: actions
+fixture:
+  manifest: outputs/reference/phase5e_residual_world_model_train256_dev128_fixture_v1_seed20260902/manifest.json
+  train_windows: 256
+  development_windows: 128
+  horizon: 4
+models: [residual_action_free, residual_action_conditioned]
+training:
+  updates_per_model: 100
+  batch_size: 8
+  optimizer: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_grad_norm: 1.0
+  loss: mean_pixel_l1_over_horizons
+  identical_batch_order: true
+  identical_encoder_decoder_initialization: true
+development_evaluation:
+  horizons: [1, 2, 3, 4]
+  conditioned_go_requires_h4_better_than: [copy_current_frame, residual_action_free]
+  checkpoint_selection: false
+  prior_exposed_confirmation_execution: false
+  formal_training_authorized: false
+output_dir: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902
+structured_result: results/phase5e_residual_world_model_dev100_pair_v1.yaml
+raw_log: results/raw/phase5e_residual_world_model_dev100_pair_v1_host_20260829.log
+boundary: >-
+  Development-only residual smoke. The prior-exposed confirmation episodes are not executed. No checkpoint
+  selection, formal training, planning, reward prediction or environment claim is authorized.

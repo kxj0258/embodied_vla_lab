@@ -1,0 +1,18 @@
+classification: PASS
+status: SUPERSEDED_BEFORE_HOST_EXECUTION
+experiment: p0_breadth_openvla_base_5task15_v1_seed20261001
+gate: static_contract
+tasks: {count: 5, ids: [0, 2, 3, 6, 9]}
+init_state_indices: [0, 1, 2]
+episodes_per_task: 3
+total_episodes: 15
+fresh_paths: true
+cuda_calls: 0
+environment_steps: 0
+model_predictions: 0
+artifacts:
+  config: {path: configs/eval/p0_breadth_openvla_base_5task15_v1.yaml, sha256: 25b389b0d65893657186a8256b50f43feae5f7d738d167f397ff19fbfa98e121}
+  evaluator: {path: scripts/evaluate_p0_breadth_openvla_base.py, sha256: 778bc27719b0ebb74386e08b0703fb829ac41f8d6276d04fc75e54f9234d38bf}
+  static_checker: {path: scripts/check_p0_breadth_static.py, sha256: c2a985bc80ac1db245f09cd902d51648f95d5a2d46d5a26ec515c276cd6b22ac}
+boundary: Static validation only; no policy or multi-task success evidence exists yet.
+superseded_by: p0_breadth_openvla_base_10task30_v2_seed20261001

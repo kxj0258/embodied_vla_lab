@@ -1,0 +1,24 @@
+experiment_id: phase6i_feagine_a03_reachability_scan_v1
+source_phase6f: phase6f_feagine_a03_external_targets_dev4_v1
+source_phase6h: phase6h_feagine_signed_theta_multistart_static_v1
+lateral_targets:
+  - {id: plus_x_35mm, delta_xy_m: [0.035, 0.000]}
+  - {id: minus_x_35mm, delta_xy_m: [-0.035, 0.000]}
+  - {id: plus_y_35mm, delta_xy_m: [0.000, 0.035]}
+  - {id: minus_y_35mm, delta_xy_m: [0.000, -0.035]}
+axial_retraction_scan_m: [0.00000, 0.00025, 0.00050, 0.00075, 0.00100, 0.00125, 0.00150, 0.00175, 0.00200, 0.00225, 0.00250, 0.00275, 0.00300, 0.00325, 0.00350, 0.00375, 0.00400, 0.00425, 0.00450, 0.00475, 0.00500]
+tip_direction: preserve_straight_axis
+multistart_seeds:
+  - {id: x_pos_s, angles_rad: [0.08, 1.5707963267948966, 0.08, -1.5707963267948966, 0.04, 1.5707963267948966]}
+  - {id: x_neg_s, angles_rad: [0.08, -1.5707963267948966, 0.08, 1.5707963267948966, 0.04, -1.5707963267948966]}
+  - {id: y_pos_s, angles_rad: [0.08, 0.0, 0.08, 3.141592653589793, 0.04, 0.0]}
+  - {id: y_neg_s, angles_rad: [0.08, 3.141592653589793, 0.08, 0.0, 0.04, 3.141592653589793]}
+  - {id: x_pos_uniform, angles_rad: [0.05, 1.5707963267948966, 0.05, 1.5707963267948966, 0.05, 1.5707963267948966]}
+  - {id: x_neg_uniform, angles_rad: [0.05, -1.5707963267948966, 0.05, -1.5707963267948966, 0.05, -1.5707963267948966]}
+  - {id: y_pos_uniform, angles_rad: [0.05, 0.0, 0.05, 0.0, 0.05, 0.0]}
+  - {id: y_neg_uniform, angles_rad: [0.05, 3.141592653589793, 0.05, 3.141592653589793, 0.05, 3.141592653589793]}
+ik: {max_iterations: 200, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+gate: {required_directions_reachable: 4, total_directions: 4, maximum_minimum_retraction_spread_m: 0.00050}
+structured_result: results/phase6i_feagine_a03_reachability_scan_v1.yaml
+authorization: {cpu_core_fk_ik: true, mujoco_import: false, environment_steps: 0, gpu: false, policy_inference: false, hardware: false}
+boundary: Frozen-grid CPU reachability analysis only; Phase 6F targets/results remain immutable, and no MJCF recovery, VLA, reward, final, or hardware claim is authorized.

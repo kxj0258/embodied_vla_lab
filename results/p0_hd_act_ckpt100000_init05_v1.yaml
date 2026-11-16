@@ -1,0 +1,36 @@
+classification: PASS
+experiment: p0_hd_act_ckpt100000_init05_v1_seed20260901
+execution_pass: true
+policy_success: true
+steps: 82
+sum_reward: 1.0
+policy_forwards: 17
+total_inference_s: 1.0194887120087515
+mean_inference_s_per_forward: 0.059970
+elapsed_s: 18.344592727000418
+render_resolution:
+- 640
+- 640
+policy_resolution:
+- 128
+- 128
+peak_vram_allocated_bytes: 162552832
+peak_vram_reserved_bytes: 216006656
+checkpoint_sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+checkpoint_integrity: PASS_RUNTIME_HASH_AND_STRICT_LOAD
+host_resources: {process_wall_s: 24.45, maximum_resident_set_kib: 3913920, cpu_percent: 205, swaps: 0, socket_messages_sent: 0, socket_messages_received: 0}
+non_applicable_metrics: {training_loss: NOT_APPLICABLE, offline_validation: NOT_APPLICABLE, gradients: NOT_APPLICABLE, optimizer: NOT_APPLICABLE, checkpoint_created: false}
+artifacts:
+  video:
+    path: outputs/presentation/p0_hd_act_ckpt100000_init05_v1_seed20260901/act_libero_hd640_init05_success.mp4
+    bytes: 565342
+    sha256: 6f655555010aa5a436b0adaa2490fb758c3333dd826c2902fd8017062b05c6d0
+  trajectory:
+    path: outputs/presentation/p0_hd_act_ckpt100000_init05_v1_seed20260901/trajectory.jsonl
+    sha256: b2b25616da1045bbcd432245b0567c0bd2d54f13bcefbdeaaf39344803e3b633
+  raw_log: {path: results/raw/p0_hd_act_ckpt100000_init05_v1_seed20260901_host_20260828.log, sha256: bc03552926fec7c8379a9c198bbc6eb684cbb11ea5ee655fe986e6ece800bdaf}
+  resolved_config: {path: outputs/presentation/p0_hd_act_ckpt100000_init05_v1_seed20260901/resolved_config.yaml, sha256: 1284c38503076610a8715b95251222150a4a11b9197a673d8524f4de339989ec}
+video_probe: {codec: h264, pixel_format: yuv420p, width: 1920, height: 1080, fps: 20, frames: 82, duration_s: 4.1}
+visual_qa: PASS_GENUINE_640_SOURCE_DETAIL_AND_UNCLIPPED_OVERLAY
+boundary: Presentation-only 640px recapture of a frozen policy/state. It cannot revise
+  Phase 2 selection or final evidence.

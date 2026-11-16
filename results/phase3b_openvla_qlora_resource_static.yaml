@@ -1,0 +1,31 @@
+experiment: phase3b_openvla_qlora_resource_static_v1_20260827
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, forward_steps: 0, backward_steps: 0, optimizer_steps: 0}
+fixture:
+  source_hdf5_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  manifest_sha256: 256cdb8d4382b7d9eccd4768e4fbb9ea915c330c0fca6dca2d95b6f811966e04
+  image_sha256: d4c9852bcb00f084c104ba1381579720a154796eecbde26669d53a97a0278dbd
+  raw_action: [0.28660714285714284, 0.13660714285714284, 0.0026785714285714286, 0.0, 0.1285714285714286, -0.06642857142857142, -1.0]
+  training_action: [0.28660714285714284, 0.13660714285714284, 0.0026785714285714286, 0.0, 0.1285714285714286, -0.06642857142857142, 1.0]
+contract:
+  quantization: NF4_bfloat16
+  lora: {rank: 8, alpha: 8, dropout: 0.0, target_modules: all-linear}
+  batch_size: 1
+  supervised_action_tokens: 7
+  predict_stop_token: false
+  forward_steps: 1
+  backward_steps: 1
+  optimizer_steps: 0
+  checkpoint_created: false
+assets:
+  config: {path: configs/train/openvla_phase3b_qlora_resource_gate.yaml, sha256: 80a28ccd9043bcc0764d9b9c9cf091e09427860166faea629b53485a4e7f7a29}
+  entrypoint: {path: scripts/check_phase3b_openvla_qlora_resource_gate.py, sha256: a04f2ca8e97b79af959e2ac4d618e5f3dde2bd79ac1e38e9456cf8f2d4d3416f}
+  checker: {path: scripts/check_phase3b_openvla_qlora_resource_static.py, sha256: be7d0e9a3e59eea2887cc6059735f9847450073b255d05ceaa5b37d0e8f14329}
+formal_gate:
+  experiment_id: phase3b_openvla_qlora_rank8_batch1_onebackward_v1_seed20260827
+  status: FAIL_WRITER_VARIABLE_SHADOW_AFTER_COMPUTE
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_onebackward_v1_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_onebackward_v1_seed20260827_host_20260827.log
+boundary: Static contract only; no resource, numerical, loss, gradient or training conclusion yet.
+superseded_by: results/phase3b_openvla_qlora_resource_v2_static.yaml

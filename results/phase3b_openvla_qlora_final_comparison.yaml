@@ -1,0 +1,15 @@
+comparison: phase3b_openvla_qlora_final_vs_frozen_base
+date: 2026-08-27
+classification: PASS
+offline_validation: {result: adapter_improves, loss_relative: -0.4736271689632271, token_accuracy_absolute: 0.10332636991804595, continuous_l1_relative: -0.32628246606983435}
+development: {base_success: 5/5, adapter_success: 5/5, base_total_steps: 421, adapter_total_steps: 395}
+heldout_final:
+  base: {success: 45/45, total_steps: 4134, median_steps: 76, p95_steps: 101.4}
+  adapter: {success: 43/45, total_capped_steps: 4286, median_steps: 70, p95_steps: 123.4}
+decision:
+  qlora_engineering_feasibility: PASS
+  offline_adaptation: PASS
+  environment_non_regression: FAIL
+  recommended_reliable_policy: frozen_base_openvla
+  adapter_status: research_artifact_not_deployment_candidate
+boundary: Final comparison is immutable; held-out results must not drive additional tuning.

@@ -1,0 +1,420 @@
+classification: PASS
+experiment: phase6g_feagine_a03_mapping_diagnostic_v1
+decision: MAPPING_DIAGNOSTIC_COMPLETE
+source_phase6f_result: FAIL_0_OF_4
+targets_diagnosed: 4
+targets_with_angle_change: 2
+targets_with_direction_mismatch: 3
+targets_with_gain_mismatch: 4
+episodes:
+- target_id: plus_x_35mm
+  ik_success: false
+  ik_iterations: 1
+  ik_position_error_m: 0.03626638278365135
+  ik_direction_error: 3.2017795081884515e-09
+  raw_solved_section_angles_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  applied_section_angles_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  angle_change_abs_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  angle_change_max_rad: 0.0
+  changed_angle_count: 0
+  pcc_actuator_target_count: 48
+  pcc_actuator_targets:
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  pcc_actuator_min: 0.0
+  pcc_actuator_max: 0.0
+  desired_displacement_m:
+  - 0.035
+  - 0.0
+  - 0.0
+  core_predicted_displacement_m:
+  - -4.5741893606177086e-10
+  - -1.8975670421856933e-22
+  - 0.009500029563903833
+  actual_displacement_m:
+  - -1.9728663147589032e-13
+  - -7.04168798436484e-26
+  - 0.0
+  desired_vs_core_cosine: -4.8149211850852796e-08
+  desired_vs_actual_cosine: null
+  core_vs_actual_cosine: null
+  core_displacement_gain: 0.27142941611153837
+  actual_displacement_gain: 5.636760899311151e-12
+  final_error_m: 0.03500000000019729
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+- target_id: minus_x_35mm
+  ik_success: false
+  ik_iterations: 1
+  ik_position_error_m: 0.03626638278365135
+  ik_direction_error: 3.2017795081884515e-09
+  raw_solved_section_angles_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  applied_section_angles_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  angle_change_abs_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  angle_change_max_rad: 0.0
+  changed_angle_count: 0
+  pcc_actuator_target_count: 48
+  pcc_actuator_targets:
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  pcc_actuator_min: 0.0
+  pcc_actuator_max: 0.0
+  desired_displacement_m:
+  - -0.035
+  - 0.0
+  - 0.0
+  core_predicted_displacement_m:
+  - -4.5741893606177086e-10
+  - -1.8975670421856933e-22
+  - 0.009500029563903833
+  actual_displacement_m:
+  - -1.9728663147589032e-13
+  - -7.04168798436484e-26
+  - 0.0
+  desired_vs_core_cosine: 4.8149211850852796e-08
+  desired_vs_actual_cosine: null
+  core_vs_actual_cosine: null
+  core_displacement_gain: 0.27142941611153837
+  actual_displacement_gain: 5.636760899311151e-12
+  final_error_m: 0.03499999999980272
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+- target_id: plus_y_35mm
+  ik_success: true
+  ik_iterations: 16
+  ik_position_error_m: 6.182381912367418e-05
+  ik_direction_error: 2.2798776626586914e-06
+  raw_solved_section_angles_rad:
+  - 0.42501160502433777
+  - -1.5655646734558104e-07
+  - -0.6263554096221924
+  - -2.105553278397565e-07
+  - 0.20134614408016205
+  - -3.0577939469367266e-07
+  applied_section_angles_rad:
+  - 0.42501160502433777
+  - -1.5655646734558104e-07
+  - 0.0
+  - -2.105553278397565e-07
+  - 0.20134614408016205
+  - -3.0577939469367266e-07
+  angle_change_abs_rad:
+  - 0.0
+  - 0.0
+  - 0.6263554096221924
+  - 0.0
+  - 0.0
+  - 0.0
+  angle_change_max_rad: 0.6263554096221924
+  changed_angle_count: 1
+  pcc_actuator_target_count: 48
+  pcc_actuator_targets:
+  - 0.042501505464315414
+  - -6.651881268027182e-09
+  - -1.4137878368014611e-10
+  - 0.0850018858909607
+  - -1.3291581169028177e-08
+  - -5.652450729698444e-10
+  - 0.08500176668167114
+  - -1.329154386553455e-08
+  - -5.652427415014927e-10
+  - 0.08500338345766068
+  - -1.3291820977201496e-08
+  - -5.652642798281704e-10
+  - 0.08500144630670547
+  - -1.3291497680256725e-08
+  - -5.652376344755794e-10
+  - 0.042501695454120636
+  - -6.651923456502118e-09
+  - -1.4137935266944623e-10
+  - -1.1920928955078125e-07
+  - -0.0
+  - 1.7763568394002505e-15
+  - -1.7881393432617188e-07
+  - 5.684341886080802e-14
+  - 1.7763568394002505e-15
+  - 3.8743019104003906e-07
+  - -5.684341886080802e-14
+  - 5.329070518200751e-15
+  - -6.258487701416016e-07
+  - 2.842170943040401e-14
+  - 3.552713678800501e-15
+  - 0.020134618505835533
+  - -6.156248844035872e-09
+  - -6.197709012667474e-11
+  - 0.04027027636766434
+  - -1.2310394481573894e-08
+  - -2.4790480779302015e-10
+  - 0.0402681902050972
+  - -1.2309969932289277e-08
+  - -2.4788349151094735e-10
+  - 0.040270429104566574
+  - -1.231043800231646e-08
+  - -2.4791546593405656e-10
+  - 0.04026678577065468
+  - -1.2309500974083676e-08
+  - -2.4786928065623215e-10
+  - 0.020136410370469093
+  - -6.156825271830257e-09
+  - -6.199840640874754e-11
+  pcc_actuator_min: -6.258487701416016e-07
+  pcc_actuator_max: 0.08500338345766068
+  desired_displacement_m:
+  - 0.0
+  - 0.035
+  - 0.0
+  core_predicted_displacement_m:
+  - -4.958072624206363e-08
+  - 0.26930673078786044
+  - -0.06038919158803635
+  actual_displacement_m:
+  - -4.839301187553602e-08
+  - 0.26643091440200806
+  - -0.06947493553161621
+  desired_vs_core_cosine: 0.9757684328875558
+  desired_vs_actual_cosine: 0.967642798635664
+  core_vs_actual_cosine: 0.9994052503115305
+  core_displacement_gain: 7.885557436758136
+  actual_displacement_gain: 7.866861460438101
+  final_error_m: 0.24163409280992232
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+- target_id: minus_y_35mm
+  ik_success: true
+  ik_iterations: 16
+  ik_position_error_m: 7.728331547696143e-05
+  ik_direction_error: 5.21540641784668e-07
+  raw_solved_section_angles_rad:
+  - -0.424714595079422
+  - -6.6362439099521e-08
+  - 0.6257318258285522
+  - -9.331513695087779e-08
+  - -0.20101672410964966
+  - -1.6491605947521748e-07
+  applied_section_angles_rad:
+  - 0.0
+  - -6.6362439099521e-08
+  - 0.6257318258285522
+  - -9.331513695087779e-08
+  - 0.0
+  - -1.6491605947521748e-07
+  angle_change_abs_rad:
+  - 0.424714595079422
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.20101672410964966
+  - 0.0
+  angle_change_max_rad: 0.424714595079422
+  changed_angle_count: 2
+  pcc_actuator_target_count: 48
+  pcc_actuator_targets:
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.0
+  - -0.0
+  - 0.0
+  - 0.06257332861423492
+  - -5.835230521000767e-09
+  - -1.8262445722339038e-10
+  - 0.12514610588550568
+  - -1.1647566466876924e-08
+  - -7.297765169944626e-10
+  - 0.1251462697982788
+  - -1.16475789013748e-08
+  - -7.297789039739655e-10
+  - 0.12514673173427582
+  - -1.1647630415723143e-08
+  - -7.297851212229034e-10
+  - 0.12514568865299225
+  - -1.1647526498848038e-08
+  - -7.297726867250276e-10
+  - 0.06257432699203491
+  - -5.8353002430067136e-09
+  - -1.8263257572925795e-10
+  - -1.1920927818209748e-06
+  - 7.460698047854694e-14
+  - 0.0
+  - 1.1026858146578888e-06
+  - -5.6843412084544437e-14
+  - 1.7763568394002505e-15
+  - -1.1026858146578888e-06
+  - 4.9737984726943435e-14
+  - 1.7763568394002505e-15
+  - -9.662758103490374e-16
+  - 3.197441972107272e-14
+  - 0.0
+  - 6.556509219990403e-07
+  - -4.9737981338811646e-14
+  - 7.105427357601002e-15
+  pcc_actuator_min: -1.1920927818209748e-06
+  pcc_actuator_max: 0.12514673173427582
+  desired_displacement_m:
+  - 0.0
+  - -0.035
+  - 0.0
+  core_predicted_displacement_m:
+  - -2.2084936864777895e-08
+  - 0.2317675525427571
+  - -0.06004113790418808
+  actual_displacement_m:
+  - -2.128526471745218e-08
+  - 0.22808855772018433
+  - -0.06848788261413574
+  desired_vs_core_cosine: -0.9680443127293145
+  desired_vs_actual_cosine: -0.9577553938833353
+  core_vs_actual_cosine: 0.9992697694295135
+  core_displacement_gain: 6.840523709064787
+  actual_displacement_gain: 6.804259184006461
+  final_error_m: 0.27185690954664893
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+elapsed_s: 0.4184588300122414
+cuda_initialized: false
+model_predictions: 0
+reward: null
+hardware_commands: 0
+source_hashes:
+  config: 7e7586a4b94e3195228f8f84fc16f19a900ab7fb9747c998fe225d65fcf68ff3
+  phase6f_result: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20
+boundary: Same-target diagnostic reproduction of immutable Phase 6F FAIL; no mapping
+  correction, target replacement, threshold relaxation, VLA, reward, final, or hardware
+  claim.

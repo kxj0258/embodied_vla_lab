@@ -1,0 +1,37 @@
+experiment: phase2b_act_libero_fullsplit_smoke_v3_20step_seed20260826
+date: 2026-08-26
+classification: PASS
+exit_status: 0
+execution_context: host_cuda
+metrics:
+  train_loss: {step_1: 0.9179883003234863, step_20: 0.9320972561836243}
+  gradient_norm_preclip: {step_1: 89.89429473876953, step_20: 30.552993774414062}
+  optimizer_steps_completed: 20
+  training_and_checkpoint_elapsed_s: 1.6371934429989778
+  approximate_end_to_end_steps_per_s: 12.216
+  peak_vram_allocated_bytes: 709839360
+  peak_vram_reserved_bytes: 834666496
+  process_wall_s: 6.89
+  maximum_rss_kib: 2454016
+  offline_validation: NOT_RUN
+  success: NOT_RUN
+  reward: NOT_RUN
+checkpoint:
+  path: outputs/train/phase2b_act_libero_fullsplit_smoke_v3_20step_seed20260826/checkpoints/model_000020.pt
+  bytes: 410450149
+  sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+  cpu_reload: PASS
+  step: 20
+  model_tensors: 178
+  contains_optimizer: true
+  contains_act_config_dict: true
+  contains_frozen_stats: true
+raw_log:
+  path: results/raw/phase2b_act_libero_fullsplit_smoke_v3_20step_host_20260826.log
+  lines: 4
+  bytes: 516
+  sha256: 65c1cb2294821e519d349c847d5472fff00707aeb8ed9ed1b594dbb8993bb1ca
+interpretation: >-
+  Full-split optimization, finite loss/gradients, checkpoint serialization, and CPU reload pass.
+  The two train losses are from different shuffled batches and do not establish convergence. No validation,
+  rollout, success, reward, or statistical result was produced.

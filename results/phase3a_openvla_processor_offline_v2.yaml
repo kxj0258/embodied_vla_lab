@@ -1,0 +1,10 @@
+experiment: phase3a_openvla_processor_offline_v2_codex_20260827
+date: 2026-08-27
+classification: PASS
+mode: strict_offline_local_registered_classes
+processor: PrismaticProcessor
+image_processor: PrismaticImageProcessor
+tokenizer: LlamaTokenizerFast
+execution: {processor_loaded: true, model_loaded: false, cuda_initialized: false}
+boundary: Processor/config/tokenizer resolution only; no weights, VRAM, inference, action, rollout, success, reward, or training evidence.
+next_gate: Host-run new-ID v2 NF4 model load and exactly one frozen-image action prediction.

@@ -1,0 +1,39 @@
+experiment: phase3a_openvla_single_episode_static_v1_20260827
+date: 2026-08-27
+classification: PASS
+execution:
+  environment_constructed: false
+  cuda_initialized: false
+  model_loaded: false
+  episode_executed: false
+validated_contract:
+  experiment_id: phase3a_openvla_libero_single_episode_v1_init0_seed20260827
+  task: libero_goal/turn_on_the_stove
+  init_state_index: 0
+  evaluator_seed: 20260827
+  episodes: 1
+  maximum_environment_steps: 600
+  model_lifecycle: one_persistent_evla_openvla_worker_load
+  per_step_transport: hash_bound_json_png_and_json_lines_control
+  per_action_timeout_s: 30
+  worker_start_timeout_s: 180
+  stop: terminated_or_truncated_or_600_steps
+  cleanup: graceful_shutdown_then_terminate_then_kill_and_env_close
+checks:
+  python_syntax: PASS
+  fixed_single_episode_and_horizon: PASS
+  no_overwrite_output: PASS
+  cuda_disabled_worker_request_validation: PASS
+  termination_and_cleanup_paths: PASS
+assets:
+  config: {path: configs/eval/openvla_libero_phase3a_single_episode.yaml, sha256: a59942471b00d21c8b94164b19135e59cd50749e52cd2bd4a33698a90280ede1}
+  worker: {path: scripts/run_phase3a_openvla_persistent_worker.py, sha256: 572c63c2367395cee1a98df353b316f7099cbfcd871da43be118c4b9c8fb4ba6}
+  coordinator: {path: scripts/evaluate_phase3a_openvla_libero_single_episode.py, sha256: 2cd1eabd20fdcc3a728e6a4022317eb6027379bc2e8c18ced06873050a07ec52}
+  checker: {path: scripts/check_phase3a_openvla_single_episode_static.py, sha256: 05658e06d0a343a81967322b1cd62289143efa91cbd1896d5026be1eca43eb5f}
+formal_host_gate:
+  status: PENDING
+  output_dir: outputs/eval/phase3a_openvla_libero_single_episode_v1_init0_seed20260827
+  raw_log: results/raw/phase3a_openvla_libero_single_episode_v1_init0_seed20260827_host_20260827.log
+boundary: >-
+  Static PASS supplies no policy success, reward, episode latency, steady-state inference, VRAM, RSS, loss, gradient,
+  checkpoint or training evidence. The formal gate is one development episode only and cannot authorize batch rollout.

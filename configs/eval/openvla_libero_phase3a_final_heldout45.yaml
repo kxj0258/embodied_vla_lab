@@ -1,0 +1,27 @@
+experiment_id: phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+phase: 3A
+classification: PENDING_HOST_EXECUTION
+task: {suite: libero_goal, task_order_index: 0, task_id: 7, name: turn_on_the_stove, instruction: Turn on the stove}
+protocol:
+  kind: preregistered_base_policy_final
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed_start: 20260901
+  init_state_indices: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  development_excluded_init_state_indices: [0, 1, 2, 3, 4]
+  episodes: 45
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  camera: agentview
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3a_openvla_persistent_worker.py
+output_dir: outputs/eval/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+boundary: >-
+  Complete enumeration of the 45 init states untouched by OpenVLA development. This freezes the pretrained base-policy
+  result and cannot revise the protocol. It does not establish other-task, language, viewpoint or simulator generalization.

@@ -1,0 +1,40 @@
+experiment: phase3a_openvla_single_step_bridge_static_v1_20260827
+date: 2026-08-27
+classification: PASS
+execution:
+  environment_constructed: false
+  cuda_initialized: false
+  model_loaded: false
+  environment_steps: 0
+validated_contract:
+  schema_version: evla.openvla.single_step.v1
+  coordinator_environment: evla-core
+  model_worker_environment: evla-openvla
+  transport: local_subprocess_plus_hash_bound_json_and_png
+  task: libero_goal/turn_on_the_stove
+  init_state_index: 0
+  evaluator_seed: 20260827
+  authorized_environment_steps: 1
+  image: {shape: [128, 128, 3], dtype: uint8, transform: rotate_180_then_openvla_center_crop_90_percent}
+  action: {shape: [7], finite: required, range: [-1.0, 1.0], gripper_binary: required}
+  cleanup: environment_close_in_finally
+checks:
+  python_syntax: PASS
+  config_identity_and_no_overwrite: PASS
+  request_schema_and_image_hash: PASS
+  isolated_worker_request_only_subprocess: PASS
+  response_identity_and_action_validation: PASS
+assets:
+  config: {path: configs/eval/openvla_libero_phase3a_single_step_bridge.yaml, sha256: 9ac1f9a9df26db7850875cd2c7ca8f66f3c41b6fa1940f0c4e0773c2b8cd3180}
+  protocol: {path: scripts/phase3a_openvla_bridge_protocol.py, sha256: a7f04b3085069554324f1850325e6b35fbef0cfc00a4854632c63c324dcdf9f4}
+  worker: {path: scripts/run_phase3a_openvla_bridge_worker.py, sha256: 17fb8d40d0e161b5d559ed07a376da5bc5110f47acb36eb2b99afcb6f7cf3713}
+  coordinator: {path: scripts/run_phase3a_openvla_libero_single_step_bridge.py, sha256: 9cc67e73ae720643678e9ff97b0c80aa5b52c3b68210aceea74204e2d50a03e6}
+  checker: {path: scripts/check_phase3a_openvla_bridge_static.py, sha256: 3a457fa02b7278a07e538ffb3fb7ce1bc0039cdabc54b335aa40edf4c9cef509}
+formal_host_gate:
+  experiment_id: phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827
+  status: PENDING
+  output_dir: outputs/eval/phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827
+  raw_log: results/raw/phase3a_openvla_libero_single_step_bridge_v1_init0_seed20260827_host_20260827.log
+boundary: >-
+  Static PASS proves only the dependency-isolated request/response and safety contract. It provides no model load,
+  inference, environment-step, reward, success, latency, VRAM, RSS, rollout, loss, gradient or training evidence.

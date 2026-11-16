@@ -1,0 +1,16 @@
+manifest: project_closeout_v3_phase6a_20260829
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+model_predictions: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7096, sha256: 237d44f52b4fb551bbdbb20b82282976c0747d0ac305b6b58b0ea89a193ea5fc}
+  - {path: docs/repro_index.md, bytes: 4930, sha256: 1f5876e567e8a528054cc1e5831a99a3207f23db5148405b3796e11f9ddf1476}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4840, sha256: 434b04236b9df036c7fddc6400b298922fe64e6b82cc802cbb9ac61227c9c739}
+canonical_manifests:
+  - results/project_closeout_v2_phase5e_manifest.yaml
+  - results/phase5e_residual_world_model_dev_summary_v1_manifest.yaml
+  - results/phase6a_feagine_bridge_static_v4.yaml
+read_only_verifiers: [scripts/verify_project_closeout_v3.py, scripts/verify_phase5e_assets.py, scripts/verify_phase6a_assets.py]
+boundary: Documentation/index update through Phase 6A generic static bridge. No simulation, hardware, inference, reward or success evidence.

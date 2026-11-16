@@ -1,0 +1,8 @@
+manifest: phase6h_feagine_signed_theta_multistart_static_v1_20260901
+classification: FAIL
+decision: SIGNED_THETA_AND_MULTISTART_STATIC_FAIL
+artifacts:
+  - {path: results/phase6h_feagine_signed_theta_multistart_static_v1.yaml, bytes: 18861, sha256: 6247145d99da4801ec6477973e86bec5134daf5f2c895b1761acd2b47f2e65c4}
+  - {path: configs/task/phase6h_feagine_signed_theta_multistart_static_v1.yaml, bytes: 2022, sha256: 5a6d5f0422dc003445442a37453737d7565a989f01e53f07ed04f29d02ac5c69}
+  - {path: scripts/check_phase6h_signed_theta_multistart.py, bytes: 5365, sha256: 73dc84ba9593b5161f39e562920ea441556cac8244007c5dd98453a06e864835}
+boundary: CPU-only 4/5 FAIL; canonicalization is proven but original fixed-height lateral targets remain unsolved at frozen IK tolerance. No MJCF recovery authorized.

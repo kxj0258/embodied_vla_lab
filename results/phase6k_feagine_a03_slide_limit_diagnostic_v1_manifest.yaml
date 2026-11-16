@@ -1,0 +1,10 @@
+manifest: phase6k_feagine_a03_slide_limit_diagnostic_v1_20260902
+classification: PASS
+decision: SLIDE_LIMIT_DIAGNOSTIC_COMPLETE
+artifacts:
+  - {path: results/phase6k_feagine_a03_slide_limit_diagnostic_v1.yaml, bytes: 4147, sha256: 87209d6a80a79aa5f4995b3bf2a30eea4c0067725e126449f270758fecc81e32}
+  - {path: results/raw/phase6k_feagine_a03_slide_limit_diagnostic_v1_host_20260902.log, bytes: 7015, sha256: d95aa7a2a84b91815d717b0ee9e2cfa93c45dc96aecf8c6d77fdd268ed86a784}
+  - {path: configs/task/phase6k_feagine_a03_slide_limit_diagnostic_v1.yaml, bytes: 1999, sha256: b9f8c66c4c3f56880c3f125340529de331dab4a5e8cb8d1f937f109e5ade34ce}
+  - {path: scripts/run_phase6k_feagine_a03_slide_limit_diagnostic.py, bytes: 5003, sha256: 883346e398d2d3f6977f7eb10fe49e44544b1059b4b8f853a7c38afdb26fd149}
+  - {path: results/phase6k_feagine_a03_slide_limit_diagnostic_v1_static.yaml, bytes: 735, sha256: f96a2b00f621391fad90753d9faead6a63ec4b3989e52cc14812850e5e9c78a3}
+boundary: Diagnostic only; identifies step-1 lower-limit finger transient and does not revise Phase 6J 2/4 or relax threshold.

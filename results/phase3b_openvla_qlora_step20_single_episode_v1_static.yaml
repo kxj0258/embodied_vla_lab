@@ -1,0 +1,20 @@
+experiment: phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, environment_created: false, episodes: 0}
+contract:
+  development_init_state_index: 0
+  episodes: 1
+  horizon: 600
+  adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+  dependency_isolation: evla-core_environment_plus_evla-openvla_peft_worker
+assets:
+  config: {path: configs/eval/openvla_libero_phase3b_qlora_step20_single_episode_v1.yaml, sha256: c24b9b120c46b27795502a46829e30fa4259f9c73602a493cec8f7d55d1847c6}
+  worker: {path: scripts/run_phase3b_openvla_qlora_persistent_worker.py, sha256: 161a81fd9c3b83e174d7b03374038771d1e335f7c31a9275393c25f88367a26d}
+  checker: {path: scripts/check_phase3b_openvla_qlora_single_episode_static.py, sha256: 3353cbfb87193ba6176af7331f1a408908d9502a67088f9ce809a9e72b0d4387}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_step20_single_episode_v1.yaml
+boundary: Static and formal single-development-episode PASS; dev5 only is authorized.

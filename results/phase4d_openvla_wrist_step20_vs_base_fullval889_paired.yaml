@@ -1,0 +1,19 @@
+comparison: phase4d_openvla_wrist_step20_vs_base_fullval889_paired
+classification: PASS
+decision: OFFLINE_ADAPTATION_PASS_ENVIRONMENT_RECOVERY_UNKNOWN
+shared_evidence: {frames: 889, episodes: 10, action_tokens: 6223, fixture_manifest_sha256: 5ef06ec42a8999a50cb9810a201f93d34d438dc511bd9a61e558d5b3ec7b13e0}
+metrics:
+  mean_frame_loss: {base: 16.68339141764174, adapter: 9.04793117794599, relative_change_percent: -45.7668351, improved_frames: 884, total_frames: 889}
+  action_token_accuracy: {base: 0.1308050779366865, adapter: 0.2080989876265467, absolute_change_percentage_points: 7.7293910, correct_tokens_base: 814, correct_tokens_adapter: 1295, delta_correct_tokens: 481, frames_more_equal_less_correct: [369, 475, 45]}
+  mean_frame_continuous_action_l1: {base: 0.2879627441527792, adapter: 0.19458870162238126, relative_change_percent: -32.4257372, improved_frames: 756, total_frames: 889}
+episode_consistency: {episodes: 10, loss_improved: 10, token_accuracy_improved: 10, continuous_l1_improved: 10, all_three_improved: 10}
+resource_delta_percent:
+  median_inference_latency: 15.6899
+  p95_inference_latency: 15.4297
+  frames_per_s: -13.2769
+  peak_vram_allocated: 5.8231
+  peak_vram_reserved: 4.6777
+sources:
+  base: results/phase4d_openvla_wrist_base_fullval889_v1.yaml
+  adapter: results/phase4d_openvla_wrist_qlora_step20_fullval889_v1.yaml
+boundary: Strong paired teacher-forced offline adaptation evidence only. No environment was executed; success, reward, and closed-loop wrist recovery remain unknown. Step-20 may enter a preregistered development rollout gate but is not a reliable-policy selection.

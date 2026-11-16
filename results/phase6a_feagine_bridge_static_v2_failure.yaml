@@ -1,0 +1,8 @@
+classification: EXPECTED_EXCEPTION
+experiment: phase6a_feagine_bridge_static_v2_seed20260903
+failure_stage: structured_result_serialization
+exception: yaml.representer.RepresenterError
+cause: a second check value remained numpy.bool_ after the v1 single-field packaging correction
+scope: {cuda_initialized: false, model_predictions: 0, environment_steps: 0, hardware_commands: 0, structured_result_written: false}
+recovery: normalize every check value to builtin bool with new v3 config/result ID
+boundary: The failed static attempt is preserved and cannot support a numerical PASS claim.

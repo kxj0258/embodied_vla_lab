@@ -1,0 +1,12 @@
+decision: phase3b_openvla_qlora_step20_checkpoint_selection_dev5
+date: 2026-08-27
+classification: PASS
+selected_checkpoint: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827/adapter
+adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+evidence:
+  paired_fullval889: PASS_three_metrics_improved_10_of_10_episodes
+  development_environment: PASS_5_of_5_success
+  aggregate_development_steps: {base: 421, adapter: 395, relative_change: -0.061757719714964354}
+decision_scope: Freeze step-20 checkpoint for exactly one held-out init5-49 final evaluation.
+prohibited_before_final: [further_training, hyperparameter_change, checkpoint_change, heldout_peeking]
+boundary: Selection is preregistered from offline validation and dev5 only; it is not a final performance conclusion.

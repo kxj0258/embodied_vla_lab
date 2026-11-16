@@ -1,0 +1,35 @@
+experiment_id: p0_breadth_openvla_base_5task15_v1_seed20261001
+kind: frozen_base_multitask_presentation_breadth_gate
+suite: {name: libero_goal, task_order_index: 0}
+tasks:
+  - {task_id: 0, name: open_the_middle_drawer_of_the_cabinet, instruction: open the middle drawer of the cabinet}
+  - {task_id: 2, name: put_the_wine_bottle_on_top_of_the_cabinet, instruction: put the wine bottle on top of the cabinet}
+  - {task_id: 3, name: open_the_top_drawer_and_put_the_bowl_inside, instruction: open the top drawer and put the bowl inside}
+  - {task_id: 6, name: put_the_cream_cheese_in_the_bowl, instruction: put the cream cheese in the bowl}
+  - {task_id: 9, name: put_the_wine_bottle_on_the_rack, instruction: put the wine bottle on the rack}
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed_start: 20261001
+  init_state_indices: [0, 1, 2]
+  episodes_per_task: 3
+  total_episodes: 15
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  camera: agentview
+  model_ipc_resolution: [128, 128]
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3a_openvla_persistent_worker.py
+output_dir: outputs/eval/p0_breadth_openvla_base_5task15_v1_seed20261001
+structured_result: results/p0_breadth_openvla_base_5task15_v1.yaml
+raw_log: results/raw/p0_breadth_openvla_base_5task15_v1_seed20261001_host_20260828.log
+boundary: >-
+  Frozen 5-task/15-episode presentation-breadth gate. Tasks and init states are fixed before execution. It is not a
+  complete LIBERO benchmark, cannot revise Phase 3A single-task 45/45, and cannot authorize tuning or task selection
+  after viewing outcomes. Failed tasks/states remain in the aggregate and all outputs are immutable.

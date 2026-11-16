@@ -1,0 +1,139 @@
+classification: PASS
+experiment: phase6k_feagine_a03_slide_limit_diagnostic_v1
+decision: SLIDE_LIMIT_DIAGNOSTIC_COMPLETE
+source_phase6j_result: FAIL_2_OF_4
+targets_diagnosed: 4
+episodes:
+- target_id: plus_x_35mm_retract_1p5mm
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+  final_error_m: 0.009306649119361979
+  slide_joint_count: 2
+  violating_slide_joint_count: 2
+  material_violating_slide_joint_count: 1
+  max_slide_penetration_m: 0.0002630734731509012
+  material_violations:
+  - &id001
+    name: feagine_grasper_joint_0
+    qpos_adr: 49
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.0132630734731509
+    max_m: -0.012983938165747366
+    first_violation_step: 1
+    peak_violation_step: 1
+    max_penetration_m: 0.0002630734731509012
+  all_slide_joints:
+  - *id001
+  - name: feagine_grasper_joint_1
+    qpos_adr: 50
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.013002445482459947
+    max_m: -0.012736926526849098
+    first_violation_step: 17
+    peak_violation_step: 33
+    max_penetration_m: 2.445482459947218e-06
+- target_id: minus_x_35mm_retract_1p5mm
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+  final_error_m: 0.009302636383197012
+  slide_joint_count: 2
+  violating_slide_joint_count: 2
+  material_violating_slide_joint_count: 1
+  max_slide_penetration_m: 0.00026306665726541154
+  material_violations:
+  - &id002
+    name: feagine_grasper_joint_1
+    qpos_adr: 50
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.013263066657265411
+    max_m: -0.012983939454015962
+    first_violation_step: 1
+    peak_violation_step: 1
+    max_penetration_m: 0.00026306665726541154
+  all_slide_joints:
+  - name: feagine_grasper_joint_0
+    qpos_adr: 49
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.0130024468476616
+    max_m: -0.012736933342734588
+    first_violation_step: 17
+    peak_violation_step: 33
+    max_penetration_m: 2.446847661600332e-06
+  - *id002
+- target_id: plus_y_35mm_retract_1p5mm
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+  final_error_m: 0.009303115228055705
+  slide_joint_count: 2
+  violating_slide_joint_count: 2
+  material_violating_slide_joint_count: 0
+  max_slide_penetration_m: 3.7359729893049476e-11
+  material_violations: []
+  all_slide_joints:
+  - name: feagine_grasper_joint_0
+    qpos_adr: 49
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.01300000003735973
+    max_m: -0.012999999970471111
+    first_violation_step: 17
+    peak_violation_step: 202
+    max_penetration_m: 3.7359729893049476e-11
+  - name: feagine_grasper_joint_1
+    qpos_adr: 50
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.013000000007887402
+    max_m: -0.012999999959572118
+    first_violation_step: 1
+    peak_violation_step: 3
+    max_penetration_m: 7.887402536654875e-12
+- target_id: minus_y_35mm_retract_1p5mm
+  finite_state: true
+  simulated_time_s: 1.9999999999999793
+  final_error_m: 0.0093031152280499
+  slide_joint_count: 2
+  violating_slide_joint_count: 1
+  material_violating_slide_joint_count: 0
+  max_slide_penetration_m: 3.8967129870060013e-11
+  material_violations: []
+  all_slide_joints:
+  - name: feagine_grasper_joint_0
+    qpos_adr: 49
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.01300000003896713
+    max_m: -0.012999999994477407
+    first_violation_step: 1
+    peak_violation_step: 1
+    max_penetration_m: 3.8967129870060013e-11
+  - name: feagine_grasper_joint_1
+    qpos_adr: 50
+    lower_m: -0.013
+    upper_m: 0.005
+    min_m: -0.01300000000084523
+    max_m: -0.01299999996103287
+    first_violation_step: null
+    peak_violation_step: 25
+    max_penetration_m: 8.452301358818914e-13
+paired_summary:
+  x_material_violation_counts:
+  - 1
+  - 1
+  y_material_violation_counts:
+  - 0
+  - 0
+elapsed_s: 0.4126457240054151
+cuda_initialized: false
+model_predictions: 0
+reward: null
+hardware_commands: 0
+source_hashes:
+  config: b9f8c66c4c3f56880c3f125340529de331dab4a5e8cb8d1f937f109e5ade34ce
+  phase6j: 07c5097446bb80994ddc87173bb06a4c94ab62d96467b8521d75538ec70e588c
+boundary: Identical-target diagnostic of immutable Phase 6J 2/4 FAIL; no controller/target/threshold
+  change, success revision, VLA, reward, final, or hardware claim.

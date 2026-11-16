@@ -1,0 +1,64 @@
+classification: PASS
+experiment_id: phase4c_libero_goal_turn_on_stove_wrist_data_contract_v1
+checks:
+  dataset_hash: true
+  split_exact: true
+  train_frames: true
+  validation_frames: true
+  wrist_nonconstant: true
+  views_distinct: true
+  actions_finite: true
+  canonical_revision: true
+  final_tasks_untouched: true
+splits:
+  train:
+    episodes: 40
+    frames: 3571
+    wrist_rgb_mean:
+    - 105.52794965766986
+    - 99.20637425465665
+    - 92.4715186818512
+    wrist_rgb_std:
+    - 63.57024846685768
+    - 56.9274879257543
+    - 49.611494753239505
+    wrist_rgb_min:
+    - 0
+    - 0
+    - 0
+    wrist_rgb_max:
+    - 249
+    - 246
+    - 231
+    actions_finite: true
+  validation:
+    episodes: 10
+    frames: 889
+    wrist_rgb_mean:
+    - 104.41556881195514
+    - 98.22196049041233
+    - 91.60229025326912
+    wrist_rgb_std:
+    - 63.340412441522204
+    - 56.7544526285504
+    - 49.47494659360724
+    wrist_rgb_min:
+    - 0
+    - 0
+    - 0
+    wrist_rgb_max:
+    - 242
+    - 239
+    - 227
+    actions_finite: true
+mean_episode_cross_view_mae: 76.02443846853247
+dataset_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+config_sha256: 4baa6f7c99774fe1779dca01a67c5a6bfd50e8bccda3b714f9e39ba39583d2cc
+cuda_calls: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+boundary: Single-task development-only wrist adaptation hypothesis. Offline improvement
+  is not environment success. The first training smoke cannot select a checkpoint
+  or authorize final evaluation. No Phase 3/P0 result changes, and final tasks remain
+  untouched.

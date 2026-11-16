@@ -1,0 +1,62 @@
+manifest: phase3a_openvla_checkpoint_manifest
+date: 2026-08-27
+status: phase3a_base_policy_final_heldout45_complete
+model:
+  repo_id: openvla/openvla-7b-finetuned-libero-goal
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  source_commit: c8f03f48af692657d3060c19588038c7220e9af9
+  snapshot: outputs/reference/phase3a_openvla_libero_goal_fa5ae1e/hf_cache/models--openvla--openvla-7b-finetuned-libero-goal/snapshots/fa5ae1e7509348889295bba8e08621d8b55e9baf
+  file_count: 16
+  total_logical_bytes: 15085050797
+  download_manifest_sha256: cb0e189abfdf0888008f19fbf48d3c3215968acfe43098a9d2667457adb728fc
+weight_shards:
+  - {path: model-00001-of-00004.safetensors, bytes: 4925122448, sha256: aded5b398d491b5d69f2801e0f7bab358eb035f96efcf4e44c1ac2a25db65daf}
+  - {path: model-00002-of-00004.safetensors, bytes: 4947392496, sha256: ceccfcc5d5772af96ac45b1060a86d64ee3d4b2dbace8ad0a36997a74c92b8ab}
+  - {path: model-00003-of-00004.safetensors, bytes: 4947417456, sha256: f53f1760b83eb4a0587e15fd2b6b4448a56cb5aad578669c18be0df8ea6b01c6}
+  - {path: model-00004-of-00004.safetensors, bytes: 262668432, sha256: 4ef38bd0942ee946aaa7648ff48f60f85608d70f9f93acda06414ec7acf78b3f}
+metadata:
+  config_sha256: 06135f79f1010f85837ec4b8373bdda3a9387ab4937bc959e91a0ef4208ed237
+  dataset_statistics_sha256: 5ea8e0815367f6d684736050d6635e1327ed19d011b002f68a56fae1ab980a6a
+  index_sha256: ca8b53fed8133ee2afcd2fc483de8febf7f5bb0f6bcb09f91189772e59e8f659
+verification:
+  4bit_single_image_result: results/phase3a_openvla_4bit_single_image_v4.yaml
+  result_json_sha256: 28e5a5e7ee41307d18bdf17223b81270e8b3d44bafad9c8fce156f76cae47063
+  load: PASS
+  one_action_prediction: PASS
+  environment_single_step_result: results/phase3a_openvla_libero_single_step_bridge_v1.yaml
+  environment_single_step_result_json_sha256: a7c17d0250d06b980b2cd048c5fc3cdb327b4fcc3b51f477ef01986832525379
+  environment_single_step: PASS
+  environment_single_episode_result: results/phase3a_openvla_libero_single_episode_v1.yaml
+  environment_single_episode_eval_info_sha256: 2eb275f30e70a031f25c1b41b6999b1b6c5f51eab4d4d1cab8fa9e5c150ae6ac
+  environment_single_episode_execution: PASS
+  environment_single_episode_policy_success: PASS
+  development_multi_episode_result: results/phase3a_openvla_libero_dev5_v1.yaml
+  development_multi_episode_eval_info_sha256: d2168dd2697ebbda35c328e42ddade327eb889f4c133ad9172e811db5f17bb51
+  development_multi_episode_execution: PASS
+  development_multi_episode_policy_success: 5/5
+  heldout_final_result: results/phase3a_openvla_libero_final_heldout45_v1.yaml
+  heldout_final_eval_info_sha256: af09a078a6f80089fa75381ba0b942fb977a882ee9ffa73acc909c32d15c13cf
+  heldout_final_execution: PASS
+  heldout_final_policy_success: 45/45
+  qlora_one_sample_forward_backward: PASS
+  qlora_resource_result: results/phase3b_openvla_qlora_resource_v2.yaml
+  qlora_optimizer_gate_v1: FAIL_post_step_sentinel
+  qlora_optimizer_gate_v2: PASS_single_update_no_checkpoint
+  qlora_optimizer_result: results/phase3b_openvla_qlora_optimizer_v2.yaml
+  qlora_train_smoke_v1: FAIL_no_main_invocation
+  qlora_train_smoke_v2: FAIL_cuda_oom_before_step1
+  qlora_train_smoke_v2_rerun: FAIL_protocol_collision_checkpoint_quarantined
+  qlora_train_smoke_v3: PASS_canonical_20step_checkpoint
+  qlora_train_smoke_v3_manifest: results/phase3b_openvla_qlora_train_smoke_v3_checkpoint_manifest.yaml
+  qlora_base_fullval_v1: FAIL_direct_model_wrapper_path
+  qlora_base_fullval_v2: PASS
+  qlora_step20_offline_improvement: PASS_development_environment_gate_only
+  qlora_step20_single_development_episode: PASS_success_102_steps
+  qlora_step20_dev5_v1: FAIL_resource_contention_before_episode
+  qlora_step20_dev5_v2: PASS_5_of_5
+  qlora_step20_selection: FROZEN_FOR_HELDOUT45_FINAL
+  qlora_step20_heldout_final: PASS_execution_43_of_45_success
+  qlora_step20_environment_non_regression: FAIL
+  recommended_policy_after_phase3b: frozen_base_openvla
+  fine_tuning: not_run
+boundary: Frozen base-policy inference and closed-loop execution are verified through 45/45 held-out states after 5 development states; QLoRA forward/backward is resource-only evidence and did not modify or checkpoint the frozen model.

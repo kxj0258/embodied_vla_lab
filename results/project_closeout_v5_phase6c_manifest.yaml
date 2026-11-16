@@ -1,0 +1,12 @@
+manifest: project_closeout_v5_phase6c_20260829
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7586, sha256: 7fdc9dfe5b7113a4a3e945f494274e1335f6a8d50a5e6be1226c8cdd488e7eb9}
+  - {path: docs/repro_index.md, bytes: 5664, sha256: e93d98799482d56dedf52cd9a6318ac6ea2841bdb2ed8e7cc491e89851c3841c}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4898, sha256: 3266357a6f8d2be7e1202ede2b8d604a6c1db06ae37f62ffa0625ee4f282dd66}
+canonical_evidence: [results/project_closeout_v4_phase6b_manifest.yaml, results/phase6c_feagine_a03_runtime_summary_v1_manifest.yaml]
+read_only_verifiers: [scripts/verify_project_closeout_v5.py, scripts/verify_phase6b_assets.py, scripts/verify_phase6c_assets.py]
+boundary: Documentation/index through Phase 6C zero-step runtime; no dynamics or target-reaching claim.

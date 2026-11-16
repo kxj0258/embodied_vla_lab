@@ -1,0 +1,68 @@
+classification: PASS
+experiment: phase6b_feagine_a03_asset_contract_v1
+decision: ASSET_CONTRACT_PASS_RUNTIME_INSTALL_PENDING
+checks:
+  wheel_hash: true
+  required_assets: true
+  preset_exact: true
+  section_contract: true
+  angle_contract: true
+  mount_tool_contract: true
+  grasper_contract: true
+  timestep: true
+  topology: true
+  wrapper_constants: true
+  wrapper_api: true
+  explicit_preset_mismatch_recorded: true
+  adapter_rate_limit: true
+  adapter_direction_normalized: true
+  adapter_gripper_mapping: true
+  adapter_rejects_rotation: true
+  adapter_rejects_nonfinite: true
+  runtime_state: true
+  no_execution_authorized: true
+checks_passed: 19
+checks_total: 19
+asset_facts:
+  preset_id: a03_type_2
+  sections:
+  - length: 0.16
+    theta: 0.0
+    phi: 0.0
+  - length: 0.16
+    theta: 0.0
+    phi: 0.0
+  - length: 0.16
+    theta: 0.0
+    phi: 0.0
+  samples_per_section: 5
+  joint_count: 52
+  actuator_count: 51
+  capsule_proxy_joint_count: 48
+  timestep_s: 0.005
+  packaged_default_preset_mismatch: default a03 directory is absent; use explicit
+    a03_type_2
+adapter_example:
+  target_position_m:
+  - 0.01
+  - 0.0
+  - 0.48
+  target_tip_direction:
+  - 0.0
+  - 0.0
+  - 1.0
+  gripper_command: 1.0
+source_hashes:
+  config: 77c3d3057aaa8238af8d769761e5c5d1f9e8672c32675aaf697f209a54705939
+  wheel: 0c4bfe832457a6fb4238e1f1f743a5a5334df3399a7b5c24d3493803259f0650
+  adapter: 08f68784b4dfeab8418ccb2e68204627405bd36e3ec94da4921fbff3e129c926
+cpu_wall_s: 0.01416080899980443
+packages_installed: false
+mjcf_loaded: false
+cuda_initialized: false
+model_predictions: 0
+environment_steps: 0
+hardware_commands: 0
+boundary: Static binding to the immutable distribution archive only. No package installation,
+  compiled core call, MJCF load, simulation step, policy inference or hardware command.
+  External policy-to-A03 frame calibration remains unresolved.

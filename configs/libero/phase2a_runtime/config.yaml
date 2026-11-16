@@ -1,0 +1,6 @@
+assets: /home/kxj/.cache/libero/assets
+bddl_files: /home/kxj/embodied_ws/embodied_vla_lab/libero/libero/libero/bddl_files
+benchmark_root: /home/kxj/embodied_ws/embodied_vla_lab/libero/libero/libero
+datasets: /home/kxj/embodied_ws/embodied_vla_lab/libero/libero/datasets
+init_states: /home/kxj/embodied_ws/embodied_vla_lab/libero/libero/libero/init_files
+

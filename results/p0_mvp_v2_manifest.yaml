@@ -1,0 +1,70 @@
+manifest: p0_mvp_v2_20260827
+classification: PASS
+generation_mode: offline_from_frozen_assets
+environment_steps: 0
+model_inferences: 0
+selected_typical_speedup_init: 40
+videos:
+  - {path: outputs/presentation/p0_act_libero_demo_presentation_v2_20260827/act_libero_ckpt100000_heldout_init05_success_presentation_v2.mp4, policy: ACT_step100k, init_state: 5, steps: 83, success: true, width: 1280, height: 720, fps: 10, frames: 83, bytes: 250882, sha256: 7aea923245fc2f3b74f47fb3acd7f27d52a3b8445856b52d1470811f1936408a}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/openvla_base_heldout_init05_success.mp4, init_state: 5, steps: 83, success: true, width: 1280, height: 720, fps: 10, frames: 83, bytes: 274564, sha256: 5667ae11a4fcbf89c07fdb06156af96fc60410504fd6e162d90aba682fa4eb7b}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/openvla_base_vs_qlora_typical_speedup.mp4, init_state: 40, base_steps: 221, adapter_steps: 70, base_success: true, adapter_success: true, width: 1280, height: 720, fps: 10, frames: 221, bytes: 412743, sha256: 8261e995f8abdd028bbfd45638ce10a004fcc9e2908e16c54eb383d9ad45b4b7}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/openvla_base_vs_qlora_init44_tail_failure.mp4, init_state: 44, base_steps: 68, adapter_steps: 600, base_success: true, adapter_success: false, sampling_stride: 4, width: 1280, height: 720, fps: 10, frames: 150, bytes: 457091, sha256: 7b4f2e5372f617e7253b5fb0b85317d488ebd8d18f289a92b3aff9865ea5ff46}
+figures:
+  - {path: outputs/presentation/p0_mvp_v2_20260827/openvla_base_vs_qlora_offline_metrics.png, bytes: 98331, sha256: 1bc3cdcfeafb0c81345b0881f775b8ee955bb6e9cc9f343e21699319ac850e07}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/openvla_base_vs_qlora_offline_metrics.svg, bytes: 69777, sha256: d43db626b9e9696ee7c392a9cb0ed51fee2e5a065578eae59fa97eb8d27e696d}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/heldout_reliability.png, bytes: 53311, sha256: e9aa0091c8423e2c9f1618dfcf7916e0f4e6081fdb007a8eeff2bc7d2aff4c7b}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/heldout_reliability.svg, bytes: 35015, sha256: 1d671c46aba7fbf209855ff277ded608680fc6769cb914033557dc288a251e8c}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/embodied_vla_lab_architecture.svg, bytes: 2754, sha256: eb0315ffe173b451fc702520092621d99f2020d273c1507db2e659b06f1079a9}
+  - {path: outputs/presentation/p0_mvp_v2_20260827/embodied_vla_lab_architecture.png, bytes: 98534, sha256: e2a50034e6f65ca50d752aecc1578d93251478cea21bd5b39e0d6542b2503dc3}
+source_artifacts:
+  - {path: results/p0_act_libero_ckpt100000_demo_init05_v1.yaml, bytes: 2665, sha256: 39b574950a4c89c2a2b4d616092bf40dc204fa9ad7c3f5d24bb2c564ed7f2635}
+  - {path: results/raw/p0_act_libero_ckpt100000_demo_init05_v1_seed20260901_host_20260827.log, bytes: 2607, sha256: d66b735e01cef0a9682b2345c33a051f4166dc055c5f20993a8245f140cae9a5}
+  - {path: results/phase2b_act_libero_ckpt100000_final_heldout45.yaml, bytes: 3909, sha256: 0793cb8e8440b89d6ce0ee3eb62d9b96c7df1afac4a2a1785b0fe504680fd3df}
+  - {path: results/phase3a_openvla_libero_final_heldout45_v1.yaml, bytes: 4066, sha256: 7c65e1bb9525976ff156f015e56139ad772bb069f03db40eb4488398fc7f7568}
+  - {path: results/phase3b_openvla_qlora_step20_final_heldout45_v1.yaml, bytes: 2769, sha256: cf81debad2b8b0639503f7efa27ad7c565150ecc665026322a21202def7346a2}
+  - {path: results/phase3b_openvla_step20_vs_base_fullval889_paired.yaml, bytes: 1396, sha256: aae3484de7cafffee3d064f46f87e4e480ff5512dd1c93671bcdbf22bfa4e2d7}
+  - {path: outputs/eval/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901/trajectory.jsonl, bytes: 1983743, sha256: 4c236d4ad942e8e954cd21dcac80962fa906c2c3ab1f4a48f178c3fd120f6d29}
+  - {path: outputs/eval/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901/trajectory.jsonl, bytes: 2049642, sha256: d4cb61df567e4297d710c6f0c0d4f0b3c8c8a2ec73173dec2c7ebf513476c351}
+p0_hd_operational_gates:
+  - {path: results/p0_hd_gpu_recovery_gate_20260828.yaml, classification: PASS, gate: nvidia_driver_recovery, openvla_execution_started: false, blocked_by_gpu_contention: true}
+  - {path: results/p0_hd_gpu_resource_gate_20260828_004105.yaml, classification: PASS, gate: openvla_hd_gpu_resource_preflight, openvla_execution_started: false, compute_process_present: false, memory_free_mib: 11607}
+p0_hd_captures:
+  - {result: results/p0_hd_openvla_base_init05_v2.yaml, policy: OpenVLA_frozen_base, init_state: 5, steps: 83, reward: 1.0, success: true, presentation_video: outputs/presentation/p0_hd_openvla_base_init05_v2_seed20260901/presentation_hd640.mp4, presentation_sha256: 0f05fae3e86785476fb31ea03865c77bfc6c3266e03a9000ffbe57476d85b9ef, clean_video: outputs/presentation/p0_hd_openvla_base_init05_v2_seed20260901/clean_agentview_hd640.mp4, clean_sha256: 14dfda107b7e8dd33337c77c18668739d5442a8572b02dd352459923e4a9da87}
+  - {result: results/p0_hd_openvla_base_init40_v2.yaml, policy: OpenVLA_frozen_base, init_state: 40, steps: 221, reward: 1.0, success: true, presentation_video: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/presentation_hd640.mp4, presentation_sha256: 56b11f15945d094e1881bbce0f1bc47c865365bf60748e70412312cae1bb6fab, clean_video: outputs/presentation/p0_hd_openvla_base_init40_v2_seed20260936/clean_agentview_hd640.mp4, clean_sha256: 3afe1c5b0b06e08983bddceacb9fcdc3f0a84ee55a273d626b9fa47bd4f1c8c8}
+  - {result: results/p0_hd_openvla_qlora_init40_v2.yaml, policy: OpenVLA_rank8_QLoRA_step20, init_state: 40, steps: 70, reward: 1.0, success: true, paired_base_steps: 221, step_reduction_percent: 68.3258, presentation_video: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/presentation_hd640.mp4, presentation_sha256: d4849bdad09fa513f78824a8a24457c2a1adbcfb4587ac0b9c1926b3439994f2, clean_video: outputs/presentation/p0_hd_openvla_qlora_init40_v2_seed20260936/clean_agentview_hd640.mp4, clean_sha256: 7609b7d75eba926f3445577f623b0bd3909f98a9f0d679235538524a44606d25}
+  - {result: results/p0_hd_openvla_base_init44_v2.yaml, policy: OpenVLA_frozen_base, init_state: 44, steps: 68, reward: 1.0, success: true, presentation_video: outputs/presentation/p0_hd_openvla_base_init44_v2_seed20260940/presentation_hd640.mp4, presentation_sha256: c65fa5a81d82f99fd19480550cedf894c2d114b7ca42b3f8c0c92d0c6eb121d1, clean_video: outputs/presentation/p0_hd_openvla_base_init44_v2_seed20260940/clean_agentview_hd640.mp4, clean_sha256: 717163ae84f25e59bd6a49837e1ce3465cb2b35b8109b29104e179bb26dad2b6}
+  - {result: results/p0_hd_openvla_qlora_init44_v2.yaml, policy: OpenVLA_rank8_QLoRA_step20, init_state: 44, steps: 600, reward: 0.0, success: false, classification: EXPECTED_EXCEPTION, paired_base_steps: 68, presentation_video: outputs/presentation/p0_hd_openvla_qlora_init44_v2_seed20260940/presentation_hd640.mp4, presentation_sha256: 5c9262a539a5fe78a7c02fe7dfeae2517f895f6233d07c35e407f6c9373a5aa1, clean_video: outputs/presentation/p0_hd_openvla_qlora_init44_v2_seed20260940/clean_agentview_hd640.mp4, clean_sha256: fc978cf71ed0de89dac65b3819836601fc26db242b1c140876d91315ec5e06e1}
+p0_hd_comparisons:
+  manifest: results/p0_hd_comparisons_v1_manifest.yaml
+  generation_mode: offline
+  environment_steps: 0
+  model_predictions: 0
+  typical_speedup: {path: outputs/presentation/p0_hd_comparisons_v1_20260828/base_vs_qlora_init40_typical_speedup_hd.mp4, sha256: 40a7c5a63cfb1b06347beabaa3ff91ced9d2afd8503c0b30441d34d4cc1edd97, width: 1920, height: 1080, frames: 221}
+  tail_failure: {path: outputs/presentation/p0_hd_comparisons_v1_20260828/base_vs_qlora_init44_tail_failure_hd.mp4, sha256: 9ff284bb28f7f28d5fded3c30d7b4a130f76e5cbc4e0ffd7c5cc50389e00d986, width: 1920, height: 1080, frames: 600}
+p0_hd_status: COMPLETE
+p0_breadth:
+  status: COMPLETE
+  static_result: results/p0_breadth_openvla_base_10task30_v2_static.yaml
+  config: configs/eval/p0_breadth_openvla_base_10task30_v2.yaml
+  tasks: 10
+  episodes: 30
+  result: results/p0_breadth_openvla_base_10task30_v2.yaml
+  execution_classification: PASS
+  policy_success: 20/30
+  task_coverage_at_least_one_success: 10/10
+  environment_steps: 8554
+  model_predictions: 8554
+  superseded_unexecuted_plan: results/p0_breadth_openvla_base_5task15_v1_static.yaml
+  quantitative_summary_manifest: results/p0_breadth_summary_v1_manifest.yaml
+  hd_demo_status: PASS_COMPLETE
+  hd_demo_runner: scripts/record_p0_breadth_hd_demos.py
+  hd_demo_selection_rule: first successful init state per task in frozen evaluation order
+  hd_demo_manifest: results/p0_breadth_hd_10task_v1_manifest.yaml
+  hd_demo_success: 10/10
+  hd_demo_steps: 1296
+  montage_manifest: results/p0_breadth_10task_montage_v1_manifest.yaml
+  canonical_montage: outputs/presentation/p0_breadth_10task_montage_v1_20260828/openvla_10task_success_montage_hd.mp4
+  montage_resolution: 1920x1080
+  montage_duration_s: 64.8
+  visual_qa: PASS
+boundary: Videos replay frozen observations. They are not new rollout evidence and do not imply real-time 20 Hz control.

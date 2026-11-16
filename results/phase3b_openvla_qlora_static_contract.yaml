@@ -1,0 +1,43 @@
+experiment: phase3b_openvla_qlora_static_contract_v1_20260827
+date: 2026-08-27
+classification: PASS
+source_contract:
+  upstream_commit: c8f03f48af692657d3060c19588038c7220e9af9
+  upstream_entrypoint: openvla/vla-scripts/finetune.py
+  base_checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  quantization: NF4_4bit_bfloat16_compute
+  prepare_model_for_kbit_training: required
+  lora:
+    initial_resource_rank: 8
+    alpha: 8
+    dropout: 0.0
+    target_modules: all-linear
+    initialization: gaussian
+  resource_gate: exactly_one_batch_forward_backward_no_optimizer_step
+data_contract:
+  source: local verified LIBERO HDF5
+  task: libero_goal/turn_on_the_stove
+  first_fixture: demo_0_timestep_0
+  image: agentview_only_128x128_uint8_then_frozen_OpenVLA_transform
+  action: 7D
+  libero_gripper_training_transform: one_minus_clip_raw_gripper_0_1
+  action_tokenizer: 256_bins_minus1_plus1
+  supervised_tokens: seven_action_tokens_only_stop_token_ignored_for_first_resource_gate
+  rlds_tensorflow_dlimp_required: false
+runtime_inventory_before_install:
+  peft: NOT_INSTALLED
+  trl: NOT_INSTALLED_NOT_REQUIRED
+  datasets: NOT_INSTALLED_NOT_REQUIRED
+  tensorflow_rlds_dlimp: NOT_REQUIRED
+environment_gate:
+  experiment_id: phase3b_openvla_peft_runtime_gate_v1_20260827
+  required_addition: peft==0.11.1
+  installation: PENDING_HOST_EXECUTION
+  install_mode: pip_no_deps_exact_version
+  cuda_or_model_work: false
+  output_dir: outputs/eval/phase3b_openvla_peft_runtime_gate_v1_20260827
+  raw_log: results/raw/phase3b_openvla_peft_runtime_gate_v1_20260827_host_20260827.log
+boundaries:
+  - The source contract performs no forward, backward, optimizer step or training.
+  - The first GPU gate will measure one batch only and cannot authorize smoke or formal QLoRA training.
+  - Phase 3A base-policy held-out final is frozen and cannot be revised.

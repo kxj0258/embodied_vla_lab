@@ -1,0 +1,36 @@
+experiment: phase5c_world_model_train100_pair_v1_seed20260831
+classification: PASS
+execution_pass: true
+decision: ENGINEERING_PASS_OFFLINE_BASELINE_NO_GO
+formal_training_go: false
+device: cuda:0
+fixture_sha256: 97b33ec833cdc6d5dfeae7288314e0436e8a15deebeeb789cc23cbc4d2336950
+fairness: {shared_encoder_decoder_initialization: true, identical_batch_order: true, train_windows: 256, validation_windows: 128, horizon: 4}
+training:
+  action_free: {parameters: 1284355, updates: 100, first10_mean_loss: 0.3425612300634384, last10_mean_loss: 0.09298349842429161, relative_change_percent: -72.85638587674615, grad_norm_mean: 0.15758609656244515, grad_norm_min: 0.03642953932285309, grad_norm_max: 0.3222087025642395, all_finite: true, train_plus_postval_s: 0.8501677129970631}
+  action_conditioned: {parameters: 1292803, updates: 100, first10_mean_loss: 0.3425601661205292, last10_mean_loss: 0.09418972730636596, relative_change_percent: -72.5041798137074, grad_norm_mean: 0.15916114188730718, grad_norm_min: 0.03647681325674057, grad_norm_max: 0.31931084394454956, all_finite: true, train_plus_postval_s: 0.6064196590014035}
+validation_pixel_mae_0_255:
+  h1: {copy_frame: 0.7775454521179199, action_free: 11.493878080509603, action_conditioned: 11.692635994404554, conditioned_vs_free_percent: 1.7292502365410467}
+  h2: {copy_frame: 1.1906046867370605, action_free: 11.497526913881302, action_conditioned: 11.702259057201445, conditioned_vs_free_percent: 1.7806624403110982}
+  h3: {copy_frame: 1.4909024238586426, action_free: 11.509296465665102, action_conditioned: 11.71390582807362, conditioned_vs_free_percent: 1.777774714717939}
+  h4: {copy_frame: 1.7315912246704102, action_free: 11.525547481141984, action_conditioned: 11.722232685424387, conditioned_vs_free_percent: 1.70651506667443, conditioned_vs_copy_percent: 576.9630452276973}
+validation_h4_psnr_db: {copy_frame: 28.387978770161922, action_free: 21.388918656445316, action_conditioned: 21.31579428949317}
+integrity:
+  training_steps_total: 200
+  optimizer_steps_total: 200
+  checkpoint_selected: false
+  action_free: {step: 100, model_tensors: 24, optimizer_state_entries: 24, all_model_tensors_finite: true}
+  action_conditioned: {step: 100, model_tensors: 26, optimizer_state_entries: 26, all_model_tensors_finite: true}
+resources:
+  internal_elapsed_s: 2.650139416989987
+  effective_total_updates_per_s: 75.467727
+  peak_vram_allocated_bytes: 141130240
+  peak_vram_reserved_bytes: 165675008
+  host: {exit_status: 0, wall_s: 4.53, user_s: 23.75, system_s: 1.16, cpu_percent: 549, max_rss_kib: 1775364, major_page_faults: 922, minor_page_faults: 306254, swaps: 0, socket_messages_sent: 0, socket_messages_received: 0}
+artifacts:
+  result_json: {path: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831/result.json, bytes: 31401, sha256: d39ef0cef6c659f02a464a2e6dc16380d1715db41909e78db5a768d8797d0554}
+  resolved_config: {path: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831/resolved_config.yaml, bytes: 1612, sha256: 914b162a449acd7436b9c89ab719f6526722833094fa1d64e5c0db121798ca7e}
+  action_free_checkpoint: {path: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831/action_free_step100.pt, bytes: 15445131, sha256: 4b571027731985176126e6aab2b2bccedb687f77fba52f67fc9c86527d8de1b8}
+  action_conditioned_checkpoint: {path: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831/action_conditioned_step100.pt, bytes: 15549849, sha256: 43c31aa615fdb007dfaf0bf9e42918d66c0414110a30b70461069f832b58db79}
+  raw_log: {path: results/raw/phase5c_world_model_train100_pair_v1_host_20260829.log, bytes: 32227, sha256: cb1ae31e32ef311baa81d498959d130545f62dca0d2e2d93b0f3988140a13571}
+boundary: Short paired smoke. Engineering PASS does not imply learned world-model quality. Both learned models lose to copy-frame and action conditioning adds no offline benefit; no checkpoint selection, formal training, planning or environment claim is authorized.

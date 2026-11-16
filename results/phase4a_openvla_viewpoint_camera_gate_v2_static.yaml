@@ -1,0 +1,22 @@
+classification: PASS
+checks:
+  new_v2_id: true
+  v1_failure_preserved: true
+  observation_alias_correct: true
+  mujoco_camera_corrected: true
+  agentview_unchanged: true
+  zero_step_prediction: true
+  frozen_revision: true
+  split_unchanged: true
+  fresh_targets: true
+config_sha256: 95b7ce3780505a187d38cc70611081a0fc55d857212bf3799f983d95f5b8d8e4
+entrypoint_sha256: 939d0746adc04890396078dd89b88d8a3e19a8458d000f1bee63d103868d54a8
+implementation_sha256: bdd27d2837a18dbb3863b59cbe7ac2e57f31690344abdda9dd7c3362299a5d85
+cuda_calls: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+boundary: Corrected camera/runtime feasibility only. This gate performs one reset,
+  zero environment steps and zero model predictions; it cannot establish viewpoint
+  robustness, policy success, reward, or language generalization. The v1 failure remains
+  immutable, and Phase 3/P0 evidence is unchanged.

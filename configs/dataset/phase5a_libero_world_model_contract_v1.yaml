@@ -1,0 +1,40 @@
+experiment_id: phase5a_libero_turn_on_stove_world_model_contract_v1
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  task_id: 7
+  instruction: turn on the stove
+  primary_image: obs/agentview_rgb
+  secondary_image: obs/eye_in_hand_rgb
+  action: actions
+  robot_state: robot_states
+  simulator_state: states
+  reward: rewards
+  done: dones
+split:
+  seed: 20260826
+  train_episodes: [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 30, 31, 32, 33, 35, 36, 37, 38, 39, 41, 44, 46, 47, 48, 49]
+  validation_episodes: [0, 5, 12, 21, 29, 34, 40, 42, 43, 45]
+transition_contract:
+  horizons: [1, 2, 4, 8]
+  one_step: [image_t, action_t, image_t_plus_1]
+  multi_step: [image_t, actions_t_through_t_plus_h_minus_1, image_t_plus_h]
+  cross_episode_windows: forbidden
+  terminal_source_action: excluded
+  image_dtype: uint8
+  action_shape: [7]
+  control_frequency_hz: 20
+baselines:
+  - {name: copy_current_frame, inputs: [image_t], trainable: false}
+  - {name: action_free_latent_dynamics, inputs: [latent_t], trainable: true}
+  - {name: action_conditioned_latent_dynamics, inputs: [latent_t, action_sequence], trainable: true}
+evaluation:
+  image_metrics: [pixel_mae, pixel_mse, psnr]
+  horizons: [1, 2, 4, 8]
+  primary_selection_metric: validation_h4_pixel_mae
+  required_comparison: action_conditioned_vs_copy_and_action_free
+  candidate_action_ranking: diagnostic_only
+  environment_rollout: forbidden_before_offline_gate
+boundary: >-
+  CPU-only data and baseline contract for one task. Static/copy-frame metrics are not learned world-model evidence,
+  environment success, reward prediction or action-ranking utility. No model training or GPU execution is authorized.

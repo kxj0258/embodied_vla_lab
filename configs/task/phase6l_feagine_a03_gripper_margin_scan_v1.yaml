@@ -1,0 +1,22 @@
+experiment_id: phase6l_feagine_a03_gripper_margin_scan_v1
+source_baseline: phase6j_feagine_a03_external_targets_recovery_dev4_v1
+source_diagnostic: phase6k_feagine_a03_slide_limit_diagnostic_v1
+preset_id: a03_type_2
+gripper_commands: [0.00, 0.01, 0.02, 0.05]
+execution_commands: [0.01, 0.02, 0.05]
+selection_rule: smallest_command_with_strict_4_of_4
+targets:
+  - {id: plus_x_35mm_retract_1p5mm, delta_m: [0.035, 0.000, -0.0015], seed_id: x_pos_uniform, seed_angles_rad: [0.05, 1.5707963267948966, 0.05, 1.5707963267948966, 0.05, 1.5707963267948966]}
+  - {id: minus_x_35mm_retract_1p5mm, delta_m: [-0.035, 0.000, -0.0015], seed_id: x_neg_uniform, seed_angles_rad: [0.05, -1.5707963267948966, 0.05, -1.5707963267948966, 0.05, -1.5707963267948966]}
+  - {id: plus_y_35mm_retract_1p5mm, delta_m: [0.000, 0.035, -0.0015], seed_id: y_pos_uniform, seed_angles_rad: [0.05, 0.0, 0.05, 0.0, 0.05, 0.0]}
+  - {id: minus_y_35mm_retract_1p5mm, delta_m: [0.000, -0.035, -0.0015], seed_id: y_neg_uniform, seed_angles_rad: [0.05, 3.141592653589793, 0.05, 3.141592653589793, 0.05, 3.141592653589793]}
+representation: {canonicalize_negative_theta: true, phi_shift_rad: 3.141592653589793, phi_wrap: [-3.141592653589793, 3.141592653589793]}
+ik: {max_iterations: 200, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+protocol: {steps_per_target: 400, timestep_s: 0.005, reset_per_target: true, grasper_rotation_rad: 0.0}
+per_target_gate: {terminal_position_error_m: 0.015, minimum_progress_fraction: 0.70, material_slide_threshold_m: 0.0001}
+aggregate_gate: {required_successes: 4, total_targets: 4}
+output_dir: outputs/eval/phase6l_feagine_a03_gripper_margin_scan_v1
+structured_result: results/phase6l_feagine_a03_gripper_margin_scan_v1.yaml
+raw_log: results/raw/phase6l_feagine_a03_gripper_margin_scan_v1_host_20260902.log
+authorization: {simulation_steps_total: 4800, reuse_command_zero: true, controller_changes_beyond_gripper_command: false, gui: false, render: false, gpu: false, policy_inference: false, hardware: false}
+boundary: Development gripper-margin scan on immutable arm targets; Phase 6J remains 2/4, with no threshold relaxation, VLA, broad workspace, final, or hardware claim.

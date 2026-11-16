@@ -1,0 +1,2 @@
+# Phase 3B QLoRA resource-gate addition only. Install with --no-deps.
+peft==0.11.1

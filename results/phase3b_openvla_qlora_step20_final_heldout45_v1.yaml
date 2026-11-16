@@ -1,0 +1,31 @@
+experiment: phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901
+date: 2026-08-27
+classification: PASS
+execution_pass: true
+policy_success: {count: 43, total: 45, rate: 0.9555555555555556, wilson_95: [0.8517248923056439, 0.9877258732932802]}
+reward: {mean_sum: 0.9555555555555556, mean_max: 0.9555555555555556}
+failures:
+  - {init_state: 12, steps: 600, reward: 0.0, base_steps: 593, base_success: true}
+  - {init_state: 44, steps: 600, reward: 0.0, base_steps: 68, base_success: true}
+steps:
+  total_capped: 4286
+  mean_capped: 95.24444444444444
+  median: 70
+  p95: 123.39999999999988
+  successful_episode_mean: 71.76744186046511
+paired_base:
+  success: {base: 45/45, adapter: 43/45, absolute_rate_change: -0.0444444444444444}
+  total_capped_steps: {base: 4134, adapter: 4286, delta: 152}
+  mean_capped_steps: {base: 91.86666666666666, adapter: 95.24444444444444}
+  median_steps: {base: 76, adapter: 70}
+  p95_steps: {base: 101.39999999999999, adapter: 123.39999999999988}
+  common_success_states: {count: 43, adapter_faster: 32, adapter_slower: 10, tied: 1, mean_step_delta: -9, median_step_delta: -6}
+timing: {model_load_s: 5.22203818800017, total_inference_s: 1922.457615637993, mean_inference_s: 0.44854354074614866, median_inference_s: 0.44735160950017416, p95_inference_s: 0.4610214227503775, rollout_end_to_end_s: 2046.4112105250001, host_wall_s: 2050.56}
+memory: {peak_vram_allocated_bytes: 5403944960, peak_vram_reserved_bytes: 5567938560, worker_rss_kib: 1988788, coordinator_rss_kib: 2754072, host_max_rss_kib: 5884732, swaps: 0}
+artifacts:
+  eval_info: {path: outputs/eval/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901/eval_info.json, sha256: 7b0449e5bc0413738a70f645d0d8ee8cc5dbde07262bee781138156b86cd0808}
+  trajectory: {path: outputs/eval/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901/trajectory.jsonl, sha256: d4cb61df567e4297d710c6f0c0d4f0b3c8c8a2ec73173dec2c7ebf513476c351}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901_host_20260827.log, sha256: 39d18d472779a88b8d2b3e734571078bdc0716431eae51edd74261958a641f7b}
+final_conclusion: Step-20 QLoRA improves paired offline metrics and typical successful-state efficiency, but regresses held-out robustness from 45/45 to 43/45 and worsens capped mean/P95. Frozen base remains the recommended policy for reliable demo and deployment on this task.
+statistics_boundary: Complete finite held-out set for this single task/runtime. It does not establish other-task, language, viewpoint, simulator or real-world generalization. Held-out outcomes cannot be used for further tuning.
+boundary: Immutable Phase 3B final. No rerun, checkpoint replacement or post-heldout tuning is authorized.

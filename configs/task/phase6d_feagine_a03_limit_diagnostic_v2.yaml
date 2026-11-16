@@ -1,0 +1,10 @@
+experiment_id: phase6d_feagine_a03_limit_diagnostic_v2
+preset_id: a03_type_2
+runtime_env: /home/kxj/miniforge3/envs/evla-feagine-v1
+protocol: {steps: 200, timestep_s: 0.005, section_angles: [0.10, 0.00, 0.10, 0.00, 0.10, 0.00], gripper_command: 1.0, grasper_rotation_rad: 0.20}
+diagnostic_thresholds: {hinge_material_violation_rad: 0.001, slide_material_violation_m: 0.0001}
+output_dir: outputs/eval/phase6d_feagine_a03_limit_diagnostic_v2
+structured_result: results/phase6d_feagine_a03_limit_diagnostic_v2.yaml
+raw_log: results/raw/phase6d_feagine_a03_limit_diagnostic_v2_host_20260830.log
+authorization: {simulation_steps: 200, diagnostic_only: true, gui: false, render: false, gpu: false, policy_inference: false, hardware: false}
+boundary: Diagnostic reproduction with fresh ID. It cannot revise v1 FAIL or authorize target reaching; records per-joint soft-limit penetration only.

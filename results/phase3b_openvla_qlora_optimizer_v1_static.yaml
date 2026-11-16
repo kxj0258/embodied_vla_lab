@@ -1,0 +1,21 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, optimizer_steps: 0}
+contract:
+  real_samples: 1
+  forward_steps: 1
+  backward_steps: 1
+  optimizer_steps: 1
+  optimizer: {name: AdamW, lr: 0.0001, weight_decay: 0.0}
+  max_grad_norm: 1.0
+  checkpoint_created: false
+assets:
+  config: {path: configs/train/openvla_phase3b_qlora_optimizer_gate_v1.yaml, sha256: 744b6a39857eec117bab88e1bc43ff782c67917e45b977f0bc56fd4e372cd881}
+  entrypoint: {path: scripts/check_phase3b_openvla_qlora_optimizer_gate.py, sha256: e7b65453b7312a11857375dd2a14c8adec37079c96ed95f474dd61870af76280}
+  checker: {path: scripts/check_phase3b_openvla_qlora_optimizer_static.py, sha256: d050ef8d068045c19ed81a4bc074498af8cf9c31aa1ec5cea4556332436536ba}
+formal_gate:
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827_host_20260827.log
+  status: PENDING
+boundary: Static contract only; no CUDA, model load, optimizer allocation, update, checkpoint or training evidence.

@@ -1,0 +1,10 @@
+manifest: phase6f_feagine_a03_external_targets_dev4_v1_20260830
+classification: FAIL
+decision: EXTERNAL_TARGETS_DEV4_FAIL
+artifacts:
+  - {path: results/phase6f_feagine_a03_external_targets_dev4_v1.yaml, bytes: 3585, sha256: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20}
+  - {path: results/raw/phase6f_feagine_a03_external_targets_dev4_v1_host_20260830.log, bytes: 5531, sha256: 7161e9fd21b2c963662c54353bcf04efcfcc63f127ae5315d3d8ea6bd68410cd}
+  - {path: configs/task/phase6f_feagine_a03_external_targets_dev4_v1.yaml, bytes: 1476, sha256: 99081a38664fcafe022db1b430cec56c5dc25d1fdf79953a71c44c1fee133728}
+  - {path: scripts/run_phase6f_feagine_a03_external_targets_dev.py, bytes: 4656, sha256: 749ee032c73ffaa6a0c664e066ad7e2fd9cf6edbca112b0a6ace4e5cbe6fdf58}
+  - {path: results/phase6f_feagine_a03_external_targets_dev4_v1_static.yaml, bytes: 716, sha256: 402a02c7bf19f29ebea325a429d2803c928b3a75c636fc3f79422e54e025b025}
+boundary: Immutable 0/4 development FAIL; targets and thresholds may not be replaced or relaxed. No VLA, reward, final, or hardware claim.

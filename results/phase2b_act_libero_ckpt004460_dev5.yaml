@@ -1,0 +1,71 @@
+experiment: phase2b_act_libero_ckpt004460_dev5_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+kind: development_checkpoint_rollout
+checkpoint:
+  step: 4460
+  path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_004460.pt
+  bytes: 410470545
+  sha256: b3ad83f1143a11de74080124fc2a1c3750ff88f82aa1bcf46cc076f0cba888e1
+  exact_resume_boundary: true
+protocol:
+  paired_with: phase2b_act_libero_ckpt100000_dev5_seed20260827
+  task: LIBERO_GOAL/turn_on_the_stove
+  episodes: 5
+  evaluator_seed_range: 20260827..20260831
+  init_state_indices: [0, 1, 2, 3, 4]
+  episode_horizon: 600
+  action_steps_per_inference: 5
+  strict_offline: true
+  video: false
+metrics:
+  success_count: 4
+  success_total: 5
+  success_percent: 80.0
+  success_wilson_95_percent: [37.55346297625253, 96.37758913675698]
+  steps_per_episode: [74, 72, 115, 163, 600]
+  total_environment_steps: 1024
+  mean_steps_per_episode: 204.8
+  mean_steps_successful_episodes: 106.0
+  sum_reward_per_episode: [1.0, 1.0, 1.0, 1.0, 0.0]
+  max_reward_per_episode: [1.0, 1.0, 1.0, 1.0, 0.0]
+  mean_sum_reward: 0.8
+  mean_max_reward: 0.8
+  rollout_elapsed_s: 19.846050079002453
+  rollout_s_per_episode: 3.9692100158004906
+  policy_forward_calls: 206
+  timed_select_action_total_s: 2.0436024189111777
+  timed_s_per_policy_forward_including_cold_start: 0.009920400091801834
+  warm_episodes_1_to_4_policy_forward_calls: 191
+  warm_episodes_1_to_4_timed_select_action_s: 1.597346839909733
+  warm_timed_s_per_policy_forward: 0.008362025339841534
+resources:
+  peak_vram_allocated_bytes: 162552832
+  peak_vram_reserved_bytes: 216006656
+  process_wall_s: 26.47
+  maximum_rss_kib: 3921696
+paired_step100000_comparison:
+  same_success_states: [0, 1, 2, 3]
+  step004460_only_success_states: []
+  step100000_only_success_states: [4]
+  both_failure_states: []
+  success_difference_percentage_points_step100000_minus_step004460: 20.0
+  mean_reward_difference_step100000_minus_step004460: 0.2
+  mean_steps_all_episodes: {step004460: 204.8, step100000: 80.6}
+  exact_paired_inference: one_discordant_pair_insufficient_for_significance
+training_metrics:
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation_loss: NOT_REMEASURED
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+artifacts:
+  config: {path: configs/eval/act_libero_phase2b_ckpt004460_dev5.yaml, sha256: dd647b093a7914c01464ecfece6c1bdbc941f3c27c88a03e4efe0a74dd6484bd}
+  entrypoint: {path: scripts/evaluate_phase2b_act_libero.py, sha256: 07d0c057c094db1307ed5828af82cf07ea2a4fcf3b049e2ed2982092eb95b9ce}
+  raw_log: {path: results/raw/phase2b_act_libero_ckpt004460_dev5_seed20260827_host_20260827.log, lines: 16, bytes: 3120, sha256: bfc99511cbb811a9f3cc0b71261a9778bedac883e18a919e8ea7c43747f91d0b}
+  eval_info: {path: outputs/eval/phase2b_act_libero_ckpt004460_dev5_seed20260827/eval_info.json, bytes: 1856, sha256: 66e5c032e546a35530f7a92f9cc7d1b5b99d057883d78a28d66d72951b50c1d9}
+  resolved_config: {bytes: 1149, sha256: a79f7b23e2c80681126a50b042da9a76892c477221351ec0d46362ba4bbb6c7a}
+statistical_boundary: >-
+  The evaluation execution PASSed, while policy success was 4/5. The paired five-state result favors step 100000,
+  but one discordant state cannot establish statistical superiority. This remains checkpoint development evidence.
+next_gate: Evaluate the preregistered midpoint checkpoint step 49060 on the identical five states, then freeze selection.

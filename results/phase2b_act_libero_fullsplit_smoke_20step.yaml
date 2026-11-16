@@ -1,0 +1,27 @@
+experiment: phase2b_act_libero_fullsplit_smoke_20step_seed20260826
+date: 2026-08-26
+classification: FAIL
+exit_status: 1
+failure_stage: CHECKPOINT_SERIALIZATION_AFTER_20_OPTIMIZER_STEPS
+reason: ACTConfig_HAS_NO_TO_DICT_IN_PINNED_LEROBOT_0_6_2
+metrics:
+  train_loss: {step_1: 0.9179883003234863, step_20: 0.9320972561836243}
+  gradient_norm_preclip: {step_1: 89.89429473876953, step_20: 30.552993774414062}
+  optimizer_steps_completed: 20
+  observed_training_loop_steps_per_s: 17.44
+  peak_vram_allocated_bytes: 709839360
+  process_wall_s: 6.15
+  maximum_rss_kib: 2447184
+  offline_validation: NOT_RUN
+  success: NOT_RUN
+  reward: NOT_RUN
+artifacts:
+  output_dir: outputs/train/phase2b_act_libero_fullsplit_smoke_20step_seed20260826
+  metrics_jsonl_bytes: 320
+  resolved_config_bytes: 755
+  checkpoint_created: false
+  preserved: true
+raw_log: {path: results/raw/phase2b_act_libero_fullsplit_smoke_20step_host_20260826.log, lines: 12, bytes: 1090, sha256: 92c6d3f5b3e3aea5937613474149cec33f83b716ed216205bbe0401f58e8ae3f}
+interpretation: Finite full-split optimization and resource fit passed, but the smoke gate fails because no reloadable checkpoint exists. Different random batches make the two loss values non-comparable as an overfit curve.
+fix: Replace unavailable ACTConfig.to_dict with dataclasses.asdict and rerun under a new v2 ID.
+

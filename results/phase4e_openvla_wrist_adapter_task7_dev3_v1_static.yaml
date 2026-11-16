@@ -1,0 +1,23 @@
+classification: PASS
+experiment: phase4e_openvla_wrist_adapter_task7_dev3_v1_static
+checks:
+  canonical_revision: true
+  task7_development_only: true
+  three_frozen_states: true
+  base_rows_exact: true
+  eye_in_hand_only: true
+  adapter_hash: true
+  evaluator_frozen: true
+  worker_wrapper_frozen: true
+  decision_rule_frozen: true
+  fresh_targets: true
+  final_not_authorized: true
+  no_cuda_initialized: true
+checks_passed: 12
+checks_total: 12
+cuda_initialized: false
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+boundary: Static validation only; no CUDA, environment, model, training, success or
+  reward evidence.

@@ -1,0 +1,22 @@
+experiment: phase2b_act_libero_single_batch_overfit_400step
+date: 2026-08-26
+classification: PASS
+protocol: {batch_size: 2, optimizer_steps: 400, bf16: true, grad_clip_norm: 10.0, threshold: "final_loss < 0.25 * initial_loss"}
+metrics:
+  initial_loss: 0.6174287796020508
+  final_loss: 0.1356000453233719
+  minimum_loss: 0.12285235524177551
+  loss_reduction_percent: 78.038
+  gradient_norm_preclip: {first: 112.81077575683594, last: 14.983559608459473, max: 112.81077575683594}
+  optimizer_steps_per_s: 49.22305902167739
+  peak_vram_allocated_bytes: 706334208
+  peak_vram_reserved_bytes: 771751936
+  optimizer_elapsed_s: 8.126272685000004
+  process_wall_s: 13.07
+  maximum_rss_kib: 2379076
+  offline_validation: NOT_RUN
+  success: NOT_RUN
+  reward: NOT_RUN
+raw_log: {path: results/raw/phase2b_act_libero_single_batch_overfit_400step_host_20260826.log, lines: 11, bytes: 442, sha256: 6dd1d2cba61ced9371eb27fdc3fbd254601e5e911e771a0bc74ece4c2bd81f8e}
+statistical_boundary: Single-batch memorization only; does not establish validation or rollout performance.
+

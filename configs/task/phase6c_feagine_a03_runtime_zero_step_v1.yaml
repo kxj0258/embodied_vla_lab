@@ -1,0 +1,9 @@
+experiment_id: phase6c_feagine_a03_runtime_zero_step_v1
+preset_id: a03_type_2
+expected: {sections: 3, section_length_m: 0.16, disks_per_section: 5, mjcf_joints: 52, mjcf_actuators: 51, timestep_s: 0.005}
+ik: {max_iterations: 150, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+output_dir: outputs/eval/phase6c_feagine_a03_runtime_zero_step_v1
+structured_result: results/phase6c_feagine_a03_runtime_zero_step_v1.yaml
+raw_log: results/raw/phase6c_feagine_a03_runtime_zero_step_v1_host_20260829.log
+authorization: {mujoco_load: true, mj_forward: true, control_array_write: true, simulation_step: false, gui: false, gpu: false, policy_inference: false, hardware: false}
+boundary: Runtime load/binding and core numerical gate only. No mj_step, elapsed simulated time, GUI, policy inference or hardware command.

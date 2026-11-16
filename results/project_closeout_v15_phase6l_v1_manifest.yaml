@@ -1,0 +1,14 @@
+manifest: project_closeout_v15_phase6l_v1_20260902
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 8155, sha256: 7ba423df6461b5c041e048052191566244930cf0b1d482b4065dc4b35618fa29}
+  - {path: docs/repro_index.md, bytes: 9573, sha256: 8b6fc689f0b1843c643643f9cc262b59715e9eb2ae8fe2f26eab7a80386f35fc}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5150, sha256: c72ce3ebe58ba4e38d5ddbf4e29d28a5b35c51edb83fcebf13fe6a33c0b21ae1}
+canonical_evidence:
+  - {path: results/phase6l_feagine_a03_gripper_margin_scan_v1_manifest.yaml, bytes: 1079, sha256: f6223bc6192d3c049b23986c4feec353469b081fb87ccd8e392c3a0ff4687ae1}
+  - {path: scripts/verify_phase6l_assets.py, bytes: 2333, sha256: 78463e1d11eb7d8ab2498d67affc68c3d9ace3096cd03adfd5264e96a44aef9b}
+historical_evidence: results/project_closeout_v14_phase6k_v1_manifest.yaml
+boundary: Phase 6L execution passed but selected no safe gripper command; Phase 6J remains 2/4 and no post-outcome margin is authorized.

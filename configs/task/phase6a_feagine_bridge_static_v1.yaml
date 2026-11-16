@@ -1,0 +1,45 @@
+experiment_id: phase6a_feagine_bridge_static_v1_seed20260903
+seed: 20260903
+model_scope: provisional_single_section_extensible_pcc_reference
+hardware_binding:
+  robot: Feagine_A03
+  calibrated_parameters_available: false
+  mjcf_available: false
+  actuator_mapping_available: false
+  claim_real_robot_fidelity: false
+frames:
+  policy: libero_robot_base
+  continuum: feagine_model_base
+  policy_to_continuum:
+    rotation:
+      - [1.0, 0.0, 0.0]
+      - [0.0, 1.0, 0.0]
+      - [0.0, 0.0, 1.0]
+    translation_m: [0.0, 0.0, 0.0]
+adapter:
+  input_schema: [dx_m, dy_m, dz_m, droll_rad, dpitch_rad, dyaw_rad, gripper]
+  supported_components: [dx_m, dy_m, dz_m, gripper]
+  reject_rotation_norm_above_rad: 0.001
+  max_translation_step_m: 0.01
+  gripper_range: [-1.0, 1.0]
+pcc_limits:
+  min_length_m: 0.12
+  max_length_m: 0.30
+  max_abs_curvature_per_m: 12.0
+  max_bend_angle_rad: 2.4
+workspace:
+  radial_max_m: 0.24
+  z_min_m: 0.05
+  z_max_m: 0.30
+validation:
+  random_roundtrips: 256
+  position_tolerance_m: 1.0e-9
+  deterministic: true
+authorization:
+  mujoco_execution: false
+  gpu_execution: false
+  model_inference: false
+  hardware_command: false
+boundary: >-
+  CPU-only software and numerical contract for a provisional single-section PCC reference. Passing does not prove
+  Feagine A03 geometry, actuator mapping, collision safety, MuJoCo control, VLA transfer or real-robot safety.

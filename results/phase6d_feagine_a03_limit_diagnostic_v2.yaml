@@ -1,0 +1,32 @@
+classification: PASS
+experiment: phase6d_feagine_a03_limit_diagnostic_v2
+decision: SOFT_LIMIT_PENETRATION_WITHIN_DIAGNOSTIC_THRESHOLD
+execution_pass: true
+steps: 200
+simulated_time_s: 1.0000000000000007
+limited_joints_checked: 51
+violating_joint_count: 1
+max_hinge_penetration_rad: 0.0
+max_slide_penetration_m: 1.1773416476179577e-05
+violations:
+- name: feagine_grasper_joint_1
+  qpos_adr: 50
+  joint_type: 2
+  lower: -0.013
+  upper: 0.005
+  min: -0.013
+  max: 0.00501177341647618
+  max_penetration: 1.1773416476179577e-05
+diagnostic_thresholds:
+  hinge_material_violation_rad: 0.001
+  slide_material_violation_m: 0.0001
+elapsed_s: 0.11848789900250267
+cuda_initialized: false
+model_predictions: 0
+reward: null
+success: null
+hardware_commands: 0
+source_hashes:
+  config: aec671fc6624ac3e482bcbbfae93925d7f501a310c6f92ba6729923866ca3b79
+boundary: Diagnostic reproduction with fresh ID. It cannot revise v1 FAIL or authorize
+  target reaching; records per-joint soft-limit penetration only.

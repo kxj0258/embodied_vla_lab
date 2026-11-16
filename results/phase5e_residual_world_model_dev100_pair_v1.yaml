@@ -1,0 +1,721 @@
+classification: PASS
+experiment: phase5e_residual_world_model_dev100_pair_v1_seed20260902
+execution_pass: true
+decision: DEVELOPMENT_NO_GO_ACTION_CONDITIONING
+device: cuda:0
+fixture_sha256: 6a5da23a0c1e3179ba24749eaadb9f91a1e34df6187275f44aedd69088a0d6b4
+shared_encoder_decoder_initialization: true
+identical_batch_order: true
+copy_frame_development:
+  1:
+    pixel_mae_0_255: 0.7044103940327963
+    pixel_mse_0_255: 26.836305618286133
+    psnr_db: 33.84357631786174
+  2:
+    pixel_mae_0_255: 1.0769826571146648
+    pixel_mse_0_255: 49.03071975708008
+    psnr_db: 31.226120922549395
+  3:
+    pixel_mae_0_255: 1.3583637873331706
+    pixel_mse_0_255: 67.40083312988281
+    psnr_db: 29.84415096061454
+  4:
+    pixel_mae_0_255: 1.5912456512451172
+    pixel_mse_0_255: 83.54940795898438
+    psnr_db: 28.91136984089812
+models:
+  residual_action_free:
+    parameters: 1284355
+    pre_development:
+      1:
+        pixel_mae_0_255: 0.7044104345550295
+        pixel_mse_0_255: 26.836301060302503
+        psnr_db: 33.843577055484616
+      2:
+        pixel_mae_0_255: 1.0769827308831736
+        pixel_mse_0_255: 49.030705454424606
+        psnr_db: 31.22612218942153
+      3:
+        pixel_mae_0_255: 1.3583638714044355
+        pixel_mse_0_255: 67.40086549325497
+        psnr_db: 29.844148875294536
+      4:
+        pixel_mae_0_255: 1.591245750314556
+        pixel_mse_0_255: 83.54941573888937
+        psnr_db: 28.911369436494347
+    post_development:
+      1:
+        pixel_mae_0_255: 0.7054138676903676
+        pixel_mse_0_255: 26.836307289704564
+        psnr_db: 33.84357604737451
+      2:
+        pixel_mae_0_255: 1.0779762885067612
+        pixel_mse_0_255: 49.03072043653083
+        psnr_db: 31.226120862366372
+      3:
+        pixel_mae_0_255: 1.3593514275271446
+        pixel_mse_0_255: 67.40088031765481
+        psnr_db: 29.844147920091025
+      4:
+        pixel_mae_0_255: 1.5922289772424847
+        pixel_mse_0_255: 83.54943939484656
+        psnr_db: 28.911368206844784
+    history:
+    - step: 1
+      loss: 0.0036375659983605146
+      grad_norm_preclip: 0.0011582300066947937
+    - step: 2
+      loss: 0.003838837845250964
+      grad_norm_preclip: 0.1345556527376175
+    - step: 3
+      loss: 0.004888513125479221
+      grad_norm_preclip: 0.1341284066438675
+    - step: 4
+      loss: 0.005782817956060171
+      grad_norm_preclip: 0.13549281656742096
+    - step: 5
+      loss: 0.005071943625807762
+      grad_norm_preclip: 0.13527758419513702
+    - step: 6
+      loss: 0.005572646390646696
+      grad_norm_preclip: 0.13485874235630035
+    - step: 7
+      loss: 0.003306209808215499
+      grad_norm_preclip: 0.13576918840408325
+    - step: 8
+      loss: 0.005252010188996792
+      grad_norm_preclip: 0.13542218506336212
+    - step: 9
+      loss: 0.005165000446140766
+      grad_norm_preclip: 0.1337212771177292
+    - step: 10
+      loss: 0.004119811113923788
+      grad_norm_preclip: 0.1346816122531891
+    - step: 11
+      loss: 0.006061771884560585
+      grad_norm_preclip: 0.13464570045471191
+    - step: 12
+      loss: 0.006400642450898886
+      grad_norm_preclip: 0.13467703759670258
+    - step: 13
+      loss: 0.005290576722472906
+      grad_norm_preclip: 0.13517343997955322
+    - step: 14
+      loss: 0.004075733013451099
+      grad_norm_preclip: 0.13570840656757355
+    - step: 15
+      loss: 0.003871507942676544
+      grad_norm_preclip: 0.13629260659217834
+    - step: 16
+      loss: 0.004663530737161636
+      grad_norm_preclip: 0.13407360017299652
+    - step: 17
+      loss: 0.005929218139499426
+      grad_norm_preclip: 0.1339990496635437
+    - step: 18
+      loss: 0.004538645502179861
+      grad_norm_preclip: 0.13446646928787231
+    - step: 19
+      loss: 0.00449506938457489
+      grad_norm_preclip: 0.13493895530700684
+    - step: 20
+      loss: 0.004179602488875389
+      grad_norm_preclip: 0.13492250442504883
+    - step: 21
+      loss: 0.003886487800627947
+      grad_norm_preclip: 0.13591818511486053
+    - step: 22
+      loss: 0.005150137469172478
+      grad_norm_preclip: 0.13544391095638275
+    - step: 23
+      loss: 0.004883076995611191
+      grad_norm_preclip: 0.13504797220230103
+    - step: 24
+      loss: 0.005662632640451193
+      grad_norm_preclip: 0.13396714627742767
+    - step: 25
+      loss: 0.004131787922233343
+      grad_norm_preclip: 0.1343195140361786
+    - step: 26
+      loss: 0.005166796036064625
+      grad_norm_preclip: 0.13488881289958954
+    - step: 27
+      loss: 0.004669841844588518
+      grad_norm_preclip: 0.13471440970897675
+    - step: 28
+      loss: 0.0040364861488342285
+      grad_norm_preclip: 0.13603107631206512
+    - step: 29
+      loss: 0.00506001990288496
+      grad_norm_preclip: 0.1347580999135971
+    - step: 30
+      loss: 0.004540500696748495
+      grad_norm_preclip: 0.1364089846611023
+    - step: 31
+      loss: 0.005565719213336706
+      grad_norm_preclip: 0.11474043875932693
+    - step: 32
+      loss: 0.006120095960795879
+      grad_norm_preclip: 0.13449053466320038
+    - step: 33
+      loss: 0.004075654782354832
+      grad_norm_preclip: 0.13503696024417877
+    - step: 34
+      loss: 0.005065446719527245
+      grad_norm_preclip: 0.134198859333992
+    - step: 35
+      loss: 0.005492090247571468
+      grad_norm_preclip: 0.12284444272518158
+    - step: 36
+      loss: 0.004573654383420944
+      grad_norm_preclip: 0.1359228938817978
+    - step: 37
+      loss: 0.0072867656126618385
+      grad_norm_preclip: 0.13495424389839172
+    - step: 38
+      loss: 0.005971233360469341
+      grad_norm_preclip: 0.13403205573558807
+    - step: 39
+      loss: 0.0031320347916334867
+      grad_norm_preclip: 0.12463028728961945
+    - step: 40
+      loss: 0.003598767099902034
+      grad_norm_preclip: 0.11110112071037292
+    - step: 41
+      loss: 0.005466801580041647
+      grad_norm_preclip: 0.12494508922100067
+    - step: 42
+      loss: 0.00470986170694232
+      grad_norm_preclip: 0.12399786710739136
+    - step: 43
+      loss: 0.00427668122574687
+      grad_norm_preclip: 0.13207244873046875
+    - step: 44
+      loss: 0.004081189166754484
+      grad_norm_preclip: 0.1353943645954132
+    - step: 45
+      loss: 0.004017936065793037
+      grad_norm_preclip: 0.13513469696044922
+    - step: 46
+      loss: 0.004731542896479368
+      grad_norm_preclip: 0.12522347271442413
+    - step: 47
+      loss: 0.0038443661760538816
+      grad_norm_preclip: 0.12385228276252747
+    - step: 48
+      loss: 0.004908586852252483
+      grad_norm_preclip: 0.12491239607334137
+    - step: 49
+      loss: 0.004394439049065113
+      grad_norm_preclip: 0.13588401675224304
+    - step: 50
+      loss: 0.0054373349994421005
+      grad_norm_preclip: 0.12391349673271179
+    - step: 51
+      loss: 0.0051931170746684074
+      grad_norm_preclip: 0.11597522348165512
+    - step: 52
+      loss: 0.0037216420751065016
+      grad_norm_preclip: 0.13517923653125763
+    - step: 53
+      loss: 0.0044881198555231094
+      grad_norm_preclip: 0.05342486873269081
+    - step: 54
+      loss: 0.005142515525221825
+      grad_norm_preclip: 0.1352350115776062
+    - step: 55
+      loss: 0.004357283003628254
+      grad_norm_preclip: 0.07299882918596268
+    - step: 56
+      loss: 0.0049226353876292706
+      grad_norm_preclip: 0.1251457929611206
+    - step: 57
+      loss: 0.004627970512956381
+      grad_norm_preclip: 0.12772022187709808
+    - step: 58
+      loss: 0.0049722036346793175
+      grad_norm_preclip: 0.12480039149522781
+    - step: 59
+      loss: 0.005168437026441097
+      grad_norm_preclip: 0.13457930088043213
+    - step: 60
+      loss: 0.006256266497075558
+      grad_norm_preclip: 0.11004924029111862
+    - step: 61
+      loss: 0.005203168839216232
+      grad_norm_preclip: 0.10985057801008224
+    - step: 62
+      loss: 0.005890585482120514
+      grad_norm_preclip: 0.12885873019695282
+    - step: 63
+      loss: 0.0046629030257463455
+      grad_norm_preclip: 0.11370319128036499
+    - step: 64
+      loss: 0.0046470388770103455
+      grad_norm_preclip: 0.11342616379261017
+    - step: 65
+      loss: 0.004063609056174755
+      grad_norm_preclip: 0.11445994675159454
+    - step: 66
+      loss: 0.0048405868001282215
+      grad_norm_preclip: 0.1026206985116005
+    - step: 67
+      loss: 0.004291013814508915
+      grad_norm_preclip: 0.1356496959924698
+    - step: 68
+      loss: 0.004925264045596123
+      grad_norm_preclip: 0.13133640587329865
+    - step: 69
+      loss: 0.004164328798651695
+      grad_norm_preclip: 0.13374105095863342
+    - step: 70
+      loss: 0.004956776276230812
+      grad_norm_preclip: 0.13470977544784546
+    - step: 71
+      loss: 0.005260616075247526
+      grad_norm_preclip: 0.07986483722925186
+    - step: 72
+      loss: 0.00419059069827199
+      grad_norm_preclip: 0.13260512053966522
+    - step: 73
+      loss: 0.00572469225153327
+      grad_norm_preclip: 0.1236480325460434
+    - step: 74
+      loss: 0.0055504366755485535
+      grad_norm_preclip: 0.13461780548095703
+    - step: 75
+      loss: 0.004539611749351025
+      grad_norm_preclip: 0.13330233097076416
+    - step: 76
+      loss: 0.004567272495478392
+      grad_norm_preclip: 0.0849434956908226
+    - step: 77
+      loss: 0.004689851775765419
+      grad_norm_preclip: 0.13542407751083374
+    - step: 78
+      loss: 0.005056469701230526
+      grad_norm_preclip: 0.11112389713525772
+    - step: 79
+      loss: 0.006529550999403
+      grad_norm_preclip: 0.1253473460674286
+    - step: 80
+      loss: 0.004868278279900551
+      grad_norm_preclip: 0.13419309258460999
+    - step: 81
+      loss: 0.003722092602401972
+      grad_norm_preclip: 0.11244498193264008
+    - step: 82
+      loss: 0.0061791082844138145
+      grad_norm_preclip: 0.1167905330657959
+    - step: 83
+      loss: 0.004941363353282213
+      grad_norm_preclip: 0.13411389291286469
+    - step: 84
+      loss: 0.004330409690737724
+      grad_norm_preclip: 0.13384926319122314
+    - step: 85
+      loss: 0.003742820583283901
+      grad_norm_preclip: 0.1349058747291565
+    - step: 86
+      loss: 0.0045560491271317005
+      grad_norm_preclip: 0.13482291996479034
+    - step: 87
+      loss: 0.0031978690531104803
+      grad_norm_preclip: 0.13176432251930237
+    - step: 88
+      loss: 0.004806899931281805
+      grad_norm_preclip: 0.13398593664169312
+    - step: 89
+      loss: 0.0043794820085167885
+      grad_norm_preclip: 0.12941806018352509
+    - step: 90
+      loss: 0.005534838885068893
+      grad_norm_preclip: 0.12826688587665558
+    - step: 91
+      loss: 0.005225806497037411
+      grad_norm_preclip: 0.1074274331331253
+    - step: 92
+      loss: 0.00503464974462986
+      grad_norm_preclip: 0.12841010093688965
+    - step: 93
+      loss: 0.004949966445565224
+      grad_norm_preclip: 0.13279074430465698
+    - step: 94
+      loss: 0.004438966047018766
+      grad_norm_preclip: 0.13394978642463684
+    - step: 95
+      loss: 0.006508070044219494
+      grad_norm_preclip: 0.10170713812112808
+    - step: 96
+      loss: 0.004491239786148071
+      grad_norm_preclip: 0.13201181590557098
+    - step: 97
+      loss: 0.0038358874153345823
+      grad_norm_preclip: 0.13325539231300354
+    - step: 98
+      loss: 0.0028495516162365675
+      grad_norm_preclip: 0.13509942591190338
+    - step: 99
+      loss: 0.003763429820537567
+      grad_norm_preclip: 0.13564687967300415
+    - step: 100
+      loss: 0.0037997900508344173
+      grad_norm_preclip: 0.13392724096775055
+    train_plus_postdev_s: 0.8259365530000196
+    checkpoint:
+      path: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902/residual_action_free_step100.pt
+      bytes: 15445857
+      sha256: fb4de9acd296677e5410330b10db09a6fdd8f4acaf6f1db5162daf30ac95e50d
+  residual_action_conditioned:
+    parameters: 1292803
+    pre_development:
+      1:
+        pixel_mae_0_255: 0.7044104345550295
+        pixel_mse_0_255: 26.836301060302503
+        psnr_db: 33.843577055484616
+      2:
+        pixel_mae_0_255: 1.0769827308831736
+        pixel_mse_0_255: 49.030705454424606
+        psnr_db: 31.22612218942153
+      3:
+        pixel_mae_0_255: 1.3583638714044355
+        pixel_mse_0_255: 67.40086549325497
+        psnr_db: 29.844148875294536
+      4:
+        pixel_mae_0_255: 1.591245750314556
+        pixel_mse_0_255: 83.54941573888937
+        psnr_db: 28.911369436494347
+    post_development:
+      1:
+        pixel_mae_0_255: 0.7062283376581036
+        pixel_mse_0_255: 26.836335440293624
+        psnr_db: 33.84357149174063
+      2:
+        pixel_mae_0_255: 1.078785115678329
+        pixel_mse_0_255: 49.03077468752599
+        psnr_db: 31.226116057033188
+      3:
+        pixel_mae_0_255: 1.3601578254019842
+        pixel_mse_0_255: 67.40094907763705
+        psnr_db: 29.84414348957536
+      4:
+        pixel_mae_0_255: 1.593034613179043
+        pixel_mse_0_255: 83.54953559573914
+        psnr_db: 28.9113632062735
+    history:
+    - step: 1
+      loss: 0.0036375659983605146
+      grad_norm_preclip: 0.0011582350125536323
+    - step: 2
+      loss: 0.0038388483226299286
+      grad_norm_preclip: 0.1345556527376175
+    - step: 3
+      loss: 0.004888502415269613
+      grad_norm_preclip: 0.1341283619403839
+    - step: 4
+      loss: 0.005782823543995619
+      grad_norm_preclip: 0.13549277186393738
+    - step: 5
+      loss: 0.005071911960840225
+      grad_norm_preclip: 0.13527756929397583
+    - step: 6
+      loss: 0.005572547670453787
+      grad_norm_preclip: 0.13485875725746155
+    - step: 7
+      loss: 0.0033060263376682997
+      grad_norm_preclip: 0.13576924800872803
+    - step: 8
+      loss: 0.0052522895857691765
+      grad_norm_preclip: 0.13542228937149048
+    - step: 9
+      loss: 0.005165323615074158
+      grad_norm_preclip: 0.13372141122817993
+    - step: 10
+      loss: 0.00412013940513134
+      grad_norm_preclip: 0.13468176126480103
+    - step: 11
+      loss: 0.006062065251171589
+      grad_norm_preclip: 0.13464584946632385
+    - step: 12
+      loss: 0.006400413811206818
+      grad_norm_preclip: 0.13467714190483093
+    - step: 13
+      loss: 0.005290381610393524
+      grad_norm_preclip: 0.13517355918884277
+    - step: 14
+      loss: 0.004075547680258751
+      grad_norm_preclip: 0.1357085406780243
+    - step: 15
+      loss: 0.0038713112007826567
+      grad_norm_preclip: 0.13629275560379028
+    - step: 16
+      loss: 0.004663760773837566
+      grad_norm_preclip: 0.13407374918460846
+    - step: 17
+      loss: 0.005929448641836643
+      grad_norm_preclip: 0.13399921357631683
+    - step: 18
+      loss: 0.004538845270872116
+      grad_norm_preclip: 0.13446663320064545
+    - step: 19
+      loss: 0.004495216067880392
+      grad_norm_preclip: 0.13493908941745758
+    - step: 20
+      loss: 0.004179518669843674
+      grad_norm_preclip: 0.1349225789308548
+    - step: 21
+      loss: 0.003886440536007285
+      grad_norm_preclip: 0.1359182447195053
+    - step: 22
+      loss: 0.0051501146517694
+      grad_norm_preclip: 0.13544397056102753
+    - step: 23
+      loss: 0.0048830751329660416
+      grad_norm_preclip: 0.13504798710346222
+    - step: 24
+      loss: 0.005662610288709402
+      grad_norm_preclip: 0.13396716117858887
+    - step: 25
+      loss: 0.004131743218749762
+      grad_norm_preclip: 0.13431952893733978
+    - step: 26
+      loss: 0.005166735965758562
+      grad_norm_preclip: 0.13488879799842834
+    - step: 27
+      loss: 0.0046697817742824554
+      grad_norm_preclip: 0.13471439480781555
+    - step: 28
+      loss: 0.0040365359745919704
+      grad_norm_preclip: 0.13603107631206512
+    - step: 29
+      loss: 0.005060066003352404
+      grad_norm_preclip: 0.1347580850124359
+    - step: 30
+      loss: 0.00454055005684495
+      grad_norm_preclip: 0.1364089697599411
+    - step: 31
+      loss: 0.005565763451159
+      grad_norm_preclip: 0.12085257470607758
+    - step: 32
+      loss: 0.006120728328824043
+      grad_norm_preclip: 0.1344904750585556
+    - step: 33
+      loss: 0.0040769316256046295
+      grad_norm_preclip: 0.135036900639534
+    - step: 34
+      loss: 0.005067307967692614
+      grad_norm_preclip: 0.13419878482818604
+    - step: 35
+      loss: 0.005492708645761013
+      grad_norm_preclip: 0.13390561938285828
+    - step: 36
+      loss: 0.004575907252728939
+      grad_norm_preclip: 0.13592272996902466
+    - step: 37
+      loss: 0.007293191738426685
+      grad_norm_preclip: 0.13495397567749023
+    - step: 38
+      loss: 0.005977343767881393
+      grad_norm_preclip: 0.13470706343650818
+    - step: 39
+      loss: 0.0031344196759164333
+      grad_norm_preclip: 0.12289846688508987
+    - step: 40
+      loss: 0.003598973620682955
+      grad_norm_preclip: 0.11560698598623276
+    - step: 41
+      loss: 0.005468424409627914
+      grad_norm_preclip: 0.1194896250963211
+    - step: 42
+      loss: 0.004712564870715141
+      grad_norm_preclip: 0.11448889970779419
+    - step: 43
+      loss: 0.004277350381016731
+      grad_norm_preclip: 0.13413313031196594
+    - step: 44
+      loss: 0.004080650396645069
+      grad_norm_preclip: 0.11228751391172409
+    - step: 45
+      loss: 0.004020821303129196
+      grad_norm_preclip: 0.13513627648353577
+    - step: 46
+      loss: 0.004732239525765181
+      grad_norm_preclip: 0.1349463164806366
+    - step: 47
+      loss: 0.0038458569906651974
+      grad_norm_preclip: 0.13468141853809357
+    - step: 48
+      loss: 0.0049117617309093475
+      grad_norm_preclip: 0.13472634553909302
+    - step: 49
+      loss: 0.004393082112073898
+      grad_norm_preclip: 0.1263168305158615
+    - step: 50
+      loss: 0.00544205866754055
+      grad_norm_preclip: 0.134409561753273
+    - step: 51
+      loss: 0.005201220046728849
+      grad_norm_preclip: 0.1348811239004135
+    - step: 52
+      loss: 0.003725025337189436
+      grad_norm_preclip: 0.13568709790706635
+    - step: 53
+      loss: 0.004489907994866371
+      grad_norm_preclip: 0.09337787330150604
+    - step: 54
+      loss: 0.005149186123162508
+      grad_norm_preclip: 0.13480402529239655
+    - step: 55
+      loss: 0.004364131949841976
+      grad_norm_preclip: 0.12122266739606857
+    - step: 56
+      loss: 0.004928422160446644
+      grad_norm_preclip: 0.13217203319072723
+    - step: 57
+      loss: 0.004631897434592247
+      grad_norm_preclip: 0.13462433218955994
+    - step: 58
+      loss: 0.004973609000444412
+      grad_norm_preclip: 0.09648106247186661
+    - step: 59
+      loss: 0.005171885248273611
+      grad_norm_preclip: 0.13440407812595367
+    - step: 60
+      loss: 0.0062604062259197235
+      grad_norm_preclip: 0.13447293639183044
+    - step: 61
+      loss: 0.005204028449952602
+      grad_norm_preclip: 0.10980734974145889
+    - step: 62
+      loss: 0.005891934968531132
+      grad_norm_preclip: 0.1346343457698822
+    - step: 63
+      loss: 0.004666331224143505
+      grad_norm_preclip: 0.13393659889698029
+    - step: 64
+      loss: 0.004653636831790209
+      grad_norm_preclip: 0.13445913791656494
+    - step: 65
+      loss: 0.00406815018504858
+      grad_norm_preclip: 0.1303698867559433
+    - step: 66
+      loss: 0.004845586605370045
+      grad_norm_preclip: 0.1105981394648552
+    - step: 67
+      loss: 0.0042961398139595985
+      grad_norm_preclip: 0.11497239023447037
+    - step: 68
+      loss: 0.004931905306875706
+      grad_norm_preclip: 0.135226771235466
+    - step: 69
+      loss: 0.004165121354162693
+      grad_norm_preclip: 0.12934128940105438
+    - step: 70
+      loss: 0.004956659860908985
+      grad_norm_preclip: 0.1104402244091034
+    - step: 71
+      loss: 0.005266644060611725
+      grad_norm_preclip: 0.11414428800344467
+    - step: 72
+      loss: 0.004195074085146189
+      grad_norm_preclip: 0.1356116682291031
+    - step: 73
+      loss: 0.005727793090045452
+      grad_norm_preclip: 0.13473451137542725
+    - step: 74
+      loss: 0.005549275316298008
+      grad_norm_preclip: 0.11603846400976181
+    - step: 75
+      loss: 0.0045406753197312355
+      grad_norm_preclip: 0.11600387096405029
+    - step: 76
+      loss: 0.004570441320538521
+      grad_norm_preclip: 0.11445771157741547
+    - step: 77
+      loss: 0.004686606116592884
+      grad_norm_preclip: 0.09121881425380707
+    - step: 78
+      loss: 0.005059828981757164
+      grad_norm_preclip: 0.13066476583480835
+    - step: 79
+      loss: 0.006533205509185791
+      grad_norm_preclip: 0.08252894878387451
+    - step: 80
+      loss: 0.004872461780905724
+      grad_norm_preclip: 0.12480493634939194
+    - step: 81
+      loss: 0.0037249268498271704
+      grad_norm_preclip: 0.12972281873226166
+    - step: 82
+      loss: 0.006179798394441605
+      grad_norm_preclip: 0.11545581370592117
+    - step: 83
+      loss: 0.004945674445480108
+      grad_norm_preclip: 0.13530988991260529
+    - step: 84
+      loss: 0.004334289114922285
+      grad_norm_preclip: 0.12056290358304977
+    - step: 85
+      loss: 0.0037442161701619625
+      grad_norm_preclip: 0.1347358673810959
+    - step: 86
+      loss: 0.004559024702757597
+      grad_norm_preclip: 0.1345205307006836
+    - step: 87
+      loss: 0.003201692830771208
+      grad_norm_preclip: 0.10951729118824005
+    - step: 88
+      loss: 0.004812055733054876
+      grad_norm_preclip: 0.13462868332862854
+    - step: 89
+      loss: 0.004381958395242691
+      grad_norm_preclip: 0.13415749371051788
+    - step: 90
+      loss: 0.005534348543733358
+      grad_norm_preclip: 0.13392692804336548
+    - step: 91
+      loss: 0.005232484545558691
+      grad_norm_preclip: 0.13492409884929657
+    - step: 92
+      loss: 0.005039623007178307
+      grad_norm_preclip: 0.135026752948761
+    - step: 93
+      loss: 0.004948239307850599
+      grad_norm_preclip: 0.1340838223695755
+    - step: 94
+      loss: 0.004438729025423527
+      grad_norm_preclip: 0.12953723967075348
+    - step: 95
+      loss: 0.0065158954821527
+      grad_norm_preclip: 0.1339109241962433
+    - step: 96
+      loss: 0.00449277414008975
+      grad_norm_preclip: 0.1063065379858017
+    - step: 97
+      loss: 0.0038368008099496365
+      grad_norm_preclip: 0.13441069424152374
+    - step: 98
+      loss: 0.002851272700354457
+      grad_norm_preclip: 0.13577505946159363
+    - step: 99
+      loss: 0.0037636817432940006
+      grad_norm_preclip: 0.10958854854106903
+    - step: 100
+      loss: 0.0038039106875658035
+      grad_norm_preclip: 0.13597705960273743
+    train_plus_postdev_s: 0.5476502309999773
+    checkpoint:
+      path: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902/residual_action_conditioned_step100.pt
+      bytes: 15550583
+      sha256: c6ea20daef75683d21c05d43ab6129311aec908a3a7e7fd90ccbe6426251fd9d
+elapsed_s: 2.824849624999956
+peak_vram_allocated_bytes: 133392896
+peak_vram_reserved_bytes: 159383552
+training_steps_total: 200
+optimizer_steps_total: 200
+prior_exposed_confirmation_executed: false
+checkpoint_selected: false
+environment_steps: 0
+boundary: Development-only residual smoke. The prior-exposed confirmation episodes
+  are not executed. No checkpoint selection, formal training, planning, reward prediction
+  or environment claim is authorized.

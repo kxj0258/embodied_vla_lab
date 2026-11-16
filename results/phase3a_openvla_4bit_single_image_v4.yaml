@@ -1,0 +1,47 @@
+experiment: phase3a_openvla_4bit_single_image_v4_demo0_t000_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+checkpoint: {repo_id: openvla/openvla-7b-finetuned-libero-goal, revision: fa5ae1e7509348889295bba8e08621d8b55e9baf}
+input:
+  fixture: outputs/reference/phase3a_openvla_fixture_demo0_t000/agentview_rgb.png
+  fixture_sha256: d4c9852bcb00f084c104ba1381579720a154796eecbde26669d53a97a0278dbd
+  source: LIBERO turn_on_the_stove demo_0 agentview_rgb timestep 0
+  prompt: "In: What action should the robot take to turn on the stove?\nOut:"
+  center_crop_area: 0.9
+  prompt_alignment_fix_applied: true
+  prompt_token_count: 20
+  attention_mask_count: 20
+runtime:
+  quantization: NF4_4bit
+  compute_dtype: bfloat16
+  attention: eager
+  local_source_classes: true
+  force_accelerate_hooks_compatibility_shim: true
+measurements:
+  model_load_s: 5.805995522008743
+  single_action_generation_s: 1.0244039350072853
+  observed_single_action_hz: 0.9761773060711609
+  passive_vram_allocated_bytes: 4720663552
+  passive_vram_reserved_bytes: 4836032512
+  peak_vram_allocated_bytes: 5060689920
+  peak_vram_reserved_bytes: 5196742656
+  rss_kib_at_result: 1882896
+  process_wall_s: 9.33
+  maximum_rss_kib: 5826412
+output:
+  raw_action: [-0.034632364791982284, -0.013792026276681968, -0.3970588235294118, -0.0001743721319179825, 0.04479202452827902, 0.01806838201687616, 0.0]
+  libero_adapted_action: [-0.034632364791982284, -0.013792026276681968, -0.3970588235294118, -0.0001743721319179825, 0.04479202452827902, 0.01806838201687616, 1.0]
+  shape: [7]
+  finite: true
+warnings: {bitsandbytes_torch_internal_api_futurewarning: NON_SEMANTIC_CURRENT_EXECUTION_PASS}
+artifacts:
+  result_json: {path: outputs/eval/phase3a_openvla_4bit_single_image_v4_demo0_t000_seed20260827/result.json, bytes: 1464, sha256: 28e5a5e7ee41307d18bdf17223b81270e8b3d44bafad9c8fce156f76cae47063}
+  raw_log: {path: results/raw/phase3a_openvla_4bit_single_image_v4_demo0_t000_seed20260827_host_20260827.log, bytes: 2177, sha256: 3c038aebd225cb0cb90d4f12266b990e9be4e1b6527ac600a2bcb769b0285620}
+  entrypoint: {path: scripts/check_phase3a_openvla_4bit_single_image.py, sha256: 02f4b1ab03a590446904ef91337adbf375b2b798c8f60a6c4141edb8b6e25d59}
+boundaries:
+  - Exactly one frozen-image seven-token action generation; latency is a cold observation, not a steady-state distribution.
+  - Observed 0.976 predictions/s is not LIBERO environment throughput or the 20 Hz control rate.
+  - No environment action was executed; success, reward, termination and closed-loop behavior remain unknown.
+  - QLoRA forward/backward and training feasibility remain untested.
+next_gate: One isolated LIBERO reset plus exactly one OpenVLA action/environment step using a dependency-safe bridge.

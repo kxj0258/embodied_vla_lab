@@ -1,0 +1,27 @@
+experiment: phase3a_openvla_local_source_imports_v3_codex_20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+environment:
+  name: evla-openvla
+  draccus: 0.8.0
+  rich: 13.9.4
+imports:
+  - OpenVLAConfig
+  - OpenVLAForActionPrediction
+  - PrismaticImageProcessor
+  - PrismaticProcessor
+implementation:
+  mode: inference_only_namespace_registration
+  reason: Avoid eager top-level imports of training-only RLDS/dlimp modules.
+resources: {process_wall_s: 2.21, maximum_rss_kib: 811788}
+execution: {model_loaded: false, cuda_initialized: false, inference_run: false}
+history:
+  host_v1: FAIL_after_dependency_install_due_to_eager_training_RLDS_dlimp_import
+  codex_v2: import_PASS_but_version_reporting_invalid_due_to_stale_package___version__
+  codex_v3: final_valid_PASS_using_importlib_metadata
+artifacts:
+  checker: {path: scripts/check_phase3a_openvla_local_source_imports.py, sha256: c729c83b1008608db3222d61077795a54718d130fa8294d28fcc1ba4cb48578b}
+  raw_log: {path: results/raw/phase3a_openvla_local_source_imports_v3_codex_20260827.log, bytes: 267, sha256: ed218df21a6c2eed6ed22df4d4eec46c52239496eaecce06fe5453994687ad09}
+boundary: Import-path compatibility only; no checkpoint load, GPU memory, action, latency, rollout, success, reward, or training evidence.
+next_gate: Host-run the frozen NF4 4-bit single-image action prediction with a new experiment ID.

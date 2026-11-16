@@ -1,0 +1,19 @@
+classification: PASS
+experiment: phase6c_feagine_a03_runtime_zero_step_v1_static
+checks:
+  phase6b_pass: true
+  explicit_preset: true
+  zero_step_boundary: true
+  script_has_no_step: true
+  fresh_targets: true
+  no_runtime_imports: true
+checks_passed: 6
+checks_total: 6
+source_hashes:
+  config: 5e32631b82ec6f427cf73cb9ba548d9b36d5bc4d14daed238359d0906c24e843
+  runner: ee71502462d63694cff203083ac0f462238bef76f4218ba2c66f5a0239aea506
+packages_installed: false
+mjcf_loaded: false
+environment_steps: 0
+boundary: Static authorization only; no runtime imports, install, build, MJCF load
+  or simulation.

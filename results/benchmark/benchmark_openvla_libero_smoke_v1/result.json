@@ -1,0 +1,73 @@
+{
+  "experiment_id": "benchmark_openvla_libero_smoke_v1",
+  "policy_name": "openvla_base",
+  "task": {
+    "suite": "libero_goal",
+    "task_id": 7,
+    "name": "turn_on_the_stove",
+    "instruction": "turn on the stove",
+    "observation": {
+      "image_keys": [
+        "agentview"
+      ],
+      "image_shape": [
+        128,
+        128,
+        3
+      ],
+      "image_dtype": "uint8",
+      "state_dim": 9,
+      "language_required": true,
+      "camera_frame": "environment",
+      "state_frame": "robot"
+    },
+    "action": {
+      "dim": 7,
+      "representation": "delta_pose_gripper",
+      "coordinate_frame": "environment",
+      "rotation_representation": "axis_angle",
+      "gripper_semantics": "normalized_open_close",
+      "normalization": "policy_defined",
+      "control_frequency_hz": 20,
+      "chunk_size": 1,
+      "action_steps_per_inference": 1
+    },
+    "episode_horizon": 1,
+    "split": "development",
+    "init_state_indices": [
+      0
+    ]
+  },
+  "classification": "PASS",
+  "success_count": 0,
+  "success_total": 1,
+  "episodes": [
+    {
+      "episode": 0,
+      "init_state_index": 0,
+      "seed": 20260908,
+      "success": false,
+      "steps": 1,
+      "sum_reward": 0.0,
+      "max_reward": 0.0,
+      "terminated": false,
+      "truncated": true,
+      "inference_s": 0.738618282994139,
+      "episode_wall_s": 2.8574603849992855
+    }
+  ],
+  "metrics": {
+    "mean_inference_s": 0.738618282994139,
+    "mean_episode_wall_s": 2.8574603849992855,
+    "total_environment_steps": 1
+  },
+  "provenance": {
+    "evaluator": "evla_benchmark.evaluator",
+    "schema_version": "evla.benchmark.v1"
+  },
+  "failures": {
+    "timeout": 1
+  },
+  "schema_version": "evla.benchmark.v1",
+  "success_rate": 0.0
+}

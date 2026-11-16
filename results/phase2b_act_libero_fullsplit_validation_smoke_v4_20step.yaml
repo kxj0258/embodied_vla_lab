@@ -1,0 +1,31 @@
+experiment: phase2b_act_libero_fullsplit_validation_smoke_v4_20step_seed20260826
+date: 2026-08-26
+classification: PASS
+exit_status: 0
+execution_context: host_cuda
+metrics:
+  train_loss: {step_1: 0.9179883003234863, step_20: 0.9320972561836243}
+  validation_loss: {step_20: 0.7429550438281254}
+  validation_samples: 889
+  gradient_norm_preclip: {step_1: 89.89429473876953, step_20: 30.552993774414062}
+  optimizer_steps_completed: 20
+  total_elapsed_s: 3.332990509996307
+  process_wall_s: 8.61
+  maximum_rss_kib: 2475580
+  peak_vram_allocated_bytes: 709839360
+  peak_vram_reserved_bytes: 834666496
+  success: NOT_RUN
+  reward: NOT_RUN
+checkpoint:
+  path: outputs/train/phase2b_act_libero_fullsplit_validation_smoke_v4_20step_seed20260826/checkpoints/model_000020.pt
+  bytes: 410450149
+  sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+raw_log:
+  path: results/raw/phase2b_act_libero_fullsplit_validation_smoke_v4_20step_host_20260826.log
+  lines: 5
+  bytes: 627
+  sha256: e76227cd4059c4ffa05eccd035bbd147196040f46514fcc9aed24beab2dd43e6
+interpretation: >-
+  The complete frozen 889-frame validation split produced a finite sample-weighted loss and checkpoint writing
+  passed. A single post-training validation point is not a learning curve, and offline action loss is not rollout
+  success or reward. The checkpoint is byte-identical to v3 because evaluation is non-mutating.

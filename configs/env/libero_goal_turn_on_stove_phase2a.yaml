@@ -1,0 +1,61 @@
+# Phase 2A static contract candidate. This file does not authorize environment
+# construction, rollout, demonstration download, training, or evaluation.
+suite: libero_goal
+task_order_index: 0
+task_index: 7
+task_name: turn_on_the_stove
+language_instruction: Turn on the stove
+problem: Libero
+problem_folder: libero_goal
+bddl_file: turn_on_the_stove.bddl
+init_states_file: turn_on_the_stove.pruned_init
+
+robot: Panda
+controller: OSC_POSE
+action:
+  shape: [7]
+  normalized_range: [-1.0, 1.0]
+  components:
+    - {indices: [0, 1, 2], meaning: end_effector_position_delta}
+    - {indices: [3, 4, 5], meaning: end_effector_axis_angle_delta}
+    - {indices: [6], meaning: gripper_command}
+  controller_output_limits:
+    position_delta: [-0.05, 0.05]
+    rotation_delta: [-0.5, 0.5]
+
+control_frequency_hz: 20
+evaluation_horizon_policy_steps: 600
+physics_settle_steps: 5
+success_contract:
+  bddl_goal: "(And (Turnon flat_stove_1))"
+  reward: sparse_1_on_success_else_0
+  termination: bddl_success
+
+observation:
+  image_height: 128
+  image_width: 128
+  rgb:
+    agentview_rgb: agentview_image
+    eye_in_hand_rgb: robot0_eye_in_hand_image
+  low_dim:
+    gripper_states: {source: robot0_gripper_qpos, shape: [2]}
+    joint_states: {source: robot0_joint_pos, shape: [7]}
+
+seed_policy:
+  init_state_source: pinned_pruned_init
+  init_state_count: 50
+  init_state_selection: deterministic_index_modulo_50
+  training_seed: NOT_SELECTED
+  development_eval_seeds: NOT_SELECTED
+  final_eval_seeds: NOT_SELECTED
+
+demonstration:
+  expected_relative_path: libero_goal/turn_on_the_stove_demo.hdf5
+  local_status: PRESENT_VERIFIED
+  source_repo: yifengzhu-hf/LIBERO-datasets
+  revision: f13aa24a3da8c43c7225569f28c562979fa0e35a
+  bytes: 447509922
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  episodes: 50
+  frames: 4460
+  download_authorized: true

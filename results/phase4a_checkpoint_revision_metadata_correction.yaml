@@ -1,0 +1,14 @@
+classification: PASS
+kind: metadata_correction
+affected_configs:
+  - configs/eval/phase4a_openvla_viewpoint_camera_gate_v1.yaml
+  - configs/eval/phase4a_openvla_viewpoint_camera_gate_v2.yaml
+incorrect_unloaded_revision: fa5ae1ed633f94762dfdd28a0a305b643b2ba8baf
+canonical_frozen_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+evidence:
+  phase3a_config: configs/eval/openvla_libero_phase3a_final_heldout45.yaml
+  phase3a_result: results/phase3a_openvla_libero_final_heldout45_v1.yaml
+  p0_breadth_config: configs/eval/p0_breadth_openvla_base_10task30_v2.yaml
+  p0_breadth_result: results/p0_breadth_openvla_base_10task30_v2.yaml
+impact: none_on_phase4a_camera_result_because_model_weights_were_never_loaded
+remediation: Phase 4B and later bind the canonical frozen revision exactly; Phase 4A immutable configs remain preserved.

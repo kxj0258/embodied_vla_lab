@@ -1,0 +1,21 @@
+classification: PASS
+experiment: phase6e_feagine_a03_move_to_target_smoke_v1_static
+checks:
+  phase6d_v2_pass: true
+  small_core_target: true
+  bounded_steps: true
+  frozen_success_gate: true
+  frozen_material_thresholds: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  records_ik_and_progress: true
+  fail_closed_material: true
+  no_runtime_imports: true
+checks_passed: 10
+checks_total: 10
+source_hashes:
+  config: a861a7c3dfe25055fe1a3a129ac71fc53acea7807a2a7c51d7cd4a1c83d7faaa
+  runner: fda97661a8139b354b405e3cc7225955bb97a76cf551e6cc7c59e184a5ec9c1b
+environment_steps: 0
+boundary: Static authorization only; no MuJoCo load/step, GPU, policy, rendering,
+  or hardware.

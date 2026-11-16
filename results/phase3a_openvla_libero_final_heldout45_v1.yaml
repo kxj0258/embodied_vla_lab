@@ -1,0 +1,81 @@
+experiment: phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+execution_pass: true
+protocol:
+  kind: preregistered_base_policy_final
+  task: libero_goal/turn_on_the_stove
+  init_state_indices: 5-49_complete_enumeration
+  development_excluded_indices: 0-4
+  evaluator_seed_range: 20260901-20260945
+  episodes: 45
+  episode_horizon: 600
+  one_persistent_model_load: true
+  network_used: false
+aggregate:
+  success_count: 45
+  success_total: 45
+  success_rate: 1.0
+  success_wilson_95: [0.9213484012671117, 1.0]
+  mean_sum_reward: 1.0
+  mean_max_reward: 1.0
+  total_environment_steps: 4134
+  model_predictions: 4134
+  completion_steps: {mean: 91.86666666666666, median: 76, p90: 94.20000000000002, p95: 101.39999999999999, p99: 429.32000000000085, min: 65, max: 593}
+  long_tail_states:
+    - {init_state_index: 11, steps: 102}
+    - {init_state_index: 12, steps: 593, horizon_margin_steps: 7}
+    - {init_state_index: 40, steps: 221}
+  terminated_episodes: 45
+  truncated_episodes: 0
+latency:
+  model_load_s: 5.7542800230003195
+  inference_s: {total: 1693.7104590581148, mean: 0.4097025783885135, median: 0.40897095399850514, p05: 0.38694680919870733, p25: 0.39977056925272336, p75: 0.4198135694969096, p95: 0.43254918820457533, p99: 0.4424846912591602, min: 0.3634773179946933, max: 0.893416259001242}
+  pure_inference_predictions_per_s: 2.440794988240758
+  internal_rollout_end_to_end_s: 1839.0063047510048
+  internal_end_to_end_steps_per_s: 2.2479531414981904
+  episode_wall_s: {mean: 39.80287581875648, median: 32.997916428008466, p95: 43.89523219360562, max: 256.3108400640049}
+  process_wall_s: 1844.55
+action:
+  all_4134_shape_7_finite_and_in_bounds: true
+  component_min: [-0.8037920380339904, -0.3078046289144778, -0.9338235294117647, -0.15037605110921112, -0.1446491561683954, -0.1367695593053804, -1.0]
+  component_max: [0.5778466342710982, 0.9074474619884116, 0.6323529411764706, 0.18618697030287162, 0.26273320586073634, 0.3739945588225827, 1.0]
+  adapted_gripper_counts: {'-1.0': 2271, '+1.0': 1863}
+resources:
+  passive_vram_allocated_bytes: 4720663552
+  passive_vram_reserved_bytes: 4836032512
+  peak_vram_allocated_bytes: 5061286912
+  peak_vram_reserved_bytes: 5196742656
+  worker_rss_kib_at_result: 1881068
+  coordinator_rss_kib_at_result: 2823468
+  maximum_rss_kib: 5768988
+  user_cpu_s: 2138.93
+  system_cpu_s: 148.21
+  cpu_percent: 123
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+training_and_checkpoint_metrics:
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation: NOT_APPLICABLE_EVALUATION_ONLY
+  gradients: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+  training_executed: false
+  checkpoint_created: false
+  frozen_checkpoint_load: PASS_ALL_FOUR_SHARDS
+artifacts:
+  output_dir: outputs/eval/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+  output_size: 116M
+  ipc_files: 12402
+  eval_info: {sha256: af09a078a6f80089fa75381ba0b942fb977a882ee9ffa73acc909c32d15c13cf}
+  trajectory: {lines: 4134, sha256: 4c236d4ad942e8e954cd21dcac80962fa906c2c3ab1f4a48f178c3fd120f6d29}
+  resolved_config: {sha256: 6e8398b3b815ac548b57e8128e8561fac581d88caca1317d9ef3e4860b767870}
+  raw_log: {path: results/raw/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901_host_20260827.log, lines: 4218, sha256: b195f1b94f0273b96d77cbc50d871b85a6409d6a21740a38278480ce54b06873}
+statistical_boundary: >-
+  This exactly enumerates the complete 45-state finite set excluded from OpenVLA development. If generalized as
+  Bernoulli samples, 45/45 has a Wilson 95% interval of approximately 92.13%-100%. The evidence is single-task,
+  fixed-checkpoint, fixed-runtime and unperturbed-vision only. State 12 required 593/600 steps, so universal success
+  does not imply uniform control efficiency or a large horizon margin.
+phase_status: PHASE3A_BASE_POLICY_FEASIBILITY_COMPLETE
+next_gate: Design a no-install QLoRA source/data contract and then a separately authorized batch-1 forward/backward resource gate.

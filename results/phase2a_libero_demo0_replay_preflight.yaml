@@ -1,0 +1,90 @@
+experiment: phase2a_libero_goal_turn_on_stove_demo0_replay_preflight
+date: 2026-08-26
+classification: FAIL
+exit_status: 1
+phase_status: RUNTIME_INTERFACE_AND_TASK_REPLAY_PASS_DETERMINISTIC_STATE_REPLAY_FAIL
+
+source:
+  libero_pin: 8f1084e3132a39270c3cc3e7e98f04940126398a391
+  demonstration_revision: f13aa24a3da8c43c7225569f28c562979fa0e35a
+  demonstration_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  episode: demo_0
+
+execution:
+  environment: evla-core
+  offline: true
+  mujoco_gl: egl
+  egl_device: 0
+  isolated_libero_config: configs/libero/phase2a_runtime/config.yaml
+  script: scripts/check_phase2a_libero_demo0_replay.py
+  actions_executed: 80
+  environment_constructed: true
+  rendering_executed: true
+  policy_forward_executed: false
+  cuda_policy_used: false
+  training_executed: false
+  formal_evaluation_executed: false
+
+passed_subcontracts:
+  initial_state_exact_l2: 0.0
+  action_shape: [80, 7]
+  action_dtype: float64
+  all_actions_accepted: true
+  agentview_rgb_valid: true
+  eye_in_hand_rgb_valid: true
+  first_success_step: 70
+  final_success: true
+  replay_reward_sum: 11.0
+  agentview_first_range: [0, 241]
+  agentview_last_range: [0, 232]
+  eye_in_hand_first_range: [0, 239]
+  eye_in_hand_last_range: [8, 186]
+
+failed_subcontract:
+  name: archived_next_simulator_state_determinism
+  preregistered_max_l2_threshold: 0.01
+  max_next_state_l2: 0.507810213439
+  mean_next_state_l2: 0.0591285134228
+  median_next_state_l2: 0.0508137988638
+  p95_next_state_l2: 0.123943689734
+  first_step_over_threshold: 1
+  max_before_success: 0.507810213439
+  max_qpos_l2: 0.0499059921715
+  median_qpos_l2: 0.0275937206217
+  max_qvel_l2: 0.507634980128
+  median_qvel_l2: 0.0321924017449
+  interpretation: >-
+    Exact archived-state replay is not reproduced by the current MuJoCo 3.8.1 / robosuite 1.4.0
+    runtime. Drift starts after the first action and affects qpos as well as qvel. The same action
+    sequence nevertheless reaches the task success predicate. Do not relax the threshold after
+    observing this result or claim deterministic simulator replay.
+
+expected_exceptions:
+  - robosuite private macro file absent; optional warning already accepted in Phase 0
+  - hf-libero first checks its wheel-local assets then resolves the already-cached offline assets
+  - task-scoped writable Numba and Matplotlib caches are required under /tmp
+  - archived chiliocosm asset paths require a checked XML asset-prefix migration
+
+resource_metrics:
+  diagnostic_replay_wall_s: 11.701647
+  process_wall_s: 13.32
+  maximum_resident_set_kib: 2264316
+  peak_vram: NOT_MEASURED_NO_POLICY_CUDA
+
+metrics_boundary:
+  loss: NOT_APPLICABLE_NO_MODEL
+  offline_eval: ACTION_REPLAY_ONLY_NO_MODEL_LOSS
+  success: ONE_RECORDED_DEMONSTRATION_REPLAY_SUCCEEDED_NOT_POLICY_SUCCESS_RATE
+  reward: REPLAY_SUM_11_SPARSE_SUCCESS_PERSISTENCE_NOT_POLICY_REWARD
+  gradient_norm: NOT_APPLICABLE
+  throughput: 6.836_actions_per_second_including_render_and_simulation
+  statistical_conclusion: >-
+    One demonstration proves that the current offline EGL runtime accepts the recorded 7D actions,
+    produces valid dual-camera observations, and can reach the task predicate. N=1 provides no
+    policy success or generalization estimate. Exact simulator-state reproducibility failed.
+
+next_gate:
+  id: PHASE2A_REPLAY_COMPATIBILITY_DECISION
+  action: Decide whether Phase 2A requires exact archived-state replay or only task-semantic replay before training.
+  new_execution_authorized: false
+

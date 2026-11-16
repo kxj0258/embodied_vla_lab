@@ -1,0 +1,57 @@
+experiment_id: phase4a_openvla_viewpoint_camera_gate_v2_seed20261101
+phase: Phase 4A
+purpose: Corrected paired third-person and eye-in-hand camera runtime gate.
+task:
+  suite: libero_goal
+  task_id: 7
+  name: turn_on_the_stove
+  instruction: turn on the stove
+protocol:
+  evaluator_seed: 20261101
+  init_state_index: 0
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  observation_resolution: [128, 128]
+  display_resolution: [640, 640]
+  observation_keys:
+    agentview: agentview
+    eye_in_hand: eye_in_hand
+  simulator_camera_names:
+    agentview: agentview
+    eye_in_hand: robot0_eye_in_hand
+  common_model_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  reset_count: 1
+  environment_steps: 0
+  model_predictions: 0
+  required_checks:
+    - both_observation_keys_present
+    - uint8_rgb_shape_128x128x3
+    - both_direct_renders_shape_640x640x3
+    - nonconstant_images
+    - viewpoints_not_pixel_identical
+    - deterministic_hash_manifest
+model:
+  policy: OpenVLA-7B frozen base
+  revision: fa5ae1ed633f94762dfdd28a0a305b643b2ba8baf
+  unnorm_key: libero_goal
+  weights_loaded: false
+splits_preregistered_for_later_rollouts:
+  split_unit: task_id
+  development_task_ids: [0, 3, 6, 7, 8]
+  final_task_ids: [1, 2, 4, 5, 9]
+  init_state_indices_per_task: [0, 1, 2]
+  paired_view_conditions: [agentview, eye_in_hand]
+  development_episode_count: 30
+  final_episode_count: 30
+  selection_rationale: deterministic coverage split fixed before observing any eye-in-hand policy outcome
+  tuning_boundary: development may diagnose only preprocessing/runtime; no checkpoint training or selection
+  final_boundary: run once after development protocol is frozen; no post-final tuning or selective reruns
+supersedes_failed_run: results/phase4a_openvla_viewpoint_camera_gate_v1_failure.yaml
+output_dir: outputs/eval/phase4a_openvla_viewpoint_camera_gate_v2_seed20261101
+structured_result: results/phase4a_openvla_viewpoint_camera_gate_v2.yaml
+raw_log: results/raw/phase4a_openvla_viewpoint_camera_gate_v2_host_20260828.log
+boundary: >-
+  Corrected camera/runtime feasibility only. This gate performs one reset, zero environment steps and zero model
+  predictions; it cannot establish viewpoint robustness, policy success, reward, or language generalization. The v1
+  failure remains immutable, and Phase 3/P0 evidence is unchanged.

@@ -1,0 +1,17 @@
+manifest: phase4b_viewpoint_dev_summary_v1_20260828
+classification: PASS
+generation_mode: offline_from_frozen_result
+environment_steps: 0
+model_predictions: 0
+source:
+  path: results/phase4b_openvla_viewpoint_dev30_v1.yaml
+  sha256: bbaf1c5904da5db8ebcd5625e8520695a0d9040d97bdbfa59af6675819b6ee6c
+outputs:
+- path: outputs/presentation/phase4b_viewpoint_dev_summary_v1_20260828/phase4b_agentview_vs_eye_in_hand.png
+  bytes: 100653
+  sha256: 42a2a43b7444b55e60826dce36b39e1c839fe5ea3c0b088ed38a097f9f95da50
+- path: outputs/presentation/phase4b_viewpoint_dev_summary_v1_20260828/phase4b_agentview_vs_eye_in_hand.svg
+  bytes: 67992
+  sha256: 8e2a3b1b9d44f6a2d9959826cc4766d9752d53ff0269bce950c337cb9d0efd9a
+boundary: Development-only visualization; it does not add episodes or authorize final
+  evaluation.

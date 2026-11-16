@@ -1,0 +1,15 @@
+manifest: phase3b_openvla_qlora_train_smoke_v3_checkpoint
+date: 2026-08-27
+classification: PASS
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+optimizer_step: 20
+optimizer_state_entries: 852
+files:
+  - {path: adapter/README.md, bytes: 5276, sha256: 7a5fc72d3dc0d500546dcb2c7665aea45781d3c2f867bf6ac5f0b136d4525dcd}
+  - {path: adapter/adapter_config.json, bytes: 1109, sha256: 23c2eec70085ab94cf8e7146f6f6e101b716e3596f8767c359811a5715aa44a7}
+  - {path: adapter/adapter_model.safetensors, bytes: 636296840, sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c}
+  - {path: optimizer_and_rng.pt, bytes: 219005368, sha256: d748b59d5d25382695a13a71f6fb675175d67a8ece600b153e34c847e2fd76e5}
+  - {path: resolved_config.yaml, bytes: 1752, sha256: c34cd4894f4168d597abc87814a3bd0e912dcd26f9781fea8bafe409860d3ccf}
+verification: {all_hashes_match: true, optimizer_cpu_load: PASS, optimizer_step: 20, optimizer_state_entries: 852}
+eligibility: {full_offline_validation: true, resume_training: false, checkpoint_selection: false, environment_evaluation: false}
+boundary: Smoke checkpoint is eligible only for preregistered full offline validation; not yet for resume, selection or environment rollout.

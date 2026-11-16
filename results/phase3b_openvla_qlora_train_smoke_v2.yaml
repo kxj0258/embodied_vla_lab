@@ -1,0 +1,23 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827
+date: 2026-08-27
+classification: FAIL
+failure_stage: first_training_forward_after_initial_validation
+exception: torch.OutOfMemoryError
+observed:
+  checkpoint_shards_loaded: 4
+  initial_validation_smoke_reached: true
+  serialized_validation_metrics: false
+  optimizer_steps: 0
+  checkpoint_created: false
+  output_directory_created: false
+oom_report:
+  requested_mib: 252.00
+  gpu_total_gib: 11.47
+  gpu_free_mib: 99.44
+  pytorch_allocated_gib: 6.08
+  pytorch_reserved_unallocated_mib: 201.87
+host_resources: {wall_s: 13.01, user_s: 19.88, system_s: 2.64, max_rss_kib: 5825552, swaps: 0}
+artifacts:
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827_host_20260827.log, sha256: 32fc206190a1923616ad074258fe81995c5565456ab925eda5d0b228421478e0}
+boundary: Initial validation metrics were not serialized and cannot be reported. No training step, checkpoint, loss trend, offline-validation conclusion, reward or success evidence exists.
+integrity_note: The original local raw log was later overwritten by a protocol-invalid rerun because the shell guard lacked errexit. The frozen original hash and conversation attachment remain the evidence source.

@@ -1,0 +1,14 @@
+manifest: project_closeout_v9_phase6f_v1_20260901
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7888, sha256: 86aab3cf69bf62ab774dd96f095dc917d8a38726a4b92e076878e5837106e79a}
+  - {path: docs/repro_index.md, bytes: 6958, sha256: daa6684e52979c2e621589444307a0acadef2d849d87597db7a911c1ab026a8b}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4996, sha256: 53dc4d30d4d93fb723801c1e8303bbd50c0f60e5dabdb5922cf8793001bd1e1d}
+canonical_evidence:
+  - {path: results/phase6f_feagine_a03_external_targets_dev4_v1_manifest.yaml, bytes: 1083, sha256: 3e8bf1b00ccaa068f13af6d20bc62bbc8031a9d7efc12b889501fddd6e4f2888}
+  - {path: scripts/verify_phase6f_assets.py, bytes: 1192, sha256: 862a2d2b0345d23ea060e6a88ee4d34e993433184e87a002c75fb1e79e41fd85}
+historical_evidence: results/project_closeout_v8_phase6e_v1_manifest.yaml
+boundary: Documentation preserves Phase 6F 0/4 FAIL; external target/controller mapping unresolved and no VLA or hardware claim.

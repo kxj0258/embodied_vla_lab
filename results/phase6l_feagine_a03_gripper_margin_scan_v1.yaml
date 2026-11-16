@@ -1,0 +1,209 @@
+classification: PASS
+experiment: phase6l_feagine_a03_gripper_margin_scan_v1
+decision: NO_SAFE_GRIPPER_MARGIN_SELECTED
+execution_pass: true
+selected_gripper_command: null
+selection_rule: smallest_command_with_strict_4_of_4
+command_results:
+- gripper_command: 0.0
+  source: phase6j_reused
+  successes: 2
+  total_targets: 4
+  strict_pass: false
+  episodes:
+  - target_id: plus_x_35mm_retract_1p5mm
+    classification: FAIL
+    final_error_m: 0.009306649119361979
+    progress_fraction: 0.7343396013562534
+    max_slide_penetration_m: 0.0002630734731509012
+  - target_id: minus_x_35mm_retract_1p5mm
+    classification: FAIL
+    final_error_m: 0.009302636383197012
+    progress_fraction: 0.7344541458153347
+    max_slide_penetration_m: 0.00026306665726541154
+  - target_id: plus_y_35mm_retract_1p5mm
+    classification: PASS
+    final_error_m: 0.009303115228055705
+    progress_fraction: 0.7344404770808184
+    max_slide_penetration_m: 3.7359729893049476e-11
+  - target_id: minus_y_35mm_retract_1p5mm
+    classification: PASS
+    final_error_m: 0.0093031152280499
+    progress_fraction: 0.7344404770809841
+    max_slide_penetration_m: 3.8967129870060013e-11
+- gripper_command: 0.01
+  source: new_execution
+  successes: 2
+  total_targets: 4
+  strict_pass: false
+  episodes:
+  - target_id: plus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.00930664881748875
+    progress_fraction: 0.7343396099732928
+    max_slide_penetration_m: 0.00023346820999300792
+  - target_id: minus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.009302636383197012
+    progress_fraction: 0.7344541458153347
+    max_slide_penetration_m: 0.0002334613941075165
+  - target_id: plus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.009303115228055705
+    progress_fraction: 0.7344404770808184
+    max_slide_penetration_m: 0.0
+  - target_id: minus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.0093031152280499
+    progress_fraction: 0.7344404770809841
+    max_slide_penetration_m: 0.0
+- gripper_command: 0.02
+  source: new_execution
+  successes: 2
+  total_targets: 4
+  strict_pass: false
+  episodes:
+  - target_id: plus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.00930664881748875
+    progress_fraction: 0.7343396099732928
+    max_slide_penetration_m: 0.00020386294683511288
+  - target_id: minus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.009302636383197012
+    progress_fraction: 0.7344541458153347
+    max_slide_penetration_m: 0.00020385613094962146
+  - target_id: plus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.009303115228055705
+    progress_fraction: 0.7344404770808184
+    max_slide_penetration_m: 0.0
+  - target_id: minus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.0093031152280499
+    progress_fraction: 0.7344404770809841
+    max_slide_penetration_m: 0.0
+- gripper_command: 0.05
+  source: new_execution
+  successes: 2
+  total_targets: 4
+  strict_pass: false
+  episodes:
+  - target_id: plus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.00930664881748875
+    progress_fraction: 0.7343396099732928
+    max_slide_penetration_m: 0.00011504715736142777
+  - target_id: minus_x_35mm_retract_1p5mm
+    classification: FAIL
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: false
+    final_error_m: 0.009302636383197012
+    progress_fraction: 0.7344541458153347
+    max_slide_penetration_m: 0.00011504034147593808
+  - target_id: plus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.009303115228055705
+    progress_fraction: 0.7344404770808184
+    max_slide_penetration_m: 0.0
+  - target_id: minus_y_35mm_retract_1p5mm
+    classification: PASS
+    checks:
+      ik_success: true
+      finite_state: true
+      exact_time: true
+      terminal_error: true
+      progress: true
+      no_material_slide_violation: true
+    final_error_m: 0.0093031152280499
+    progress_fraction: 0.7344404770809841
+    max_slide_penetration_m: 0.0
+new_targets_run: 12
+total_steps: 4800
+simulated_time_total_s: 24.0
+elapsed_s: 0.9572504020034103
+cuda_initialized: false
+model_predictions: 0
+reward: null
+hardware_commands: 0
+source_hashes:
+  config: a32217b6d126c15b8a741a44156044fe4d7a580fa93198596a67d2a727bdb9d6
+  phase6j: 07c5097446bb80994ddc87173bb06a4c94ab62d96467b8521d75538ec70e588c
+  phase6k: 87209d6a80a79aa5f4995b3bf2a30eea4c0067725e126449f270758fecc81e32
+boundary: Development gripper-margin scan on immutable arm targets; Phase 6J remains
+  2/4, with no threshold relaxation, VLA, broad workspace, final, or hardware claim.

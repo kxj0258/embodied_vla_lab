@@ -1,0 +1,13 @@
+experiment: phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827
+date: 2026-08-27
+classification: FAIL
+failure_stage: worker_adapter_load_before_ready
+exception: torch.OutOfMemoryError
+oom_report: {requested_mib: 2.0, gpu_total_gib: 11.47, gpu_free_mib: 23.94, pytorch_allocated_gib: 4.97, pytorch_reserved_unallocated_mib: 155.37}
+execution: {worker_ready: false, episodes_started: 0, episodes_completed: 0, environment_success_observed: false, output_partial: true}
+host_resources: {wall_s: 15.45, user_s: 25.91, system_s: 5.63, max_rss_kib: 5768284, swaps: 0, exit_status: 1}
+artifacts:
+  raw_log: {path: results/raw/phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827_host_20260827.log, sha256: d5389c4ec3f2a8fb005684dc493bb06a86aa1806f44bc50af1524ca61fb5f4c5}
+  partial_resolved_config: outputs/eval/phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827/resolved_config.yaml
+statistics_boundary: No episode began. This is resource contention evidence only, not policy failure, reward, success-rate or efficiency evidence.
+boundary: V1 is immutable FAIL. Retry requires a new ID and host GPU-free-memory preflight.

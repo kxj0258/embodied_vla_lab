@@ -1,0 +1,17 @@
+experiment: phase3b_openvla_qlora_step20_dev5_v2_init0to4_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, environment_created: false, episodes: 0}
+regression:
+  v1_failure: results/phase3b_openvla_qlora_step20_dev5_v1.yaml
+  model_data_environment_contract_changed: false
+  required_host_free_vram_mib: 8000
+assets:
+  config: {path: configs/eval/openvla_libero_phase3b_qlora_step20_dev5_v2.yaml, sha256: bdf2d08222f99b789b4d2f5c7e35528c2e257a3c3a69c6b1d29f115bb5a825ff}
+  checker: {path: scripts/check_phase3b_openvla_qlora_dev5_v2_static.py, sha256: 19b5f1daed14ef3fa8dd4b96ec44db412ab8af0d5ea0d7c5ab4ad7822973e07f}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_qlora_step20_dev5_v2_init0to4_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_step20_dev5_v2_init0to4_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_step20_dev5_v2.yaml
+boundary: Dev5 execution and 5/5 policy success PASS; held-out final may proceed only with frozen step-20 checkpoint.

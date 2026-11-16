@@ -1,0 +1,43 @@
+classification: PASS
+experiment_id: phase4b_openvla_viewpoint_dev30_v1_seed20261111
+checks:
+  development_tasks_exact: true
+  metadata_exact: true
+  views_exact: true
+  init_states_exact: true
+  episode_arithmetic: true
+  paired_seed_count: true
+  canonical_revision: true
+  fresh_targets: true
+  persistent_model_single_load: true
+  fresh_env_per_episode: true
+  view_selected_only_at_image: true
+  paired_statistics_present: true
+  no_training_code: true
+  trajectory_and_cleanup: true
+config_sha256: 650bc2cb1687c814299992ac0c3c2314dc153e2ba50268f17be42b88e2d63977
+evaluator_sha256: 01d080457a9761198cf9badef659b7382364e1205b606548386c5a52b54212a5
+cuda_calls: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+development_tasks:
+- 0
+- 3
+- 6
+- 7
+- 8
+final_tasks_untouched:
+- 1
+- 2
+- 4
+- 5
+- 9
+paired_states: 15
+episodes: 30
+boundary: Development-only paired viewpoint substitution for a frozen single-image
+  OpenVLA base. Results may diagnose camera/preprocessing compatibility but cannot
+  select or train a checkpoint, revise Phase 3/P0 evidence, establish general viewpoint
+  invariance, or authorize removal/replacement of any task, state, view, timeout or
+  failure. The preregistered final task split remains untouched until this development
+  protocol is closed.

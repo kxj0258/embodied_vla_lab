@@ -1,0 +1,24 @@
+manifest: p0_project_closeout_v1_20260828
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+model_predictions: 0
+documents:
+  - {path: docs/project_report.md, bytes: 6247, sha256: 8f8ed0e122cb0903acfeeb7ff71337a9b9b5456aaa12909d74916eb8695a0071}
+  - {path: docs/repro_index.md, bytes: 4190, sha256: a13af30942f2259b0ef9d202decb7c419145eedabd5a0e1e340ecce7a3694746}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4395, sha256: 17afef54510d4b27de5a9bdef9fe7142297c25af2ac66ce50c95cd853d342c60}
+featured_assets:
+  ten_task_montage: {path: outputs/presentation/p0_breadth_10task_montage_v1_20260828/openvla_10task_success_montage_hd.mp4, bytes: 10119972, sha256: 1671dbf4310d5b8c70fed38e8ba929ac709f1a2cd71ed3ce7c02f441a94b3b12}
+  viewpoint_evidence_chain: {path: outputs/presentation/phase4_viewpoint_closeout_v1_20260828/phase4_viewpoint_evidence_chain.png, bytes: 154887, sha256: be030d114ece22f02fb5aa179c7a38f0a4695dbcaa520802435770f58fbc3347}
+canonical_manifests:
+  - results/p0_mvp_v2_manifest.yaml
+  - results/p0_hd_comparisons_v1_manifest.yaml
+  - results/p0_breadth_10task_montage_v1_manifest.yaml
+  - results/phase4_viewpoint_closeout_v1_manifest.yaml
+read_only_verifiers:
+  - scripts/verify_p0_assets.py
+  - scripts/verify_phase4b_assets.py
+  - scripts/verify_phase4_closeout_assets.py
+  - scripts/verify_project_closeout.py
+boundary: Documentation and indexing only. No new training, inference, rollout, success, reward or benchmark evidence.

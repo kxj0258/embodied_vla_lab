@@ -1,0 +1,116 @@
+experiment: phase2a_libero_goal_turn_on_stove_static_contract
+date: 2026-08-26
+classification: PASS
+execution_kind: LOCAL_STATIC_READ_ONLY
+phase_status: STATIC_AND_DATA_PASS_RUNTIME_TASK_REPLAY_PASS_DETERMINISTIC_STATE_REPLAY_FAIL
+
+source:
+  libero_submodule_pin: 8f1084e3132a39270c3a13ebe37270a43ece2a01
+  robosuite_version: 1.4.0
+  mujoco_version: 3.8.1
+  environment: evla-core
+
+task:
+  suite: libero_goal
+  task_order_index: 0
+  task_index: 7
+  name: turn_on_the_stove
+  language: Turn on the stove
+  goal: "(And (Turnon flat_stove_1))"
+  bddl:
+    path: libero/libero/libero/bddl_files/libero_goal/turn_on_the_stove.bddl
+    bytes: 2891
+    sha256: cbd2a0514d53226c5d09e17af40b22935d4cb6ff8fdaff0d55f555de1adecc13
+  init_states:
+    path: libero/libero/libero/init_files/libero_goal/turn_on_the_stove.pruned_init
+    shape: [50, 79]
+    container: numpy.ndarray
+    dtype: float64
+    bytes: 37551
+    sha256: ed121db31d749647d70741c4c4ef0bd8e0876663986578795968e962d9b91340
+
+registry_inventory:
+  bddl_counts: {libero_spatial: 10, libero_object: 10, libero_goal: 10, libero_90: 90, libero_10: 10}
+  pruned_init_counts: {libero_spatial: 10, libero_object: 10, libero_goal: 10, libero_90: 90, libero_10: 10}
+
+runtime_contract:
+  robot: Panda
+  controller: OSC_POSE
+  action_shape: [7]
+  action_normalized_range: [-1.0, 1.0]
+  action_semantics: [delta_x, delta_y, delta_z, delta_axis_angle_x, delta_axis_angle_y, delta_axis_angle_z, gripper]
+  control_frequency_hz: 20
+  evaluation_horizon_policy_steps: 600
+  physics_settle_steps: 5
+  rgb_keys: {agentview_rgb: agentview_image, eye_in_hand_rgb: robot0_eye_in_hand_image}
+  rgb_shape_each: [3, 128, 128]
+  low_dim_keys: {gripper_states: robot0_gripper_qpos, joint_states: robot0_joint_pos}
+  low_dim_shapes: {gripper_states: [2], joint_states: [7]}
+
+local_assets:
+  simulator_asset_cache: /home/kxj/.cache/libero/assets
+  simulator_asset_cache_status: PRESENT
+  simulator_asset_cache_du: 409M
+  libero_demonstration_hdf5_status: PRESENT_VERIFIED
+  expected_demo_relative_path: libero_goal/turn_on_the_stove_demo.hdf5
+  source_repo: yifengzhu-hf/LIBERO-datasets
+  source_revision: f13aa24a3da8c43c7225569f28c562979fa0e35a
+  demonstration_bytes: 447509922
+  demonstration_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  invalid_resume_artifact:
+    path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5.invalid-resume-duplicate
+    bytes: 455632290
+    sha256: 6119b136b164a5635b8892dc1b07f8b3fdc0f6ced86632c24096ddd93e40cccc
+    status: PRESERVED_NOT_DATASET
+  libero_config_path_env: UNSET
+  default_config_file: /home/kxj/.libero/config.yaml
+  default_config_file_status: ABSENT
+  import_guard: >-
+    Do not import libero.libero before providing an isolated existing LIBERO_CONFIG_PATH;
+    the pinned top-level module otherwise prompts and writes ~/.libero/config.yaml.
+
+demonstration_contract:
+  tag: libero-v1
+  image_convention: opengl
+  episodes: 50
+  frames: 4460
+  episode_length: {min: 75, mean: 89.2, max: 119}
+  language: turn on the stove
+  control_frequency_hz: 20
+  action: {shape: [7], dtype: float64, finite: true, global_range: [-1.0, 1.0]}
+  action_min_per_dimension: [-0.8839285714285714, -0.39375, -0.9375, -0.17464285714285716, -0.1285714285714286, -0.14357142857142857, -1.0]
+  action_max_per_dimension: [0.46071428571428574, 0.9080357142857143, 0.4580357142857143, 0.19821428571428573, 0.24535714285714286, 0.375, 1.0]
+  observations:
+    agentview_rgb: {per_frame_shape: [128, 128, 3], dtype: uint8}
+    eye_in_hand_rgb: {per_frame_shape: [128, 128, 3], dtype: uint8}
+    gripper_states: {per_frame_shape: [2], dtype: float64}
+    joint_states: {per_frame_shape: [7], dtype: float64}
+    ee_states: {per_frame_shape: [6], dtype: float64}
+  simulator_state: {per_frame_shape: [79], dtype: float64}
+  robot_state: {per_frame_shape: [9], dtype: float64}
+  each_episode_reward_sum: 1
+  each_episode_done_sum: 1
+
+metrics_boundary:
+  loss: NOT_APPLICABLE_STATIC_AUDIT
+  offline_eval: DATA_SCHEMA_AUDIT_ONLY_NO_MODEL_LOSS
+  success: NOT_RUN
+  reward: NOT_RUN
+  gradient_norm: NOT_APPLICABLE
+  throughput: NOT_APPLICABLE_STATIC_DATA_AUDIT
+  peak_vram: NOT_MEASURED_GPU_NOT_USED
+  checker_maximum_resident_set_kib: 672620
+  checker_wall_time_s: 1.32
+  statistical_conclusion: >-
+    Source and HDF5 inspection establish byte identity, schema, action range, and recorded
+    terminal labels. They do not establish model loss, environment replay compatibility,
+    rollout success, performance, or generalization.
+
+next_gate:
+  id: PHASE2A_REPLAY_COMPATIBILITY_DECISION
+  status: REVIEW_REQUIRED
+  requires_download_authorization: false
+  requires_environment_execution_authorization: true
+  requires_gpu_authorization: true
+  requires_training_authorization: true
+  requires_evaluation_authorization: true

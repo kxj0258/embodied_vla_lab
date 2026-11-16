@@ -1,0 +1,27 @@
+classification: PASS
+checks:
+  new_experiment: true
+  canonical_revision: true
+  wrist_source: true
+  fixture_hash: true
+  fixture_counts: true
+  all_items_wrist: true
+  split_exact: true
+  rank8_contract: true
+  optimizer_contract: true
+  fresh_targets: true
+  base_trainer_frozen: true
+  v1_static_failure_preserved: true
+  wrapper_only_overrides_config: true
+config_sha256: f2daf3439c75455cb3b297dd5b479b87f6601cae11a5579fd1d71a842304a9dd
+fixture_sha256: 03f5b563725d22aef35d43106c29fcdb6ca34a7102098f3836519e3af06219c7
+entrypoint_sha256: 04fc72ed6ea7473f5be3773e1951f3047612df4684bbe38d56dab070a797e6e4
+base_trainer_sha256: e58f91aa0f4d687ee9e14ac57d8421a46a00c60c609558452f3887a40d15a178
+cuda_calls: 0
+training_steps: 0
+model_predictions: 0
+expected_peak_vram_from_phase3b_bytes: 7128219648
+boundary: Development-only wrist-image 20-update QLoRA smoke. It can verify finite
+  optimization and fixed val10 offline response but cannot select a checkpoint, establish
+  environment success/reward, authorize final tasks, or replace the Phase 4B direct-substitution
+  baseline. Offline loss/token accuracy are not closed-loop evidence.

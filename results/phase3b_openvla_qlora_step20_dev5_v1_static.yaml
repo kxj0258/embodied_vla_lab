@@ -1,0 +1,13 @@
+experiment: phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, environment_created: false, episodes: 0}
+contract: {init_state_indices: [0, 1, 2, 3, 4], episodes: 5, horizon_per_episode: 600, adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c}
+assets:
+  config: {path: configs/eval/openvla_libero_phase3b_qlora_step20_dev5_v1.yaml, sha256: 9554c2a3b54eabd1b4001448909bd552c3fbfd792f359e31fb8761161cca8ebb}
+  checker: {path: scripts/check_phase3b_openvla_qlora_dev5_static.py, sha256: e953a9e6b5c642b940caa71ce40e66d34177b5f8a3baeaa3de9cb98308cce89d}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827_host_20260827.log
+  status: PENDING
+boundary: Frozen development states only. No held-out evaluation, final selection or further training authorization.

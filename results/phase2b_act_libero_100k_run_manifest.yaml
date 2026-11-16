@@ -1,0 +1,38 @@
+experiment_id: phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826
+status: PASS_COMPLETE
+classification: PASS
+result: results/phase2b_act_libero_100k.yaml
+config: configs/train/act_libero_phase2b_single_task_100k.yaml
+training_steps: 100000
+steps_per_epoch: 446
+approximate_epochs: 224.2
+offline_validation:
+  samples: 889
+  every_steps: 1000
+  includes_step_zero: true
+checkpointing:
+  every_steps: 4460
+  approximate_every_epochs: 10
+  exact_resume_boundary: true
+  contents: [model, optimizer, act_config, frozen_stats, python_rng, numpy_rng, torch_rng, cuda_rng, data_generator_state]
+rollout_evaluation:
+  automatic_inside_training: false
+  reason: isolate simulator/EGL failures from the training process
+  development_step100000:
+    classification: PASS
+    result: results/phase2b_act_libero_ckpt100000_dev5.yaml
+    success: 5/5
+    boundary: development_only_not_final
+  heldout_final_step100000:
+    classification: PASS
+    result: results/phase2b_act_libero_ckpt100000_final_heldout45.yaml
+    success: 45/45
+    init_state_indices: 5..49
+    selection_frozen_before_final: true
+artifacts:
+  output_dir: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826
+  raw_log_sha256: 11afddf5e48ed022ca19199e9a3bbfb9a53bf6ed72bea300f6e72c83c6879c5a
+  metrics_sha256: 6a3c65faa7dae83434e18e615e98dd8962a3fb81ee8ce858cd9b79f10f576d6b
+  resolved_config_sha256: 5674a5dfb1561d65147a1ff3783a706701e18a1de5175f97192395e1268b5a70
+  checkpoint_manifest: results/phase2b_act_libero_checkpoint_manifest.yaml
+boundaries: Training, bounded checkpoint selection, and the complete 45-state held-out final PASSed; conclusions remain single-task and single-training-seed.

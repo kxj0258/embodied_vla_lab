@@ -1,0 +1,19 @@
+classification: PASS
+experiment: phase6d_feagine_a03_limit_diagnostic_v2_static
+checks:
+  v1_fail: true
+  same_commands: true
+  bounded_reproduction: true
+  per_joint_diagnostic: true
+  thresholds_frozen: true
+  fresh_targets: true
+  headless_no_policy: true
+  no_runtime_imports: true
+checks_passed: 8
+checks_total: 8
+source_hashes:
+  config: aec671fc6624ac3e482bcbbfae93925d7f501a310c6f92ba6729923866ca3b79
+  runner: b3f5a4cea7d123765dc7c113790d5381f35bf93f50baf1f57804f462ce20b339
+environment_steps: 0
+boundary: Static diagnostic authorization only; v1 FAIL immutable, no runtime import
+  or simulation.

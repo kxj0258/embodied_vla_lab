@@ -1,0 +1,25 @@
+experiment_id: benchmark_act_libero_dev5_v1
+policy: act
+task:
+  suite: libero_goal
+  task_id: 7
+  task_order_index: 0
+  name: turn_on_the_stove
+  instruction: turn on the stove
+  split: development
+  init_state_indices:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  episode_horizon: 600
+checkpoint: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+stats_source: checkpoint
+protocol:
+  seed: 20260908
+  action_low: -1.0
+  action_high: 1.0
+  strict_bounds: true
+  offline: true
+output_dir: results/benchmark/benchmark_act_libero_dev5_v1

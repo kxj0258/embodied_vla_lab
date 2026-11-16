@@ -1,0 +1,84 @@
+classification: PASS
+experiment: phase5b_small_world_model_static_v1_seed20260830
+decision: ARCHITECTURE_PASS_TRAINING_SMOKE_IMPLEMENTATION_ALLOWED
+checks:
+  data_contract_pass: true
+  dataset_hash: true
+  cpu_only: true
+  real_image_shape: true
+  real_action_shape: true
+  free_rollout_shape: true
+  conditioned_rollout_shape: true
+  outputs_finite: true
+  outputs_in_0_1: true
+  losses_finite: true
+  gradients_finite: true
+  action_path_effective: true
+  parameter_scale_small: true
+  parameter_counts_comparable: true
+  formal_training_not_authorized: true
+  fresh_target: true
+checks_passed: 16
+checks_total: 16
+real_data:
+  source_episode: 0
+  source_frames:
+  - 0
+  - 8
+  image_batch_shape:
+  - 2
+  - 3
+  - 128
+  - 128
+  action_sequence_shape:
+  - 2
+  - 8
+  - 7
+  target_shape:
+  - 2
+  - 8
+  - 3
+  - 128
+  - 128
+parameters:
+  action_free: 1284355
+  action_conditioned: 1292803
+  conditioned_to_free_ratio: 1.006577620673412
+random_weight_smoke:
+  losses:
+    action_free: 0.3357856869697571
+    action_conditioned: 0.34040260314941406
+  gradients:
+    action_free:
+      tensors: 24
+      all_finite: true
+      global_l2: 0.028696518391370773
+    action_conditioned:
+      tensors: 26
+      all_finite: true
+      global_l2: 0.04442218691110611
+  action_effect_mean_abs: 1.6805230188765563e-05
+timing:
+  cpu_wall_s: 0.9028573399991728
+  host_wall_s: 2.37
+  host_user_s: 4.59
+  host_system_s: 0.62
+  host_cpu_percent: 220
+  host_max_rss_kib: 968836
+  host_major_page_faults: 504
+  host_minor_page_faults: 216681
+  host_swaps: 0
+  host_socket_messages_sent: 0
+  host_socket_messages_received: 0
+cuda_initialized: false
+training_steps: 0
+optimizer_steps: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+source_hashes:
+  config: 93a306d555d308f5f28a35a9ffe0ff8038469e183b182ec75b610eb6aae5712e
+  model_implementation: f31b270f181a242f6459711f9aa4bfb9afe1230e32ec0fac13c8653fb366d8dc
+boundary: CPU-only architecture/shape/gradient smoke. Random-weight losses and action
+  sensitivity are implementation checks, not trained performance, baseline superiority,
+  reward prediction, planning utility or environment success.

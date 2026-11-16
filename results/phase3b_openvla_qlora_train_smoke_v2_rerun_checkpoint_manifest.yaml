@@ -1,0 +1,13 @@
+manifest: phase3b_openvla_qlora_train_smoke_v2_rerun_checkpoint
+date: 2026-08-27
+integrity: PASS
+protocol_status: FAIL_REUSED_ID_AND_RAW_LOG_OVERWRITE
+eligibility: {resume: false, checkpoint_selection: false, environment_evaluation: false}
+files:
+  - {path: adapter/README.md, bytes: 5276, sha256: 7a5fc72d3dc0d500546dcb2c7665aea45781d3c2f867bf6ac5f0b136d4525dcd}
+  - {path: adapter/adapter_config.json, bytes: 1109, sha256: fe96884a359cedcbb4598797146456496f4425704e952fe00d23b041800d41f9}
+  - {path: adapter/adapter_model.safetensors, bytes: 636296840, sha256: dd8580354fc928d284b6b1a04d5a9826a9497113cb848ef6a8a303f55ba71afb}
+  - {path: optimizer_and_rng.pt, bytes: 219005368, sha256: f917655b3d21f561162c3914136599cbf23f60fbc0caa3c3fd1e496d70949b5a}
+  - {path: resolved_config.yaml, bytes: 1752, sha256: 3334da3be958e777d392f438d1f8ab11dbfa1ce34bab04186c031efe204a671c}
+load_check: {classification: PASS, optimizer_step: 20, optimizer_state_entries: 852}
+boundary: Byte integrity and CPU optimizer-state load PASS, but protocol-invalid artifacts are quarantined from selection and resume.

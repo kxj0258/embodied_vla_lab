@@ -1,0 +1,45 @@
+classification: FAIL
+experiment: phase6c_feagine_a03_runtime_zero_step_v1
+decision: RUNTIME_ZERO_STEP_FAIL
+checks:
+  preset: true
+  constants: true
+  model_shape: false
+  timestep: true
+  required_names: true
+  actuator_names: true
+  ctrl_finite: true
+  core_fk: true
+  core_ik: true
+  no_step: true
+  cpu_only: true
+checks_passed: 10
+checks_total: 11
+runtime:
+  mujoco_version: 3.8.1
+  preset_id: a03_type_2
+  njnt: 51
+  nu: 51
+  nq: 51
+  nv: 51
+  timestep_s: 0.005
+  data_time_before_after:
+  - 0.0
+  - 0.0
+core:
+  ik_success: true
+  iterations: 5
+  position_error_m: 7.4668692832347e-05
+  direction_error: 0.0001349876547465101
+  residual_history_length: 5
+source_hashes:
+  config: 5e32631b82ec6f427cf73cb9ba548d9b36d5bc4d14daed238359d0906c24e843
+  asset_wheel: 0c4bfe832457a6fb4238e1f1f743a5a5334df3399a7b5c24d3493803259f0650
+elapsed_s: 0.11221730799934448
+cuda_initialized: false
+model_predictions: 0
+environment_steps: 0
+simulated_time_s: 0.0
+hardware_commands: 0
+boundary: Runtime load/binding and core numerical gate only. No mj_step, elapsed simulated
+  time, GUI, policy inference or hardware command.

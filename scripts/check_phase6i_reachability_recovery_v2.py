@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+import hashlib,sys
+from pathlib import Path
+import yaml
+ROOT=Path(__file__).resolve().parents[1]; C=ROOT/"configs/task/phase6i_feagine_a03_reachability_scan_recovery_v2.yaml"
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+ c=yaml.safe_load(C.read_text()); rp=ROOT/c["structured_result"]
+ if rp.exists(): raise FileExistsError(f"refusing overwrite: {rp}")
+ source=ROOT/c["source_result"]; original=ROOT/c["source_config"]; r=yaml.safe_load(source.read_text()); oc=yaml.safe_load(original.read_text()); g=c["expected_grid"]; expected=[g["start_m"]+i*g["step_m"] for i in range(g["count"])]; actual=oc["axial_retraction_scan_m"]; tol=g["comparison_tolerance_m"]; mins=list(r["minimum_retractions_m"].values())
+ checks={"v1_preserved_fail":r["classification"]=="FAIL" and r["checks_passed"]==5 and r["checks_total"]==6,"only_failed_check_was_exact_float_grid":not r["checks"]["frozen_grid"] and all(v for k,v in r["checks"].items() if k!="frozen_grid"),"grid_count":len(actual)==len(expected)==g["count"],"grid_values_tolerant":all(abs(a-b)<=tol for a,b in zip(actual,expected)),"grid_endpoints":abs(actual[0]-g["start_m"])<=tol and abs(actual[-1]-g["stop_m"])<=tol,"four_directions":len(mins)==c["expected_reachability"]["directions"],"minimum_retractions":all(abs(x-c["expected_reachability"]["minimum_retraction_m"])<=tol for x in mins),"spread":r["minimum_retraction_spread_m"]<=c["expected_reachability"]["maximum_spread_m"],"no_recomputation":"pyfeagine_sim_core" not in sys.modules and "mujoco" not in sys.modules,"cpu_only":not any(x.startswith("torch") for x in sys.modules)}; out={"classification":"PASS" if all(checks.values()) else "FAIL","experiment":c["experiment_id"],"decision":"REACHABILITY_SCAN_EVIDENCE_RECOVERED" if all(checks.values()) else "REACHABILITY_SCAN_RECOVERY_FAIL","checks":checks,"checks_passed":sum(checks.values()),"checks_total":len(checks),"minimum_retractions_m":r["minimum_retractions_m"],"minimum_retraction_spread_m":r["minimum_retraction_spread_m"],"reused_ik_attempts":r["total_ik_attempts"],"new_ik_attempts":0,"environment_steps":0,"source_hashes":{"config":sha(C),"source_result":sha(source),"source_config":sha(original)},"boundary":c["boundary"]}; rp.write_text(yaml.safe_dump(out,sort_keys=False)); print(yaml.safe_dump(out,sort_keys=False)); raise SystemExit(0 if out["classification"]=="PASS" else 1)
+if __name__=="__main__": main()

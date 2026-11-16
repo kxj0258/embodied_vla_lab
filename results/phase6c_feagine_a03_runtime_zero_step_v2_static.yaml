@@ -1,0 +1,23 @@
+classification: PASS
+experiment: phase6c_feagine_a03_runtime_zero_step_v2_static
+checks:
+  phase6b_pass: true
+  v1_fail_preserved: true
+  joint_correction: true
+  reuse_no_reinstall: true
+  explicit_preset: true
+  zero_step_boundary: true
+  script_has_no_step: true
+  fresh_targets: true
+  no_runtime_imports: true
+checks_passed: 9
+checks_total: 9
+source_hashes:
+  config: cde59bb50452eff075a2b9059a3ae11ded1309bb8225d87e0ee2b0ccc2bb92a8
+  runner: 39ed23f660a662cca2b194496a607ab2f3513db726ac0ef03b277549182e7b23
+packages_installed: true
+reinstall_or_rebuild: false
+mjcf_loaded: false
+environment_steps: 0
+boundary: Static recovery authorization only; reuse installed isolated runtime, no
+  reinstall/build/runtime import/MJCF load or simulation.

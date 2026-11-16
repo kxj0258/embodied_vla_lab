@@ -1,0 +1,37 @@
+experiment: phase3b_openvla_qlora_step20_fullval889_v1_seed20260827
+date: 2026-08-27
+classification: PASS
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+fixture_manifest_sha256: 344f1d7b0dc2792bd211cec2946c56fc4d3ec6f1de60da0667d4092dd77e1378
+coverage: {validation_frames: 889, validation_episodes: 10, action_tokens: 6223, correct_action_tokens: 1243}
+metrics:
+  mean_frame_loss: 8.92710276234673
+  median_frame_loss: 8.91490650177002
+  action_token_accuracy: 0.19974288928169692
+  mean_frame_continuous_action_l1: 0.20733584772491673
+  median_frame_continuous_action_l1: 0.19271708683473388
+episode_range:
+  mean_loss: {min: 8.053268782470537, max: 9.741728257049214}
+  action_token_accuracy: {min: 0.14285714285714285, max: 0.23963133640552994}
+timing:
+  model_load_s: 4.199842261999947
+  adapter_load_s: 0.5041981929989561
+  validation_s: 206.16710410700034
+  frames_per_s: 4.312036121623994
+  median_inference_s: 0.22605775599913613
+  p95_inference_s: 0.23884547520065097
+  host_wall_s: 213.96
+memory:
+  peak_vram_allocated_bytes: 5403944960
+  peak_vram_reserved_bytes: 5567938560
+  rss_kib_at_result: 1995752
+  host_max_rss_kib: 5783256
+  swaps: 0
+execution: {training_executed: false, environment_executed: false, checkpoint_selected: false, exit_status: 0}
+artifacts:
+  result_json: {path: outputs/eval/phase3b_openvla_qlora_step20_fullval889_v1_seed20260827/result.json, sha256: c09384b2193ad9a2864861502ba19dd9061ba46371d6432866375378b54e4d4b}
+  resolved_config: {path: outputs/eval/phase3b_openvla_qlora_step20_fullval889_v1_seed20260827/resolved_config.yaml, sha256: 0d61f52bac2cd82cef38b2a05ec5bf5a4403343e10283ab676ca895a3e48bf8b}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_step20_fullval889_v1_seed20260827_host_20260827.log, sha256: 247d1594ec0db54c83e773af94e595e38a73542b893e87af05183ee792dbbeb1}
+statistics_boundary: Complete deterministic offline validation coverage for the frozen 10-episode split. Without a same-protocol base checkpoint evaluation, this result cannot establish improvement. Offline loss/token accuracy/L1 are not environment reward or success.
+boundary: Read-only offline validation PASS. No training, checkpoint selection or environment evaluation occurred.

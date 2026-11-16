@@ -1,0 +1,22 @@
+experiment: phase2b_act_libero_gpu_resource_gate
+date: 2026-08-26
+classification: PASS
+exit_status: 0
+execution: {location: host, batch_size: 2, optimizer_steps: 2, parameters: 34185031, bf16_autocast: true, grad_clip_norm: 10.0}
+metrics:
+  loss: [0.6174287796020508, 0.45637762546539307]
+  offline_eval: NOT_APPLICABLE_RESOURCE_GATE
+  success: NOT_APPLICABLE
+  reward: NOT_APPLICABLE
+  gradient_norm_preclip: [112.81077575683594, 86.72736358642578]
+  optimizer_steps_per_s: 2.9938964241917536
+  peak_vram_allocated_bytes: 706334208
+  peak_vram_reserved_bytes: 771751936
+  optimizer_elapsed_s: 0.6680257820007682
+  process_wall_s: 5.79
+  maximum_rss_kib: 2379912
+raw_log: {path: results/raw/phase2b_act_libero_gpu_resource_gate_host_20260826.log, lines: 14, bytes: 817, sha256: 8eb689756f728d4d5af9a3e2832f9c5c21b084fc54460f43db3a29f237974f63}
+expected_exception: requires_grad tensor scalar conversion warning; fixed with detach after this run and does not affect recorded optimization
+statistical_boundary: Two training steps prove finite forward/backward and resource fit only; no convergence or policy performance conclusion.
+prior_managed_container_attempt: {classification: FAIL, reason: CUDA_NOT_VISIBLE, model_constructed: false}
+next_gate: PHASE2B_SINGLE_BATCH_OVERFIT

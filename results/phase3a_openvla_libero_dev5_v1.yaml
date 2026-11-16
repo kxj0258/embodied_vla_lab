@@ -1,0 +1,76 @@
+experiment: phase3a_openvla_libero_dev5_v1_init0to4_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+execution_pass: true
+protocol:
+  kind: bounded_development
+  task: libero_goal/turn_on_the_stove
+  init_state_indices: [0, 1, 2, 3, 4]
+  evaluator_seeds: [20260827, 20260828, 20260829, 20260830, 20260831]
+  episode_horizon: 600
+  episodes: 5
+  one_persistent_model_load: true
+  network_used: false
+episodes:
+  - {init_state_index: 0, seed: 20260827, success: true, steps: 85, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, inference_s: 36.31988479496795, wall_s: 38.34994121600175}
+  - {init_state_index: 1, seed: 20260828, success: true, steps: 87, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, inference_s: 35.51697409996996, wall_s: 37.53459864399338}
+  - {init_state_index: 2, seed: 20260829, success: true, steps: 78, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, inference_s: 32.08311172995309, wall_s: 33.810354333007126}
+  - {init_state_index: 3, seed: 20260830, success: true, steps: 86, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, inference_s: 35.39740647592407, wall_s: 37.57838950199948}
+  - {init_state_index: 4, seed: 20260831, success: true, steps: 85, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, inference_s: 34.9191934120463, wall_s: 37.052462817009655}
+aggregate:
+  success_count: 5
+  success_total: 5
+  success_rate: 1.0
+  success_wilson_95: [0.5655175352168251, 1.0]
+  mean_sum_reward: 1.0
+  mean_max_reward: 1.0
+  total_environment_steps: 421
+  completion_steps: {mean: 84.2, median: 85, min: 78, max: 87}
+  model_predictions: 421
+latency:
+  model_load_s: 6.525506977995974
+  inference_s: {total: 174.23657051286136, mean: 0.4138635879165353, median: 0.4125346509972587, p05: 0.3875444779987447, p25: 0.4002187239966588, p75: 0.424738689995138, p95: 0.43860304800909944, p99: 0.454601739597274, min: 0.3675724380009342, max: 0.927856366004562}
+  pure_inference_predictions_per_s: 2.4162550879002964
+  internal_rollout_end_to_end_s: 206.12504232500214
+  internal_end_to_end_steps_per_s: 2.0424495502889917
+  mean_episode_wall_s: 36.86514930240228
+  process_wall_s: 211.38
+action:
+  all_421_shape_7_finite_and_in_bounds: true
+  component_min: [-0.7681827939024158, -0.12486345393984932, -0.9338235294117647, -0.12395168165950214, -0.04909033050724104, -0.08046485337001438, -1.0]
+  component_max: [0.4425315065711153, 0.8421113280689014, 0.41176470588235303, 0.11525839967470541, 0.23423320522495344, 0.3739945588225827, 1.0]
+  adapted_gripper_counts: {'-1.0': 249, '+1.0': 172}
+resources:
+  passive_vram_allocated_bytes: 4720663552
+  passive_vram_reserved_bytes: 4836032512
+  peak_vram_allocated_bytes: 5061286912
+  peak_vram_reserved_bytes: 5196742656
+  worker_rss_kib_at_result: 1892980
+  coordinator_rss_kib_at_result: 2684576
+  maximum_rss_kib: 5835520
+  user_cpu_s: 247.92
+  system_cpu_s: 22.47
+  cpu_percent: 127
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+training_and_checkpoint_metrics:
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation: NOT_APPLICABLE_EVALUATION_ONLY
+  gradients: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+  training_executed: false
+  checkpoint_created: false
+  frozen_checkpoint_load: PASS_ALL_FOUR_SHARDS
+artifacts:
+  output_dir: outputs/eval/phase3a_openvla_libero_dev5_v1_init0to4_seed20260827
+  eval_info: {sha256: d2168dd2697ebbda35c328e42ddade327eb889f4c133ad9172e811db5f17bb51}
+  trajectory: {lines: 421, sha256: 32e5a253e44e850b8412a4913047e5f2c74472f4c0e79e733c55d3c8b75c1b17}
+  resolved_config: {sha256: 939347962a60796608fc92273c3349f8d0818dc41bf08dcc0c47afabd5e72af1}
+  raw_log: {path: results/raw/phase3a_openvla_libero_dev5_v1_init0to4_seed20260827_host_20260827.log, lines: 886, sha256: 94a4e6a1fd71987e0d9b457bbfe243ba4250d512bb77dbb1f611df5c9f415e06}
+statistical_boundary: >-
+  Five of five frozen development states succeeded, but the Wilson 95% interval is approximately 56.6%-100% if
+  treated as Bernoulli samples. These states are development evidence, not held-out final evidence. The run supports
+  bounded multi-state feasibility only and no broad task/language/viewpoint/simulator generalization or superiority.
+next_gate: Preregister the untouched init states 5-49 as a held-out base-policy final before QLoRA design.

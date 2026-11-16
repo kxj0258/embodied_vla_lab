@@ -1,0 +1,1107 @@
+classification: FAIL
+experiment: phase6i_feagine_a03_reachability_scan_v1
+decision: REACHABILITY_SCAN_FAIL
+checks:
+  frozen_grid: false
+  all_directions_reachable: true
+  symmetric_threshold: true
+  source_phase6f_immutable: true
+  no_mujoco_import: true
+  cpu_only: true
+checks_passed: 5
+checks_total: 6
+directions:
+- target_id: plus_x_35mm
+  minimum_retraction_m: 0.0015
+  first_reachable: &id001
+    axial_retraction_m: 0.0015
+    reachable: true
+    selected:
+      seed_id: x_pos_uniform
+      solver_success: true
+      position_error_m: 9.820188279263675e-05
+      direction_error: 1.4454168202439086e-06
+      canonical_angles_rad:
+      - 0.1093372106552124
+      - 1.5707963705062866
+      - 0.0003032903769053519
+      - 1.5707963705062866
+      - 0.10963905602693558
+      - -1.5707962830835065
+      valid: true
+    best_position_error_m: 9.820188279263675e-05
+  scan:
+  - axial_retraction_m: 0.0
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0015917186392471194
+  - axial_retraction_m: 0.00025
+    reachable: false
+    selected: null
+    best_position_error_m: 0.001342841307632625
+  - axial_retraction_m: 0.0005
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0010935523314401507
+  - axial_retraction_m: 0.00075
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0008448681328445673
+  - axial_retraction_m: 0.001
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0005959623376838863
+  - axial_retraction_m: 0.00125
+    reachable: false
+    selected: null
+    best_position_error_m: 0.000346722430549562
+  - *id001
+  - axial_retraction_m: 0.00175
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 2.719584335864056e-05
+      direction_error: 9.208919710295412e-06
+      canonical_angles_rad:
+      - 0.15670894086360931
+      - 1.5707963705062866
+      - 0.09428426623344421
+      - -1.5707963705062866
+      - 0.0624154768884182
+      - -1.5707962830835065
+      valid: true
+    best_position_error_m: 2.719584335864056e-05
+  - axial_retraction_m: 0.002
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 4.789420563611202e-05
+      direction_error: 9.081039102470919e-05
+      canonical_angles_rad:
+      - 0.13728958368301392
+      - 2.1426806449890137
+      - 0.1487436443567276
+      - -0.07693144679069519
+      - 0.12728409469127655
+      - -2.1860687732696533
+      valid: true
+    best_position_error_m: 4.789420563611202e-05
+  - axial_retraction_m: 0.00225
+    reachable: true
+    selected:
+      seed_id: x_neg_uniform
+      solver_success: true
+      position_error_m: 1.3991389096190687e-05
+      direction_error: 7.13420743423179e-07
+      canonical_angles_rad:
+      - 0.1989133059978485
+      - 1.5707962830835065
+      - 0.17841586470603943
+      - -1.5707963705062866
+      - 0.020496726036071777
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3991389096190687e-05
+  - axial_retraction_m: 0.0025
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 6.014046084601432e-05
+      direction_error: 1.6690221355454248e-06
+      canonical_angles_rad:
+      - 0.007416847161948681
+      - 1.5707962830835065
+      - 0.20482805371284485
+      - 1.5707963705062866
+      - 0.2122432440519333
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 6.014046084601432e-05
+  - axial_retraction_m: 0.00275
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 2.1165720681892708e-05
+      direction_error: 2.263208456303393e-06
+      canonical_angles_rad:
+      - 0.22942960262298584
+      - 1.5707963705062866
+      - 0.23899051547050476
+      - -1.5707963705062866
+      - 0.009558686055243015
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 2.1165720681892708e-05
+  - axial_retraction_m: 0.003
+    reachable: true
+    selected:
+      seed_id: x_neg_uniform
+      solver_success: true
+      position_error_m: 4.166069516031712e-07
+      direction_error: 3.2414998489304737e-07
+      canonical_angles_rad:
+      - 0.2420848309993744
+      - 1.5707962830835065
+      - 0.2642861008644104
+      - -1.5707963705062866
+      - 0.022200951352715492
+      - 1.570796402292796
+      valid: true
+    best_position_error_m: 4.166069516031712e-07
+  - axial_retraction_m: 0.00325
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 4.001412889920175e-05
+      direction_error: 1.257660407495235e-05
+      canonical_angles_rad:
+      - 0.25188925862312317
+      - 1.5707963705062866
+      - 0.2838717997074127
+      - -1.5707963705062866
+      - 0.031969957053661346
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 4.001412889920175e-05
+  - axial_retraction_m: 0.0035
+    reachable: true
+    selected:
+      seed_id: x_pos_uniform
+      solver_success: true
+      position_error_m: 6.800671144446824e-06
+      direction_error: 2.5630181083940443e-06
+      canonical_angles_rad:
+      - 0.04414748400449753
+      - -1.5707962830835065
+      - 0.3084660768508911
+      - 1.5707963705062866
+      - 0.26432114839553833
+      - -1.5707962830835065
+      valid: true
+    best_position_error_m: 6.800671144446824e-06
+  - axial_retraction_m: 0.00375
+    reachable: true
+    selected:
+      seed_id: x_pos_uniform
+      solver_success: true
+      position_error_m: 1.7928110537468456e-05
+      direction_error: 2.771635046091917e-06
+      canonical_angles_rad:
+      - 0.05426706373691559
+      - -1.5707962830835065
+      - 0.32879638671875
+      - 1.5707963705062866
+      - 0.27452659606933594
+      - -1.5707962830835065
+      valid: true
+    best_position_error_m: 1.7928110537468456e-05
+  - axial_retraction_m: 0.004
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 1.6714353478164412e-05
+      direction_error: 2.741975805026723e-06
+      canonical_angles_rad:
+      - 0.06220964714884758
+      - -1.5707963705062866
+      - 0.3448772728443146
+      - 1.5707963705062866
+      - 0.28267034888267517
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.6714353478164412e-05
+  - axial_retraction_m: 0.00425
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 1.19503620226169e-05
+      direction_error: 4.053236690560724e-06
+      canonical_angles_rad:
+      - 0.07114367187023163
+      - -1.5707963705062866
+      - 0.36287254095077515
+      - 1.5707963705062866
+      - 0.2917248606681824
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.19503620226169e-05
+  - axial_retraction_m: 0.0045
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 1.3760704860033002e-05
+      direction_error: 6.526719488226054e-06
+      canonical_angles_rad:
+      - 0.07941493391990662
+      - -1.5707963705062866
+      - 0.37956786155700684
+      - 1.570796251296997
+      - 0.3001463711261749
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3760704860033002e-05
+  - axial_retraction_m: 0.00475
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 1.0604272574710194e-05
+      direction_error: 8.277665586338088e-06
+      canonical_angles_rad:
+      - 0.3083910346031189
+      - 1.5707963705062866
+      - 0.3958853483200073
+      - -1.5707963705062866
+      - 0.08748602122068405
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.0604272574710194e-05
+  - axial_retraction_m: 0.005
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 1.3381256394495722e-05
+      direction_error: 3.6955100350742963e-06
+      canonical_angles_rad:
+      - 0.09508892893791199
+      - -1.5707963705062866
+      - 0.4112061858177185
+      - 1.570796251296997
+      - 0.3161209225654602
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3381256394495722e-05
+- target_id: minus_x_35mm
+  minimum_retraction_m: 0.0015
+  first_reachable: &id002
+    axial_retraction_m: 0.0015
+    reachable: true
+    selected:
+      seed_id: x_neg_uniform
+      solver_success: true
+      position_error_m: 9.820188279263675e-05
+      direction_error: 1.4454168202439086e-06
+      canonical_angles_rad:
+      - 0.1093372106552124
+      - -1.5707963705062866
+      - 0.0003032903769053519
+      - -1.5707963705062866
+      - 0.10963905602693558
+      - 1.5707962830835065
+      valid: true
+    best_position_error_m: 9.820188279263675e-05
+  scan:
+  - axial_retraction_m: 0.0
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0015919418074190617
+  - axial_retraction_m: 0.00025
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0013428479433059692
+  - axial_retraction_m: 0.0005
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0010935523314401507
+  - axial_retraction_m: 0.00075
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0008448681328445673
+  - axial_retraction_m: 0.001
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0005959623376838863
+  - axial_retraction_m: 0.00125
+    reachable: false
+    selected: null
+    best_position_error_m: 0.000346722430549562
+  - *id002
+  - axial_retraction_m: 0.00175
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 2.719584335864056e-05
+      direction_error: 9.208919710295412e-06
+      canonical_angles_rad:
+      - 0.15670894086360931
+      - -1.5707963705062866
+      - 0.09428426623344421
+      - 1.5707963705062866
+      - 0.0624154768884182
+      - 1.5707962830835065
+      valid: true
+    best_position_error_m: 2.719584335864056e-05
+  - axial_retraction_m: 0.002
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 5.4117866966407746e-05
+      direction_error: 4.757206270232728e-06
+      canonical_angles_rad:
+      - 0.1754084676504135
+      - -1.5707963705062866
+      - 0.1314994990825653
+      - 1.5707963705062866
+      - 0.04391373321413994
+      - 1.5707962830835065
+      valid: true
+    best_position_error_m: 5.4117866966407746e-05
+  - axial_retraction_m: 0.00225
+    reachable: true
+    selected:
+      seed_id: x_pos_uniform
+      solver_success: true
+      position_error_m: 1.3991389096190687e-05
+      direction_error: 7.13420743423179e-07
+      canonical_angles_rad:
+      - 0.1989133059978485
+      - -1.5707962830835065
+      - 0.17841586470603943
+      - 1.5707963705062866
+      - 0.020496726036071777
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3991389096190687e-05
+  - axial_retraction_m: 0.0025
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 6.014046084601432e-05
+      direction_error: 1.6690221355454248e-06
+      canonical_angles_rad:
+      - 0.007416847161948681
+      - -1.5707962830835065
+      - 0.20482805371284485
+      - -1.5707963705062866
+      - 0.2122432440519333
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 6.014046084601432e-05
+  - axial_retraction_m: 0.00275
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 2.1165720681892708e-05
+      direction_error: 2.263208456303393e-06
+      canonical_angles_rad:
+      - 0.22942960262298584
+      - -1.5707963705062866
+      - 0.23899051547050476
+      - 1.5707963705062866
+      - 0.009558686055243015
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 2.1165720681892708e-05
+  - axial_retraction_m: 0.003
+    reachable: true
+    selected:
+      seed_id: x_pos_uniform
+      solver_success: true
+      position_error_m: 4.1660925376163505e-07
+      direction_error: 3.2420714819342214e-07
+      canonical_angles_rad:
+      - 0.2420848309993744
+      - -1.5707962830835065
+      - 0.2642861008644104
+      - 1.5707963705062866
+      - 0.022200951352715492
+      - -1.5707962830835065
+      valid: true
+    best_position_error_m: 4.1660925376163505e-07
+  - axial_retraction_m: 0.00325
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 4.001412889920175e-05
+      direction_error: 1.257660407495235e-05
+      canonical_angles_rad:
+      - 0.25188925862312317
+      - -1.5707963705062866
+      - 0.2838717997074127
+      - 1.5707963705062866
+      - 0.031969957053661346
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 4.001412889920175e-05
+  - axial_retraction_m: 0.0035
+    reachable: true
+    selected:
+      seed_id: x_neg_uniform
+      solver_success: true
+      position_error_m: 6.800671144446824e-06
+      direction_error: 2.5630181083940443e-06
+      canonical_angles_rad:
+      - 0.04414748400449753
+      - 1.5707962830835065
+      - 0.3084660768508911
+      - -1.5707963705062866
+      - 0.26432114839553833
+      - 1.5707962830835065
+      valid: true
+    best_position_error_m: 6.800671144446824e-06
+  - axial_retraction_m: 0.00375
+    reachable: true
+    selected:
+      seed_id: x_neg_uniform
+      solver_success: true
+      position_error_m: 1.7928110537468456e-05
+      direction_error: 2.771635046091917e-06
+      canonical_angles_rad:
+      - 0.05426706373691559
+      - 1.5707962830835065
+      - 0.32879638671875
+      - -1.5707963705062866
+      - 0.27452659606933594
+      - 1.5707962830835065
+      valid: true
+    best_position_error_m: 1.7928110537468456e-05
+  - axial_retraction_m: 0.004
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 1.6714353478164412e-05
+      direction_error: 2.741975805026723e-06
+      canonical_angles_rad:
+      - 0.06220964714884758
+      - 1.5707963705062866
+      - 0.3448772728443146
+      - -1.5707963705062866
+      - 0.28267034888267517
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.6714353478164412e-05
+  - axial_retraction_m: 0.00425
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 1.19503620226169e-05
+      direction_error: 4.053236690560724e-06
+      canonical_angles_rad:
+      - 0.07114367187023163
+      - 1.5707963705062866
+      - 0.36287254095077515
+      - -1.5707963705062866
+      - 0.2917248606681824
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.19503620226169e-05
+  - axial_retraction_m: 0.0045
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 1.3760704860033002e-05
+      direction_error: 6.526719488226054e-06
+      canonical_angles_rad:
+      - 0.07941493391990662
+      - 1.5707963705062866
+      - 0.37956786155700684
+      - -1.570796251296997
+      - 0.3001463711261749
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3760704860033002e-05
+  - axial_retraction_m: 0.00475
+    reachable: true
+    selected:
+      seed_id: x_neg_s
+      solver_success: true
+      position_error_m: 1.0604268027236685e-05
+      direction_error: 8.277604369930845e-06
+      canonical_angles_rad:
+      - 0.3083910346031189
+      - -1.5707963705062866
+      - 0.3958853483200073
+      - 1.570796251296997
+      - 0.08748602122068405
+      - -1.5707963705062866
+      valid: true
+    best_position_error_m: 1.0604268027236685e-05
+  - axial_retraction_m: 0.005
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 1.3381256394495722e-05
+      direction_error: 3.6955100350742963e-06
+      canonical_angles_rad:
+      - 0.09508892893791199
+      - 1.5707963705062866
+      - 0.4112061858177185
+      - -1.570796251296997
+      - 0.3161209225654602
+      - 1.5707963705062866
+      valid: true
+    best_position_error_m: 1.3381256394495722e-05
+- target_id: plus_y_35mm
+  minimum_retraction_m: 0.0015
+  first_reachable: &id003
+    axial_retraction_m: 0.0015
+    reachable: true
+    selected:
+      seed_id: y_pos_uniform
+      solver_success: true
+      position_error_m: 9.820188279263675e-05
+      direction_error: 1.4454443018804067e-06
+      canonical_angles_rad:
+      - 0.1093372106552124
+      - 1.835909202441144e-11
+      - 0.0003032903769053519
+      - -5.329070518200751e-15
+      - 0.10963905602693558
+      - -3.141592653566235
+      valid: true
+    best_position_error_m: 9.820188279263675e-05
+  scan:
+  - axial_retraction_m: 0.0
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0015919418074190617
+  - axial_retraction_m: 0.00025
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0013428321108222008
+  - axial_retraction_m: 0.0005
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0010935523314401507
+  - axial_retraction_m: 0.00075
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0008448681328445673
+  - axial_retraction_m: 0.001
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0005959623376838863
+  - axial_retraction_m: 0.00125
+    reachable: false
+    selected: null
+    best_position_error_m: 0.000346722430549562
+  - *id003
+  - axial_retraction_m: 0.00175
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 2.719584335864056e-05
+      direction_error: 9.208923297529808e-06
+      canonical_angles_rad:
+      - 0.15670894086360931
+      - 6.004534469639111e-08
+      - 0.09428426623344421
+      - -3.141592502593994
+      - 0.0624154768884182
+      - 3.141592645309238
+      valid: true
+    best_position_error_m: 2.719584335864056e-05
+  - axial_retraction_m: 0.002
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 4.94608684675768e-05
+      direction_error: 8.320501815324262e-05
+      canonical_angles_rad:
+      - 0.13669812679290771
+      - 0.5780318975448608
+      - 0.14938309788703918
+      - -1.6343626976013184
+      - 0.12831571698188782
+      - 2.528348922729492
+      valid: true
+    best_position_error_m: 4.94608684675768e-05
+  - axial_retraction_m: 0.00225
+    reachable: true
+    selected:
+      seed_id: y_neg_uniform
+      solver_success: true
+      position_error_m: 1.399140091962181e-05
+      direction_error: 7.153952618335652e-07
+      canonical_angles_rad:
+      - 0.1989133059978485
+      - -1.5099579897537296e-07
+      - 0.17841586470603943
+      - -3.141592502593994
+      - 0.020496726036071777
+      - 3.141592502593994
+      valid: true
+    best_position_error_m: 1.399140091962181e-05
+  - axial_retraction_m: 0.0025
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 6.014046084601432e-05
+      direction_error: 1.6692734576378345e-06
+      canonical_angles_rad:
+      - 0.007416847161948681
+      - 1.5099579897537296e-07
+      - 0.20482805371284485
+      - -1.559723727950768e-08
+      - 0.2122432440519333
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 6.014046084601432e-05
+  - axial_retraction_m: 0.00275
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 2.1165720681892708e-05
+      direction_error: 2.2633459828851923e-06
+      canonical_angles_rad:
+      - 0.22942960262298584
+      - -6.809237618199404e-09
+      - 0.23899051547050476
+      - 3.141592502593994
+      - 0.009558686055243015
+      - -1.8876292529057537e-07
+      valid: true
+    best_position_error_m: 2.1165720681892708e-05
+  - axial_retraction_m: 0.003
+    reachable: true
+    selected:
+      seed_id: y_neg_uniform
+      solver_success: true
+      position_error_m: 4.166224982782296e-07
+      direction_error: 3.241434397510686e-07
+      canonical_angles_rad:
+      - 0.2420848309993744
+      - -1.5099579897537296e-07
+      - 0.2642861008644104
+      - 3.141592502593994
+      - 0.022200951352715492
+      - -3.8941437807693546e-07
+      valid: true
+    best_position_error_m: 4.166224982782296e-07
+  - axial_retraction_m: 0.00325
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 4.001412889920175e-05
+      direction_error: 1.2576626335454255e-05
+      canonical_angles_rad:
+      - 0.25188925862312317
+      - -1.6085575538227204e-08
+      - 0.2838717997074127
+      - 3.141592502593994
+      - 0.031969957053661346
+      - -1.3549519906064234e-07
+      valid: true
+    best_position_error_m: 4.001412889920175e-05
+  - axial_retraction_m: 0.0035
+    reachable: true
+    selected:
+      seed_id: y_pos_uniform
+      solver_success: true
+      position_error_m: 6.8006720539415255e-06
+      direction_error: 2.563141008114456e-06
+      canonical_angles_rad:
+      - 0.04414748400449753
+      - -3.1415926514662695
+      - 0.3084660768508911
+      - 7.001643709259042e-10
+      - 0.26432114839553833
+      - -3.1415926532345138
+      valid: true
+    best_position_error_m: 6.8006720539415255e-06
+  - axial_retraction_m: 0.00375
+    reachable: true
+    selected:
+      seed_id: y_pos_uniform
+      solver_success: true
+      position_error_m: 1.7928110537468456e-05
+      direction_error: 2.771762233420652e-06
+      canonical_angles_rad:
+      - 0.05426706373691559
+      - 3.14159265266815
+      - 0.32879638671875
+      - -1.659516968288699e-10
+      - 0.27452659606933594
+      - 3.1415926533781686
+      valid: true
+    best_position_error_m: 1.7928110537468456e-05
+  - axial_retraction_m: 0.004
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 1.671435165917501e-05
+      direction_error: 2.742060853722714e-06
+      canonical_angles_rad:
+      - 0.06220964714884758
+      - -3.141592502593994
+      - 0.3448772728443146
+      - 4.305351097855237e-08
+      - 0.28267034888267517
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 1.671435165917501e-05
+  - axial_retraction_m: 0.00425
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 1.1950361113122199e-05
+      direction_error: 4.0532902214514e-06
+      canonical_angles_rad:
+      - 0.07114367187023163
+      - -3.141592502593994
+      - 0.36287254095077515
+      - 4.603938918990025e-08
+      - 0.2917248606681824
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 1.1950361113122199e-05
+  - axial_retraction_m: 0.0045
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 1.37607039505383e-05
+      direction_error: 6.52677143492569e-06
+      canonical_angles_rad:
+      - 0.07941493391990662
+      - -3.141592502593994
+      - 0.37956786155700684
+      - 7.462283946324533e-08
+      - 0.3001463711261749
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 1.37607039505383e-05
+  - axial_retraction_m: 0.00475
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 1.0604271665215492e-05
+      direction_error: 8.277678238049404e-06
+      canonical_angles_rad:
+      - 0.3083910346031189
+      - -3.597206799099695e-08
+      - 0.3958853483200073
+      - 3.141592502593994
+      - 0.08748602122068405
+      - -1.258369763945666e-07
+      valid: true
+    best_position_error_m: 1.0604271665215492e-05
+  - axial_retraction_m: 0.005
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 1.338125548500102e-05
+      direction_error: 3.6956029691430858e-06
+      canonical_angles_rad:
+      - 0.09508892893791199
+      - -3.141592502593994
+      - 0.4112061858177185
+      - 7.901761023276777e-08
+      - 0.3161209225654602
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 1.338125548500102e-05
+- target_id: minus_y_35mm
+  minimum_retraction_m: 0.0015
+  first_reachable: &id004
+    axial_retraction_m: 0.0015
+    reachable: true
+    selected:
+      seed_id: y_neg_uniform
+      solver_success: true
+      position_error_m: 9.820188279263675e-05
+      direction_error: 1.4454126358036167e-06
+      canonical_angles_rad:
+      - 0.1093372106552124
+      - -3.141592502593994
+      - 0.0003032903769053519
+      - -3.141592502593994
+      - 0.10963905602693558
+      - 1.5099579897537296e-07
+      valid: true
+    best_position_error_m: 9.820188279263675e-05
+  scan:
+  - axial_retraction_m: 0.0
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0015919418074190617
+  - axial_retraction_m: 0.00025
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0013428479433059692
+  - axial_retraction_m: 0.0005
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0010935523314401507
+  - axial_retraction_m: 0.00075
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0008448681328445673
+  - axial_retraction_m: 0.001
+    reachable: false
+    selected: null
+    best_position_error_m: 0.0005959623376838863
+  - axial_retraction_m: 0.00125
+    reachable: false
+    selected: null
+    best_position_error_m: 0.000346722430549562
+  - *id004
+  - axial_retraction_m: 0.00175
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 2.7195845177629963e-05
+      direction_error: 9.20892184230906e-06
+      canonical_angles_rad:
+      - 0.15670894086360931
+      - -3.141592502593994
+      - 0.09428426623344421
+      - 5.685724246973223e-08
+      - 0.0624154768884182
+      - 1.5099579897537296e-07
+      valid: true
+    best_position_error_m: 2.7195845177629963e-05
+  - axial_retraction_m: 0.002
+    reachable: true
+    selected:
+      seed_id: x_pos_s
+      solver_success: true
+      position_error_m: 4.731232183985412e-05
+      direction_error: 0.00010285907623836488
+      canonical_angles_rad:
+      - 0.13744981586933136
+      - 2.5692923069000244
+      - 0.14904063940048218
+      - -1.4928271770477295
+      - 0.1273053139448166
+      - 0.6166431903839111
+      valid: true
+    best_position_error_m: 4.731232183985412e-05
+  - axial_retraction_m: 0.00225
+    reachable: true
+    selected:
+      seed_id: y_pos_uniform
+      solver_success: true
+      position_error_m: 1.399139091518009e-05
+      direction_error: 7.136118492132645e-07
+      canonical_angles_rad:
+      - 0.1989133059978485
+      - 3.141592651372153
+      - 0.17841586470603943
+      - -3.867516973343754e-09
+      - 0.020496726036071777
+      - 1.4238208834171928e-08
+      valid: true
+    best_position_error_m: 1.399139091518009e-05
+  - axial_retraction_m: 0.0025
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 6.014046084601432e-05
+      direction_error: 1.669281920645984e-06
+      canonical_angles_rad:
+      - 0.007416847161948681
+      - 3.141592411118449
+      - 0.20482805371284485
+      - 3.141592502593994
+      - 0.2122432440519333
+      - 1.1699377466811711e-08
+      valid: true
+    best_position_error_m: 6.014046084601432e-05
+  - axial_retraction_m: 0.00275
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 2.1165724319871515e-05
+      direction_error: 2.2634023570376046e-06
+      canonical_angles_rad:
+      - 0.22942960262298584
+      - 3.141592502593994
+      - 0.23899051547050476
+      - 1.3735311554796681e-08
+      - 0.009558686055243015
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 2.1165724319871515e-05
+  - axial_retraction_m: 0.003
+    reachable: true
+    selected:
+      seed_id: y_pos_uniform
+      solver_success: true
+      position_error_m: 4.1667476580187213e-07
+      direction_error: 3.2495828550640166e-07
+      canonical_angles_rad:
+      - 0.2420848309993744
+      - -3.1415926521199014
+      - 0.2642861008644104
+      - 2.6764683802582567e-09
+      - 0.022200951352715492
+      - -3.1415926377563412
+      valid: true
+    best_position_error_m: 4.1667476580187213e-07
+  - axial_retraction_m: 0.00325
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 4.001413253718056e-05
+      direction_error: 1.2576627292008283e-05
+      canonical_angles_rad:
+      - 0.25188925862312317
+      - -3.141592502593994
+      - 0.2838717997074127
+      - 2.840372737011876e-08
+      - 0.031969957053661346
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 4.001413253718056e-05
+  - axial_retraction_m: 0.0035
+    reachable: true
+    selected:
+      seed_id: y_neg_uniform
+      solver_success: true
+      position_error_m: 6.800671144446824e-06
+      direction_error: 2.563021325719987e-06
+      canonical_angles_rad:
+      - 0.04414748400449753
+      - -3.8941437807693546e-07
+      - 0.3084660768508911
+      - 3.141592502593994
+      - 0.26432114839553833
+      - -1.5099579897537296e-07
+      valid: true
+    best_position_error_m: 6.800671144446824e-06
+  - axial_retraction_m: 0.00375
+    reachable: true
+    selected:
+      seed_id: y_neg_uniform
+      solver_success: true
+      position_error_m: 1.7928110537468456e-05
+      direction_error: 2.7716459217611445e-06
+      canonical_angles_rad:
+      - 0.05426706373691559
+      - -3.8941437807693546e-07
+      - 0.32879638671875
+      - 3.141592502593994
+      - 0.27452659606933594
+      - -1.5099579897537296e-07
+      valid: true
+    best_position_error_m: 1.7928110537468456e-05
+  - axial_retraction_m: 0.004
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 1.6714353478164412e-05
+      direction_error: 2.742084382572201e-06
+      canonical_angles_rad:
+      - 0.06220964714884758
+      - -1.0546366979724553e-07
+      - 0.3448772728443146
+      - 3.141592502593994
+      - 0.28267034888267517
+      - -2.3001092586127925e-08
+      valid: true
+    best_position_error_m: 1.6714353478164412e-05
+  - axial_retraction_m: 0.00425
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 1.1950364751101006e-05
+      direction_error: 4.053315015055217e-06
+      canonical_angles_rad:
+      - 0.07114367187023163
+      - -9.953834023690433e-08
+      - 0.36287254095077515
+      - 3.141592502593994
+      - 0.2917248606681824
+      - -2.384535058297388e-08
+      valid: true
+    best_position_error_m: 1.1950364751101006e-05
+  - axial_retraction_m: 0.0045
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 1.3760704860033002e-05
+      direction_error: 6.526741578927938e-06
+      canonical_angles_rad:
+      - 0.07941493391990662
+      - -2.2979067182404833e-07
+      - 0.37956786155700684
+      - 3.141592502593994
+      - 0.3001463711261749
+      - -5.968405503153917e-08
+      valid: true
+    best_position_error_m: 1.3760704860033002e-05
+  - axial_retraction_m: 0.00475
+    reachable: true
+    selected:
+      seed_id: y_neg_s
+      solver_success: true
+      position_error_m: 1.06042753031943e-05
+      direction_error: 8.27765288211546e-06
+      canonical_angles_rad:
+      - 0.3083910346031189
+      - -3.141592502593994
+      - 0.3958853483200073
+      - 7.183320605008703e-08
+      - 0.08748602122068405
+      - -3.141592502593994
+      valid: true
+    best_position_error_m: 1.06042753031943e-05
+  - axial_retraction_m: 0.005
+    reachable: true
+    selected:
+      seed_id: y_pos_s
+      solver_success: true
+      position_error_m: 1.3381260032474529e-05
+      direction_error: 3.695736025621289e-06
+      canonical_angles_rad:
+      - 0.09508892893791199
+      - -9.862469596555457e-08
+      - 0.4112061858177185
+      - 3.141592502593994
+      - 0.3161209225654602
+      - -2.91313817513128e-08
+      valid: true
+    best_position_error_m: 1.3381260032474529e-05
+minimum_retractions_m:
+  plus_x_35mm: 0.0015
+  minus_x_35mm: 0.0015
+  plus_y_35mm: 0.0015
+  minus_y_35mm: 0.0015
+minimum_retraction_spread_m: 0.0
+total_ik_attempts: 672
+elapsed_s: 5.601292996000041
+environment_steps: 0
+cuda_initialized: false
+model_predictions: 0
+hardware_commands: 0
+source_hashes:
+  config: b98e26023f46b968fd660acb94bff949663826795918e000d5918c889c0925f8
+  phase6f_result: 3373d5fe82ae756e73e7313e1c777bc130e1a9c410e69993692e30063a261c20
+  phase6h_result: 6247145d99da4801ec6477973e86bec5134daf5f2c895b1761acd2b47f2e65c4
+boundary: Frozen-grid CPU reachability analysis only; Phase 6F targets/results remain
+  immutable, and no MJCF recovery, VLA, reward, final, or hardware claim is authorized.

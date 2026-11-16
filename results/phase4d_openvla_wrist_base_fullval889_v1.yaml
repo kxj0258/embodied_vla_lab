@@ -1,0 +1,19 @@
+experiment: phase4d_openvla_wrist_base_fullval889_v1_seed20260829
+classification: PASS
+execution_pass: true
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+fixture_manifest_sha256: 5ef06ec42a8999a50cb9810a201f93d34d438dc511bd9a61e558d5b3ec7b13e0
+validation: {frames: 889, episodes: 10, action_tokens: 6223, mean_frame_loss: 16.68339141764174, action_token_accuracy: 0.1308050779366865, mean_frame_continuous_action_l1: 0.2879627441527792, all_rows_finite: true}
+timing: {model_load_s: 5.679923803996644, validation_s: 201.18662721499277, frames_per_s: 4.418782760595682, median_inference_s: 0.22345963898987975, p95_inference_s: 0.22927872179134282, host_wall_s: 209.32}
+memory: {peak_vram_allocated_bytes: 5167181312, peak_vram_reserved_bytes: 5335154688, rss_kib_at_result: 1897340, host_max_rss_kib: 5768068, swaps: 0}
+host: {exit_status: 0, user_s: 250.57, system_s: 34.94, cpu_percent: 136, major_page_faults: 636, minor_page_faults: 620260, socket_messages_sent: 0, socket_messages_received: 0}
+integrity:
+  validation_frames_complete: true
+  training_executed: false
+  environment_executed: false
+  checkpoint_selected: false
+artifacts:
+  result_json: {path: outputs/eval/phase4d_openvla_wrist_base_fullval889_v1_seed20260829/result.json, bytes: 216992, sha256: 98c548b68b6b073f5aae76b51645280094584da758149beb5801c926c88f3c19}
+  resolved_config: {path: outputs/eval/phase4d_openvla_wrist_base_fullval889_v1_seed20260829/resolved_config.yaml, bytes: 913, sha256: 80a1e6417c3709307bc2fc65bed78612b9025ce4ec908e9360898ebfa1012524}
+  raw_log: {path: results/raw/phase4d_openvla_wrist_base_fullval889_v1_host_20260828.log, bytes: 4569, sha256: a6474fc9b7260e7fd118eceb7d9e51def2917b8fce02783b1265191cfedb4080}
+boundary: Frozen-base wrist offline baseline only. Loss/token accuracy/L1 are not environment success or reward; adapter comparison remains pending.

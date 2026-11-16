@@ -1,0 +1,25 @@
+experiment: phase3a_openvla_4bit_single_image_v3_demo0_t000_seed20260827
+date: 2026-08-27
+classification: FAIL
+exit_status: 1
+stage_reached: first_generation_forward
+checkpoint_shards_read: 4
+model_load_and_dispatch_completed: true
+failure:
+  exception: RuntimeError
+  observed_shape_mismatch: {attention_logits_key_length: 276, causal_mask_key_length: 275, difference: 1}
+  root_cause: Upstream predict_action appended special token 29871 to 19 input IDs but did not extend the 19-element attention mask; after inserting 256 visual patch tokens the lengths became 276 and 275.
+  verified_processor_contract: {input_ids_before_append: 19, attention_mask_before_append: 19, last_token_id: 29901, append_required: true}
+  correction: Append token 29871 and one true attention-mask entry together before calling predict_action, so its internal conditional append is skipped.
+resources: {process_wall_s: 10.35, maximum_rss_kib: 5862552}
+execution:
+  usable_model_returned: true
+  first_forward_entered: true
+  inference_completed: false
+  action_produced: false
+  environment_constructed: false
+  process_exited_and_gpu_allocations_released: true
+artifacts:
+  raw_log: {path: results/raw/phase3a_openvla_4bit_single_image_v3_demo0_t000_seed20260827_host_20260827.log, bytes: 5351, sha256: b1b64df863502e38da7b2a1cfb70f49a7e4f2a65d749fc6d6e4736a4825d1e35}
+boundary: Model loading feasibility advanced beyond v2, but no completed action, latency, success, reward, rollout, or training evidence exists.
+next_gate: New-ID v4 with jointly aligned special token and attention mask; retain strict offline NF4 and the dispatch shim.

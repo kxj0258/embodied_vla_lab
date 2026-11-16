@@ -1,0 +1,40 @@
+classification: FAIL
+experiment: phase6d_feagine_a03_short_dynamics_v1
+decision: SHORT_DYNAMICS_FAIL
+checks:
+  finite_state: true
+  exact_time: true
+  tip_motion: true
+  joint_limits: false
+  step_budget: true
+  headless: true
+  no_policy_or_hardware: true
+checks_passed: 6
+checks_total: 7
+steps: 200
+simulated_time_s: 1.0000000000000007
+tip_body: capsule_15
+tip_initial_m:
+- -8.170363807883215e-10
+- -4.211835688769394e-25
+- 0.6430000065000002
+tip_final_m:
+- 2.40256626210425e-06
+- 0.06674484068420361
+- 0.6367778748014611
+tip_motion_m: 0.06703423518329972
+max_abs_qvel: 0.5921052632622271
+max_abs_ctrl: 0.2
+max_contacts: 0
+limited_joints_checked: 51
+elapsed_s: 0.1182238450001023
+steps_per_s: 1691.7012369318115
+cuda_initialized: false
+model_predictions: 0
+reward: null
+success: null
+hardware_commands: 0
+source_hashes:
+  config: 68d38c8c42fb4eacf2cce79ad2aba4b021fc4f0feec7ae1d2d65c1c0592e5393
+boundary: One-second headless actuator/dynamics smoke only; no IK target reaching,
+  task success, reward, collision-safety or VLA claim.

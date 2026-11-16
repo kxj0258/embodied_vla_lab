@@ -1,0 +1,9 @@
+experiment_id: phase2b_act_libero_turn_on_stove_deterministic_10k_seed20260826
+seed: 20260826
+dataset_contract: configs/dataset/libero_goal_turn_on_stove_phase2a.yaml
+dataset_result: results/phase2a_libero_dataset_preprocessing_contract.yaml
+policy: {type: act, use_vae: false, cameras: [agentview, eye_in_hand], state_dim: 9, action_dim: 7, chunk_size: 20, n_action_steps: 5, pretrained_backbone_weights: null}
+training: {steps: 10000, batch_size: 8, learning_rate: 0.00001, weight_decay: 0.0001, grad_clip_norm: 10.0, bf16: true, num_workers: 0, log_every: 100, validation_every: 1000, checkpoint_every: 2500}
+output_dir: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_10k_seed20260826
+wandb: false
+push_to_hub: false

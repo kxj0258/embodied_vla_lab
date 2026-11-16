@@ -1,0 +1,50 @@
+classification: PASS
+experiment: phase5e_residual_world_model_dev100_pair_v1_seed20260902
+decision: DEVELOPMENT_NO_GO_ACTION_CONDITIONING
+execution:
+  training_steps_total: 200
+  optimizer_steps_total: 200
+  internal_elapsed_s: 2.824849624999956
+  host_elapsed_s: 6.23
+  updates_per_internal_second: 70.80022887944101
+  peak_vram_allocated_bytes: 133392896
+  peak_vram_reserved_bytes: 159383552
+  host_max_rss_kib: 1814380
+  host_swap_count: 0
+  host_socket_messages_sent: 0
+  host_socket_messages_received: 0
+development_h4_pixel_mae_0_255:
+  copy_current_frame: 1.5912456512451172
+  residual_action_free: 1.5922289772424847
+  residual_action_conditioned: 1.593034613179043
+  conditioned_vs_free_percent: 0.05059799489099959
+  conditioned_vs_copy_percent: 0.11242525203609688
+training_diagnostics:
+  residual_action_free:
+    first10_mean_loss: 0.004663535649888218
+    last10_mean_loss: 0.004489735746756196
+    loss_change_percent: -3.7267840578464884
+    grad_norm_preclip_min: 0.0011582300066947937
+    grad_norm_preclip_max: 0.1364089846611023
+  residual_action_conditioned:
+    first10_mean_loss: 0.004663597885519266
+    last10_mean_loss: 0.004492341144941747
+    loss_change_percent: -3.6722021233708935
+    grad_norm_preclip_min: 0.0011582350125536323
+    grad_norm_preclip_max: 0.1364089697599411
+integrity:
+  canonical_result: {path: results/phase5e_residual_world_model_dev100_pair_v1.yaml, bytes: 22717, sha256: 3e8ad76227836e8aad0c3955a044ec21bdaf325321faeabb96a1974dace3e899}
+  raw_log: {path: results/raw/phase5e_residual_world_model_dev100_pair_v1_host_20260829.log, bytes: 32669, sha256: fd0394b5a2c3c6932d6c8900dd6a057a12c1c1145a9dd143e5006be70adda3f3}
+  internal_result: {path: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902/result.json, bytes: 31831, sha256: 47fcbaf46694490772893633358ce2849109998dbfb788cc2a73875aee6d65ab}
+  residual_action_free_checkpoint: {path: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902/residual_action_free_step100.pt, bytes: 15445857, sha256: fb4de9acd296677e5410330b10db09a6fdd8f4acaf6f1db5162daf30ac95e50d, cpu_load_complete: true, step: 100}
+  residual_action_conditioned_checkpoint: {path: outputs/train/phase5e_residual_world_model_dev100_pair_v1_seed20260902/residual_action_conditioned_step100.pt, bytes: 15550583, sha256: c6ea20daef75683d21c05d43ab6129311aec908a3a7e7fd90ccbe6426251fd9d, cpu_load_complete: true, step: 100}
+protocol:
+  identical_batch_order: true
+  shared_encoder_decoder_initialization: true
+  prior_exposed_confirmation_executed: false
+  checkpoint_selected: false
+  environment_steps: 0
+boundary: >-
+  Execution PASS establishes a stable residual training path only. The conditioned hypothesis is development
+  NO-GO and cannot authorize confirmation evaluation, checkpoint selection, longer training, planning, reward,
+  success or environment claims.

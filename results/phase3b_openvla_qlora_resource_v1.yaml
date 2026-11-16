@@ -1,0 +1,48 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_onebackward_v1_seed20260827
+date: 2026-08-27
+classification: FAIL
+exit_status: 1
+failure:
+  stage: structured_result_directory_creation_after_compute
+  exception: AttributeError
+  message: PrismaticCausalLMOutputWithPast object has no attribute mkdir
+  cause: local_path_variable_output_shadowed_by_model_forward_output
+compute_reached:
+  checkpoint_shards_loaded: 4/4
+  lora_adapter_constructed: true
+  forward_completed: true
+  finite_loss_check_passed_before_failure: true
+  action_metric_alignment_checks_passed_before_failure: true
+  backward_completed: true
+  finite_gradient_check_passed_before_failure: true
+  result_dictionary_constructed: true
+  optimizer_steps: 0
+  checkpoint_created: false
+unavailable_due_to_writer_failure:
+  loss: NOT_RECORDED
+  action_token_accuracy: NOT_RECORDED
+  continuous_action_l1: NOT_RECORDED
+  gradient_norm: NOT_RECORDED
+  trainable_parameters: NOT_RECORDED
+  forward_backward_time: NOT_RECORDED
+  allocated_reserved_vram: NOT_RECORDED
+resources:
+  process_wall_s: 9.34
+  maximum_rss_kib: 5775856
+  user_cpu_s: 13.61
+  system_cpu_s: 2.84
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+warnings:
+  use_cache_disabled_for_gradient_checkpointing: EXPECTED_NON_SEMANTIC
+  checkpoint_use_reentrant_futurewarning: NON_SEMANTIC_CURRENT_EXECUTION
+artifacts:
+  output_dir_status: ABSENT
+  config: {path: configs/train/openvla_phase3b_qlora_resource_gate.yaml, sha256: 80a28ccd9043bcc0764d9b9c9cf091e09427860166faea629b53485a4e7f7a29}
+  entrypoint_at_failure: {path: scripts/check_phase3b_openvla_qlora_resource_gate.py, sha256: a04f2ca8e97b79af959e2ac4d618e5f3dde2bd79ac1e38e9456cf8f2d4d3416f}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_onebackward_v1_seed20260827_host_20260827.log, lines: 34, bytes: 2664, sha256: bba1adf4771acb6b61b51bb710a318509c05bc8244452017892390cdaf2a939c}
+statistical_boundary: >-
+  The run proves that the scripted compute path reached and completed forward/backward without OOM or a raised
+  numerical assertion, but missing serialized values prevent a PASS or quantitative resource/numerical conclusion.
+next_gate: New-ID v2 with only output/model_output variable-shadow fix; all model/data/LoRA/compute contracts unchanged.

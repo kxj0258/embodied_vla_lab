@@ -1,0 +1,125 @@
+manifest: phase2a_libero_goal_turn_on_stove_contract
+date: 2026-08-26
+status: STATIC_IDENTITY_AND_DEMONSTRATION_DATA_CONTRACT_PASS
+
+pins:
+  libero: 8f1084e3132a39270c3cc3e7e98f04940126398a391
+  robosuite: 1.4.0
+  mujoco: 3.8.1
+
+task_assets:
+  bddl:
+    path: libero/libero/libero/bddl_files/libero_goal/turn_on_the_stove.bddl
+    bytes: 2891
+    sha256: cbd2a0514d53226c5d09e17af40b22935d4cb6ff8fdaff0d55f555de1adecc13
+  init_states:
+    path: libero/libero/libero/init_files/libero_goal/turn_on_the_stove.pruned_init
+    bytes: 37551
+    sha256: ed121db31d749647d70741c4c4ef0bd8e0876663986578795968e962d9b91340
+    count: 50
+    state_width: 79
+    container: numpy.ndarray
+    dtype: float64
+
+demonstration:
+  expected_relative_path: libero_goal/turn_on_the_stove_demo.hdf5
+  local_present: true
+  source_repo: yifengzhu-hf/LIBERO-datasets
+  source_revision: f13aa24a3da8c43c7225569f28c562979fa0e35a
+  bytes: 447509922
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  episodes: 50
+  frames: 4460
+  episode_length: {min: 75, mean: 89.2, max: 119}
+  action_shape: [7]
+  action_dtype: float64
+  action_finite: true
+  action_range: [-1.0, 1.0]
+  observation_shapes:
+    agentview_rgb: [128, 128, 3]
+    eye_in_hand_rgb: [128, 128, 3]
+    gripper_states: [2]
+    joint_states: [7]
+    ee_states: [6]
+  invalid_resume_artifact_preserved: true
+
+generated_project_assets:
+  config: configs/env/libero_goal_turn_on_stove_phase2a.yaml
+  checker: scripts/check_phase2a_libero_static_contract.py
+  structured_result: results/phase2a_libero_single_task_static_contract.yaml
+  runtime_result: results/phase2a_libero_demo0_replay_preflight.yaml
+  dataset_contract: configs/dataset/libero_goal_turn_on_stove_phase2a.yaml
+  dataset_result: results/phase2a_libero_dataset_preprocessing_contract.yaml
+  gpu_resource_result: results/phase2b_act_libero_gpu_resource_gate.yaml
+  phase_document: docs/phases/phase_2a_libero_single_task_contract.md
+
+boundary: >-
+  This manifest freezes source-controlled task/init identities and the official single-task
+  demonstration byte/schema contract. It contains no evidence from environment replay,
+  training, policy inference, or evaluation.
+
+runtime_replay:
+  classification: FAIL
+  interface_and_task_success: PASS
+  deterministic_archived_state_replay: FAIL
+  episode: demo_0
+  actions: 80
+  first_success_step: 70
+  final_success: true
+  max_next_state_l2: 0.507810213439
+  required_max_next_state_l2: 0.01
+  result: results/phase2a_libero_demo0_replay_preflight.yaml
+
+act_gpu_resource_gate:
+  classification: PASS
+  parameters: 34185031
+  losses: [0.6174287796020508, 0.45637762546539307]
+  gradient_norm_preclip: [112.81077575683594, 86.72736358642578]
+  peak_vram_allocated_bytes: 706334208
+  raw_log_sha256: 8eb689756f728d4d5af9a3e2832f9c5c21b084fc54460f43db3a29f237974f63
+
+act_single_batch_overfit_200step:
+  classification: FAIL
+  initial_loss: 0.6174287796020508
+  final_loss: 0.17501255869865417
+  threshold: "final < 0.25 * initial"
+  raw_log_sha256: 7e5b9487438551c8536d5c5827497413e207abbbab1fd80b76c5fb57398dcbfd
+
+act_single_batch_overfit_400step:
+  classification: PASS
+  initial_loss: 0.6174287796020508
+  final_loss: 0.1356000453233719
+  minimum_loss: 0.12285235524177551
+  raw_log_sha256: 6dd1d2cba61ced9371eb27fdc3fbd254601e5e911e771a0bc74ece4c2bd81f8e
+
+act_fullsplit_smoke_20step:
+  classification: FAIL
+  optimizer_steps_completed: 20
+  checkpoint_created: false
+  blocker: ACTConfig.to_dict unavailable
+  raw_log_sha256: 92c6d3f5b3e3aea5937613474149cec33f83b716ed216205bbe0401f58e8ae3f
+
+act_fullsplit_smoke_v2_20step:
+  classification: EXPECTED_EXCEPTION
+  execution_context: codex_managed_environment
+  optimizer_steps_completed: 0
+  checkpoint_created: false
+  blocker: CUDA peak-memory counter unavailable before training
+  raw_log_sha256: a619d846d494f268b030c2dda909e36aa1d728e264b6b456f9d7fb6d16a293e1
+
+act_fullsplit_smoke_v3_20step:
+  classification: PASS
+  execution_context: host_cuda
+  optimizer_steps_completed: 20
+  checkpoint_created: true
+  checkpoint_cpu_reload: PASS
+  checkpoint_sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+  raw_log_sha256: 65c1cb2294821e519d349c847d5472fff00707aeb8ed9ed1b594dbb8993bb1ca
+
+act_fullsplit_validation_smoke_v4_20step:
+  classification: PASS
+  optimizer_steps_completed: 20
+  validation_loss: 0.7429550438281254
+  validation_samples: 889
+  checkpoint_sha256: 1e5be537a28f126980aeda82dd84144f5f2af3f59b764d19cd0e833cd90b5d82
+  raw_log_sha256: e76227cd4059c4ffa05eccd035bbd147196040f46514fcc9aed24beab2dd43e6

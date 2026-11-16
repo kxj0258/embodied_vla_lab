@@ -1,0 +1,36 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827
+attempt: rerun_after_frozen_oom_attempt
+date: 2026-08-27
+classification: FAIL
+compute_execution_classification: PASS
+protocol_failure: Reused an existing experiment ID and overwrote its raw-log path because the shell guard lacked errexit.
+compute:
+  optimizer_steps: 20
+  all_train_losses_finite: true
+  all_gradients_finite: true
+  train_loss: {first: 22.777883529663086, last: 12.424558639526367, mean: 12.626897430419922, first10_mean: 14.924784755706787, last10_mean: 10.329010105133056, min: 6.887199401855469, max: 22.777883529663086}
+  gradient_norm_before_clip: {mean: 409.10459289550784, min: 348.875244140625, max: 487.0295104980469, clip_max_norm: 1.0}
+validation_smoke:
+  samples: 10
+  action_tokens: 70
+  initial: {mean_sample_loss: 16.91505002975464, action_token_accuracy: 0.05714285714285714, correct_tokens: 4}
+  final: {mean_sample_loss: 8.812855291366578, action_token_accuracy: 0.11428571428571428, correct_tokens: 8}
+  loss_absolute_change: -8.10219473838806
+  loss_relative_change: -0.47899324708681257
+resources:
+  model_load_s: 4.087240102000578
+  adapter_prepare_s: 0.3752920360002463
+  train_validate_s: 18.11528436700064
+  updates_per_train_validate_s_including_validation: 1.1040400799025056
+  peak_vram_allocated_bytes: 6866165248
+  peak_vram_reserved_bytes: 7291797504
+  host_wall_s: 26.76
+  host_max_rss_kib: 5774656
+  swaps: 0
+checkpoint: {integrity: PASS, optimizer_step: 20, optimizer_state_entries: 852, created: true, eligible_for_selection_or_resume: false}
+artifacts:
+  result_json: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827/result.json, sha256: 0d567c46657e9b60c44ede2133b23febff121f06184842aa3d3245ee67554a39}
+  current_overwritten_raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827_host_20260827.log, sha256: 5ce061713194e696f7c70520c866f4b7ba56ba2f4f5e631a0cc9d516e9f9b3fb}
+  prior_oom_raw_log_sha256: 32fc206190a1923616ad074258fe81995c5565456ab925eda5d0b228421478e0
+statistics_boundary: Val10 is one fixed frame per validation episode, not the full 889-frame offline distribution. Loss/accuracy are not environment reward or success. Twenty fixed samples are insufficient for checkpoint selection.
+boundary: Useful engineering evidence only; protocol collision makes this attempt ineligible as canonical training smoke or checkpoint.

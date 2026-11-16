@@ -1,0 +1,18 @@
+classification: PASS
+experiment: phase6d_feagine_a03_short_dynamics_v1_static
+checks:
+  phase6c_pass: true
+  bounded_steps: true
+  headless_cpu: true
+  no_policy_hardware: true
+  fresh_targets: true
+  exact_step_loop: true
+  no_runtime_imports: true
+checks_passed: 7
+checks_total: 7
+source_hashes:
+  config: 68d38c8c42fb4eacf2cce79ad2aba4b021fc4f0feec7ae1d2d65c1c0592e5393
+  runner: 0037a808ce8b10d639f20516e834b53e583c5fd5b930abfef956f67708948318
+environment_steps: 0
+boundary: Static only; no runtime imports, MJCF load, simulation, rendering, policy
+  or hardware.

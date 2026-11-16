@@ -1,0 +1,40 @@
+experiment_id: phase5c_world_model_train100_pair_v1_seed20260831
+seed: 20260831
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  image_source: obs/agentview_rgb
+  action_source: actions
+fixture:
+  manifest: outputs/reference/phase5c_world_model_train256_val128_fixture_v1_seed20260831/manifest.json
+  train_windows: 256
+  validation_windows: 128
+  horizon: 4
+models: [action_free, action_conditioned]
+training:
+  updates_per_model: 100
+  batch_size: 8
+  optimizer: adamw
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_grad_norm: 1.0
+  reconstruction_weight: 1.0
+  prediction_weight: 1.0
+  mixed_precision: false
+  model_order: [action_free, action_conditioned]
+  identical_batch_order: true
+  identical_encoder_decoder_initialization: true
+validation:
+  horizons: [1, 2, 3, 4]
+  metrics: [pixel_mae, pixel_mse, psnr]
+  checkpoints_selected: false
+decision_rule:
+  engineering_pass: both_models_finite_and_checkpoints_complete
+  offline_signal: report_pre_post_and_copy_frame_without_selection
+  formal_training_authorized: false
+output_dir: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831
+structured_result: results/phase5c_world_model_train100_pair_v1.yaml
+raw_log: results/raw/phase5c_world_model_train100_pair_v1_host_20260829.log
+boundary: >-
+  Short paired engineering/offline smoke only. It cannot select a model/checkpoint, claim world-model quality,
+  planning utility, reward prediction or environment success, and does not authorize formal training.

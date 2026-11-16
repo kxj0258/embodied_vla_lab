@@ -1,0 +1,14 @@
+manifest: project_closeout_v11_phase6h_v1_20260901
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7942, sha256: 143dbc1cbd04adf3220088821da7da514bd7c29424a5874437c58b90e210ff10}
+  - {path: docs/repro_index.md, bytes: 7832, sha256: ece84a385566d61b879af8de916392f4aaf7580a80f3671ac88ce149177c842a}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5039, sha256: 33485df0617095de2ed18107785331c3223d5b6a25306cce1d142e082ef42e5e}
+canonical_evidence:
+  - {path: results/phase6h_feagine_signed_theta_multistart_static_v1_manifest.yaml, bytes: 796, sha256: 83f5d9e59d2ceaf08458c6f2358bb473d74af2a8a347df5c79a5bf0016920f6b}
+  - {path: scripts/verify_phase6h_assets.py, bytes: 1326, sha256: 1f03f15417d434186ea896d04c78e55c276df1088ed530cbc12947a3ee3f01e8}
+historical_evidence: results/project_closeout_v10_phase6g_v1_manifest.yaml
+boundary: Signed-theta equivalence proven, but original targets remain unsolved; no tolerance relaxation or MJCF recovery authorized.

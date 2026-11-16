@@ -1,0 +1,8 @@
+asset: phase5a_world_model_data_v1
+classification: PASS
+source: {path: results/phase5a_libero_world_model_data_contract_v1.yaml, sha256: 54559543af1a5352cce0d6a68a9faf9536bf2cfa4425eb187d1668ee0d6e4763}
+artifacts:
+  png: {path: outputs/presentation/phase5a_world_model_data_v1_20260828/copy_frame_baseline_by_horizon.png, bytes: 146423, sha256: af0bb40de6086c22c521fc3cf66fb2c3a092c81c80d2cf9b8a35d8a076af7448}
+  svg: {path: outputs/presentation/phase5a_world_model_data_v1_20260828/copy_frame_baseline_by_horizon.svg, bytes: 82438, sha256: 8bc327b8cce2aee67301e29fda7fa80cad896822c23d3dbf293c2a8968e2a517}
+visual_qa: PASS
+boundary: CPU-only visualization of copy-frame validation difficulty; no learned model or environment evidence.

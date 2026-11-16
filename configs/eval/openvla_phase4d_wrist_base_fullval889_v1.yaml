@@ -1,0 +1,11 @@
+experiment_id: phase4d_openvla_wrist_base_fullval889_v1_seed20260829
+seed: 20260829
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+dataset: {path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5, sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5, image_source: obs/eye_in_hand_rgb}
+validation_episodes: [0, 5, 12, 21, 29, 34, 40, 42, 43, 45]
+expected_validation_frames: 889
+fixture_dir: outputs/reference/phase4d_openvla_wrist_fullval889_fixture_v1
+fixture_manifest_sha256: 5ef06ec42a8999a50cb9810a201f93d34d438dc511bd9a61e558d5b3ec7b13e0
+output_dir: outputs/eval/phase4d_openvla_wrist_base_fullval889_v1_seed20260829
+raw_log: results/raw/phase4d_openvla_wrist_base_fullval889_v1_host_20260828.log
+boundary: Read-only frozen-base offline validation over all 889 wrist frames. No training, checkpoint selection, environment execution, success or reward.

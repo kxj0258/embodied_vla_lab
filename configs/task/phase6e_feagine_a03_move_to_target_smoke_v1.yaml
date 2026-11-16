@@ -1,0 +1,15 @@
+experiment_id: phase6e_feagine_a03_move_to_target_smoke_v1
+preset_id: a03_type_2
+target_generator:
+  section_angles_rad: [0.06, 0.00, 0.04, 0.00, 0.02, 0.00]
+  preserve_initial_tip_direction: false
+ik: {max_iterations: 150, position_tolerance_m: 0.0001, direction_tolerance: 0.001, theta_limit_rad: 2.356194}
+protocol: {steps: 400, timestep_s: 0.005, gripper_command: 0.0, grasper_rotation_rad: 0.0}
+success_gate: {terminal_position_error_m: 0.015, minimum_progress_fraction: 0.80, minimum_target_displacement_m: 0.02, maximum_target_displacement_m: 0.08}
+diagnostic_thresholds: {hinge_material_violation_rad: 0.001, slide_material_violation_m: 0.0001}
+output_dir: outputs/eval/phase6e_feagine_a03_move_to_target_smoke_v1
+structured_result: results/phase6e_feagine_a03_move_to_target_smoke_v1.yaml
+raw_log: results/raw/phase6e_feagine_a03_move_to_target_smoke_v1_host_20260830.log
+reuse: {environment: /home/kxj/miniforge3/envs/evla-feagine-v1, rebuild: false, reinstall: false}
+authorization: {simulation_steps: 400, gui: false, render: false, gpu: false, policy_inference: false, hardware: false}
+boundary: Core-generated reachable-target CPU smoke only; no VLA, arbitrary workspace, obstacle, contact, camera, reward, benchmark, or hardware claim.

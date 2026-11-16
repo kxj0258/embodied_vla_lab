@@ -1,0 +1,10 @@
+experiment_id: p0_hd_openvla_base_init44_v1_seed20260940
+kind: presentation_only_hd_capture
+task: {suite: libero_goal, task_id: 7, name: turn_on_the_stove, instruction: turn on the stove}
+model: {python: /home/kxj/miniforge3/envs/evla-openvla/bin/python, worker: scripts/run_phase3a_openvla_persistent_worker.py, revision: fa5ae1e7509348889295bba8e08621d8b55e9baf, policy: frozen_base}
+protocol: {schema_version: evla.openvla.single_step.v1, evaluator_seed: 20260940, init_state_index: 44, render_resolution: [640, 640], model_ipc_resolution: [128, 128], model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent, display_sync: copy_policy_mujoco_state_to_render_only_640_env, control_frequency_hz: 20}
+presentation_label: OpenVLA-7B · frozen base
+output_dir: outputs/presentation/p0_hd_openvla_base_init44_v1_seed20260940
+structured_result: results/p0_hd_openvla_base_init44_v1.yaml
+raw_log: results/raw/p0_hd_openvla_base_init44_v1_seed20260940_host_20260828.log
+boundary: Presentation-only 640px recapture of frozen base/init44; cannot revise Phase 3A final evidence.

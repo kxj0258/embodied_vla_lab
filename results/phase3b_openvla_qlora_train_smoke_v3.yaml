@@ -1,0 +1,36 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827
+date: 2026-08-27
+classification: PASS
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+dataset_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+smoke_fixture_sha256: 930f19982eff640a8450ca43fa939149ae643927d99393b1c066f1c9755f70db
+data: {train_episodes: 40, train_pool_frames: 3571, train_smoke_frames: 20, validation_episodes: 10, validation_smoke_frames: 10}
+lora: {rank: 8, alpha: 8, dropout: 0.0, target_modules: all-linear, initialization: gaussian, trainable_parameters: 27707072}
+optimizer: {name: AdamW, lr: 0.0001, betas: [0.9, 0.999], eps: 1.0e-8, weight_decay: 0.0, steps: 20, max_grad_norm: 1.0}
+training:
+  loss: {first: 22.777883529663086, last: 12.34764289855957, mean: 12.613471388816833, first10_mean: 14.910268783569336, last10_mean: 10.316673994064331, min: 6.804205417633057, max: 22.777883529663086}
+  gradients_finite: true
+  gradient_norm_before_clip: {mean: 410.9441940307617, min: 360.3367919921875, max: 486.92425537109375}
+validation_smoke:
+  samples: 10
+  action_tokens: 70
+  initial: {mean_sample_loss: 16.91505002975464, action_token_accuracy: 0.05714285714285714, correct_tokens: 4}
+  final: {mean_sample_loss: 8.801830053329468, action_token_accuracy: 0.12857142857142856, correct_tokens: 9}
+  loss_absolute_change: -8.113219976425171
+  loss_relative_change: -0.47964504758505033
+timing_s: {model_load: 4.124472732000868, adapter_prepare: 0.3200214959997538, train_validate: 18.54541330400025, host_wall: 26.99}
+throughput: {updates_per_train_validate_s_including_two_val10_passes: 1.0784337707742537}
+memory:
+  gpu_preflight_used_mib: 733
+  peak_vram_allocated_bytes: 6755235328
+  peak_vram_reserved_bytes: 7128219648
+  rss_kib_at_result: 2305676
+  host_max_rss_kib: 5778836
+  swaps: 0
+checkpoint: {created: true, integrity: PASS, files_verified: 5, optimizer_step: 20, optimizer_state_entries: 852}
+artifacts:
+  result_json: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827/result.json, sha256: 87649bf733a3d4493afcccb60c23f04df8d8b809f1c2a5d77413919027edb0a4}
+  resolved_config: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827/resolved_config.yaml, sha256: c34cd4894f4168d597abc87814a3bd0e912dcd26f9781fea8bafe409860d3ccf}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v3_seed20260827_host_20260827.log, sha256: 7de810e0f61281c88beec5b3ea389c4e22542b012bad20472641b0695aab043b}
+statistics_boundary: Val10 contains one fixed frame from each validation episode. The paired decrease is encouraging pipeline evidence but not the full 889-frame offline distribution, checkpoint selection evidence, reward, success or policy improvement.
+boundary: Canonical 20-step training smoke PASS. No full offline validation or environment evaluation has run.

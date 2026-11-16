@@ -1,0 +1,14 @@
+manifest: project_closeout_v7_phase6d_v2_20260830
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7898, sha256: f268a922108a689e0f56091c136aeb052897487d9dfde144e143322f32910a0c}
+  - {path: docs/repro_index.md, bytes: 6124, sha256: b478a9543776f4ff08802209150a40eb74c9272efd85e914d92eba146d7e666f}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4990, sha256: 42d4ae1bf50090e4445984a1a4e5038b2c4825491bf04dadc16e57e3e7a7305b}
+canonical_evidence:
+  - {path: results/phase6d_feagine_a03_limit_diagnostic_v2_manifest.yaml, bytes: 1082, sha256: 81122780d12562f320fb75a690ba6174f67935c363294c61ace763284c1542bd}
+  - {path: scripts/verify_phase6d_assets.py, bytes: 1408, sha256: dd4336b3d8de838b4d9aa64c0acc1fbde1d26f2b704cd7febf286f70ce5986d1}
+historical_evidence: results/project_closeout_v6_phase6d_v1_manifest.yaml
+boundary: Documentation through Phase 6D v2 diagnosis; v1 FAIL retained and target reaching remains untested.

@@ -1,0 +1,17 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v1_seed20260827
+date: 2026-08-27
+classification: FAIL
+failure_stage: process_entrypoint
+cause: The generated script defined main() but omitted the __main__ guard and main() invocation, so Python exited successfully without executing the workload.
+observed:
+  process_exit_status: 0
+  model_loaded: false
+  training_steps: 0
+  validation_runs: 0
+  checkpoint_created: false
+  output_directory_created: false
+host_resources: {wall_s: 1.33, user_s: 4.34, system_s: 0.21, max_rss_kib: 688484, swaps: 0}
+artifacts:
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v1_seed20260827_host_20260827.log, sha256: 4904e218affbe73f8bee37ecfdbd8e2e7e14286acb18471ae3be8038d205307a}
+  entrypoint: {path: scripts/train_phase3b_openvla_qlora_smoke.py, sha256: 6b09f23822b11adb3b887b40b2994af36bb692fba222aa73db49bba9a9bee34f}
+boundary: Exit code zero alone is not execution PASS. No loss, validation, gradients, throughput, VRAM, checkpoint or environment evidence was produced.

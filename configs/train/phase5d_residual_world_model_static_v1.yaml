@@ -1,0 +1,34 @@
+experiment_id: phase5d_residual_copy_world_model_static_v1_seed20260901
+seed: 20260901
+hypothesis: A copy-frame residual parameterization can preserve the strong static-scene baseline while learning only action-relevant pixel changes.
+dataset:
+  path: libero/libero/datasets/libero_goal/turn_on_the_stove_demo.hdf5
+  sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+  image_source: obs/agentview_rgb
+  action_source: actions
+split:
+  train_episodes: [1, 3, 4, 6, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 20, 25, 26, 27, 28, 30, 31, 32, 33, 36, 37, 39, 44, 46, 47, 48, 49]
+  development_episodes: [2, 14, 22, 23, 24, 35, 38, 41]
+  prior_exposed_confirmation_episodes: [0, 5, 12, 21, 29, 34, 40, 42, 43, 45]
+  split_seed: 20260901
+  confirmation_is_untouched_final: false
+model:
+  image_shape: [3, 128, 128]
+  latent_dim: 128
+  action_dim: 7
+  dynamics_hidden_dim: 256
+  max_abs_residual_0_1: 0.25
+  output: clamp(image_t + bounded_residual, 0, 1)
+  residual_head_initialization: exact_zero
+  rollout: open_loop_latent_residual_from_same_image_t
+paired_baselines: [copy_current_frame, residual_action_free, residual_action_conditioned]
+future_development_gate:
+  horizons: [1, 2, 3, 4]
+  primary_metric: development_h4_pixel_mae
+  conditioned_must_beat: [copy_current_frame, residual_action_free]
+  confirmation_execution_authorized: false
+  formal_training_authorized: false
+structured_result: results/phase5d_residual_world_model_static_v1.yaml
+boundary: >-
+  New development-only residual hypothesis after Phase 5C NO-GO. The original ten validation episodes are
+  prior-exposed confirmation data, not an untouched final. Static checks do not authorize training or confirmation.

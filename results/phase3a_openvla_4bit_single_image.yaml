@@ -1,0 +1,21 @@
+experiment: phase3a_openvla_4bit_single_image_demo0_t000_seed20260827
+date: 2026-08-27
+classification: FAIL
+exit_status: 1
+stage_reached: processor_construction
+failure:
+  exception: OSError
+  cause: Checkpoint auto_map points to openvla/openvla-7b remote code; trust_remote_code=true bypassed registered local classes and offline lookup could not find processing_prismatic.py.
+  correction: Set trust_remote_code=false after explicitly registering the four pinned local HF classes.
+resources: {process_wall_s: 2.44, maximum_rss_kib: 834704}
+execution:
+  processor_loaded: false
+  model_loaded: false
+  weight_shards_loaded: false
+  cuda_initialized: false
+  inference_run: false
+  environment_constructed: false
+artifacts:
+  raw_log: {path: results/raw/phase3a_openvla_4bit_single_image_demo0_t000_seed20260827_host_20260827.log, bytes: 3252, sha256: f17ffb0aa57877deebbfb11e7cdbf961e62326c9b846ecc373324a8f72f74dd5}
+boundary: Import/processor-resolution failure only; no VRAM, model-load, numerical-action, latency, success, reward, rollout, or training evidence.
+next_gate: New-ID v2 with registered pinned local classes and trust_remote_code=false.

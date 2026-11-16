@@ -1,0 +1,22 @@
+classification: PASS
+experiment: phase6f_feagine_a03_external_targets_dev4_v1_static
+checks:
+  phase6e_pass: true
+  explicit_symmetric_targets: true
+  independent_reset: true
+  bounded_budget: true
+  frozen_per_target_gate: true
+  strict_aggregate: true
+  frozen_material_thresholds: true
+  fresh_targets: true
+  headless_cpu_no_policy: true
+  records_each_failure: true
+  no_runtime_imports: true
+checks_passed: 11
+checks_total: 11
+source_hashes:
+  config: 99081a38664fcafe022db1b430cec56c5dc25d1fdf79953a71c44c1fee133728
+  runner: 749ee032c73ffaa6a0c664e066ad7e2fd9cf6edbca112b0a6ace4e5cbe6fdf58
+environment_steps: 0
+boundary: Static authorization only; no MuJoCo load/step, GPU, policy, rendering,
+  or hardware.

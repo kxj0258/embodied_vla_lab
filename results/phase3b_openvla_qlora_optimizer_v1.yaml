@@ -1,0 +1,24 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827
+date: 2026-08-27
+classification: FAIL
+failure_stage: post_optimizer_parameter_update_assertion
+exception: "RuntimeError: missing or non-finite parameter update"
+cause: The assertion inspected only the first trainable LoRA parameter. Under Gaussian LoRA initialization, some first-step adapter parameters can legitimately have zero gradient/update, so this sentinel does not establish whether the adapter as a whole updated.
+observed:
+  checkpoint_shards_loaded: 4
+  forward_reached: true
+  backward_reached: true
+  optimizer_step_call_reached: true
+  result_serialized: false
+  output_directory_created: false
+  exit_status: 1
+host_resources:
+  wall_s: 15.57
+  user_s: 16.59
+  system_s: 5.40
+  max_rss_kib: 5808432
+  swaps: 0
+artifacts:
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_oneupdate_v1_seed20260827_host_20260827.log, sha256: c92198788fa836bc052c5273fe9ed9dca21eb597da0a27eb3657bc3553cd1be0}
+  entrypoint: {path: scripts/check_phase3b_openvla_qlora_optimizer_gate.py, sha256: e7b65453b7312a11857375dd2a14c8adec37079c96ed95f474dd61870af76280}
+boundary: No serialized loss, gradient, optimizer-state size, VRAM peak or parameter delta exists. This is not OOM evidence and cannot be classified PASS. No checkpoint was created.

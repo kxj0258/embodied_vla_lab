@@ -1,0 +1,27 @@
+classification: PASS
+experiment: phase5c_world_model_train100_pair_v1_static
+checks:
+  phase5a_pass: true
+  phase5b_pass: true
+  fixture_hash: true
+  fixture_counts: true
+  episode_safe_h4: true
+  split_disjoint: true
+  paired_models: true
+  smoke_budget: true
+  validation_frozen: true
+  formal_training_forbidden: true
+  fresh_targets: true
+  trainer_frozen: true
+  model_frozen: true
+  no_cuda_initialized: true
+checks_passed: 14
+checks_total: 14
+fixture_sha256: 97b33ec833cdc6d5dfeae7288314e0436e8a15deebeeb789cc23cbc4d2336950
+cuda_initialized: false
+training_steps: 0
+optimizer_steps: 0
+environment_steps: 0
+model_predictions: 0
+boundary: Static validation only; no CUDA, training, model forward or environment
+  work.

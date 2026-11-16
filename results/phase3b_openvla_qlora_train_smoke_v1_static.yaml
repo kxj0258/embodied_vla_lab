@@ -1,0 +1,29 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v1_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, optimizer_steps: 0}
+data:
+  split_seed: 20260826
+  sample_seed: 20260828
+  train_episodes: 40
+  train_pool_frames: 3571
+  train_smoke_frames: 20
+  validation_episodes: 10
+  full_validation_frames: 889
+  validation_smoke_frames: 10
+  dependency_isolation: evla-core_export_png_json_then_evla-openvla_consume
+contract:
+  training_steps: 20
+  validation_at_steps: [0, 20]
+  checkpoint: [adapter_safetensors, adapter_config, optimizer_state, rng_state, resolved_config, file_hashes]
+assets:
+  fixture_manifest: {path: outputs/reference/phase3b_openvla_qlora_train20_val10_fixture_v1_seed20260828/manifest.json, sha256: 930f19982eff640a8450ca43fa939149ae643927d99393b1c066f1c9755f70db}
+  fixture_exporter: {path: scripts/prepare_phase3b_openvla_qlora_train_smoke_fixture.py, sha256: 7b5a91683a11363024a616a7df4c1253da1f3b592fe26a8c8aebcdbcb894c09b}
+  config: {path: configs/train/openvla_phase3b_qlora_train_smoke_v1.yaml, sha256: 905fbd64508a1f9425420cd3f2cb106f6b6646138d820fa59818bc92a742c12c}
+  entrypoint: {path: scripts/train_phase3b_openvla_qlora_smoke.py, sha256: 6b09f23822b11adb3b887b40b2994af36bb692fba222aa73db49bba9a9bee34f}
+  checker: {path: scripts/check_phase3b_openvla_qlora_train_smoke_static.py, sha256: 3bffc84b5ecbbf2fc59ea941ebff1533cc660f9a3627d71d735c179e726b90e3}
+formal_gate:
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v1_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v1_seed20260827_host_20260827.log
+  status: PENDING
+boundary: Validation uses only one fixed frame from each validation episode. It validates plumbing, not the frozen full 889-frame offline distribution or environment behavior.

@@ -1,0 +1,13 @@
+manifest: project_closeout_v4_phase6b_20260829
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+model_predictions: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7345, sha256: 67ccc9f637848494d05191c6f681526d02e40fbdb8fd3b55c103820a8d238031}
+  - {path: docs/repro_index.md, bytes: 5271, sha256: 83e96d94048da3febcbdda5ed225121c77c179de9d92922095821e4b08413ae8}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4888, sha256: 9b96cf8b980fb77779c9c9268775ee993adf847f20cfd288fe2c773a1ab6f9d5}
+canonical_evidence: [results/project_closeout_v3_phase6a_manifest.yaml, results/phase6b_feagine_a03_asset_contract_v1.yaml]
+read_only_verifiers: [scripts/verify_project_closeout_v4.py, scripts/verify_phase6a_assets.py, scripts/verify_phase6b_assets.py]
+boundary: Documentation/index update through Phase 6B static asset binding; no package install, MJCF load or simulation.

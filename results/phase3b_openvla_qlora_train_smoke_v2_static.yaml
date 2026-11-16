@@ -1,0 +1,17 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {main_invocation_verified: true, cuda_initialized: false, model_loaded: false, optimizer_steps: 0}
+regression:
+  v1_failure: results/phase3b_openvla_qlora_train_smoke_v1.yaml
+  fix: explicit __main__ guard calls implementation.main with immutable v2 config
+  model_data_optimizer_contract_changed: false
+assets:
+  wrapper: {path: scripts/train_phase3b_openvla_qlora_smoke_v2.py, sha256: af89ba4cdf7322bfb34bb459c2afeb9a95996fc7227b84f7576cc713c586dca0}
+  config: {path: configs/train/openvla_phase3b_qlora_train_smoke_v2.yaml, sha256: 53b20d81c15d2bdac91a5123fd082ec7412c9cb0452a33cd5022572ae66914c1}
+  checker: {path: scripts/check_phase3b_openvla_qlora_train_smoke_v2_static.py, sha256: 2cf31db2c450c4542628aa0aa57f16720507a54f5c9bd4a95991e17f5a6a1c01}
+formal_gate:
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_train20_val10_v2_seed20260827_host_20260827.log
+  status: PENDING
+boundary: Entrypoint regression only; formal training smoke has not executed.

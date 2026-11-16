@@ -1,0 +1,11 @@
+manifest: phase6i_feagine_a03_reachability_summary_v1_20260901
+classification: PASS
+decision: REACHABILITY_SCAN_EVIDENCE_RECOVERED
+artifacts:
+  - {path: results/phase6i_feagine_a03_reachability_scan_v1.yaml, bytes: 32612, sha256: daba9744c98b29df1abde4c6c980e85bc02136d42f35028b624c142b7e1b38b7}
+  - {path: results/phase6i_feagine_a03_reachability_scan_recovery_v2.yaml, bytes: 1049, sha256: 99137e48751353dc8d8b61c673b4cf2407bcaf0088a30f692b46782f14f7ed88}
+  - {path: configs/task/phase6i_feagine_a03_reachability_scan_v1.yaml, bytes: 2089, sha256: b98e26023f46b968fd660acb94bff949663826795918e000d5918c889c0925f8}
+  - {path: configs/task/phase6i_feagine_a03_reachability_scan_recovery_v2.yaml, bytes: 795, sha256: 45c0dd9b3988a41ce2b99c5dca9227bf517ab18c9670a219ec5ebdc3b8fddc89}
+  - {path: scripts/check_phase6i_reachability_scan.py, bytes: 5049, sha256: e5e5d1a6b5fdca01d365d4f00c8a43adb2ee20075d61efe98b814bff95cf86d1}
+  - {path: scripts/check_phase6i_reachability_recovery_v2.py, bytes: 2429, sha256: 389c899beb59bf54a5a21067b24b0ecb82b552c4d9169ec96470eeaf1b546d88}
+boundary: v1 5/6 packaging FAIL retained; v2 recovers evidence only. Minimum grid retraction is 1.50 mm for all directions; no MJCF recovery executed.

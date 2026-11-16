@@ -1,0 +1,28 @@
+experiment: phase3a_openvla_local_source_imports_host_20260827
+date: 2026-08-27
+classification: FAIL
+exit_status: 1
+installation:
+  requested: [draccus==0.8.0, rich==13.9.4]
+  status: PASS
+  transitive_installed:
+    - mergedeep==1.3.4
+    - pyyaml-include==1.4.1
+    - toml==0.10.2
+    - typing-inspect==0.9.0
+    - markdown-it-py==4.2.0
+    - mdurl==0.1.2
+    - mypy-extensions==1.1.0
+    - pygments==2.21.0
+import_gate:
+  status: FAIL
+  exception: ModuleNotFoundError
+  missing_module: dlimp
+  cause: Importing prismatic.extern.hf first executed the top-level prismatic initializer, which eagerly imported training-only RLDS modules.
+  correction: Register inference-only namespace packages so the four local HF classes load without importing training/RLDS code.
+resources: {process_wall_s: 10.52, maximum_rss_kib: 804916}
+execution: {model_loaded: false, cuda_initialized_by_checker: false, inference_run: false}
+artifacts:
+  raw_log: {path: results/raw/phase3a_openvla_local_source_imports_host_20260827.log, bytes: 5574, sha256: 40de309a954727d7477c124f11ff74c2d4de26e73b797e44781e87f5301210be}
+boundary: This is a local Python import-path failure, not checkpoint, quantization-kernel, model-load, GPU-memory, inference, success, reward, or training evidence.
+next_gate: Run a new-ID import-only v2 after bypassing training-only package initializers; do not install dlimp or TensorFlow/RLDS.

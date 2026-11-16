@@ -1,0 +1,38 @@
+experiment: phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827
+date: 2026-08-27
+classification: PASS
+checkpoint_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+fixture_manifest_sha256: 256cdb8d4382b7d9eccd4768e4fbb9ea915c330c0fca6dca2d95b6f811966e04
+lora: {rank: 8, alpha: 8, dropout: 0.0, target_modules: all-linear, initialization: gaussian}
+parameters:
+  trainable: 27707072
+  total_with_adapters: 3931114624
+  trainable_percent: 0.7048146556410358
+sample_metrics:
+  input_token_count: 28
+  supervised_action_tokens: 7
+  loss: 17.842269897460938
+  action_token_accuracy: 0.0
+  continuous_action_l1: 0.480672268907563
+gradients: {global_norm: 539.2406005859375, all_finite: true}
+timing_s:
+  model_load: 4.3940350449993275
+  adapter_prepare: 0.3256821470131399
+  forward: 0.6223448050004663
+  backward: 0.4633945490058977
+  host_wall: 8.44
+memory:
+  passive_vram_allocated_bytes: 5364716544
+  passive_vram_reserved_bytes: 6006243328
+  peak_vram_allocated_bytes: 6621465600
+  peak_vram_reserved_bytes: 6851395584
+  process_rss_kib_at_result: 2129696
+  host_max_rss_kib: 5835192
+  swaps: 0
+execution: {optimizer_steps: 0, checkpoint_created: false, exit_status: 0}
+artifacts:
+  result_json: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827/result.json, sha256: a67b0db4bc3331f8da931b870b3014f28f890e0609cf0f3ff149c799fd4bb6fb}
+  resolved_config: {path: outputs/train/phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827/resolved_config.yaml, sha256: 562d1c82a04ef5404ebfe7bc5e9f5a32d5424609c52d5b10733e3b064f948ab4}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827_host_20260827.log, sha256: effd560c8d7a162a9b975ad752765402368e1f5cff0964b1f67d5a7bbf32673a}
+statistics_boundary: Exactly one fixed real sample and one seeded forward/backward. Loss, token accuracy and L1 are an untrained single-sample baseline, not a distribution estimate, training curve, offline validation, reward or environment success.
+boundary: No optimizer state was allocated, no optimizer step or checkpoint occurred, and no environment evaluation was run.

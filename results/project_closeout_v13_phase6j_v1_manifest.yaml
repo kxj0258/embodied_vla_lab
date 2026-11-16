@@ -1,0 +1,14 @@
+manifest: project_closeout_v13_phase6j_v1_20260902
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7897, sha256: 54dd4668b37a53dd3bd3a0a3888f71a6bc82e578c759b65578695a8c130b45cc}
+  - {path: docs/repro_index.md, bytes: 8723, sha256: 8a041d7e6202af75ef921b7999a563f204674510c24129a1fdf5797a66fada9a}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4996, sha256: 8bb1f29987b3a03e5341347184ead4aa53ff013257aed217cb001261ff598756}
+canonical_evidence:
+  - {path: results/phase6j_feagine_a03_external_targets_recovery_dev4_v1_manifest.yaml, bytes: 1164, sha256: 734a67825d2f03c6b460e028e7d0dfd9b613ed5e1e1e6641bb6878f4addb4da8}
+  - {path: scripts/verify_phase6j_assets.py, bytes: 1361, sha256: a82ceb8a9014b327d970e42cc765ac7faec2858fbf055856badca2493c67627e}
+historical_evidence: results/project_closeout_v12_phase6i_v2_manifest.yaml
+boundary: Phase 6J remains strict 2/4 FAIL; target motion recovered but ±X slide material violation requires diagnosis.

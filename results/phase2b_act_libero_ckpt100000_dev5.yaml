@@ -1,0 +1,70 @@
+experiment: phase2b_act_libero_ckpt100000_dev5_seed20260827
+date: 2026-08-27
+classification: PASS
+exit_status: 0
+kind: development_checkpoint_rollout
+checkpoint:
+  step: 100000
+  path: outputs/train/phase2b_act_libero_turn_on_stove_deterministic_100k_seed20260826/checkpoints/model_100000.pt
+  bytes: 410470545
+  sha256: ba4ffe5b282c26427ec7e2c9a7da11d19b100a9b6e81e4127d7431da20a77ab0
+  cpu_reload_preverified: true
+  exact_resume_boundary: false
+  evaluation_eligibility: valid_archival_checkpoint
+protocol:
+  task: LIBERO_GOAL/turn_on_the_stove
+  episodes: 5
+  evaluator_seed_range: 20260827..20260831
+  init_state_indices: [0, 1, 2, 3, 4]
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  action_chunk: 20
+  action_steps_per_inference: 5
+  strict_offline: true
+  video: false
+metrics:
+  success_count: 5
+  success_total: 5
+  success_percent: 100.0
+  success_wilson_95_percent: [56.55175352168252, 100.0]
+  steps_per_episode: [83, 83, 79, 80, 78]
+  total_environment_steps: 403
+  mean_steps_per_episode: 80.6
+  sum_reward_per_episode: [1.0, 1.0, 1.0, 1.0, 1.0]
+  max_reward_per_episode: [1.0, 1.0, 1.0, 1.0, 1.0]
+  mean_sum_reward: 1.0
+  mean_max_reward: 1.0
+  rollout_elapsed_s: 17.45632476899482
+  rollout_s_per_episode: 3.4912649537989635
+  environment_steps_per_s: 23.086188263167024
+  policy_forward_calls: 82
+  timed_select_action_total_s: 0.9890238898951793
+  timed_s_per_policy_forward_including_cold_start: 0.012061267
+  warm_episodes_1_to_4_policy_forward_calls: 65
+  warm_episodes_1_to_4_timed_select_action_s: 0.507728828903055
+  warm_timed_s_per_policy_forward: 0.007811212752354692
+resources:
+  peak_vram_allocated_bytes: 162552832
+  peak_vram_reserved_bytes: 216006656
+  process_wall_s: 24.06
+  maximum_rss_kib: 4020488
+training_metrics:
+  loss: NOT_APPLICABLE_EVALUATION_ONLY
+  offline_validation_loss: NOT_REMEASURED
+  gradient_norm: NOT_APPLICABLE_EVALUATION_ONLY
+  optimizer_throughput: NOT_APPLICABLE_EVALUATION_ONLY
+warnings:
+  robosuite_private_macro: NON_SEMANTIC_DEFAULTS_USED
+  asset_message: CACHE_PRESENT_HF_OFFLINE_NO_NEW_DOWNLOAD_OBSERVED
+artifacts:
+  config: {path: configs/eval/act_libero_phase2b_ckpt100000_dev5.yaml, sha256: 175d3a9c31e05438778e97f8eb802857e104e3be533c6b8dda1743f3bfafc011}
+  entrypoint: {path: scripts/evaluate_phase2b_act_libero.py, sha256: 07d0c057c094db1307ed5828af82cf07ea2a4fcf3b049e2ed2982092eb95b9ce}
+  raw_log: {path: results/raw/phase2b_act_libero_ckpt100000_dev5_seed20260827_host_20260827.log, lines: 16, bytes: 3112, sha256: b749ab3cce88c5a7049756b710cc63f88dd87aabbbae4cdd879a82c4468d1f53}
+  eval_info: {path: outputs/eval/phase2b_act_libero_ckpt100000_dev5_seed20260827/eval_info.json, bytes: 1851, sha256: 009c5f154f380d05d1225c1cd210a0df4e403f9d3f52542b0c001b6a2ba6aa52}
+  resolved_config: {bytes: 1157, sha256: 0acbca0960e6cbf1836bba6ae4f3cc273949b5867aa4abc83b0a2249bb5a1162}
+statistical_boundary: >-
+  Five fixed development initial states give a strong end-to-end signal and validate the policy/environment
+  adapter. They do not establish a final 100% success rate, rank checkpoints, measure unseen-task generalization,
+  or support a multi-seed training conclusion. The Wilson interval is wide because N=5.
+next_gate: Same-protocol development rollout of the earliest periodic checkpoint at step 4460 under a new ID.

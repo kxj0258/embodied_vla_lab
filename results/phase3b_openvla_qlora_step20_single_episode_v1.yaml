@@ -1,0 +1,35 @@
+experiment: phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827
+date: 2026-08-27
+classification: PASS
+execution_pass: true
+policy_success: true
+task: {suite: libero_goal, task_id: 7, name: turn_on_the_stove}
+protocol: {seed: 20260827, init_state_index: 0, episodes: 1, horizon: 600}
+outcome: {steps: 102, sum_reward: 1.0, max_reward: 1.0, terminated: true, truncated: false, model_predictions: 102}
+paired_base_context:
+  base_steps_same_init: 85
+  step_difference: 17
+  relative_step_change: 0.2
+  base_success: true
+  interpretation: Both succeeded; one development episode is insufficient to infer stable efficiency regression.
+timing_s:
+  model_load: 5.4088467680003305
+  inference: {mean: 0.45905933601961896, median: 0.45398657750001803, min: 0.44973250099974393, max: 0.911256597999909, total: 46.82405227400113}
+  mean_environment_step: 0.008768012764689689
+  episode_end_to_end: 65.17213373300001
+  host_wall: 71.85
+memory:
+  passive_vram_allocated_bytes: 4767779840
+  passive_vram_reserved_bytes: 5567938560
+  peak_vram_allocated_bytes: 5403944960
+  peak_vram_reserved_bytes: 5567938560
+  worker_rss_kib: 1971196
+  coordinator_rss_kib: 2437888
+  host_max_rss_kib: 5847248
+  swaps: 0
+artifacts:
+  eval_info: {path: outputs/eval/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827/eval_info.json, sha256: aeaaef59e8cc2a308ed2e500653412ee42ff6daa40e7a9b0835e0f0f66edec42}
+  trajectory: {path: outputs/eval/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827/trajectory.jsonl, sha256: 5696e7a5386387b8a0e321fb1250c2262547b8e1a3b8f6567bd576c8d031835d}
+  raw_log: {path: results/raw/phase3b_openvla_qlora_step20_single_episode_v1_init0_seed20260827_host_20260827.log, sha256: a37d2d8014c179bd36932eb859736dc5914d4be13ad66624709620177a55d57d}
+statistics_boundary: Exactly one reused development init state. Reward/success are real environment evidence, but no success-rate or stable efficiency conclusion can be estimated from n=1.
+boundary: Authorizes only the frozen development init0-4 gate. No held-out evaluation, final checkpoint selection or further training.

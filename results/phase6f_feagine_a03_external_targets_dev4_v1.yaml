@@ -1,0 +1,138 @@
+classification: FAIL
+experiment: phase6f_feagine_a03_external_targets_dev4_v1
+decision: EXTERNAL_TARGETS_DEV4_FAIL
+successes: 0
+total_targets: 4
+total_steps: 1600
+simulated_time_total_s: 8.0
+episodes:
+- target_id: plus_x_35mm
+  delta_m:
+  - 0.035
+  - 0.0
+  - 0.0
+  classification: FAIL
+  checks:
+    ik_success: false
+    finite_state: true
+    exact_time: true
+    terminal_error: false
+    progress: false
+    no_material_limit_violation: true
+  target_position_m:
+  - 0.03499999964241898
+  - 1.8975670421856933e-22
+  - 0.7864999771118164
+  final_tip_position_m:
+  - -3.5777830698080493e-10
+  - 1.8968628733872568e-22
+  - 0.7864999771118164
+  initial_error_m: 0.035
+  final_error_m: 0.03500000000019729
+  progress_fraction: -5.636760899311151e-12
+  ik_iterations: 1
+  ik_position_error_m: 0.03626638278365135
+  ik_direction_error: 3.2017795081884515e-09
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 1.1176996828066166e-12
+  max_contacts: 0
+- target_id: minus_x_35mm
+  delta_m:
+  - -0.035
+  - 0.0
+  - 0.0
+  classification: FAIL
+  checks:
+    ik_success: false
+    finite_state: true
+    exact_time: true
+    terminal_error: false
+    progress: false
+    no_material_limit_violation: true
+  target_position_m:
+  - -0.035000000357581024
+  - 1.8975670421856933e-22
+  - 0.7864999771118164
+  final_tip_position_m:
+  - -3.5777830698080493e-10
+  - 1.8968628733872568e-22
+  - 0.7864999771118164
+  initial_error_m: 0.035
+  final_error_m: 0.03499999999980272
+  progress_fraction: 5.636760899311151e-12
+  ik_iterations: 1
+  ik_position_error_m: 0.03626638278365135
+  ik_direction_error: 3.2017795081884515e-09
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 1.1176996828066166e-12
+  max_contacts: 0
+- target_id: plus_y_35mm
+  delta_m:
+  - 0.0
+  - 0.035
+  - 0.0
+  classification: FAIL
+  checks:
+    ik_success: true
+    finite_state: true
+    exact_time: true
+    terminal_error: false
+    progress: false
+    no_material_limit_violation: true
+  target_position_m:
+  - -3.5758102034932904e-10
+  - 0.035
+  - 0.7864999771118164
+  final_tip_position_m:
+  - -4.875059289588535e-08
+  - 0.26643091440200806
+  - 0.7170250415802002
+  initial_error_m: 0.035
+  final_error_m: 0.24163409280992232
+  progress_fraction: -5.903831223140637
+  ik_iterations: 16
+  ik_position_error_m: 6.182381912367418e-05
+  ik_direction_error: 2.2798776626586914e-06
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 1.3634551127017502e-10
+  max_contacts: 0
+- target_id: minus_y_35mm
+  delta_m:
+  - 0.0
+  - -0.035
+  - 0.0
+  classification: FAIL
+  checks:
+    ik_success: true
+    finite_state: true
+    exact_time: true
+    terminal_error: false
+    progress: false
+    no_material_limit_violation: true
+  target_position_m:
+  - -3.5758102034932904e-10
+  - -0.035
+  - 0.7864999771118164
+  final_tip_position_m:
+  - -2.1642845737801508e-08
+  - 0.22808855772018433
+  - 0.7180120944976807
+  initial_error_m: 0.035
+  final_error_m: 0.27185690954664893
+  progress_fraction: -6.767340272761397
+  ik_iterations: 16
+  ik_position_error_m: 7.728331547696143e-05
+  ik_direction_error: 5.21540641784668e-07
+  max_hinge_penetration_rad: 0.0
+  max_slide_penetration_m: 7.494439617505844e-11
+  max_contacts: 0
+elapsed_s: 0.39166347299760673
+cuda_initialized: false
+model_predictions: 0
+reward: null
+hardware_commands: 0
+source_hashes:
+  config: 99081a38664fcafe022db1b430cec56c5dc25d1fdf79953a71c44c1fee133728
+boundary: Four explicitly configured local Cartesian development targets only; no
+  VLA, camera, reward benchmark, obstacle/contact task, broad workspace, final evaluation,
+  or hardware claim.

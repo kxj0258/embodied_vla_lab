@@ -1,0 +1,26 @@
+experiment_id: phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827
+phase: 3A
+classification: PENDING_HOST_EXECUTION
+task: {suite: libero_goal, task_order_index: 0, task_id: 7, name: turn_on_the_stove, instruction: Turn on the stove}
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed: 20260827
+  init_state_indices: [0, 1, 2, 3, 4]
+  episodes: 5
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  camera: agentview
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3b_openvla_qlora_persistent_worker.py
+  adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c
+output_dir: outputs/eval/phase3b_openvla_qlora_step20_dev5_v1_init0to4_seed20260827
+boundary: >-
+  Five frozen development states only. This gate estimates neither held-out performance nor statistical superiority,
+  performs no checkpoint selection, and does not authorize final evaluation, QLoRA or training.

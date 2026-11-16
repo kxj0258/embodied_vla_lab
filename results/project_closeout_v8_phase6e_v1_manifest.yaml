@@ -1,0 +1,14 @@
+manifest: project_closeout_v8_phase6e_v1_20260830
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7897, sha256: d7b60a550923edbe01218bfc61da7e0297d5f421a333fa015a1352653f9bc951}
+  - {path: docs/repro_index.md, bytes: 6538, sha256: a94db1b89c39baa576ccb636f19c8162bb8abdb919560eaaf286ce3b05924654}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 5017, sha256: 0b20ac866cad27bc09dc8c5b563acbc48884b3135c3f3ee7fe0ec20ab33315ab}
+canonical_evidence:
+  - {path: results/phase6e_feagine_a03_move_to_target_smoke_v1_manifest.yaml, bytes: 1107, sha256: 3a16f85080e5e99e5b5dd0bc7f1e6d3e3284dd067ad6823f0d38e3616ec3b373}
+  - {path: scripts/verify_phase6e_assets.py, bytes: 1129, sha256: 41d576c4e2caa2d84ca0eb0efcf03b6c3ce5b4d968195e88fd85bbd4aff037ce}
+historical_evidence: results/project_closeout_v7_phase6d_v2_manifest.yaml
+boundary: Documentation through one bounded core-generated target; no VLA, external-target generalization, benchmark reward, or hardware claim.

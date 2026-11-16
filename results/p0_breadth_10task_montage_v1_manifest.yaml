@@ -1,0 +1,49 @@
+manifest: p0_breadth_10task_montage_v1_20260828
+classification: PASS
+generation_mode: offline_from_frozen_hd_captures
+environment_steps: 0
+model_predictions: 0
+source_manifest: results/p0_breadth_hd_10task_v1_manifest.yaml
+task6_original_presentation_status: PRESERVED_NONCANONICAL_VISUAL_CORRUPTION
+visual_qa:
+  classification: PASS
+  montage_sampled_tasks: [0, 1, 3, 6, 8, 9]
+  task6_recomposed_sampled_positions: [start, middle, end]
+  finding: no visible block corruption; overlays and task transitions are legible
+outputs:
+- path: outputs/presentation/p0_breadth_10task_montage_v1_20260828/task06_presentation_recomposed_v2.mp4
+  bytes: 884822
+  sha256: 0774d07610bcdc3e6fc1deedc47fc9b70ec8247051f4293ec84dd7f971516fa6
+  probe:
+    codec_name: h264
+    width: 1920
+    height: 1080
+    pix_fmt: yuv420p
+    r_frame_rate: 20/1
+    duration: '5.400000'
+    nb_frames: '108'
+- path: outputs/presentation/p0_breadth_10task_montage_v1_20260828/openvla_10task_success_montage_hd.mp4
+  bytes: 10119972
+  sha256: 1671dbf4310d5b8c70fed38e8ba929ac709f1a2cd71ed3ce7c02f441a94b3b12
+  probe:
+    codec_name: h264
+    width: 1920
+    height: 1080
+    pix_fmt: yuv420p
+    r_frame_rate: 20/1
+    duration: '64.800000'
+    nb_frames: '1296'
+montage_task_order:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+montage_expected_frames: 1296
+canonical_portfolio_video: outputs/presentation/p0_breadth_10task_montage_v1_20260828/openvla_10task_success_montage_hd.mp4
+boundary: Presentation-only recomposition; frozen 20/30 aggregate is unchanged.

@@ -1,0 +1,14 @@
+manifest: project_closeout_v12_phase6i_v2_20260901
+classification: PASS
+generation_mode: cpu_only_from_frozen_evidence
+environment_steps: 0
+documents:
+  - {path: docs/project_report.md, bytes: 7932, sha256: 2621fb0111871278ee9c97b2e236e0ce4385ce51ee6d4e92d3a3d81cfdee0a74}
+  - {path: docs/repro_index.md, bytes: 8264, sha256: effc0a9fb12c6a4dc3cb1539e1d1f625c1552c24f26d6f382130a2fe527ce378}
+  - {path: docs/portfolio.md, bytes: 4240, sha256: 29dfcd98886c74e85c32bfd60ef8db0544dc21b207042a455496c1ddf0cbfc07}
+  - {path: docs/resume.md, bytes: 4997, sha256: ca5151b2dd286fb902a6715d59deb7c52ac81d67812c776ada7875c46f801aed}
+canonical_evidence:
+  - {path: results/phase6i_feagine_a03_reachability_summary_v1_manifest.yaml, bytes: 1224, sha256: 32c0970cf0e5c6e3dd79b6b63f4892441c86dfb458299d8f4fb22b7333b9be8d}
+  - {path: scripts/verify_phase6i_assets.py, bytes: 1187, sha256: a03d7d5669dbb62ccff77ec4f8267be5be821a7418149c6afaac1d61bbf0b8ed}
+historical_evidence: results/project_closeout_v11_phase6h_v1_manifest.yaml
+boundary: Reachability evidence recovered at 1.50 mm retraction; Phase 6F remains 0/4 and no MJCF recovery has run.

@@ -1,0 +1,41 @@
+experiment_id: p0_breadth_openvla_base_10task30_v2_seed20261001
+kind: frozen_base_full_suite_catalog_presentation_breadth_gate
+suite: {name: libero_goal, task_order_index: 0}
+tasks:
+  - {task_id: 0, name: open_the_middle_drawer_of_the_cabinet, instruction: open the middle drawer of the cabinet}
+  - {task_id: 1, name: put_the_bowl_on_the_stove, instruction: put the bowl on the stove}
+  - {task_id: 2, name: put_the_wine_bottle_on_top_of_the_cabinet, instruction: put the wine bottle on top of the cabinet}
+  - {task_id: 3, name: open_the_top_drawer_and_put_the_bowl_inside, instruction: open the top drawer and put the bowl inside}
+  - {task_id: 4, name: put_the_bowl_on_top_of_the_cabinet, instruction: put the bowl on top of the cabinet}
+  - {task_id: 5, name: push_the_plate_to_the_front_of_the_stove, instruction: push the plate to the front of the stove}
+  - {task_id: 6, name: put_the_cream_cheese_in_the_bowl, instruction: put the cream cheese in the bowl}
+  - {task_id: 7, name: turn_on_the_stove, instruction: turn on the stove}
+  - {task_id: 8, name: put_the_bowl_on_the_plate, instruction: put the bowl on the plate}
+  - {task_id: 9, name: put_the_wine_bottle_on_the_rack, instruction: put the wine bottle on the rack}
+protocol:
+  schema_version: evla.openvla.single_step.v1
+  evaluator_seed_start: 20261001
+  init_state_indices: [0, 1, 2]
+  episodes_per_task: 3
+  total_episodes: 30
+  episode_horizon: 600
+  physics_settle_steps: 5
+  control_frequency_hz: 20
+  camera: agentview
+  model_ipc_resolution: [128, 128]
+  model_image_preprocess: rotate_180_then_openvla_center_crop_90_percent
+  worker_start_timeout_s: 180
+  per_action_timeout_s: 30
+model:
+  revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+  unnorm_key: libero_goal
+  openvla_python: /home/kxj/miniforge3/envs/evla-openvla/bin/python
+  worker: scripts/run_phase3a_openvla_persistent_worker.py
+output_dir: outputs/eval/p0_breadth_openvla_base_10task30_v2_seed20261001
+structured_result: results/p0_breadth_openvla_base_10task30_v2.yaml
+raw_log: results/raw/p0_breadth_openvla_base_10task30_v2_seed20261001_host_20260828.log
+boundary: >-
+  Frozen full LIBERO-Goal task-catalog breadth gate with three fixed initial states per task. It is still a small
+  30-episode portfolio protocol, not the official full benchmark. It cannot revise Phase 3A single-task 45/45 or
+  authorize tuning. Every task/state remains in the aggregate after outcomes are observed; no post-outcome removal,
+  replacement or selective rerun is allowed.

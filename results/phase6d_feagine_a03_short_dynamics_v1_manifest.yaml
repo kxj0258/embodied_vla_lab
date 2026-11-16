@@ -1,0 +1,11 @@
+classification: FAIL
+decision: SHORT_DYNAMICS_FAIL_JOINT_LIMIT
+canonical_result: {path: results/phase6d_feagine_a03_short_dynamics_v1.yaml, sha256: 9fc60e142078b8e367efcf7496a449a52fc582644e0196079182174ab088cac6}
+raw_log: {path: results/raw/phase6d_feagine_a03_short_dynamics_v1_host_20260829.log, sha256: aef9059b7aef3a805925f86c55bea2e3fcdd452fabcbb1c15ef8f6561baec440}
+internal_result: {path: outputs/eval/phase6d_feagine_a03_short_dynamics_v1/result.json, sha256: 3cec7e1ecd26bae64d3559bee0b63738285755a13e8372fdb32ba0a17348dcfc}
+checks_passed: 6
+checks_total: 7
+failed_check: joint_limits
+metrics: {steps: 200, simulated_time_s: 1.0000000000000007, tip_motion_m: 0.06703423518329972, max_abs_qvel: 0.5921052632622271, max_abs_ctrl: 0.2, max_contacts: 0, internal_elapsed_s: 0.1182238450001023, steps_per_s: 1691.7012369318115, host_elapsed_s: 0.27, host_max_rss_kib: 241092, swaps: 0}
+missing_diagnostic: Violating joint names, joint types and limit penetration magnitudes were not recorded by v1.
+boundary: Preserved failure. No threshold relaxation, command change, target-reaching authorization or success claim.

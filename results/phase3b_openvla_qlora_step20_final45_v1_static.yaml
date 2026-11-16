@@ -1,0 +1,14 @@
+experiment: phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901_static
+date: 2026-08-27
+classification: PASS
+selection_record: results/phase3b_openvla_qlora_step20_checkpoint_selection_dev5.yaml
+contract: {heldout_init_states: [5-49], episodes: 45, development_excluded: [0, 1, 2, 3, 4], horizon: 600, adapter_sha256: 6b4fce2e469048c17650f7cc029f3154dc0742bf56d49651d6cfd369bdd2735c, required_host_free_vram_mib: 8000}
+assets:
+  config: {path: configs/eval/openvla_libero_phase3b_qlora_step20_final_heldout45_v1.yaml, sha256: ba08414c0b61490893d1f980008d6bd557766cdfccf9e8ccc250cc370f48806d}
+  checker: {path: scripts/check_phase3b_openvla_qlora_final45_static.py, sha256: 02aae9ef0c4eba50873ae7f31adb01453c8ab9c54e0e6e73f14f104b8d70cd3a}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901
+  raw_log: results/raw/phase3b_openvla_qlora_step20_final_heldout45_v1_init5to49_seed20260901_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_step20_final_heldout45_v1.yaml
+boundary: Immutable final complete. Adapter robustness regressed versus base; no post-heldout tuning or rerun.

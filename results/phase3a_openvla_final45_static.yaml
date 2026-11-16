@@ -1,0 +1,26 @@
+experiment: phase3a_openvla_final45_static_v1_20260827
+date: 2026-08-27
+classification: PASS
+execution: {environment_constructed: false, cuda_initialized: false, model_loaded: false, heldout_episodes_executed: 0}
+preregistered_protocol:
+  experiment_id: phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+  kind: base_policy_heldout_final
+  init_state_indices: 5-49_complete_enumeration
+  development_excluded_indices: 0-4
+  evaluator_seed_range: 20260901-20260945
+  episodes: 45
+  episode_horizon: 600
+  model_loads: 1
+  protocol_revision_after_execution: forbidden
+assets:
+  config: {path: configs/eval/openvla_libero_phase3a_final_heldout45.yaml, sha256: 7c7b27cc11a7f7a0b0ebb9ce3d4822ba8b415e70d3ef9e2f7cd0cd4ac0f12af8}
+  entrypoint: {path: scripts/evaluate_phase3a_openvla_libero_final45.py, sha256: 37dc76f37bb50775706e573a0066a0ba347774e569d28eee0c61999a37f86303}
+  checker: {path: scripts/check_phase3a_openvla_final45_static.py, sha256: f19b1e3345e22d387bd701b4d36ae0178d5b46b14aeb0d2ab915b468f80f1d57}
+formal_host_gate:
+  status: PENDING
+  estimated_wall_minutes_if_dev5_rate_holds: approximately_28
+  output_dir: outputs/eval/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901
+  raw_log: results/raw/phase3a_openvla_libero_final_heldout45_v1_init5to49_seed20260901_host_20260827.log
+boundary: >-
+  Static PASS provides no held-out success/reward/resource evidence. Once executed, this final cannot tune or revise
+  the base-policy protocol and does not establish other-task, language, viewpoint or simulator generalization.

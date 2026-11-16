@@ -1,0 +1,21 @@
+experiment: phase3b_openvla_qlora_resource_v2_static_20260827
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, forward_steps: 0, backward_steps: 0}
+regression:
+  v1_failure_preserved: results/phase3b_openvla_qlora_resource_v1.yaml
+  path_variable: output_dir
+  forward_result_variable: model_output
+  writer_uses_path_variable_only: true
+  model_data_lora_compute_contract_changed: false
+assets:
+  config: {path: configs/train/openvla_phase3b_qlora_resource_gate_v2.yaml, sha256: 2ce115c05f9252866ae3691df8c95e48487ff654dd4d773887ae8a2b1d1d25a0}
+  entrypoint: {path: scripts/check_phase3b_openvla_qlora_resource_gate.py, sha256: 05b7b95914ad1728beb390891dac7a52cf4fe7eec26c4491c86bfc5294ef25ef}
+  checker: {path: scripts/check_phase3b_openvla_qlora_resource_v2_static.py, sha256: 655a0f64b82996b5e5c6796e539bf0eb454ed9895e34a9ba8b5ec54aeb8e1e75}
+formal_gate:
+  experiment_id: phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827
+  output_dir: outputs/train/phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_rank8_batch1_onebackward_v2_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_resource_v2.yaml
+boundary: Static writer regression PASS and formal one-sample forward/backward PASS; optimizer memory, parameter update, training curves and environment effects remain untested.

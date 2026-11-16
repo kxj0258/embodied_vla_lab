@@ -1,0 +1,20 @@
+experiment: phase4d_openvla_wrist_qlora_step20_fullval889_v1_seed20260829
+classification: PASS
+execution_pass: true
+base_revision: fa5ae1e7509348889295bba8e08621d8b55e9baf
+adapter_sha256: fad1e3201dacc5e1136f45b5df3b06943d83354a34c1079d620c4b1abcf1ae7a
+fixture_manifest_sha256: 5ef06ec42a8999a50cb9810a201f93d34d438dc511bd9a61e558d5b3ec7b13e0
+validation: {frames: 889, episodes: 10, action_tokens: 6223, mean_frame_loss: 9.04793117794599, action_token_accuracy: 0.2080989876265467, mean_frame_continuous_action_l1: 0.19458870162238126, all_rows_finite: true}
+timing: {model_load_s: 5.219823134990293, adapter_load_s: 0.5011316169984639, validation_s: 231.9872663999995, frames_per_s: 3.832106881535296, median_inference_s: 0.25852025199856143, p95_inference_s: 0.2646556603926001, host_wall_s: 240.92}
+memory: {peak_vram_allocated_bytes: 5468073984, peak_vram_reserved_bytes: 5584715776, rss_kib_at_result: 2001416, host_max_rss_kib: 5846720, swaps: 0}
+host: {exit_status: 0, user_s: 274.05, system_s: 47.17, cpu_percent: 133, major_page_faults: 1299, minor_page_faults: 645545, socket_messages_sent: 0, socket_messages_received: 0}
+integrity:
+  validation_frames_complete: true
+  training_executed: false
+  environment_executed: false
+  checkpoint_selected: false
+artifacts:
+  result_json: {path: outputs/eval/phase4d_openvla_wrist_qlora_step20_fullval889_v1_seed20260829/result.json, bytes: 216596, sha256: a103e2d0348a6c1696a51f356854c441fcddba6766e2851e44596de6e29072e5}
+  resolved_config: {path: outputs/eval/phase4d_openvla_wrist_qlora_step20_fullval889_v1_seed20260829/resolved_config.yaml, bytes: 1140, sha256: 8fd554f4646ca63f45a1f492a2150cf0dd71524d9bc72d9dfc424f4628c7df73}
+  raw_log: {path: results/raw/phase4d_openvla_wrist_qlora_step20_fullval889_v1_host_20260828.log, bytes: 4670, sha256: 32f02e6f09d3a90ba002940a9357900e8474b18e0d34d546daf2db1f3499b055}
+boundary: Teacher-forced wrist offline validation only. It is not environment success or reward and does not itself select a reliable checkpoint.

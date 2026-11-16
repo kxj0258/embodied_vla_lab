@@ -1,0 +1,22 @@
+experiment: phase3b_openvla_qlora_step20_fullval889_v1_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, training_executed: false, environment_executed: false}
+contract:
+  checkpoint: canonical_phase3b_step20_v3
+  validation_episodes: 10
+  validation_frames: 889
+  action_tokens_per_frame: 7
+  metrics: [sample_weighted_loss, action_token_accuracy, continuous_action_l1, per_episode_metrics, inference_time, memory]
+assets:
+  fixture_manifest: {path: outputs/reference/phase3b_openvla_fullval889_fixture_v1/manifest.json, sha256: 344f1d7b0dc2792bd211cec2946c56fc4d3ec6f1de60da0667d4092dd77e1378}
+  exporter: {path: scripts/prepare_phase3b_openvla_fullval889_fixture.py, sha256: 10f9b839a7d4ec86c9fee2102f26fb21f1bf5ce6d1b35037576c96a68fc195fa}
+  config: {path: configs/eval/openvla_phase3b_qlora_step20_fullval889_v1.yaml, sha256: 50216866db416f454f00d46d064d4ab8f03be8bfd131eafa09b6f53694b3546e}
+  evaluator: {path: scripts/evaluate_phase3b_openvla_qlora_fullval889.py, sha256: bf9003df3b267710152ee90350c589b4d3edc1f0f4bc1091017db927e6241682}
+  checker: {path: scripts/check_phase3b_openvla_qlora_fullval889_static.py, sha256: d536822e497d27e68a8aeb70e6b2f21737af8276025ff847c10982bf753f9152}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_qlora_step20_fullval889_v1_seed20260827
+  raw_log: results/raw/phase3b_openvla_qlora_step20_fullval889_v1_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_qlora_step20_fullval889_v1.yaml
+boundary: Full frozen offline validation PASS. Same-protocol base comparison and environment behavior remain unknown.

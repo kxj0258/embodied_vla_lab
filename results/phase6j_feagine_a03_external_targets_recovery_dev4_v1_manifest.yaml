@@ -1,0 +1,10 @@
+manifest: phase6j_feagine_a03_external_targets_recovery_dev4_v1_20260902
+classification: FAIL
+decision: REACHABILITY_CORRECTED_DEV4_FAIL
+artifacts:
+  - {path: results/phase6j_feagine_a03_external_targets_recovery_dev4_v1.yaml, bytes: 4501, sha256: 07c5097446bb80994ddc87173bb06a4c94ab62d96467b8521d75538ec70e588c}
+  - {path: results/raw/phase6j_feagine_a03_external_targets_recovery_dev4_v1_host_20260901.log, bytes: 6534, sha256: d1b8f8c725293812a9907ff275713b6f0caa343cbe16532e2af810181224d2cb}
+  - {path: configs/task/phase6j_feagine_a03_external_targets_recovery_dev4_v1.yaml, bytes: 2240, sha256: 19d54d228182be1bdd7751a6b497c9bb70532010d7be25c5f798115ec0dc3cac}
+  - {path: scripts/run_phase6j_feagine_a03_external_targets_recovery.py, bytes: 5020, sha256: 136064bf7471206642f36e3a7537718fa7b9699d400894ce6a070c910d895eda}
+  - {path: results/phase6j_feagine_a03_external_targets_recovery_dev4_v1_static.yaml, bytes: 883, sha256: cc4a39bc2dc448d19fa78838ee7591290983d89ef60cd2d4f392c5b847b83c16}
+boundary: Immutable 2/4 development FAIL; all targets passed position/progress, but ±X exceeded frozen slide material threshold. No threshold relaxation or rerun.

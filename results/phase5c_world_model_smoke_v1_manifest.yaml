@@ -1,0 +1,9 @@
+asset: phase5c_world_model_smoke_v1
+classification: PASS
+source: {path: outputs/train/phase5c_world_model_train100_pair_v1_seed20260831/result.json, sha256: d39ef0cef6c659f02a464a2e6dc16380d1715db41909e78db5a768d8797d0554}
+artifacts:
+  png: {path: outputs/presentation/phase5c_world_model_smoke_v1_20260829/phase5c_training_and_validation.png, bytes: 140612, sha256: 98809f5c6164fa6d95a594a328c6a797e2575f65a7b924a1da6e2462fddeaaab}
+  svg: {path: outputs/presentation/phase5c_world_model_smoke_v1_20260829/phase5c_training_and_validation.svg, bytes: 87955, sha256: 2112b1ea129ee3d1399d368bf828423778d40386e24bb442a6fba565213d57f4}
+visual_qa: PASS
+decision: ENGINEERING_PASS_OFFLINE_BASELINE_NO_GO
+boundary: CPU-only visualization of frozen smoke evidence; no checkpoint selection or world-model/planning/environment claim.

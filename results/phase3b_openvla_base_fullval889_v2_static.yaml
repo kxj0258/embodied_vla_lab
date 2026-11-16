@@ -1,0 +1,19 @@
+experiment: phase3b_openvla_base_fullval889_v2_seed20260827_static
+date: 2026-08-27
+classification: PASS
+execution: {cuda_initialized: false, model_loaded: false, validation_frames: 0}
+regression:
+  v1_failure: results/phase3b_openvla_base_fullval889_v1.yaml
+  direct_base_model_patch_alignment: true
+  peft_wrapper_path_removed: true
+  fixture_metrics_contract_changed: false
+assets:
+  evaluator: {path: scripts/evaluate_phase3b_openvla_base_fullval889_v2.py, sha256: e97442fcedc5f85ddec82db3c6570694f6c5f2e4b7b8bfb93d11a65791bc96dd}
+  config: {path: configs/eval/openvla_phase3b_base_fullval889_v2.yaml, sha256: 9186c51fd15702d70addb1404b93f06f5bd196cffb9e71740316cd6f5d6a5d3a}
+  checker: {path: scripts/check_phase3b_openvla_base_fullval889_v2_static.py, sha256: 0e18b2d8b39c889452aae2af090159346918b13b16bb943215112c01b6808e68}
+formal_gate:
+  output_dir: outputs/eval/phase3b_openvla_base_fullval889_v2_seed20260827
+  raw_log: results/raw/phase3b_openvla_base_fullval889_v2_seed20260827_host_20260827.log
+  status: PASS
+  canonical_result: results/phase3b_openvla_base_fullval889_v2.yaml
+boundary: Static and formal paired-base offline validation PASS; no environment evidence.

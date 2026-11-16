@@ -1,0 +1,36 @@
+classification: PASS
+experiment: p0_breadth_hd_base_task07_init00_v1_seed20261022
+execution_pass: true
+policy_success: true
+steps: 89
+sum_reward: 1.0
+model_predictions: 89
+model_load_s: 4.205873041995801
+total_inference_s: 30.034328279005422
+median_inference_s: 0.332460921999882
+p95_inference_s: 0.34388961719960204
+elapsed_s: 53.59025262299838
+render_resolution:
+- 640
+- 640
+model_ipc_resolution:
+- 128
+- 128
+peak_vram_allocated_bytes: 5061286912
+peak_vram_reserved_bytes: 5196742656
+worker_rss_kib: 1906904
+coordinator_rss_kib: 2052152
+artifacts:
+  presentation_video:
+    path: outputs/presentation/p0_breadth_hd_base_task07_init00_v1_seed20261022/presentation_hd640.mp4
+    bytes: 574611
+    sha256: 21ed30a8d891c93ee57f2e3a9b526bb2e22196fce8da7514818308afd9a80a6b
+  clean_video:
+    path: outputs/presentation/p0_breadth_hd_base_task07_init00_v1_seed20261022/clean_agentview_hd640.mp4
+    bytes: 527494
+    sha256: 1f43df5c186b1862481594b2d8f0bf70bef2ab726cfba75c01f2003e439f376c
+  trajectory:
+    path: outputs/presentation/p0_breadth_hd_base_task07_init00_v1_seed20261022/trajectory.jsonl
+    sha256: 4691c0374294cad7051e9d1283a303c5a6724025b55a4c2dd4ed707069d39f09
+boundary: Presentation-only recapture of the first successful state selected deterministically
+  from the frozen 10-task/30-episode result; cannot alter 20/30.

@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+"""CPU-only static contract checker for Phase 5C training smoke."""
+import hashlib,json,sys
+from pathlib import Path
+import yaml
+ROOT=Path(__file__).resolve().parents[1]; CONFIG=ROOT/"configs/train/phase5c_world_model_train_smoke_v1.yaml"; TRAIN=ROOT/"scripts/train_phase5c_world_model_smoke.py"; MODEL=ROOT/"scripts/phase5_small_world_model.py"; RESULT=ROOT/"results/phase5c_world_model_train100_pair_v1_static.yaml"
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def main():
+ c=yaml.safe_load(CONFIG.read_text()); mp=ROOT/c["fixture"]["manifest"]; m=json.loads(mp.read_text()); refs=m["train_windows"]+m["validation_windows"]
+ checks={"phase5a_pass":yaml.safe_load((ROOT/"results/phase5a_libero_world_model_data_contract_v1.yaml").read_text())["classification"]=="PASS","phase5b_pass":yaml.safe_load((ROOT/"results/phase5b_small_world_model_static_v1.yaml").read_text())["classification"]=="PASS","fixture_hash":sha(mp)=="97b33ec833cdc6d5dfeae7288314e0436e8a15deebeeb789cc23cbc4d2336950","fixture_counts":len(m["train_windows"])==256 and len(m["validation_windows"])==128,"episode_safe_h4":all(r["horizon"]==4 and r["start"]>=0 for r in refs),"split_disjoint":not ({r["episode"] for r in m["train_windows"]}&{r["episode"] for r in m["validation_windows"]}),"paired_models":c["models"]==["action_free","action_conditioned"] and c["training"]["identical_batch_order"] and c["training"]["identical_encoder_decoder_initialization"],"smoke_budget":c["training"]["updates_per_model"]==100 and c["training"]["batch_size"]==8,"validation_frozen":c["validation"]["horizons"]==[1,2,3,4] and c["validation"]["checkpoints_selected"] is False,"formal_training_forbidden":c["decision_rule"]["formal_training_authorized"] is False,"fresh_targets":not (ROOT/c["output_dir"]).exists() and not (ROOT/c["structured_result"]).exists() and not (ROOT/c["raw_log"]).exists(),"trainer_frozen":sha(TRAIN)=="659c8f4632d99672975f726510845dc5bccd3a512082dfac29c98fffcf533e75","model_frozen":sha(MODEL)=="f31b270f181a242f6459711f9aa4bfb9afe1230e32ec0fac13c8653fb366d8dc","no_cuda_initialized":"torch" not in sys.modules}
+ classification="PASS" if all(checks.values()) else "FAIL"; result={"classification":classification,"experiment":"phase5c_world_model_train100_pair_v1_static","checks":checks,"checks_passed":sum(checks.values()),"checks_total":len(checks),"fixture_sha256":sha(mp),"cuda_initialized":False,"training_steps":0,"optimizer_steps":0,"environment_steps":0,"model_predictions":0,"boundary":"Static validation only; no CUDA, training, model forward or environment work."}
+ if RESULT.exists(): raise FileExistsError(f"refusing overwrite: {RESULT}")
+ RESULT.write_text(yaml.safe_dump(result,sort_keys=False)); print(yaml.safe_dump(result,sort_keys=False)); raise SystemExit(0 if classification=="PASS" else 1)
+if __name__=="__main__": main()

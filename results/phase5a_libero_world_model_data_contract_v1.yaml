@@ -1,0 +1,145 @@
+classification: PASS
+experiment_id: phase5a_libero_turn_on_stove_world_model_contract_v1
+decision: DATA_CONTRACT_PASS_BASELINE_IMPLEMENTATION_ALLOWED
+checks:
+  dataset_hash: true
+  split_exact: true
+  total_frames: true
+  train_frames: true
+  validation_frames: true
+  all_horizons_nonempty: true
+  terminal_markers: true
+  actions_finite: true
+  action_nonconstant: true
+  views_temporally_nonconstant: true
+  no_cross_episode_windows: true
+  training_not_executed: true
+splits:
+  train:
+    episodes: 40
+    frames: 3571
+    episode_length_min: 77
+    episode_length_median: 89.5
+    episode_length_max: 119
+    transition_samples_by_horizon:
+      1: 3531
+      2: 3491
+      4: 3411
+      8: 3251
+    reward_sum: 40
+    successful_demonstrations: 40
+  validation:
+    episodes: 10
+    frames: 889
+    episode_length_min: 75
+    episode_length_median: 90.0
+    episode_length_max: 103
+    transition_samples_by_horizon:
+      1: 879
+      2: 869
+      4: 849
+      8: 809
+    reward_sum: 10
+    successful_demonstrations: 10
+copy_current_frame_validation:
+  agentview:
+    1:
+      samples: 879
+      pixel_mae: 0.7693543475732959
+      pixel_mse: 30.540579004906142
+      psnr_db: 33.282030944784815
+    2:
+      samples: 869
+      pixel_mae: 1.18105956188417
+      pixel_mse: 56.462020072161486
+      psnr_db: 30.613239487910047
+    4:
+      samples: 849
+      pixel_mae: 1.7388639476283372
+      pixel_mse: 95.14204747619749
+      psnr_db: 28.347078675779485
+    8:
+      samples: 809
+      pixel_mae: 2.402420377161555
+      pixel_mse: 143.81343350844665
+      psnr_db: 26.552809057939044
+  eye_in_hand:
+    1:
+      samples: 879
+      pixel_mae: 6.277759238088678
+      pixel_mse: 374.6699196530148
+      psnr_db: 22.39431533675115
+    2:
+      samples: 869
+      pixel_mae: 9.942370685069644
+      pixel_mse: 709.5958477176831
+      psnr_db: 19.62069295361283
+    4:
+      samples: 849
+      pixel_mae: 15.926650647514233
+      pixel_mse: 1284.920016195524
+      psnr_db: 17.042042663570516
+    8:
+      samples: 809
+      pixel_mae: 24.593533497461824
+      pixel_mse: 2130.032614853729
+      psnr_db: 14.846941075030884
+actions:
+  shape:
+  - 4460
+  - 7
+  min:
+  - -0.8839285714285714
+  - -0.39375
+  - -0.9375
+  - -0.17464285714285716
+  - -0.1285714285714286
+  - -0.14357142857142857
+  - -1.0
+  max:
+  - 0.46071428571428574
+  - 0.9080357142857143
+  - 0.4580357142857143
+  - 0.19821428571428573
+  - 0.24535714285714286
+  - 0.375
+  - 1.0
+  std:
+  - 0.2368086849558263
+  - 0.26283586849519797
+  - 0.2800978907126638
+  - 0.03975617143171906
+  - 0.051027369339767065
+  - 0.16956539516940397
+  - 0.9993880972895134
+  mean_abs_consecutive_delta:
+  - 0.028573858114674236
+  - 0.028423226433430163
+  - 0.03138362487852262
+  - 0.004636783284742568
+  - 0.006969144800777615
+  - 0.008521379980563772
+  - 0.027210884353741496
+  finite: true
+dataset_sha256: 387fc10747696b80dea6ed8d7f2beaa162bf92ae11750b241073cbd33aac73d5
+config_sha256: d260c7f252550c0dfb055976f8edc007fa31b6d65e4becaafb9a929d87db910e
+cuda_initialized: false
+training_steps: 0
+environment_resets: 0
+environment_steps: 0
+model_predictions: 0
+cpu_audit_runtime:
+  exit_status: 0
+  wall_s: 2.68
+  user_s: 5.43
+  system_s: 0.35
+  cpu_percent: 215
+  max_rss_kib: 140300
+  major_page_faults: 0
+  minor_page_faults: 58545
+  swaps: 0
+  socket_messages_sent: 0
+  socket_messages_received: 0
+boundary: CPU-only data and baseline contract for one task. Static/copy-frame metrics
+  are not learned world-model evidence, environment success, reward prediction or
+  action-ranking utility. No model training or GPU execution is authorized.
